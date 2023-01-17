@@ -2,7 +2,7 @@
 export default function UserForm() {
 	return (
 		<div>
-			Hello World
+			User form
 		</div>
 	);
 }
