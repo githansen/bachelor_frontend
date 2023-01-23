@@ -22,6 +22,20 @@ function Select({ values, name, selected, onChange }) {
 	);
 }
 
+function Stepper({ step, totalSteps }) {
+	const before = 'before:border-gray-300 before:border before:w-[92%] before:content-"" before:absolute before:top-1/2 before:-translate-y-1/2 before:z-[-1]';
+	return (
+		<div className={`flex justify-center items-center gap-24 mb-5 relative ${before}`}>
+			{Array(totalSteps).fill(0).map((_, i) => (
+				<div 
+					key={i}
+					className={`w-4 h-4 rounded-full m-1 ${i === step ? 'bg-marine-dark' : 'bg-white'} border-marine-dark border-2`}
+				/>
+			))}
+		</div>
+	);
+}
+
 export default function UserForm() {
 	// The values that can be selected
 	const dialects = 'Velg dialekt, Østlandsk, Vestlandsk, Trøndersk, Nordnorsk, Annet'.split(', ');
@@ -69,6 +83,7 @@ export default function UserForm() {
 
 	return (
 		<div className="flex flex-col place-items-center justify-center flex-grow">
+			<Stepper step={step} totalSteps={steps.length} />
 			{steps[step]}
 			<button onClick={() => setStep(prev => prev + 1)} className="bg-blue-400 px-4 font-bold py-2 text-xl text-white mt-8">
 				Gå videre
