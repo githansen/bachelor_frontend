@@ -5,8 +5,29 @@ module.exports = {
 		'./src/**/*.{js,ts,jsx,tsx}',
 	],
 	theme: {
+		screens: {
+			'sm': '640px',
+			// => @media (min-width: 640px) { ... }
+			'md': '768px',
+			// => @media (min-width: 768px) { ... }
+			'lg': '1024px',
+			// => @media (min-width: 1024px) { ... }
+			'xl': '1280px',
+			// => @media (min-width: 1280px) { ... }
+			'2xl': '1536px',
+			// => @media (min-width: 1536px) { ... }
+		},	  
 		colors: {
+			transparent: 'transparent',
+			current: 'currentColor',
 			'white': '#ffffff',
+			'primary': '#0088FA',
+			'secondary': '#FFD039',
+			'gray': '#c2c2c2',
+			'gray-60': '#707070',
+			'gray-70': '#4D4D4D',
+			'dark': '#171717',
+			'light': '#f2f2f2',
 			'marine-dark': '#212A3B',
 			'blue-light': '#cbe0f7',
 			'blue-400': '#0088fa',
@@ -17,7 +38,22 @@ module.exports = {
 			'yellow-500': '#FFD923',
 			'green-400': '#5CAC37',
 		},
+		fontFamily: {
+		  sans: ['Graphik', 'sans-serif'],
+		},
+		fontSize: {
+			h1: ['32pt', '50pt'],
+			h2: ['26pt', '40pt'],
+			h3: ['22pt', '30pt'],
+			h4: ['16pt', '20pt'],
+			h5: ['13pt', '18pt'],
+			h6: ['11pt', '30pt'],
+			p: ['12pt', '25pt'],
+			small: ['9pt', '25pt'],
+		  },
 		extend: {},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/typography'),
+	],
 };
