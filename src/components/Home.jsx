@@ -13,8 +13,9 @@ export default function Home() {
 
 
 	return (
-		<div className="h-[calc(100vh-500px)] relative overflow-hidden bg-white m-12">
-		<div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
+		<div className='h-[80rem] grid content-center'>
+		<div className="relative">
+		<div className="sm:pt-24 sm:pb-40 lg:pt-60 lg:pb-48">
 		  <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
 			<div className="sm:max-w-lg mt-14">
 				<img
@@ -29,7 +30,7 @@ export default function Home() {
 			  	Vi leter mennesker i alle aldre, med ulike morsmål, forskjellige dialekter og alle kjønn!
 			  </h4>
 			  <button className="transScale bg-secondary px-4 py-4 font-bold py-2 text-h4 text-white mt-2 text-black w-48 rounded inline-flex justify-center items-center gap-2">
-			  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+			  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 				Sett i gang
 			  </button>
 
@@ -106,6 +107,7 @@ export default function Home() {
 			</div>
 		  </div>
 		</div>
+	  </div>
 	  </div>
 	);
 }

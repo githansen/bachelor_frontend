@@ -9,7 +9,6 @@ export default function App() {
 	return (
 		<div>
 			<div className="min-h-screen relative flex flex-col">
-				<Header />
 				<UserForm />
 				<Footer />
 			</div>

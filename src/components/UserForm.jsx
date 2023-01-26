@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Select from 'react-select'
+import Select from 'react-select';
+import Header from './Header';
 
 function SelectInput({ values, name, selected, onChange }) {
 	const firstOptions = [
@@ -99,7 +100,9 @@ export default function UserForm() {
 	];
 
 	return (
-			<div className="flex flex-col place-items-center justify-center h-screen">
+		<div>
+		<Header />
+			<div className="h-[calc(100vh-300px)] flex flex-col place-items-center justify-center">
 				<h2 className='text-h2 mb-5'>Først et par spørsmål</h2>
 				<Stepper step={step} totalSteps={steps.length} />
 				{steps[step]}
@@ -117,5 +120,6 @@ export default function UserForm() {
 					<p className='text-p'>Vi samler ikke inn noen personlige data fra deg, denne infoen blir kun brukt til å systematisere data.</p>
 				</div>
 			</div>
+		</div>
 	);
 }
