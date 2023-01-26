@@ -33,3 +33,33 @@ code {
 .bg-dark{
   background-color: #171717;
 }
+
+/*Button*/
+button{
+  transition: all 0.15s ease-out;
+}
+button.transScale:hover{
+  transform: translateY(-2px);
+}
+button.transScale:hover{
+  box-shadow: 0 20px 38px rgb(0 0 0 / 15%);
+}
+
+/*Headings*/
+h1{
+  font-weight: 700;
+  letter-spacing: normal;
+}
+h2{
+  font-weight: 700;
+  letter-spacing: 0pt;
+}
+h3{
+  font-weight: 700;
+  letter-spacing:0pt;
+}
+
+/*Annet*/
+.SlettKode{
+  border:1px solid #c2c2c2;
+}
