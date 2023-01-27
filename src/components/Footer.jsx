@@ -3,7 +3,7 @@ import PolitietLogo from '../img/politiet-logo.svg';
 export default function Footer() {
 	return (
 		<div className='bg-dark text-white mt-20'>
-			<div className="flex justify-between m-16 mb-0 lg:w-2/3 md:w-3/4 mx-auto">
+			<div className="flex justify-between m-16 mb-0 max-w-screen-xl mx-auto">
 				<div className='grid content-between'>
 					<div>
 						<h1 className='prose-2xl text-h1'>
