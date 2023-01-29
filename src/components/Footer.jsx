@@ -1,4 +1,4 @@
-import PolitietLogo from '../img/politiet-logo.svg';
+import PolitietLogo from '../img/politiet-logo.jpeg';
 
 export default function Footer() {
 	return (

@@ -59,7 +59,20 @@ h3{
   letter-spacing:0pt;
 }
 
-/*Annet*/
-.SlettKode{
-  border:1px solid #c2c2c2;
+
+/* Toggle A */
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #171717;
 }
+
+
+/*Audio Player*/
+audio::-webkit-media-controls-panel {
+  background-color: #FFD039;
+}
+
+
+
+
+

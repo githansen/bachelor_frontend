@@ -5,10 +5,8 @@ import heroimg4 from '../img/hero-img-4.webp';
 import heroimg5 from '../img/hero-img-5.webp';
 import heroimg6 from '../img/hero-img-6.webp';
 import heroimg7 from '../img/hero-img-7.webp';
-import pappegoye from '../img/pappegoye-logo.png';
 
-import useProgressiveImg from "./hooks/blur";
-
+import HomePlaceholder from '../img/HomePlaceholder.png';
 
 
 
@@ -16,34 +14,29 @@ export default function Home() {
 
 
 	return (
-		<div className='h-[60rem] grid content-center mb-30 '>
-		<div className="relative ">
-		<div className="sm:pt-24 sm:pb-40 lg:pt-60 lg:pb-48 ">
-		  <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8 ">
-			<div className="sm:max-w-lg mt-14">
-			  <h1 className="text-h1 font-bold tracking-tight text-black">
+		<div className='3xl:h-[65rem] 2xl:h-[50rem] max-w-screen-xl mx-auto flex place-items-center justify-between gap-20'>
+
+			<div className="sm:max-w-lg">
+				<img src={HomePlaceholder} className='w-[12rem]'></img>
+			  	<h1 className="text-h1 font-bold tracking-tight text-black">
 				Bidra med din stemme!
-			  </h1>
-			  <h4 className="text-h4 text-dark mb-5">
+			 	 </h1>
+			  	<h4 className="text-h4 text-dark mb-5">
 			  	Vi leter mennesker i alle aldre, med ulike morsmål, forskjellige dialekter og alle kjønn!
-			  </h4>
-			  <button className="transScale bg-secondary px-4 py-4 font-bold text-h4 text-white mt-2 text-black w-48 rounded inline-flex justify-center items-center gap-2">
-			  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-				Sett i gang
-			  </button>
 
-
+				  <span className='text-p bg-secondary-soft rounded w-fit p-1 ml-2'>
+					Utviklet i 🇳🇴 for Norge.
+				</span>
+			  	</h4>
+			  	<button className="transScale bg-secondary px-4 py-4 font-bold text-h4 text-white mt-2 text-black w-48 rounded inline-flex justify-center items-center gap-2">
+			  		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+					Sett i gang
+			  	</button>
 			</div>
+
 			<div>
-			  <div className="mt-10">
-				{/* Decorative image grid */}
-				<div
-				  aria-hidden="true"
-				  className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
-				>
-				  <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:translate-x-8">
-					<div className="flex items-center space-x-6 lg:space-x-8">
-					  <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+				<div className="flex items-center space-x-6 lg:space-x-8">
+					<div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
 						<div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
 						  <img
 							src={heroimg7}
@@ -99,13 +92,7 @@ export default function Home() {
 						</div>
 					  </div>
 					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </div>
 		</div>
-	  </div>
 	  </div>
 	);
 }

@@ -113,7 +113,7 @@ export default function UserForm() {
 
 	return (
 		<div className='mx-auto max-w-screen-xl'>
-			<div className="h-[calc(100vh-300px)] flex flex-col place-items-center justify-center">
+			<div className="min-h-[calc(100vh-300px)] flex flex-col place-items-center justify-center">
 				<h2 className='text-h2 mb-5'>Først et par spørsmål</h2>
 				<Stepper step={step} totalSteps={steps.length} />
 				{steps[step]}
@@ -124,7 +124,7 @@ export default function UserForm() {
 					</svg>
 
 				</button>
-				<button onClick={() => setStep(prev => prev - 1)} className="bg-light px-5 py-2 mt-2 text-black w-40 rounded border-2 border-light hover:bg-primary-soft hover:border-secondary">
+				<button onClick={() => setStep(prev => prev - 1)} className="bg-light px-5 py-2 mt-2 text-black w-40 rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary">
 					Hopp over
 				</button>
 				<div className="max-w-md text-gray-300 italic mt-14 text-center">
