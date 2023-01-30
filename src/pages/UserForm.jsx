@@ -3,44 +3,17 @@ import Select from 'react-select';
 import Layout from '../components/shared/Layout';
 import { Navigate } from 'react-router-dom';
 
-function SelectInput({ values, name, selected, onChange }) {
-	const ageOptions = [
-		{ value: '1', label: '18-29' },
-		{ value: '2', label: '30-39' },
-		{ value: '3', label: '40-49' },
-		{ value: '4', label: '50-59' },
-		{ value: '5', label: '60+' }
-	]
-	const genderOptions = [
-		{ value: 'mann', label: 'Mann' },
-		{ value: 'kvinne', label: 'Kvinne' },
-		{ value: 'annet', label: 'Annet' }
-	]
-	const languageOptions = [
-		{ value: 'norsk', label: 'Norsk' },
-		{ value: 'arabisk', label: 'Arabisk' },
-		{ value: 'alabansk', label: 'Albansk' }
-	]
-	const dialectOptions = [
-		{ value: 'ostlandsk', label: 'Østlandsk' },
-		{ value: 'vestlandsk', label: 'Vestlandsk' },
-		{ value: 'trondersk', label: 'Trøndersk' },
-		{ value: 'nordnorsk', label: 'Nordnorsk' },
-		{ value: 'annet', label: 'Annet' }
-	]
-
-
+function SelectInput({ options, name, selected, onChange }) {
 	const selectStyle = {
 		control: base => ({
-		...base,
-		border: '2px solid #f2f2f2',
-		boxShadow: 'none',
-		'&:hover': {
-			border: '2px solid #FFD039',
-		}
+			...base,
+			border: '2px solid #f2f2f2',
+			boxShadow: 'none',
+			'&:hover': {
+				border: '2px solid #FFD039',
+			}
 		})
-	  };
-
+	};
 
 	// <label> element has to stay for accessibility purposes, however
 	// it can be hidden with the className "sr-only"
@@ -51,16 +24,13 @@ function SelectInput({ values, name, selected, onChange }) {
 				<Select 
 					placeholder={<div>Ikke valgt...</div>}
 					name={name}
-					options={genderOptions}
+					options={options}
+					value={selected}
+					isClearable={true}
 					className="py-1 dfSelect"
 					styles={selectStyle}
-				>
-					{values.map((value) => (
-						<option value={value} key={value}>
-							{value}
-						</option>
-					))}
-				</Select>
+					onChange={onChange}
+				/>
 			</div>
 		</div>
 	);
@@ -81,43 +51,64 @@ function Stepper({ step, totalSteps }) {
 }
 
 export default function PageUserForm() {
-	// The values that can be selected
-	const dialects = 'Velg dialekt, Østlandsk, Vestlandsk, Trøndersk, Nordnorsk, Annet'.split(', ');
-	const ageGroups = 'Velg aldersgruppe, 18-29, 30-39, 40-49, 50-59, 60+'.split(', ');
-	const languages = 'Velg morsmål, Norsk, Arabisk, Albansk, Pakistansk, Annet'.split(', ');
-	const genders = 'Velg kjønn, Mann, Kvinne, Annet'.split(', ');
+	const ageOptions = [
+		{ value: '1', label: '18-29' },
+		{ value: '2', label: '30-39' },
+		{ value: '3', label: '40-49' },
+		{ value: '4', label: '50-59' },
+		{ value: '5', label: '60+' }
+	];
+	const genderOptions = [
+		{ value: 'mann', label: 'Mann' },
+		{ value: 'kvinne', label: 'Kvinne' },
+		{ value: 'annet', label: 'Annet' }
+	];
+	const languageOptions = [
+		{ value: 'norsk', label: 'Norsk' },
+		{ value: 'arabisk', label: 'Arabisk' },
+		{ value: 'alabansk', label: 'Albansk' }
+	];
+	const dialectOptions = [
+		{ value: 'ostlandsk', label: 'Østlandsk' },
+		{ value: 'vestlandsk', label: 'Vestlandsk' },
+		{ value: 'trondersk', label: 'Trøndersk' },
+		{ value: 'nordnorsk', label: 'Nordnorsk' },
+		{ value: 'annet', label: 'Annet' }
+	];
 
-	// Selected values
+	// Selected options
 	const [gender, setGender] = useState(null);
 	const [ageGroup, setAgeGroup] = useState(null);
 	const [language, setLanguage] = useState(null);
 	const [dialect, setDialect] = useState(null);
 
+	console.log(language);
+
 	const [step, setStep] = useState(0);
 	const steps = [
-		<SelectInput 
+		(<SelectInput 
 			name="Velg et kjønn" 
-			values={genders} 
+			options={genderOptions} 
 			selected={gender}
 			onChange={(value) => setGender(value)}
-		/>,
-		<SelectInput 
+		/>),
+		(<SelectInput 
 			name="Velg aldersgruppe" 
-			values={ageGroups} 
+			options={ageOptions} 
 			selected={ageGroup}
 			onChange={(value) => setAgeGroup(value)}
-		/>,
+		/>),
 		(<div className='w-full mx-auto'>
 			<SelectInput 
 				name="Velg morsmål" 
-				values={languages} 
+				options={languageOptions}
 				selected={language}
-				onChange={(value) => setLanguage(value)}papegøye
+				onChange={(value) => setLanguage(value)}
 			/>
-			{language === 'Norsk' && (
+			{language?.value === 'norsk' && (
 				<SelectInput 
 					name="Velg dialekt" 
-					values={dialects} 
+					options={dialectOptions}
 					selected={dialect}
 					onChange={(value) => setDialect(value)}
 				/>
