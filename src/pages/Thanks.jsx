@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ThanksIcon from '../img/thanks.png';
+import ThanksIcon from '../assets/img/thanks.png';
 
 
 

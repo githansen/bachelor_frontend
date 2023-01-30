@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DemoLydFil from '../soundtracks/demoSoundTrack.mp3';
+import DemoLydFil from '../assets/soundtracks/demoSoundTrack.mp3';
 
 
 // Buttons in top right for recording, playing, submitting, etc.

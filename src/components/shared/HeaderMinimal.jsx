@@ -1,4 +1,4 @@
-import PolitietLogo from '../img/pappegoye-logo.png';
+import PolitietLogo from '../../assets/img/pappegoye-logo.png';
 
 export default function Header() {
 	return (
