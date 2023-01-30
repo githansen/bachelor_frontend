@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Select from 'react-select';
+import Layout from '../components/shared/Layout';
+import { Navigate } from 'react-router-dom';
 
 function SelectInput({ values, name, selected, onChange }) {
 	const ageOptions = [
@@ -78,10 +80,7 @@ function Stepper({ step, totalSteps }) {
 	);
 }
 
-export default function UserForm() {
-
-
-
+export default function PageUserForm() {
 	// The values that can be selected
 	const dialects = 'Velg dialekt, Østlandsk, Vestlandsk, Trøndersk, Nordnorsk, Annet'.split(', ');
 	const ageGroups = 'Velg aldersgruppe, 18-29, 30-39, 40-49, 50-59, 60+'.split(', ');
@@ -126,26 +125,32 @@ export default function UserForm() {
 		</div>),
 	];
 
-	return (
-		<div className='mx-auto max-w-screen-xl'>
-			<div className="min-h-[calc(100vh-300px)] flex flex-col place-items-center justify-center">
-				<h2 className='text-h2 mb-5'>Først et par spørsmål</h2>
-				<Stepper step={step} totalSteps={steps.length} />
-				{steps[step]}
-				<button onClick={() => setStep(prev => prev + 1)} className="transScale bg-secondary px-4 py-4 font-bold text-h4 text-white mt-2 text-black w-48 rounded inline-flex justify-center items-center gap-2">
-					Gå videre
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-						<path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-					</svg>
+	if (step >= steps.length) {
+		return <Navigate to="/les" />
+	} else {
+		return (
+			<Layout>
+				<div className='mx-auto max-w-screen-xl'>
+					<div className="min-h-[calc(100vh-300px)] flex flex-col place-items-center justify-center">
+						<h2 className='text-h2 mb-5'>Først et par spørsmål</h2>
+						<Stepper step={step} totalSteps={steps.length} />
+						{steps[step]}
+						<button onClick={() => setStep(prev => prev + 1)} className="transScale bg-secondary px-4 py-4 font-bold text-h4 text-white mt-2 text-black w-48 rounded inline-flex justify-center items-center gap-2">
+							Gå videre
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+								<path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+							</svg>
 
-				</button>
-				<button onClick={() => setStep(prev => prev - 1)} className="bg-light px-5 py-2 mt-2 text-black w-40 rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary">
-					Hopp over
-				</button>
-				<div className="max-w-md text-gray-300 italic mt-14 text-center">
-					<p className='text-p'>Vi samler ikke inn noen personlige data fra deg, denne infoen blir kun brukt til å systematisere data.</p>
+						</button>
+						<button onClick={() => setStep(prev => prev - 1)} className="bg-light px-5 py-2 mt-2 text-black w-40 rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary">
+							Hopp over
+						</button>
+						<div className="max-w-md text-gray-300 italic mt-14 text-center">
+							<p className='text-p'>Vi samler ikke inn noen personlige data fra deg, denne infoen blir kun brukt til å systematisere data.</p>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-	);
+			</Layout>
+		);
+	}
 }

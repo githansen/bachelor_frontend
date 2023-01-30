@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import DemoLydFil from '../assets/soundtracks/demoSoundTrack.mp3';
-
+import HeaderMinimal from '../components/shared/HeaderMinimal';
+import { useNavigate } from 'react-router-dom';
 
 // Buttons in top right for recording, playing, submitting, etc.
 function Controls({ state, setState, time=null }) {
+	const navigate = useNavigate();
 	// TODO: Add functionality to following buttons:
 	// * Ny tekst
 	// * Hør på opptaket
@@ -38,20 +40,12 @@ function Controls({ state, setState, time=null }) {
 						</p>
 					</div>
 
-
-
-
-
 					<div className='text-left self-center flex flex-col'>
 						<div className='min-w-[40rem]'>
 							<audio className='w-full' src={DemoLydFil} controls controlsList="nodownload"/>
 						</div>
 					</div>
 
-
-
-					
-					
 					<div className='flex flex-row place-items-center self-center gap-5'>
 						<div>
 							<button className="px-3 py-2 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-white text-black border-light hover:bg-primary hover:text-white" onClick={() => setState('recording')}>
@@ -62,7 +56,10 @@ function Controls({ state, setState, time=null }) {
 							</button>
 						</div>
 						<div>
-							<button className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-secondary text-black border-secondary hover:bg-secondary-soft">
+							<button
+								onClick={() => navigate('/takk')}
+								className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-secondary text-black border-secondary hover:bg-secondary-soft"
+							>
 								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 									<path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
 								</svg>
@@ -71,8 +68,7 @@ function Controls({ state, setState, time=null }) {
 						</div>
 					</div>
 				</div>
-				
-		);
+			);
 
 		case 'recording':
 			return (
@@ -89,7 +85,7 @@ function Controls({ state, setState, time=null }) {
 						</button>
 					</div>
 				</div>
-		);
+			);
 
 		case 'idle':
 		default:
@@ -283,6 +279,8 @@ export default function Reader() {
 
 	return (
 		<div className='mx-auto max-w-screen-xl'>
+			<HeaderMinimal />
+			
 			<div className='min-h-screen my-20 flex flex-col place-items-center'>
 				<div className="mx-auto">
 					<TextPanel state={state}  />
