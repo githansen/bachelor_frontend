@@ -35,13 +35,11 @@ code {
 }
 
 /*Button*/
-button{
+.transScale{
   transition: all 0.15s ease-out;
 }
-button.transScale:hover{
+.transScale:hover{
   transform: translateY(-2px);
-}
-button.transScale:hover{
   box-shadow: 0 20px 38px rgb(0 0 0 / 15%);
 }
 

@@ -8,7 +8,7 @@ export default function FiveHundred() {
 			<div className="min-h-[50rem] flex flex-col place-items-center justify-center">
 				<img src={FiveHundredIcon} className='w-[22rem] mb-10'></img>
 
-				<h2 className='text-h1 mb-1'>500 Intern feil...</h2>
+				<h1 className='text-h1 mb-1'>500 Intern feil...</h1>
 				<p className='text-h4 mb-5'>
 					Prøv å laste siden på nytt eller gå tilbake til forsiden.
 				</p>

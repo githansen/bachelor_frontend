@@ -8,7 +8,7 @@ export default function FourOFour() {
 			<div className="min-h-[50rem] flex flex-col place-items-center justify-center">
 				<img src={FourOFourIcon} className='w-[18rem] mb-10'></img>
 
-				<h2 className='text-h1 mb-1'>404 Ikke Funnet...</h2>
+				<h1 className='text-h1 mb-1'>404 Ikke Funnet...</h1>
 				<p className='text-h4 mb-5'>
 					Oops! Denne siden finnes ikke.
 				</p>

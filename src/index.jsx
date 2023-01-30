@@ -9,6 +9,7 @@ import PageHome from './pages/Home';
 import PageUserForm from './pages/UserForm';
 import PageReader from './pages/Reader';
 import PageThanks from './pages/Thanks';
+import Personvern from './pages/Personvern';
 
 const router = createBrowserRouter([
     // Main pages
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
     {
         path: '/takk',
         element: <PageThanks />,
+    },
+    {
+        path: '/personvern',
+        element: <Personvern />,
     },
     // Error pages
     {
