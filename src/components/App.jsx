@@ -1,6 +1,6 @@
 import UserForm from './UserForm';
 import Header from './Header';
-import Header2 from './Header2';
+import HeaderMinimal from './HeaderMinimal';
 import FourOFour from './statusCodes/FourOFour';
 import FiveHundred from './statusCodes/FiveHundred';
 import Footer from './Footer';
@@ -12,7 +12,7 @@ export default function App() {
 	return (
 		<div className='bg-white'>
 			<div className="min-h-screen relative flex flex-col">
-				<Header2 />
+				<HeaderMinimal />
 				<Reader />
 				<Footer />
 			</div>
