@@ -82,8 +82,6 @@ export default function PageUserForm() {
 	const [language, setLanguage] = useState(null);
 	const [dialect, setDialect] = useState(null);
 
-	console.log(language);
-
 	const [step, setStep] = useState(0);
 	const steps = [
 		(<SelectInput 
