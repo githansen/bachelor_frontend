@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import FiveHundredIcon from '../../img/FiveHundred.png';
+import FiveHundredIcon from '../../assets/img/FiveHundred.png';
 
 
 

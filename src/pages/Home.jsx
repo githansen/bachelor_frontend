@@ -1,12 +1,12 @@
-import heroimg1 from '../img/hero-img-1.webp';
-import heroimg2 from '../img/hero-img-2.webp';
-import heroimg3 from '../img/hero-img-3.webp';
-import heroimg4 from '../img/hero-img-4.webp';
-import heroimg5 from '../img/hero-img-5.webp';
-import heroimg6 from '../img/hero-img-6.webp';
-import heroimg7 from '../img/hero-img-7.webp';
+import heroimg1 from '../assets/img/hero-img-1.webp';
+import heroimg2 from '../assets/img/hero-img-2.webp';
+import heroimg3 from '../assets/img/hero-img-3.webp';
+import heroimg4 from '../assets/img/hero-img-4.webp';
+import heroimg5 from '../assets/img/hero-img-5.webp';
+import heroimg6 from '../assets/img/hero-img-6.webp';
+import heroimg7 from '../assets/img/hero-img-7.webp';
 
-import HomePlaceholder from '../img/HomePlaceholder.png';
+import HomePlaceholder from '../assets/img/HomePlaceholder.png';
 
 
 
