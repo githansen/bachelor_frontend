@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DemoLydFil from '../assets/soundtracks/demoSoundTrack.mp3';
 import HeaderMinimal from '../components/shared/HeaderMinimal';
 import { useNavigate } from 'react-router-dom';
 import AudioPlayer from 'react-h5-audio-player';
 import '@/styles/audioplayer.css';
+import { useTimer } from 'use-timer';
 
 // Buttons in top right for recording, playing, submitting, etc.
 function Controls({ state, setState, time=null }) {
@@ -15,14 +16,14 @@ function Controls({ state, setState, time=null }) {
 		return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 	}
 
-	const [recordingTxt, setRecordingTxt] = useState('Tar opp lyd...');
+	const [recordingText, setRecordingText] = useState('Tar opp lyd...');
 
 	const askToStop = () => {
-		setRecordingTxt('Stopp opptak?')
+		setRecordingText('Stopp opptak?')
 	};
 
-	const defaultRecordingTxt = () => {
-		setRecordingTxt('Tar opp lyd...')
+	const resetRecordingText = () => {
+		setRecordingText('Tar opp lyd...')
 	};
 
 	switch (state) {
@@ -81,11 +82,19 @@ function Controls({ state, setState, time=null }) {
 						{time !== null && (<span className="text-h4 font-semibold px-4 py-2 mr-2">
 						{formatTime(time)}
 						</span>)}
-						<button className={`${recordingTxt == 'Stopp opptak?' ? '' : 'animate-pulse'} px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full text-dark bg-secondary-soft border-secondary hover:bg-red hover:border-red hover:text-white`} onMouseEnter={askToStop} onMouseLeave={defaultRecordingTxt} onClick={() => {setState('completed'); defaultRecordingTxt();}}>
+						<button 
+							className={`${recordingText == 'Stopp opptak?' ? '' : 'animate-pulse'} px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full text-dark bg-secondary-soft border-secondary hover:bg-red hover:border-red hover:text-white`}
+							onMouseEnter={askToStop}
+							onMouseLeave={resetRecordingText}
+							onClick={() => {
+								setState(() => 'completed');
+								resetRecordingText();
+							}}
+						>
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 								<path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
 							</svg>
-							<b>{recordingTxt}</b>
+							<b>{recordingText}</b>
 						</button>
 					</div>
 				</div>
@@ -278,8 +287,15 @@ function TextPanel({ state, statess }) {
 //shadow-playerShadow
 export default function Reader() {
 	const [state, setState] = useState('idle'); // idle | recording | completed
-	// TODO: make useTimer hook
-	const [time, setTime] = useState(168);
+	const { time, start, reset } = useTimer();
+
+	useEffect(() => {
+		if (state === 'recording') {
+			start();
+		} else {
+			reset();
+		}
+	}, [state]);
 
 	return (
 		<div className='mx-auto max-w-screen-xl'>
@@ -291,16 +307,15 @@ export default function Reader() {
 				</div>
 			</div>
 			
-			
 			<footer
-			className="bg-dark
+				className="bg-dark
 					text-white 
 					text-center
 					fixed
 					inset-x-0
 					bottom-0
-					p-5">
-				
+					p-5"
+			>
 				<div className="h-30 flex justify-center ">
 					<Controls state={state} setState={setState} time={time} />
 				</div>
