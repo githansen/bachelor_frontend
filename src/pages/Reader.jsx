@@ -2,15 +2,12 @@ import { useState } from 'react';
 import DemoLydFil from '../assets/soundtracks/demoSoundTrack.mp3';
 import HeaderMinimal from '../components/shared/HeaderMinimal';
 import { useNavigate } from 'react-router-dom';
+import AudioPlayer from 'react-h5-audio-player';
+import '@/styles/audioplayer.css';
 
 // Buttons in top right for recording, playing, submitting, etc.
 function Controls({ state, setState, time=null }) {
 	const navigate = useNavigate();
-	// TODO: Add functionality to following buttons:
-	// * Ny tekst
-	// * Hør på opptaket
-	// * Prøv på nytt
-	// * Send inn
 
 	const formatTime = (time) => {
 		const minutes = Math.floor(time / 60);
@@ -18,12 +15,13 @@ function Controls({ state, setState, time=null }) {
 		return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 	}
 
-
 	const [recordingTxt, setRecordingTxt] = useState('Tar opp lyd...');
-	const askToStop = event => {
+
+	const askToStop = () => {
 		setRecordingTxt('Stopp opptak?')
 	};
-	const defaultRecordingTxt = event => {
+
+	const defaultRecordingTxt = () => {
 		setRecordingTxt('Tar opp lyd...')
 	};
 
@@ -36,13 +34,19 @@ function Controls({ state, setState, time=null }) {
 							Det høres bra ut!
 						</h3>
 						<p className="text-p text-secondary">
-							Hør på ditt lydklipp
+							Hør på lydklippet ditt
 						</p>
 					</div>
 
 					<div className='text-left self-center flex flex-col'>
 						<div className='min-w-[40rem]'>
-							<audio className='w-full' src={DemoLydFil} controls controlsList="nodownload"/>
+							<AudioPlayer
+								className='w-full'
+								src={DemoLydFil}
+								showFilledVolume={true}
+								showJumpControls={false}
+								customControlsSection={['MAIN_CONTROLS', 'VOLUME_CONTROLS']}
+							/>
 						</div>
 					</div>
 
