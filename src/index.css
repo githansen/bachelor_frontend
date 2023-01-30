@@ -15,3 +15,64 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/*Text Color*/
+.txt-white{
+  color:#fff;
+}
+.txt-black{
+  color:#000;
+}
+
+/*Backgrounds*/
+.bg-white{
+  background-color: #fff;
+}
+
+.bg-dark{
+  background-color: #171717;
+}
+
+/*Button*/
+button{
+  transition: all 0.15s ease-out;
+}
+button.transScale:hover{
+  transform: translateY(-2px);
+}
+button.transScale:hover{
+  box-shadow: 0 20px 38px rgb(0 0 0 / 15%);
+}
+
+/*Headings*/
+h1{
+  font-weight: 700;
+  letter-spacing: normal;
+}
+h2{
+  font-weight: 700;
+  letter-spacing: 0pt;
+}
+h3{
+  font-weight: 700;
+  letter-spacing:0pt;
+}
+
+
+/* Toggle A */
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #171717;
+}
+
+
+/*Audio Player*/
+audio::-webkit-media-controls-panel {
+  background-color: #FFD039;
+}
+
+
+
+
+
