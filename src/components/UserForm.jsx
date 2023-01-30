@@ -26,17 +26,32 @@ function SelectInput({ values, name, selected, onChange }) {
 		{ value: 'nordnorsk', label: 'Nordnorsk' },
 		{ value: 'annet', label: 'Annet' }
 	]
+
+
+	const selectStyle = {
+		control: base => ({
+		...base,
+		border: '2px solid #f2f2f2',
+		boxShadow: 'none',
+		'&:hover': {
+			border: '2px solid #FFD039',
+		}
+		})
+	  };
+
+
 	// <label> element has to stay for accessibility purposes, however
 	// it can be hidden with the className "sr-only"
 	return (
-		<div className='w-10/12'>
+		<div className='w-10/12 mx-auto'>
 			<div className="flex flex-col m-3">
 				<label htmlFor={name} className="font-bold text-dark text-p">{name}</label>
 				<Select 
 					placeholder={<div>Ikke valgt...</div>}
 					name={name}
 					options={genderOptions}
-					className="py-1"
+					className="py-1 dfSelect"
+					styles={selectStyle}
 				>
 					{values.map((value) => (
 						<option value={value} key={value}>
@@ -93,7 +108,7 @@ export default function UserForm() {
 			selected={ageGroup}
 			onChange={(value) => setAgeGroup(value)}
 		/>,
-		(<div>
+		(<div className='w-full mx-auto'>
 			<SelectInput 
 				name="Velg morsmål" 
 				values={languages} 
