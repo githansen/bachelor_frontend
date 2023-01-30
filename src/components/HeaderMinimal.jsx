@@ -7,7 +7,7 @@ export default function Header() {
 				<div className="flex justify-center mx-auto max-w-screen-xl">
 					<a href="#" className="flex items-center">
 						<img src={PolitietLogo} className="mr-1 h-6 sm:h-9" alt="GiDinStemme - Logo" />
-						<span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">GiDinStemme</span>
+						<span className="self-center text-xl font-semibold whitespace-nowrap text-dark">GiDinStemme</span>
 					</a>
 				</div>
 			</nav>
