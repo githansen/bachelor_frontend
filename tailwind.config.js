@@ -48,9 +48,6 @@ module.exports = {
 			'green-400': '#5CAC37',
 			'green-200': '#a5d38f',
 		},
-		fontFamily: {
-		  sans: ['Graphik', 'sans-serif'],
-		},
 		fontSize: {
 			h1: ['32pt', '50pt'],
 			h2: ['26pt', '40pt'],
