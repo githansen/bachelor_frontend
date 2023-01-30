@@ -13,7 +13,7 @@ export default function App() {
 		<div className='bg-white'>
 			<div className="min-h-screen relative flex flex-col">
 				<HeaderMinimal />
-				<Reader />
+				<UserForm />
 				<Footer />
 			</div>
 		</div>
