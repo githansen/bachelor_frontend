@@ -1,4 +1,4 @@
-import Layout from '../components/shared/Layout';
+import Layout from '../../components/shared/Layout';
 import { Link } from 'react-router-dom';
 
 export default function Personvern() {

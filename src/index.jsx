@@ -9,7 +9,9 @@ import PageHome from './pages/Home';
 import PageUserForm from './pages/UserForm';
 import PageReader from './pages/Reader';
 import PageThanks from './pages/Thanks';
-import Personvern from './pages/Personvern';
+import Personvern from './pages/additional/Personvern';
+import HvaEr from './pages/additional/HvaEr';
+import Slett from './pages/additional/Slett';
 
 const router = createBrowserRouter([
     // Main pages
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
     {
         path: '/personvern',
         element: <Personvern />,
+    },
+    {
+        path: '/om-oss',
+        element: <HvaEr />,
+    },,
+    {
+        path: '/slett',
+        element: <Slett />,
     },
     // Error pages
     {
