@@ -12,36 +12,53 @@ import PageThanks from './pages/Thanks';
 import Personvern from './pages/Personvern';
 
 const router = createBrowserRouter([
-    // Main pages
-    {
-        path: '/',
-        element: <PageHome />,
-    },
-    {
-        path: '/intro',
-        element: <PageUserForm />,
-    },
-    {
-        path: '/les',
-        element: <PageReader />,
-    },
-    {
-        path: '/takk',
-        element: <PageThanks />,
-    },
-    {
-        path: '/personvern',
-        element: <Personvern />,
-    },
-    // Error pages
-    {
-        path: '*',
-        element: <Page404 />,
-    },
-    {
-        path: '/500',
-        element: <Page500 />,
-    },
+  // Main pages
+  {
+    path: '/',
+    title: 'Hjem',
+    element: <PageHome />,
+  },
+  {
+    path: '/intro',
+    title: 'Spørreskjema',
+    element: <PageUserForm />,
+  },
+  {
+    path: '/les',
+    title: 'Innpsilling',
+    element: <PageReader />,
+  },
+  {
+    path: '/takk',
+    title: 'Takk for bidrag',
+    element: <PageThanks />,
+  },
+  {
+    path: '/personvern',
+    title: 'Personvern',
+    element: <Personvern />,
+  },
+  {
+    path: '/om-oss',
+    title: 'Om oss',
+    element: <HvaEr />,
+  },
+  {
+    path: '/slett',
+    title: 'Slett bidrag',
+    element: <Slett />,
+  },
+  // Error pages
+  {
+    path: '*',
+    title: '404',
+    element: <Page404 />,
+  },
+  {
+    path: '/500',
+    title: '500',
+    element: <Page500 />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
