@@ -1,7 +1,11 @@
-import { useState, Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
 import DemoLydFil from "../assets/soundtracks/demoSoundTrack.mp3";
 import HeaderMinimal from "../components/shared/HeaderMinimal";
 import { useNavigate } from "react-router-dom";
+import AudioPlayer from "react-h5-audio-player";
+import "@/styles/audioplayer.css";
+import { useTimer } from "use-timer";
+
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
