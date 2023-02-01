@@ -628,7 +628,7 @@ export default function Reader() {
 	}, [state]);
 
 	return (
-		<div className='mx-auto max-w-screen-xl'>
+		<div className='px-10 bg-special'>
 			<HeaderMinimal />
 			
 			<div className='min-h-screen my-20 flex flex-col place-items-center'>
