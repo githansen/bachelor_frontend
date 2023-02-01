@@ -10,42 +10,49 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 // Buttons in top right for recording, playing, submitting, etc.
-function Controls({ state, setState, time = null }) {
-  const navigate = useNavigate();
-  // TODO: Add functionality to following buttons:
-  // * Ny tekst
-  // * Hør på opptaket
-  // * Prøv på nytt
-  // * Send inn
+function Controls({ state, setState, time=null }) {
+	const navigate = useNavigate();
 
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  };
+	const formatTime = (time) => {
+		const minutes = Math.floor(time / 60);
+		const seconds = time % 60;
+		return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+	}
 
-  switch (state) {
-    case "completed":
-      return (
-        <div className="flex flex-row justify-between w-full">
-          <div className="text-left self-center flex flex-col">
-            <h3 className="text-h3 font-semibold text-white">
-              Det høres bra ut!
-            </h3>
-            <p className="text-p text-secondary">Hør på lydklippet ditt</p>
-          </div>
+	const [recordingText, setRecordingText] = useState('Tar opp lyd...');
 
-          <div className="text-left self-center flex flex-col">
-            <div className="min-w-[40rem]">
-              <AudioPlayer
-                className="w-full"
-                src={DemoLydFil}
-                showFilledVolume={true}
-                showJumpControls={false}
-                customControlsSection={["MAIN_CONTROLS", "VOLUME_CONTROLS"]}
-              />
-            </div>
-          </div>
+	const askToStop = () => {
+		setRecordingText('Stopp opptak?')
+	};
+
+	const resetRecordingText = () => {
+		setRecordingText('Tar opp lyd...')
+	};
+
+	switch (state) {
+		case 'completed':
+			return (
+				<div className='flex flex-row justify-between w-full'>
+					<div className='text-left self-center flex flex-col'>
+						<h3 className="text-h3 font-semibold text-white">
+							Det høres bra ut!
+						</h3>
+						<p className="text-p text-secondary">
+							Hør på lydklippet ditt
+						</p>
+					</div>
+
+					<div className='text-left self-center flex flex-col'>
+						<div className='min-w-[40rem]'>
+							<AudioPlayer
+								className='w-full'
+								src={DemoLydFil}
+								showFilledVolume={true}
+								showJumpControls={false}
+								customControlsSection={['MAIN_CONTROLS', 'VOLUME_CONTROLS']}
+							/>
+						</div>
+					</div>
 
           <div className="flex flex-row place-items-center self-center gap-5">
             <div>
@@ -96,55 +103,30 @@ function Controls({ state, setState, time = null }) {
         </div>
       );
 
-      const [recordingText, setRecordingText] = useState("Tar opp lyd...");
-
-      const askToStop = () => {
-        setRecordingText("Stopp opptak?");
-      };
-
-      const resetRecordingText = () => {
-        setRecordingText("Tar opp lyd...");
-      };
-
-    case "recording":
-      return (
-        <div className="flex flex-row self-center">
-          <div>
-            {time !== null && (
-              <span className="text-h4 font-semibold px-4 py-2 mr-2">
-                {formatTime(time)}
-              </span>
-            )}
-            <button
-              className={`${
-                recordingText == "Stopp opptak?" ? "" : "animate-pulse"
-              } px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full text-dark bg-secondary-soft border-secondary hover:bg-red hover:border-red hover:text-white`}
-              onMouseEnter={askToStop}
-              onMouseLeave={resetRecordingText}
-              onClick={() => {
-                setState(() => "completed");
-                resetRecordingText();
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
-                />
-              </svg>
-              <b>{recordingText}</b>
-            </button>
-          </div>
-        </div>
-      );
+		case 'recording':
+			return (
+				<div className="flex flex-row self-center">
+					<div>
+						{time !== null && (<span className="text-h4 font-semibold px-4 py-2 mr-2">
+						{formatTime(time)}
+						</span>)}
+						<button 
+							className={`${recordingText == 'Stopp opptak?' ? '' : 'animate-pulse'} px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full text-dark bg-secondary-soft border-secondary hover:bg-red hover:border-red hover:text-white`}
+							onMouseEnter={askToStop}
+							onMouseLeave={resetRecordingText}
+							onClick={() => {
+								setState(() => 'completed');
+								resetRecordingText();
+							}}
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+								<path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+							</svg>
+							<b>{recordingText}</b>
+						</button>
+					</div>
+				</div>
+			);
 
     case "idle":
     default:
@@ -634,40 +616,40 @@ function TextPanel({ state, statess }) {
 // Stateful wrapping component
 //shadow-playerShadow
 export default function Reader() {
-  const [state, setState] = useState("idle"); // idle | recording | completed
-  const { time, start, reset } = useTimer();
+	const [state, setState] = useState('idle'); // idle | recording | completed
+	const { time, start, reset } = useTimer();
 
-  useEffect(() => {
-    if (state === "recording") {
-      start();
-    } else {
-      reset();
-    }
-  }, [state]);
+	useEffect(() => {
+		if (state === 'recording') {
+			start();
+		} else {
+			reset();
+		}
+	}, [state]);
 
-  return (
-    <div className="mx-auto max-w-screen-xl">
-      <HeaderMinimal />
-
-      <div className="min-h-screen my-20 flex flex-col place-items-center">
-        <div className="mx-auto">
-          <TextPanel state={state} />
-        </div>
-      </div>
-
-      <footer
-        className="bg-dark
+	return (
+		<div className='mx-auto max-w-screen-xl'>
+			<HeaderMinimal />
+			
+			<div className='min-h-screen my-20 flex flex-col place-items-center'>
+				<div className="mx-auto">
+					<TextPanel state={state}  />
+				</div>
+			</div>
+			
+			<footer
+				className="bg-dark
 					text-white 
 					text-center
 					fixed
 					inset-x-0
 					bottom-0
 					p-5"
-      >
-        <div className="h-30 flex justify-center ">
-          <Controls state={state} setState={setState} time={time} />
-        </div>
-      </footer>
-    </div>
-  );
+			>
+				<div className="h-30 flex justify-center ">
+					<Controls state={state} setState={setState} time={time} />
+				</div>
+			</footer>
+		</div>
+	);
 }
