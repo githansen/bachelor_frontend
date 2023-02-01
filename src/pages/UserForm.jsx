@@ -67,9 +67,9 @@ function SelectInput({ options, name, selected, onChange }) {
   return (
     <div className="w-10/12 mx-auto">
       <div className="flex flex-col m-3">
-        <label htmlFor={name} className="font-bold text-dark text-p">
+        <h4 htmlFor={name} className="font-bold text-dark text-ph4">
           {name}
-        </label>
+        </h4>
         <Select
           color="warning"
           placeholder={<div>Ikke valgt...</div>}
@@ -89,7 +89,7 @@ function SelectInput({ options, name, selected, onChange }) {
 
 function Stepper({ step, totalSteps }) {
   const before =
-    'before:border-light before:border before:w-[92%] before:content-"" before:absolute before:top-1/2 before:-translate-y-1/2 before:z-[1]';
+    'before:border-secondary-soft before:border before:w-[92%] before:content-"" before:absolute before:top-1/2 before:-translate-y-1/2 before:z-[1]';
   return (
     <div
       className={`flex justify-center items-center gap-20 mb-2 relative ${before}`}
@@ -206,9 +206,9 @@ export default function PageUserForm() {
             {step > 0 && (
               <button
                 onClick={() => setStep((prev) => Math.max(prev - 1, 0))}
-                className="bg-light px-5 py-2 mt-2 text-black w-40 rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary"
+                className="bg-light px-4 font-medium py-2 mt-2 text-black w-40 rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary"
               >
-                Gå tilbake
+                Tilbake
               </button>
             )}
             <div className="max-w-md text-gray-300 italic mt-5 text-center">

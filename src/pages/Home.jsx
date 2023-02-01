@@ -7,7 +7,6 @@ import heroimg6 from "../assets/img/hero-img-6.webp";
 import heroimg7 from "../assets/img/hero-img-7.webp";
 
 import Footer from "../components/shared/Footer";
-import HomePlaceholder from "../assets/img/HomePlaceholder2.png";
 import GiDinStemmeIconNoBg from "../assets/img/GiDinStemmeIconNoBg.png";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +25,7 @@ export default function Home() {
           <h1 className="text-h1 font-bold tracking-tight text-black mb-1">
             Bidra med din stemme!
           </h1>
-          <h4 className="text-h4 text-dark mb-7">
+          <h4 className="text-h4 text-dark leading-relaxed mb-7">
             Vi leter mennesker i alle aldre, med ulike morsmål, forskjellige
             dialekter og alle kjønn!
             <span className="text-p bg-secondary-soft rounded w-fit p-1 ml-2">
@@ -35,7 +34,7 @@ export default function Home() {
           </h4>
           <button
             onClick={() => navigate("/intro")}
-            className="transScale bg-secondary px-4 py-4 font-bold text-h4 mt-2 text-black w-48 rounded inline-flex justify-center items-center gap-2"
+            className="transScale bg-secondary px-4 py-4 font-bold text-btn mt-2 text-black w-48 rounded inline-flex justify-center items-center gap-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

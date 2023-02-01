@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <>
       <header>
-        <nav className="px-4 lg:px-6 py-5">
+        <nav className="px-4 lg:px-6 pt-10 pb-2">
           <div className="flex justify-start mx-14">
             <button
               type="button"
@@ -26,7 +26,7 @@ export default function Header() {
             >
               <img
                 src={GiDinStemmeIconNoBg}
-                className="h-[3rem] hover:opacity-80 transition duration-150 ease-in-out"
+                className="h-[2rem] opacity-30 hover:opacity-100 transition duration-200 ease-in-out"
                 alt="GiDinStemme - Logo"
               />
             </button>
@@ -96,6 +96,7 @@ export default function Header() {
                     </button>
 
                     <button
+                      type="button"
                       onClick={closeModal}
                       className="bg-light px-5 py-2 mt-2 text-black w-40 rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary"
                     >
