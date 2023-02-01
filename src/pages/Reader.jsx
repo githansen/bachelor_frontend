@@ -24,14 +24,6 @@ function Controls({ state, setState, time = null }) {
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
-  const [recordingTxt, setRecordingTxt] = useState("Tar opp lyd...");
-  const askToStop = (event) => {
-    setRecordingTxt("Stopp opptak?");
-  };
-  const defaultRecordingTxt = (event) => {
-    setRecordingTxt("Tar opp lyd...");
-  };
-
   switch (state) {
     case "completed":
       return (
@@ -40,16 +32,17 @@ function Controls({ state, setState, time = null }) {
             <h3 className="text-h3 font-semibold text-white">
               Det høres bra ut!
             </h3>
-            <p className="text-p text-secondary">Hør på ditt lydklipp</p>
+            <p className="text-p text-secondary">Hør på lydklippet ditt</p>
           </div>
 
           <div className="text-left self-center flex flex-col">
             <div className="min-w-[40rem]">
-              <audio
+              <AudioPlayer
                 className="w-full"
                 src={DemoLydFil}
-                controls
-                controlsList="nodownload"
+                showFilledVolume={true}
+                showJumpControls={false}
+                customControlsSection={["MAIN_CONTROLS", "VOLUME_CONTROLS"]}
               />
             </div>
           </div>
@@ -103,6 +96,16 @@ function Controls({ state, setState, time = null }) {
         </div>
       );
 
+      const [recordingText, setRecordingText] = useState("Tar opp lyd...");
+
+      const askToStop = () => {
+        setRecordingText("Stopp opptak?");
+      };
+
+      const resetRecordingText = () => {
+        setRecordingText("Tar opp lyd...");
+      };
+
     case "recording":
       return (
         <div className="flex flex-row self-center">
@@ -114,13 +117,13 @@ function Controls({ state, setState, time = null }) {
             )}
             <button
               className={`${
-                recordingTxt == "Stopp opptak?" ? "" : "animate-pulse"
+                recordingText == "Stopp opptak?" ? "" : "animate-pulse"
               } px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full text-dark bg-secondary-soft border-secondary hover:bg-red hover:border-red hover:text-white`}
               onMouseEnter={askToStop}
-              onMouseLeave={defaultRecordingTxt}
+              onMouseLeave={resetRecordingText}
               onClick={() => {
-                setState("completed");
-                defaultRecordingTxt();
+                setState(() => "completed");
+                resetRecordingText();
               }}
             >
               <svg
@@ -137,7 +140,7 @@ function Controls({ state, setState, time = null }) {
                   d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
                 />
               </svg>
-              <b>{recordingTxt}</b>
+              <b>{recordingText}</b>
             </button>
           </div>
         </div>
@@ -632,33 +635,39 @@ function TextPanel({ state, statess }) {
 //shadow-playerShadow
 export default function Reader() {
   const [state, setState] = useState("idle"); // idle | recording | completed
-  // TODO: make useTimer hook
-  const [time, setTime] = useState(168);
+  const { time, start, reset } = useTimer();
+
+  useEffect(() => {
+    if (state === "recording") {
+      start();
+    } else {
+      reset();
+    }
+  }, [state]);
 
   return (
-    <div className="bg-special">
+    <div className="mx-auto max-w-screen-xl">
       <HeaderMinimal />
-      <div>
-        <div className="min-h-screen m-14 mt-3 flex flex-col place-items-center">
-          <div className="mx-auto">
-            <TextPanel state={state} />
-          </div>
-        </div>
 
-        <footer
-          className="bg-dark
-						text-white 
-						text-center
-						fixed
-						inset-x-0
-						bottom-0
-						p-5"
-        >
-          <div className="h-30 flex justify-center ">
-            <Controls state={state} setState={setState} time={time} />
-          </div>
-        </footer>
+      <div className="min-h-screen my-20 flex flex-col place-items-center">
+        <div className="mx-auto">
+          <TextPanel state={state} />
+        </div>
       </div>
+
+      <footer
+        className="bg-dark
+					text-white 
+					text-center
+					fixed
+					inset-x-0
+					bottom-0
+					p-5"
+      >
+        <div className="h-30 flex justify-center ">
+          <Controls state={state} setState={setState} time={time} />
+        </div>
+      </footer>
     </div>
   );
 }
