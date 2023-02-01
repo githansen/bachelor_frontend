@@ -16,41 +16,49 @@ import Slett from "./pages/additional/Slett";
 const router = createBrowserRouter([
   // Main pages
   {
-    path: "/",
+    path: '/',
+    title: 'Hjem',
     element: <PageHome />,
   },
   {
-    path: "/intro",
+    path: '/intro',
+    title: 'Spørreskjema',
     element: <PageUserForm />,
   },
   {
-    path: "/les",
+    path: '/les',
+    title: 'Innpsilling',
     element: <PageReader />,
   },
   {
-    path: "/takk",
+    path: '/takk',
+    title: 'Takk for bidrag',
     element: <PageThanks />,
   },
   {
-    path: "/personvern",
+    path: '/personvern',
+    title: 'Personvern',
     element: <Personvern />,
   },
   {
-    path: "/om-oss",
+    path: '/om-oss',
+    title: 'Om oss',
     element: <HvaEr />,
   },
-  ,
   {
-    path: "/slett",
+    path: '/slett',
+    title: 'Slett bidrag',
     element: <Slett />,
   },
   // Error pages
   {
-    path: "*",
+    path: '*',
+    title: '404',
     element: <Page404 />,
   },
   {
-    path: "/500",
+    path: '/500',
+    title: '500',
     element: <Page500 />,
   },
 ]);
