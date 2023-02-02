@@ -6,6 +6,10 @@ import AudioPlayer from 'react-h5-audio-player';
 import '@/styles/audioplayer.css';
 import { useTimer } from 'use-timer';
 import { Dialog, Popover, Transition } from '@headlessui/react';
+import { ReactComponent as IconTextOptions } from '@/assets/icons/IconTextOptions.svg';
+import { ReactComponent as IconMic } from '@/assets/icons/IconMic.svg';
+import { ReactComponent as IconRetry } from '@/assets/icons/IconRetry.svg';
+import { ReactComponent as IconPaperPlane } from '@/assets/icons/IconPaperPlane.svg';
 import { ReactComponent as IconLeftTextAlign } from '@/assets/icons/IconLeftTextAlign.svg';
 import { ReactComponent as IconJustifyTextAlign } from '@/assets/icons/IconJustifyTextAlign.svg';
 import { ReactComponent as IconRightTextAlign } from '@/assets/icons/IconRightTextAlign.svg';
@@ -17,16 +21,84 @@ import { ReactComponent as IconStandardFont } from '@/assets/icons/IconStandardF
 import { ReactComponent as IconBigText } from '@/assets/icons/IconBigText.svg';
 import { ReactComponent as IconSmallText } from '@/assets/icons/IconSmallText.svg';
 import { ReactComponent as IconRefresh } from '@/assets/icons/IconRefresh.svg';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { ReactComponent as IconTextSizeRefresh } from '@/assets/icons/IconTextSizeRefresh.svg';
+// import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-// Buttons in top right for recording, playing, submitting, etc.
+function RetryModal({ open, onClose, onRetry }) {
+    return (
+        <Transition appear show={open} as={Fragment}>
+            <Dialog as="div" className="relative z-10" onClose={onClose}>
+                <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                >
+                    <div className="fixed inset-0 bg-black bg-opacity-90" />
+                </Transition.Child>
+
+                <div className="fixed inset-0 overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-14 text-center">
+                        <Transition.Child
+                            as={Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0 scale-95"
+                            enterTo="opacity-100 scale-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100 scale-100"
+                            leaveTo="opacity-0 scale-95"
+                        >
+                            <Dialog.Panel className="w-full max-w-md text-center transform overflow-hidden rounded-lg bg-white p-14 align-middle shadow-xl transition-all">
+                                <Dialog.Title
+                                    as="h3"
+                                    className="text-h4 font-medium"
+                                >
+                                    Er du sikker på at du vil starte opptaket på
+                                    nytt?
+                                </Dialog.Title>
+                                <div className="mt-2">
+                                    <p className="text-p text-gray-500">
+                                        Merk at det du har spilt inn vil bli
+                                        slettet.
+                                    </p>
+                                </div>
+
+                                <div className="mt-5 grid place-content-center">
+                                    <button
+                                        type="button"
+                                        onClick={onClose}
+                                        className="transScale uppercase bg-secondary px-4 py-4 font-bold text-p text-black mt-2  w-48 rounded inline-flex justify-center items-center gap-2"
+                                    >
+                                        Avbryt
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        onClick={onRetry}
+                                        className="bg-light px-5 text-small py-3 mt-2 font-medium text-black rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary"
+                                    >
+                                        Start opptak på nytt
+                                    </button>
+                                </div>
+                            </Dialog.Panel>
+                        </Transition.Child>
+                    </div>
+                </div>
+            </Dialog>
+        </Transition>
+    );
+}
+
+// Buttons in footer for recording, playing, submitting, etc.
 function Controls({
     state,
     setState,
     setStyleBgColor,
     stylecolorfont,
     setStyleColorFont,
-    fontsize,
     setFontsize,
     fontfamily,
     setFontfamily,
@@ -68,7 +140,7 @@ function Controls({
     }
 
     //Switch between Dark/Light theme
-    const changeStyleColor = (event) => {
+    const changeStyleColor = () => {
         if (stylecolorfont == '#ffffff') {
             setStyleColorFont('#000000');
             setStyleBgColor('bg-special-light');
@@ -80,25 +152,18 @@ function Controls({
     };
 
     //ModalRelatert (On Close)
-    const closeModalReturnToRecording = (event) => {
+    const closeModalReturnToRecording = () => {
         closeModalOne();
         setState('recording');
     };
 
     //TextEdit
-    const changeSizeBigger = (event) => {
-        if (fontsize >= 28) {
-            setFontsize(28);
-        } else {
-            setFontsize(fontsize + 1);
-        }
+    const changeSizeBigger = () => {
+        // Increment fontsize by one, capped at 28
+        setFontsize((prevSize) => Math.min(prevSize + 1, 28));
     };
-    const changeSizeSmaller = (event) => {
-        if (fontsize <= 22) {
-            setFontsize(22);
-        } else {
-            setFontsize(fontsize - 1);
-        }
+    const changeSizeSmaller = () => {
+        setFontsize((prevSize) => Math.max(prevSize - 1, 24));
     };
 
     const textAlign = [
@@ -165,7 +230,7 @@ function Controls({
                 setFontfamily('Avenir');
                 setAlignText('left');
             },
-            icon: IconRefresh,
+            icon: IconTextSizeRefresh,
         },
     ];
 
@@ -204,96 +269,15 @@ function Controls({
                                 onClick={openModalOne}
                                 className="px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-dark text-white border-secondary hover:bg-white hover:text-black hover:border-white transition duration-150 ease-in-out"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-                                    />
-                                </svg>
+                                <IconRetry />
                                 Prøv igjen
                             </button>
 
-                            <Transition appear show={isOpenOne} as={Fragment}>
-                                <Dialog
-                                    as="div"
-                                    className="relative z-10"
-                                    onClose={closeModalOne}
-                                >
-                                    <Transition.Child
-                                        as={Fragment}
-                                        enter="ease-out duration-300"
-                                        enterFrom="opacity-0"
-                                        enterTo="opacity-100"
-                                        leave="ease-in duration-200"
-                                        leaveFrom="opacity-100"
-                                        leaveTo="opacity-0"
-                                    >
-                                        <div className="fixed inset-0 bg-black bg-opacity-90" />
-                                    </Transition.Child>
-
-                                    <div className="fixed inset-0 overflow-y-auto">
-                                        <div className="flex min-h-full items-center justify-center p-14 text-center">
-                                            <Transition.Child
-                                                as={Fragment}
-                                                enter="ease-out duration-300"
-                                                enterFrom="opacity-0 scale-95"
-                                                enterTo="opacity-100 scale-100"
-                                                leave="ease-in duration-200"
-                                                leaveFrom="opacity-100 scale-100"
-                                                leaveTo="opacity-0 scale-95"
-                                            >
-                                                <Dialog.Panel className="w-full max-w-md text-center transform overflow-hidden rounded-lg bg-white p-14 align-middle shadow-xl transition-all">
-                                                    <Dialog.Title
-                                                        as="h3"
-                                                        className="text-h4 font-medium"
-                                                    >
-                                                        Er du sikker på at du
-                                                        vil starte opptaket på
-                                                        nytt?
-                                                    </Dialog.Title>
-                                                    <div className="mt-2">
-                                                        <p className="text-p text-gray-500">
-                                                            Merk at det du har
-                                                            spilt inn vil bli
-                                                            slettet.
-                                                        </p>
-                                                    </div>
-
-                                                    <div className="mt-5 grid place-content-center">
-                                                        <button
-                                                            type="button"
-                                                            onClick={
-                                                                closeModalOne
-                                                            }
-                                                            className="transScale uppercase bg-secondary px-4 py-4 font-bold text-p text-black mt-2  w-48 rounded inline-flex justify-center items-center gap-2"
-                                                        >
-                                                            Avbryt
-                                                        </button>
-
-                                                        <button
-                                                            type="button"
-                                                            onClick={
-                                                                closeModalReturnToRecording
-                                                            }
-                                                            className="bg-light px-5 text-small py-3 mt-2 font-medium text-black rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary"
-                                                        >
-                                                            Start opptak på nytt
-                                                        </button>
-                                                    </div>
-                                                </Dialog.Panel>
-                                            </Transition.Child>
-                                        </div>
-                                    </div>
-                                </Dialog>
-                            </Transition>
+                            <RetryModal 
+                                open={isOpenOne} 
+                                onClose={closeModalOne}
+                                onRetry={closeModalReturnToRecording}
+                            />
                         </div>
 
                         <div>
@@ -301,20 +285,7 @@ function Controls({
                                 onClick={() => navigate('/takk')}
                                 className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-secondary text-black border-secondary hover:bg-secondary-soft"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
-                                    />
-                                </svg>
+                                <IconPaperPlane />
                                 <b>Send inn!</b>
                             </button>
                         </div>
@@ -348,20 +319,7 @@ function Controls({
                                     resetRecordingText();
                                 }}
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
-                                    />
-                                </svg>
+                                <IconMic className="w-6 h-6" />
                                 {recordingText}
                             </button>
                         </div>
@@ -387,20 +345,7 @@ function Controls({
                             className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-secondary text-black border-secondary hover:bg-secondary-soft  transition duration-150 ease-in-out"
                             onClick={() => setState('recording')}
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
-                                />
-                            </svg>
+                            <IconMic className="w-6 h-6" />
                             <b>Start opptak</b>
                         </button>
                     </div>
@@ -431,20 +376,7 @@ function Controls({
                                             type="button"
                                             className={`px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-dark text-white border-secondary hover:bg-white hover:text-black hover:border-white transition duration-150 ease-in-out`}
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth={1.5}
-                                                stroke="currentColor"
-                                                className="w-6 h-6"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
-                                                />
-                                            </svg>
+                                            <IconTextOptions className="w-6 h-6" />
                                             Endre tekst
                                         </Popover.Button>
                                         <Transition
@@ -573,20 +505,7 @@ function Controls({
                                 onClick={openModalTwo}
                                 className="px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-dark text-white border-secondary hover:bg-white hover:text-black hover:border-white transition duration-150 ease-in-out"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-                                    />
-                                </svg>
+                                <IconRefresh className="w-6 h-6" />
                                 Ny tekst
                             </button>
                         </div>
@@ -707,11 +626,21 @@ function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
 }
 
 // Stateful wrapping component
-//shadow-playerShadow
 export default function Reader() {
-    //Recording
+    // Recording
     const [state, setState] = useState('idle'); // idle | recording | completed
     const { time, start, reset } = useTimer();
+
+    // Switch light/dark theme
+    const [stylebgcolor, setStyleBgColor] = useState('bg-special-light');
+    const [stylecolorfont, setStyleColorFont] = useState('#000000');
+
+    // TextEdit
+    const [fontsize, setFontsize] = useState(24);
+    const [fontfamily, setFontfamily] = useState('Avenir');
+    const [alignText, setAlignText] = useState('justify');
+
+    // Record when state enters recording
     useEffect(() => {
         if (state === 'recording') {
             start();
@@ -719,20 +648,6 @@ export default function Reader() {
             reset();
         }
     }, [state]);
-
-    //Switch light/dark theme
-    const [stylebgcolor, setStyleBgColor] = useState('bg-special-light');
-    const [stylecolorfont, setStyleColorFont] = useState('#000000');
-    const bgColor = {
-        idle: `${stylebgcolor}`,
-        recording: `${stylebgcolor}`,
-        completed: `${stylebgcolor}`,
-    }[state];
-
-    //TextEdit
-    const [fontsize, setFontsize] = useState(24);
-    const [fontfamily, setFontfamily] = useState('Avenir');
-    const [alignText, setAlignText] = useState('justify');
 
     return (
         <div className={`${stylebgcolor} px-10`}>
@@ -765,9 +680,7 @@ export default function Reader() {
                         setStyleBgColor={setStyleBgColor}
                         stylecolorfont={stylecolorfont}
                         setStyleColorFont={setStyleColorFont}
-                        fontsize={fontsize}
                         setFontsize={setFontsize}
-                        fontfamily={fontfamily}
                         setFontfamily={setFontfamily}
                         alignText={alignText}
                         setAlignText={setAlignText}
