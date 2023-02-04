@@ -38,9 +38,6 @@ a {
 }
 
 /*Button*/
-button:focus-visible {
-  outline: none !important;
-}
 .transScale {
   transition: all 0.15s ease-out;
 }
@@ -70,8 +67,7 @@ h3 {
   letter-spacing: 0pt;
 }
 
-/* Toggle A */
-input:checked ~ .dot {
+input.fancyRadioBtn:checked ~ .dot {
   transform: translateX(100%);
   background-color: #000000;
 }
