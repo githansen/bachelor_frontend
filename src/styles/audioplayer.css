@@ -7,8 +7,8 @@
     line-height: 1;
     font-family: inherit;
     padding: 10px 45px;
-    
-    --rhap-color-main: #FFD039;
+
+    --rhap-color-main: #ffd039;
     --rhap-color-text: #ddd;
     --rhap-color-secondary: #47474f;
     --rhap-color-secondary-dark: #30303c;
@@ -127,7 +127,7 @@
     top: -8px;
     background: var(--rhap-color-main);
     border-radius: 50px;
-    box-shadow: rgba(85,85,0, 0.5) 0 0 15px;
+    box-shadow: rgba(85, 85, 0, 0.5) 0 0 15px;
 }
 
 .rhap_controls-section {

@@ -63,4 +63,3 @@ export default function CompletedControls({ setReaderState }) {
         </div>
     );
 }
-

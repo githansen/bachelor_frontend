@@ -12,7 +12,13 @@ import { ReactComponent as IconBigText } from '@/assets/icons/IconBigText.svg';
 import { ReactComponent as IconSmallText } from '@/assets/icons/IconSmallText.svg';
 import { ReactComponent as IconTextSizeRefresh } from '@/assets/icons/IconTextSizeRefresh.svg';
 
-export default function TextSettings({ fontFamily, setFontFamily, setFontSize, alignText, setAlignText }) {
+export default function TextSettings({
+    fontFamily,
+    setFontFamily,
+    setFontSize,
+    alignText,
+    setAlignText,
+}) {
     const textAlign = [
         {
             name: 'Fyll',
