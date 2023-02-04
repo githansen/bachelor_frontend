@@ -61,7 +61,7 @@ export default function IdleControls({
                             <input
                                 id="toogle"
                                 type="checkbox"
-                                className="sr-only"
+                                className="fancyRadioBtn sr-only"
                                 onClick={changeStyleColor}
                             />
                             <div className="w-10 h-4 bg-secondary-soft rounded-full shadow-inner"></div>
