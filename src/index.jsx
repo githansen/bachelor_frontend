@@ -8,7 +8,7 @@ import Page404 from './pages/statusCodes/FourOFour';
 import Page500 from './pages/statusCodes/FiveHundred';
 import PageHome from './pages/Home';
 import PageUserForm from './pages/UserForm';
-import PageReader from './pages/Reader';
+import PageReader from './pages/Reader/Reader';
 import PageThanks from './pages/Thanks';
 import Personvern from './pages/additional/Personvern';
 import HvaEr from './pages/additional/HvaEr';
