@@ -8,6 +8,7 @@ export default function useRecorder() {
         let rec = null;
 
         // Get audio stream
+        // TODO: Show popup asking for mic permission
         try {
             const stream = await navigator.mediaDevices.getUserMedia({
                 audio: true,
@@ -21,11 +22,12 @@ export default function useRecorder() {
         // Save and start recorder
         setRecorder(() => rec);
         rec.start();
-        console.info('Started recording');
 
         // Store audio as it comes in
         let audioChunks = [];
         rec.ondataavailable = (e) => audioChunks.push(e.data);
+
+        rec.onstart = () => console.info('Started recording');
 
         rec.onstop = () => {
             console.info('Stopped recording');
@@ -35,7 +37,7 @@ export default function useRecorder() {
             const url = URL.createObjectURL(blob);
             const audioElm = new Audio(url);
 
-            const audio = {
+            const newAudio = {
                 url,
                 blob,
                 audioElm,
@@ -43,10 +45,7 @@ export default function useRecorder() {
             };
 
             audioChunks = [];
-
-            console.log(audioElm);
-
-            setAudio(() => audio);
+            setAudio(() => newAudio);
         };
     };
 
@@ -56,6 +55,6 @@ export default function useRecorder() {
         startRecording,
         stopRecording,
         audio,
-        isRecording: !!recorder
+        isRecording: !!recorder,
     };
 }
