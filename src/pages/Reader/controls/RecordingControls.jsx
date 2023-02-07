@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ReactComponent as IconMic } from '@/assets/icons/IconMic.svg';
 
 function formatTime(time) {
@@ -7,16 +7,20 @@ function formatTime(time) {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-export default function RecordingControls({ setReaderState, time = null }) {
-    const [recordingText, setRecordingText] = useState('Tar opp lyd...');
+export default function RecordingControls({
+    setReaderState,
+    time = null,
+    startRecording,
+    stopRecording,
+}) {
+    const textRecording = 'Tar opp lyd...';
+    const textStopRecording = 'Stopp opptak';
 
-    const askToStop = () => {
-        setRecordingText('Stopp opptak?');
-    };
+    const [recordingText, setRecordingText] = useState(textRecording);
 
-    const resetRecordingText = () => {
-        setRecordingText('Tar opp lyd...');
-    };
+    useEffect(() => {
+        startRecording()
+    }, []);
 
     return (
         <div className="flex flex-row self-center">
@@ -36,11 +40,12 @@ export default function RecordingControls({ setReaderState, time = null }) {
                 <div className="w-[14rem]">
                     <button
                         className={`px-5 py-4 font-bold inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full text-dark bg-secondary-soft border-secondary hover:bg-red hover:border-red hover:text-white`}
-                        onMouseEnter={askToStop}
-                        onMouseLeave={resetRecordingText}
+                        onMouseEnter={() => setRecordingText(textStopRecording)}
+                        onMouseLeave={() => setRecordingText(textRecording)}
                         onClick={() => {
+                            stopRecording();
                             setReaderState(() => 'completed');
-                            resetRecordingText();
+                            setRecordingText(textRecording);
                         }}
                     >
                         <IconMic className="w-6 h-6" />

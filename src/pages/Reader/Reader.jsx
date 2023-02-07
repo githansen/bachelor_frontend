@@ -5,6 +5,7 @@ import { useTimer } from 'use-timer';
 import CompletedControls from './controls/CompletedControls';
 import RecordingControls from './controls/RecordingControls';
 import IdleControls from './controls/IdleControls';
+import useRecorder from '@/hooks/useRecorder';
 
 // Main text to be read by user
 function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
@@ -59,9 +60,11 @@ function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
 
 // Stateful wrapping component
 export default function Reader() {
-    // Recording
     const [state, setState] = useState('idle'); // idle | recording | completed
-    const { time, start, reset } = useTimer();
+
+    // Recording
+    const { startRecording, stopRecording, audio, isRecording } = useRecorder();
+    const { time, start: timerStart, reset: timerReset } = useTimer();
 
     // Switch light/dark theme
     const [stylebgcolor, setStyleBgColor] = useState('bg-special-light');
@@ -74,21 +77,31 @@ export default function Reader() {
 
     // Record when state enters recording
     useEffect(() => {
-        if (state === 'recording') {
-            start();
+        if (state === 'recording' && isRecording) {
+            timerStart();
         } else {
-            reset();
+            timerReset();
         }
-    }, [state]);
+    }, [state, isRecording]);
 
     const renderControls = () => {
         switch (state) {
             case 'completed':
-                return <CompletedControls setReaderState={setState} />;
+                return (
+                    <CompletedControls
+                        setReaderState={setState}
+                        audio={audio}
+                    />
+                );
 
             case 'recording':
                 return (
-                    <RecordingControls setReaderState={setState} time={time} />
+                    <RecordingControls
+                        setReaderState={setState}
+                        time={time}
+                        startRecording={startRecording}
+                        stopRecording={stopRecording}
+                    />
                 );
 
             case 'idle':
