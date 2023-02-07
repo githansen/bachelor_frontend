@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function Footer() {
     return (
+        <footer className='fixed bottom-0 w-full'>
         <div className="bg-dark text-white mt-20 pt-5">
             <div className="flex justify-between m-16 mb-0 max-w-screen-xl mx-auto">
                 <div className="grid content-between">
@@ -76,5 +77,6 @@ export default function Footer() {
                 </div>
             </div>
         </div>
+        </footer>
     );
 }
