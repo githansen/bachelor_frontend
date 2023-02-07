@@ -30,12 +30,12 @@ export default function RecordingControls({ setReaderState, time = null }) {
                         </div>
                     )}
                     <div className="flex self-center">
-                        <div className="h-5 w-5 rounded-full bg-red animate-pulse"></div>
+                        <div className="h-5 w-5 rounded-full bg-rose animate-pulse"></div>
                     </div>
                 </div>
                 <div className="w-[14rem]">
                     <button
-                        className={`px-5 py-4 font-bold inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full text-dark bg-secondary-soft border-secondary hover:bg-red hover:border-red hover:text-white`}
+                        className={`px-5 py-4 font-bold inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full text-skumring bg-paskeegg border-solskinn hover:bg-rose hover:border-rose hover:text-fred`}
                         onMouseEnter={askToStop}
                         onMouseLeave={resetRecordingText}
                         onClick={() => {

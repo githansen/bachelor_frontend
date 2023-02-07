@@ -98,8 +98,8 @@ export default function TextSettings({
             leaveTo="opacity-0 translate-y-1"
         >
             <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-[30rem] -translate-x-[55%] transform px-4 sm:px-0 lg:max-w-3xl">
-                <div className="overflow-hidden rounded-lg shadow-2xl ring-opacity-5 bg-secondary border-4 border-secondary">
-                    <h6 className="text-dark mt-8 text-left pl-4 uppercase font-bold text-small">
+                <div className="overflow-hidden rounded-lg shadow-2xl ring-opacity-5 bg-solskinn border-4 border-solskinn">
+                    <h6 className="text-skumring mt-8 text-left pl-4 uppercase font-bold text-small">
                         Velg skrifttype
                     </h6>
                     <div className="relative grid gap-8  p-7 grid-cols-2">
@@ -111,22 +111,22 @@ export default function TextSettings({
                                 }
                                 className={`${
                                     fontFamily === item.fontTypeChosen
-                                        ? 'bg-secondary-soft'
-                                        : 'bg-secondary-darksoft'
-                                } -m-3 hover:bg-secondary-soft flex text-black items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50`}
+                                        ? 'bg-paskeegg'
+                                        : 'bg-gull'
+                                } -m-3 hover:bg-paskeegg flex text-natt items-center rounded-lg p-2 transition duration-150 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50`}
                             >
-                                <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
+                                <div className="flex h-10 w-10 shrink-0 items-center justify-center text-fred sm:h-12 sm:w-12">
                                     <item.icon aria-hidden="true" />
                                 </div>
                                 <div className="ml-4">
-                                    <p className="text-sm font-medium text-gray-900">
+                                    <p className="text-sm font-medium text-kveld">
                                         {item.name}
                                     </p>
                                 </div>
                             </a>
                         ))}
                     </div>
-                    <h6 className="text-dark mt-4 text-left pl-4 uppercase font-bold text-small">
+                    <h6 className="text-skumring mt-4 text-left pl-4 uppercase font-bold text-small">
                         Juster tekst
                     </h6>
                     <div className="relative grid gap-8   p-7 grid-cols-2">
@@ -138,15 +138,15 @@ export default function TextSettings({
                                 }
                                 className={`${
                                     alignText === item.alignTextChosen
-                                        ? 'bg-secondary-soft'
-                                        : 'bg-secondary-darksoft'
-                                } -m-3 hover:bg-secondary-soft flex text-black items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50`}
+                                        ? 'bg-paskeegg'
+                                        : 'bg-gull'
+                                } -m-3 hover:bg-paskeegg flex text-natt items-center rounded-lg p-2 transition duration-150 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50`}
                             >
-                                <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
+                                <div className="flex h-10 w-10 shrink-0 items-center justify-center text-fred sm:h-12 sm:w-12">
                                     <item.icon aria-hidden="true" />
                                 </div>
                                 <div className="ml-4">
-                                    <p className="text-sm font-medium text-gray-900">
+                                    <p className="text-sm font-medium text-kveld">
                                         {item.name}
                                     </p>
                                 </div>
@@ -154,7 +154,7 @@ export default function TextSettings({
                         ))}
                     </div>
 
-                    <h6 className="text-dark mt-4 text-left pl-4 uppercase font-bold text-small">
+                    <h6 className="text-skumring mt-4 text-left pl-4 uppercase font-bold text-small">
                         Endre størrelse
                     </h6>
                     <div className="relative grid gap-8 p-7 grid-cols-3">
@@ -162,13 +162,13 @@ export default function TextSettings({
                             <a
                                 key={item.name}
                                 onClick={item.action}
-                                className={`-m-3 hover:bg-secondary-soft  flex text-black w-fit items-center rounded-lg pr-3 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50`}
+                                className={`-m-3 hover:bg-paskeegg flex text-natt w-fit items-center rounded-lg pr-3 transition duration-150 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50`}
                             >
-                                <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
+                                <div className="flex h-10 w-10 shrink-0 items-center justify-center text-fred sm:h-12 sm:w-12">
                                     <item.icon aria-hidden="true" />
                                 </div>
                                 <div className="ml-2">
-                                    <p className="text-small font-medium text-gray-900">
+                                    <p className="text-small font-medium text-kveld">
                                         {item.name}
                                     </p>
                                 </div>

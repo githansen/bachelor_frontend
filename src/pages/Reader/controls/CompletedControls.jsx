@@ -13,10 +13,10 @@ export default function CompletedControls({ setReaderState }) {
     return (
         <div className="flex flex-row justify-between w-full">
             <div className="text-left self-center flex flex-col">
-                <h3 className="text-h3 font-semibold text-white">
+                <h3 className="text-h3 font-semibold text-fred">
                     Det høres bra ut!
                 </h3>
-                <p className="text-p text-secondary">Hør på lydklippet ditt</p>
+                <p className="text-p text-solskinn">Hør på lydklippet ditt</p>
             </div>
 
             <div className="text-left self-center flex flex-col">
@@ -38,7 +38,7 @@ export default function CompletedControls({ setReaderState }) {
                 <button
                     type="button"
                     onClick={() => setRetryModalOpen(true)}
-                    className="px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-dark text-white border-secondary hover:bg-white hover:text-black hover:border-white transition duration-150 ease-in-out"
+                    className="px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out"
                 >
                     <IconRetry />
                     Prøv igjen
@@ -54,7 +54,7 @@ export default function CompletedControls({ setReaderState }) {
                 />
                 <button
                     onClick={() => navigate('/takk')}
-                    className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-secondary text-black border-secondary hover:bg-secondary-soft"
+                    className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-solskinn text-natt border-solskinn hover:bg-paskeegg"
                 >
                     <IconPaperPlane />
                     <b>Send inn!</b>

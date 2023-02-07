@@ -35,15 +35,15 @@ export default function IdleControls({
     return (
         <div className="flex flex-row justify-between w-full trasition">
             <div className="text-left self-center flex flex-col">
-                <h3 className="text-h3 font-semibold text-white">
+                <h3 className="text-h3 font-semibold text-fred">
                     Klar til opptak?
                 </h3>
-                <p className="text-p text-secondary">Estimert lesetid: 2 min</p>
+                <p className="text-p text-solskinn">Estimert lesetid: 2 min</p>
             </div>
 
             <div className="flex flex-row place-items-center self-center">
                 <button
-                    className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-secondary text-black border-secondary hover:bg-secondary-soft  transition duration-150 ease-in-out"
+                    className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-solskinn text-natt border-solskinn hover:bg-paskeegg  transition duration-150 ease-in-out"
                     onClick={() => setReaderState('recording')}
                 >
                     <IconMic className="w-6 h-6" />
@@ -64,8 +64,8 @@ export default function IdleControls({
                                 className="fancyRadioBtn sr-only"
                                 onClick={changeStyleColor}
                             />
-                            <div className="w-10 h-4 bg-secondary-soft rounded-full shadow-inner"></div>
-                            <div className="dot absolute w-6 h-6 bg-secondary rounded-full shadow -left-1 -top-1 transition"></div>
+                            <div className="w-10 h-4 bg-paskeegg rounded-full shadow-inner"></div>
+                            <div className="dot absolute w-6 h-6 bg-solskinn rounded-full shadow -left-1 -top-1 transition"></div>
                         </div>
                     </label>
                 </div>
@@ -73,7 +73,7 @@ export default function IdleControls({
                     <Popover className="relative">
                         <Popover.Button
                             type="button"
-                            className={`px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-dark text-white border-secondary hover:bg-white hover:text-black hover:border-white transition duration-150 ease-in-out`}
+                            className={`px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out`}
                         >
                             <IconTextOptions className="w-6 h-6" />
                             Endre tekst
@@ -91,7 +91,7 @@ export default function IdleControls({
                 <div>
                     <button
                         onClick={() => setResetModalOpen(true)}
-                        className="px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-dark text-white border-secondary hover:bg-white hover:text-black hover:border-white transition duration-150 ease-in-out"
+                        className="px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out"
                     >
                         <IconRefresh className="w-6 h-6" />
                         Ny tekst

@@ -2,6 +2,8 @@ import Layout from '../../components/shared/Layout';
 import SlettIkon from '../../assets/img/Slett.png';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
+import Input from 'react-input-auto-format';
+
 
 export default function Slett() {
     let [isOpen, setIsOpen] = useState(false);
@@ -16,20 +18,26 @@ export default function Slett() {
     return (
         <>
             <Layout>
-                <div className="mx-auto max-w-screen-xl w-full">
-                    <div className="min-h-[50rem] flex flex-col place-items-center justify-center">
-                        <img src={SlettIkon} className="w-[10rem] mb-5"></img>
-                        <h2 className="text-h1 mb-2">Slett ditt bidrag</h2>
-                        <p className="text-p mb-5 sm:max-w-2xl text-center">
+                <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">
+                    <div className="min-h-[20rem] md:min-h-[40rem] lg:min-h-[50rem] xs:my-8 sm:my-10 md:my-12 lg:my-14px xl:my-14 flex flex-col place-items-center justify-center">
+                        <img 
+                            src={SlettIkon} 
+                            className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] h-[15rem] mb-10"
+                        >
+
+                        </img>
+                        <h1 className="xs:text-xsh1 sm:text-smh1 md:text-mdh1 lg:text-lgh1 xl:text-xlh1 text-h1 mb-2 text-center">Slett ditt bidrag</h1>
+                        <p className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p  sm:max-w-2xl text-center mb-7">
                             Om du ønsker å slette ditt bidrag må du fylle inn
                             feltet under. Vi har ikke samlet inn noe av din
                             info, og det er derfor kun mulig å slette ditt
                             bidrag om du har din bidragskode.
                         </p>
-                        <form className="flex flex-col place-items-center justify-center mb-20">
+                        <form className="flex flex-col place-items-center justify-center">
                             <div className="mb-4">
-                                <input
-                                    className="border-2 w-[20rem] text-center placeholder-orange-200 border-secondary bg-secondary-soft p-3 rounded-lg text-orange-600 font-bold leading-tight focus:outline-none focus:shadow-outline"
+                                <Input
+                                    format="#######-#####-#####-#######"
+                                    className="xs:min-w-[18rem] sm:min-w-[19rem] min-w-[20rem] xs:p-2 p-3 my-2 text-center border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg font-bold focus:outline-none focus:shadow-outline"
                                     id="bidragskode"
                                     type="text"
                                     placeholder="123E4567-E89B-12D30-EG94348"
@@ -38,7 +46,7 @@ export default function Slett() {
                             <div className="flex items-center justify-between">
                                 <button
                                     type="button"
-                                    className="transScale bg-red px-4 py-4 font-bold text-p text-white mt-2  w-48 rounded inline-flex justify-center items-center gap-2"
+                                    className="xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp xs:w-full w-48 transScale bg-rose px-4 py-4 font-bold text-fred mt-2 rounded inline-flex justify-center items-center gap-2"
                                     onClick={openModal}
                                 >
                                     <svg
@@ -74,11 +82,11 @@ export default function Slett() {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-black bg-opacity-90" />
+                        <div className="fixed inset-0 bg-natt bg-opacity-90" />
                     </Transition.Child>
 
                     <div className="fixed inset-0 overflow-y-auto">
-                        <div className="flex min-h-full items-center justify-center p-14 text-center">
+                        <div className="flex min-h-full items-center justify-center xs:p-5 text-center">
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-out duration-300"
@@ -88,15 +96,15 @@ export default function Slett() {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-full max-w-md text-center transform overflow-hidden rounded-lg bg-white p-14 align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="xs:py-15 xs:px-5 p-14 w-full max-w-md text-center transform overflow-hidden rounded-lg bg-fred align-middle shadow-xl transition-all">
                                     <Dialog.Title
-                                        as="h3"
-                                        className="text-h4 font-medium leading-6"
+                                        as="h5"
+                                        className="xs:text-xsh5 sm:text-smh5 md:text-mdh5 lg:text-lgh5 xl:text-xlh5 text-h5 font-medium leading-6"
                                     >
                                         Sikker på at du slette ditt bidrag?
                                     </Dialog.Title>
                                     <div className="mt-2">
-                                        <p className="text-p text-gray-500">
+                                        <p className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p text-metall">
                                             Denne endringen kan ikke
                                             tilbakestilles.
                                         </p>
@@ -105,7 +113,7 @@ export default function Slett() {
                                     <div className="mt-5">
                                         <button
                                             type="button"
-                                            className="transScale bg-red px-4 py-4 font-bold text-p text-white mt-2  w-48 rounded inline-flex justify-center items-center gap-2"
+                                            className="xs:w-full w-48 xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp transScale bg-rose px-4 py-4 text-fred mt-2 rounded inline-flex justify-center items-center gap-2"
                                         >
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +133,7 @@ export default function Slett() {
                                         </button>
                                         <button
                                             onClick={closeModal}
-                                            className="bg-light px-5 py-2 mt-2 text-black w-40 rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary"
+                                            className="xs:w-full w-40 xs:text-xsknappliten sm:text-smknappliten md:text-mdknappliten lg:text-lgknappliten xl:text-xlknappliten text-knappliten bg-mane px-5 py-2 mt-2 text-natt rounded border-2 border-mane hover:bg-paskeegg hover:border-solskinn"
                                         >
                                             Avbryt
                                         </button>

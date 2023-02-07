@@ -124,8 +124,8 @@ export default function Reader() {
             </div>
 
             <footer
-                className="bg-dark
-					text-white 
+                className="bg-skumring
+					text-fred 
 					text-center
 					fixed
 					inset-x-0

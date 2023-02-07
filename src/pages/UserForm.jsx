@@ -67,7 +67,7 @@ function SelectInput({ options, name, selected, onChange }) {
     return (
         <div className="w-10/12 mx-auto">
             <div className="flex flex-col m-3">
-                <h4 htmlFor={name} className="font-bold text-dark text-ph4">
+                <h4 htmlFor={name} className="text-skumring text-left xs:text-xsh4 sm:text-smh4 md:text-mdh4 lg:text-lgh4 xl:text-xlh4 text-h4">
                     {name}
                 </h4>
                 <Select
@@ -78,7 +78,7 @@ function SelectInput({ options, name, selected, onChange }) {
                     value={selected}
                     isClearable={true}
                     components={{ NoOptionsMessage, Option }}
-                    className="py-1"
+                    className="py-1 text-left"
                     styles={selectStyle}
                     onChange={onChange}
                 />
@@ -100,7 +100,7 @@ function Stepper({ step, totalSteps }) {
                     <div
                         key={i}
                         className={`w-5 h-5 z-[2] rounded-full m-1 transition-all ${
-                            i <= step ? 'bg-secondary' : 'bg-white'
+                            i <= step ? 'bg-solskinn' : 'bg-fred'
                         } border-secondary border-2`}
                     />
                 ))}
@@ -177,18 +177,18 @@ export default function PageUserForm() {
     } else {
         return (
             <div>
-                <div className="mx-auto max-w-screen-xl">
-                    <div className="min-h-[calc(100vh-500px)] flex flex-col place-items-center my-[10rem]">
+                <div className="mt-10 mx-5 gap-4 sm:mt-22 sm:mx-14 sm:gap-6 md:mt-26 md:mx-20 md:gap-10 lg:h-[50rem] lg:max-w-6xl lg:mx-auto">
+                    <div className="xs:text-center xl:min-h-[calc(100vh-400px)] flex flex-col place-items-center xs:my-[5rem] sm:my-[6rem] md:my-[7rem] xl:my-[10rem]">
                         <img
                             src={UserFormIcon}
-                            className="h-[15rem] mb-10"
+                            className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] h-[15rem] mb-10"
                         ></img>
                         <Stepper step={step} totalSteps={steps.length} />
-                        <h2 className="text-h2 mb-5">Først, et par spørsmål</h2>
-                        <div className="min-w-[430px] my-2">{steps[step]}</div>
+                        <h2 className="xs:text-xsh2 sm:text-smh2 md:text-mdh2 lg:text-lgh2 xl:text-xlh2 text-h2 mb-5">Først, et par spørsmål</h2>
+                        <div className="xs:min-w-[23rem] sm:min-w-[25rem] md:min-w-[26rem] my-2">{steps[step]}</div>
                         <button
                             onClick={() => setStep((prev) => prev + 1)}
-                            className="transScale bg-secondary px-4 py-4 mb-2 font-bold text-h4 mt-2 text-black w-48 rounded inline-flex justify-center items-center gap-2"
+                            className="xs:w-full sm:w-48 transScale bg-solskinn px-4 py-4 mb-2 mt-2 text-natt rounded inline-flex justify-center items-center gap-2  xs:text-xsh3 sm:text-smh3 md:text-mdh3 lg:text-lgh3 xl:text-xlh3"
                         >
                             Gå videre
                             <svg
@@ -211,13 +211,13 @@ export default function PageUserForm() {
                                 onClick={() =>
                                     setStep((prev) => Math.max(prev - 1, 0))
                                 }
-                                className="bg-light px-4 font-medium py-2 mt-2 text-black w-40 rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary"
+                                className="xs:w-full sm:w-40 bg-mane px-4 font-medium py-2 mt-2 text-natt rounded border-2 border-mane hover:bg-paskeegg hover:border-solskinn"
                             >
                                 Tilbake
                             </button>
                         )}
-                        <div className="max-w-md text-gray-300 italic mt-5 text-center">
-                            <p className="text-p">
+                        <div className="max-w-md text-stein italic mt-5 text-center">
+                            <p className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p">
                                 Vi samler ikke inn noen personlige data fra deg,
                                 denne infoen blir kun brukt til å systematisere
                                 data.

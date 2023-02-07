@@ -14,13 +14,13 @@ export default function Thanks() {
                     </h2>
                     <p className="text-p mb-10">
                         Din bidragskode er{' '}
-                        <span className="border-2 border-secondary bg-secondary-soft p-3 ml-1 rounded-lg">
+                        <span className="border-2 border-solskinn bg-paskeegg p-3 ml-1 rounded-lg">
                             <b>123E4567-E89B-12D30-EG94348</b>
                         </span>
                     </p>
                     <Link
                         to="/les"
-                        className="transScale bg-secondary px-8 py-4 font-bold mb-2 text-h4 text-black mt-2  w-fit rounded inline-flex justify-center items-center gap-2"
+                        className="transScale bg-solskinn px-8 py-4 font-bold mb-2 text-h4 text-natt mt-2  w-fit rounded inline-flex justify-center items-center gap-2"
                     >
                         Vil du bidra igjen?
                     </Link>

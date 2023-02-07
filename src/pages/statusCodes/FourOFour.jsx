@@ -12,7 +12,7 @@ export default function FourOFour() {
                 <p className="text-h4 mb-5">Oops! Denne siden finnes ikke.</p>
                 <Link
                     to="/"
-                    className="transScale bg-secondary px-4 py-4 font-bold mb-2 text-h4 text-black mt-2  w-48 rounded inline-flex justify-center items-center gap-2"
+                    className="transScale bg-solskinn px-4 py-4 font-bold mb-2 text-h4 text-natt mt-2  w-48 rounded inline-flex justify-center items-center gap-2"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

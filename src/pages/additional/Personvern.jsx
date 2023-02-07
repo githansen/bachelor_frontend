@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 export default function Personvern() {
     return (
         <Layout>
-            <div className="mx-auto max-w-screen-xl w-full">
-                <div className="min-h-[55rem] flex flex-col mt-14 gap-5">
-                    <h1 className="text-h1 mb-1">Personvern</h1>
-                    <h3 className="text-h3 mb-5">
+            <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">
+                <div className="min-h-[20rem] md:min-h-[40rem] lg:min-h-[50rem] xs:my-8 sm:my-10 md:my-12 lg:my-14px xl:my-14 flex flex-col gap-5">
+                    <h1 className="xs:text-xsh1 sm:text-smh1 md:text-mdh1 lg:text-lgh1 xl:text-xlh1 text-h1 mb-2">Personvern</h1>
+                    <h3 className="xs:text-xsh3 sm:text-smh3 md:text-mdh3 lg:text-lgh3 xl:text-xlh3 text-h3">
                         Når du bruker tjenester fra oss, gir du oss tilgang til
                         informasjon om deg. Vi innser at dette er et stort
                         ansvar, og vi jobber hardt for å beskytte informasjonen
                         din og gi deg kontroll over den.
                     </h3>
-                    <p className="text-p mb-5">
-                        Sed finibus quam quam, eu aliquet risus faucibus sed.
+                    <p className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p">
+                    Sed finibus quam quam, eu aliquet risus faucibus sed.
                         Nam risus dolor, aliquet eu urna ut, laoreet laoreet
                         ligula. Integer gravida iaculis odio, ac placerat erat
                         vehicula eget. Mauris eget tincidunt ligula, sit amet
@@ -63,7 +63,7 @@ export default function Personvern() {
                     </p>
                     <Link
                         to="/"
-                        className="transScale bg-secondary px-4 py-4 font-bold mb-2 text-h4 text-black mt-2  w-48 rounded inline-flex justify-center items-center gap-2"
+                        className="transScale bg-solskinn px-4 py-4 font-bold mb-2 text-natt mt-2  w-48 rounded inline-flex justify-center items-center gap-2 xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

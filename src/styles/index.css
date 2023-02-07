@@ -6,11 +6,11 @@
     h1,
     h2,
     h3,
-    h5,
     h6 {
         font-family: 'Futura', system-ui, serif;
     }
     h4,
+    h5,
     p {
         font-family: 'Avenir', system-ui, sans-serif;
     }
