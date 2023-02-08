@@ -15,22 +15,22 @@ module.exports = {
       // => @media (min-width: 2000px) { ... }
     },
     colors: {
-      //PMC
+      //Primary Colors
       solskinn: "#FFD039",
       paskeegg: "#FFEFB6",
       fred: "#FFFFFF",
       skumring: "#171717",
-      //SDC - Bluetones
+      //Secondary Colors - Bluetones
       bolge: "#0089D5",
       drape: "#00C9FF",
       krystall: "#D3EFFF",
-      //SDC - Eatrhtones
+      //Secondary Colors - Eatrhtones
       bark: "#C05621",
       gull: "#F5C62C",
       solnedgang: "#FBD38D",
-      //SDC - Redtone
+      //Secondary Colors - Redtone
       rose: "#F5382C",
-      //HPC - Graytones
+      //Helping Colors - Graytones
       mane: "#F2F2F2",
       stein: "#C2C2C2",
       metall: "#707070",
@@ -70,271 +70,101 @@ module.exports = {
     },
     fontSize: {
       // Overskrift 1
-      'xsh1': ['26pt', {
+      'xsh1': ['18pt', {
         lineHeight: '2rem',
-        letterSpacing: '0em',
-        fontWeight: '900',
-      }],
-      'smh1': ['26pt', {
-        lineHeight: '3rem',
-        letterSpacing: '-0.01em',
-        fontWeight: '900',
-      }],
-      'mdh1': ['26pt', {
-        lineHeight: '3rem',
-        letterSpacing: '-0.01em',
-        fontWeight: '900',
-      }],
-      'lgh1': ['26pt', {
-        lineHeight: '3rem',
-        letterSpacing: '-0.01em',
-        fontWeight: '900',
-      }],
-      'xlh1': ['30pt', {
-        lineHeight: '4rem',
         letterSpacing: '0',
-        fontWeight: '900',
+      }],
+      'xlh1': ['34pt', {
+        lineHeight: '3.8rem',
+        letterSpacing: '0',
       }],
 
       // Overskrift 2
-      'xsh2': ['18pt', {
-        lineHeight: '2.5rem',
+      'xsh2': ['16pt', {
+        lineHeight: '1.8rem',
         letterSpacing: '-0.01em',
-        fontWeight: '900',
       }],
-      'smh2': ['17pt', {
-        lineHeight: '2.5rem',
+      'xlh2': ['30pt', {
+        lineHeight: '3.2rem',
         letterSpacing: '-0.01em',
-        fontWeight: '900',
-      }],
-      'mdh2': ['23pt', {
-        lineHeight: '2.5rem',
-        letterSpacing: '-0.01em',
-        fontWeight: '900',
-      }],
-      'lgh2': ['20pt', {
-        lineHeight: '2.5rem',
-        letterSpacing: '-0.01em',
-        fontWeight: '900',
-      }],
-      'xlh2': ['25pt', {
-        lineHeight: '2.5rem',
-        letterSpacing: '-0.01em',
-        fontWeight: '900',
       }],
 
       // Overskrift 3
-      'xsh3': ['13pt', {
-        lineHeight: '1.9rem',
-        letterSpacing: '0.01em',
-        fontWeight: '700',
-      }],
-      'smh3': ['15pt', {
-        lineHeight: '2.5rem',
+      'xsh3': ['14.5pt', {
+        lineHeight: '1.6rem',
         letterSpacing: '-0.01em',
-        fontWeight: '700',
       }],
-      'mdh3': ['18pt', {
-        lineHeight: '2.5rem',
+      'xlh3': ['25pt', {
+        lineHeight: '2.8rem',
         letterSpacing: '-0.01em',
-        fontWeight: '700',
-      }],
-      'lgh3': ['18pt', {
-        lineHeight: '2.5rem',
-        letterSpacing: '-0.01em',
-        fontWeight: '700',
-      }],
-      'xlh3': ['20pt', {
-        lineHeight: '2.5rem',
-        letterSpacing: '-0.01em',
-        fontWeight: '700',
       }],
 
       // Overskrift 4
-      'xsh4': ['13pt', {
-        lineHeight: '1.9rem',
+      'xsh4': ['13.5pt', {
+        lineHeight: '1.5rem',
         letterSpacing: '0.01em',
-        fontWeight: '400',
       }],
-      'smh4': ['13pt', {
-        lineHeight: '1.9rem',
+      'xlh4': ['22pt', {
+        lineHeight: '2.2rem',
         letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'mdh4': ['14pt', {
-        lineHeight: '1.9rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'lgh4': ['13pt', {
-        lineHeight: '1.9rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'xlh4': ['13pt', {
-        lineHeight: '1.9rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
       }],
 
       // Overskrift 5
-      'xsh5': ['13pt', {
-        lineHeight: '1.9rem',
+      'xsh5': ['12pt', {
+        lineHeight: '1.4rem',
         letterSpacing: '0.01em',
-        fontWeight: '400',
       }],
-      'smh5': ['13pt', {
-        lineHeight: '1.9rem',
+      'xlh5': ['19pt', {
+        lineHeight: '2rem',
         letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'mdh5': ['15pt', {
-        lineHeight: '1.5rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'lgh5': ['13pt', {
-        lineHeight: '1.9rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'xlh5': ['15pt', {
-        lineHeight: '1.5rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
       }],
 
       // Overskrift 6
-      'xsh6': ['12pt', {
-        lineHeight: '1.7rem',
+      'xsh6': ['11pt', {
+        lineHeight: '1.3rem',
         letterSpacing: '0em',
-        fontWeight: '400',
       }],
-      'smh6': ['13pt', {
-        lineHeight: '1.8rem',
-        letterSpacing: '0em',
-        fontWeight: '400',
-      }],
-      'mdh6': ['14pt', {
+      'xlh6': ['17pt', {
         lineHeight: '1.9rem',
         letterSpacing: '0em',
-        fontWeight: '400',
-      }],
-      'lgh6': ['15pt', {
-        lineHeight: '2rem',
-        letterSpacing: '0em',
-        fontWeight: '400',
-      }],
-      'xlh6': ['16pt', {
-        lineHeight: '2.2rem',
-        letterSpacing: '0em',
-        fontWeight: '400',
       }],
 
       // Paragrafer
-      'xsp': ['10pt', {
-        lineHeight: '1.9rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
+      'xsp': ['11pt', {
+        lineHeight: '1.8rem',
+        letterSpacing: '-0.015em',
       }],
-      'smp': ['10pt', {
-        lineHeight: '1.9rem',
+      'xlp': ['13pt', {
+        lineHeight: '2.1rem',
         letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'mdp': ['10pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'lgp': ['12pt', {
-        lineHeight: '1.9rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'xlp': ['15pt', {
-        lineHeight: '2.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
       }],
 
       // Liten
-      'xsliten': ['8pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '300',
+      'xsliten': ['10pt', {
+        lineHeight: '1.5rem',
+        letterSpacing: '0.03em',
       }],
-      'smliten': ['8pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '300',
-      }],
-      'mdliten': ['8pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '300',
-      }],
-      'lgliten': ['8pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '300',
-      }],
-      'xlliten': ['8pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '300',
+      'xlliten': ['11pt', {
+        lineHeight: '1.5rem',
+        letterSpacing: '0.03em',
       }],
       // Knapp
-      'xsknapp': ['10.5pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
+      'xsknapp': ['15pt', {
+        lineHeight: '1',
+        letterSpacing: '0rem',
       }],
-      'smknapp': ['10.5pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'mdknapp': ['10.5pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'lgknapp': ['10.5pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'xlknapp': ['15.5pt', {
-        lineHeight: '1rem',
-        letterSpacing: '-0.01rem',
-        fontWeight: '800',
+      'xlknapp': ['16pt', {
+        lineHeight: '1',
+        letterSpacing: '0rem',
       }],
       // Knapp Liten
-      'xsknappliten': ['10.5pt', {
+      'xsknappliten': ['11pt', {
         lineHeight: '1.2rem',
         letterSpacing: '0.01em',
-        fontWeight: '400',
       }],
-      'smknappliten': ['10.5pt', {
+      'xlknappliten': ['12pt', {
         lineHeight: '1.2rem',
         letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'mdknappliten': ['10.5pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'lgknappliten': ['10.5pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
-      }],
-      'xlknappliten': ['10.5pt', {
-        lineHeight: '1.2rem',
-        letterSpacing: '0.01em',
-        fontWeight: '400',
       }],
       //Old
       h1: ["32pt", "50pt"],
@@ -349,16 +179,15 @@ module.exports = {
       btnsmall: ["10.5pt", "25pt"],
     },
     fontWeight: {
-      thin: "100",
-      hairline: "100",
-      extralight: "200",
-      light: "300",
+      tynn: "100",
+      harstra: "200",
+      lett: "300",
       normal: "400",
       medium: "500",
-      semibold: "600",
-      bold: "700",
-      extrabold: "800",
-      black: "900",
+      semifet: "600",
+      fet: "700",
+      ekstrafet: "800",
+      feteste: "900",
     },
     extend: {
       fontFamily: {
