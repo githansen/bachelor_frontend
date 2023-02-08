@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 import Page404 from './pages/statusCodes/FourOFour';
 import Page500 from './pages/statusCodes/FiveHundred';
 import PageHome from './pages/Home';
+import Overskrifter from './pages/Overskrifter';
 import PageUserForm from './pages/UserForm';
 import PageReader from './pages/Reader/Reader';
 import PageThanks from './pages/Thanks';
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         path: '/',
         element: (
             <Page title="Hjem">
-                <PageHome />
+                <Overskrifter />
             </Page>
         ),
     },
@@ -88,7 +89,7 @@ const router = createBrowserRouter([
         path: '*',
         element: (
             <Page title="404">
-                <Page404 />
+                <Page500 />
             </Page>
         ),
     },

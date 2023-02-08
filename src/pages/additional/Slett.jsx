@@ -37,7 +37,7 @@ export default function Slett() {
                             <div className="mb-4">
                                 <Input
                                     format="#######-#####-#####-#######"
-                                    className="xs:min-w-[18rem] sm:min-w-[19rem] min-w-[20rem] xs:p-2 p-3 my-2 text-center border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg font-bold focus:outline-none focus:shadow-outline"
+                                    className="xs:min-w-[18rem] sm:min-w-[19rem] min-w-[20rem] xs:p-2 p-3 my-2 text-center border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg focus:outline-none focus:shadow-outline"
                                     id="bidragskode"
                                     type="text"
                                     placeholder="123E4567-E89B-12D30-EG94348"
@@ -46,7 +46,7 @@ export default function Slett() {
                             <div className="flex items-center justify-between">
                                 <button
                                     type="button"
-                                    className="xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp xs:w-full w-48 transScale bg-rose px-4 py-4 font-bold text-fred mt-2 rounded inline-flex justify-center items-center gap-2"
+                                    className="xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp xs:w-full w-48 transScale bg-rose px-4 py-4 text-fred mt-2 rounded inline-flex justify-center items-center gap-2"
                                     onClick={openModal}
                                 >
                                     <svg

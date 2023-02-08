@@ -63,7 +63,7 @@ export default function Personvern() {
                     </p>
                     <Link
                         to="/"
-                        className="transScale bg-solskinn px-4 py-4 font-bold mb-2 text-natt mt-2  w-48 rounded inline-flex justify-center items-center gap-2 xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp"
+                        className="transScale bg-solskinn px-4 py-4 mb-2 text-natt mt-2  w-48 rounded inline-flex justify-center items-center gap-2 xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

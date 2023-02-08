@@ -188,7 +188,7 @@ export default function PageUserForm() {
                         <div className="xs:min-w-[23rem] sm:min-w-[25rem] md:min-w-[26rem] my-2">{steps[step]}</div>
                         <button
                             onClick={() => setStep((prev) => prev + 1)}
-                            className="xs:w-full sm:w-48 transScale bg-solskinn px-4 py-4 mb-2 mt-2 text-natt rounded inline-flex justify-center items-center gap-2  xs:text-xsh3 sm:text-smh3 md:text-mdh3 lg:text-lgh3 xl:text-xlh3"
+                            className="xs:w-full w-48 transScale bg-solskinn px-4 py-4 mb-2 text-natt mt-2 rounded inline-flex justify-center items-center gap-2 xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp"
                         >
                             Gå videre
                             <svg
@@ -211,17 +211,17 @@ export default function PageUserForm() {
                                 onClick={() =>
                                     setStep((prev) => Math.max(prev - 1, 0))
                                 }
-                                className="xs:w-full sm:w-40 bg-mane px-4 font-medium py-2 mt-2 text-natt rounded border-2 border-mane hover:bg-paskeegg hover:border-solskinn"
+                                className="xs:w-full w-40 xs:text-xsknappliten sm:text-smknappliten md:text-mdknappliten lg:text-lgknappliten xl:text-xlknappliten text-knappliten bg-mane px-5 py-2 mt-2 text-natt rounded border-2 border-mane hover:bg-paskeegg hover:border-solskinn transition duration-300 ease-in-out"
                             >
                                 Tilbake
                             </button>
                         )}
-                        <div className="max-w-md text-stein italic mt-5 text-center">
-                            <p className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p">
+                        <div className="max-w-md mt-5 text-center">
+                            <small className="xs:text-xssmall sm:text-smsmall md:text-mdsmall lg:text-lgsmall xl:text-xlsmall text-small text-stein italic">
                                 Vi samler ikke inn noen personlige data fra deg,
                                 denne infoen blir kun brukt til å systematisere
                                 data.
-                            </p>
+                            </small>
                         </div>
                     </div>
                 </div>

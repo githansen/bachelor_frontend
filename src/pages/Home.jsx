@@ -34,7 +34,7 @@ export default function Home() {
                     </h6>
                     <button
                         onClick={() => navigate('/intro')}
-                        className="w-full sm:w-48 transScale bg-solskinn px-4 py-4 font-bold text-btn mt-2 text-natt  rounded inline-flex justify-center items-center gap-2"
+                        className="xs:w-full w-48 transScale bg-solskinn px-4 py-4 mb-2 text-natt mt-2 rounded inline-flex justify-center items-center gap-2 xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

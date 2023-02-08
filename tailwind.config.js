@@ -75,14 +75,24 @@ module.exports = {
         letterSpacing: '0em',
         fontWeight: '900',
       }],
-      'mdh1': ['20pt', {
-        lineHeight: '2rem',
+      'smh1': ['26pt', {
+        lineHeight: '3rem',
+        letterSpacing: '-0.01em',
+        fontWeight: '900',
+      }],
+      'mdh1': ['26pt', {
+        lineHeight: '3rem',
+        letterSpacing: '-0.01em',
+        fontWeight: '900',
+      }],
+      'lgh1': ['26pt', {
+        lineHeight: '3rem',
         letterSpacing: '-0.01em',
         fontWeight: '900',
       }],
       'xlh1': ['30pt', {
-        lineHeight: '2.5rem',
-        letterSpacing: '0em',
+        lineHeight: '4rem',
+        letterSpacing: '0',
         fontWeight: '900',
       }],
 
@@ -146,7 +156,22 @@ module.exports = {
         letterSpacing: '0.01em',
         fontWeight: '400',
       }],
+      'smh4': ['13pt', {
+        lineHeight: '1.9rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
       'mdh4': ['14pt', {
+        lineHeight: '1.9rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'lgh4': ['13pt', {
+        lineHeight: '1.9rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'xlh4': ['13pt', {
         lineHeight: '1.9rem',
         letterSpacing: '0.01em',
         fontWeight: '400',
@@ -158,8 +183,18 @@ module.exports = {
         letterSpacing: '0.01em',
         fontWeight: '400',
       }],
+      'smh5': ['13pt', {
+        lineHeight: '1.9rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
       'mdh5': ['15pt', {
         lineHeight: '1.5rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'lgh5': ['13pt', {
+        lineHeight: '1.9rem',
         letterSpacing: '0.01em',
         fontWeight: '400',
       }],
@@ -202,6 +237,11 @@ module.exports = {
         letterSpacing: '0.01em',
         fontWeight: '400',
       }],
+      'smp': ['10pt', {
+        lineHeight: '1.9rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
       'mdp': ['10pt', {
         lineHeight: '1.2rem',
         letterSpacing: '0.01em',
@@ -224,13 +264,74 @@ module.exports = {
         letterSpacing: '0.01em',
         fontWeight: '300',
       }],
+      'smliten': ['8pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '300',
+      }],
       'mdliten': ['8pt', {
         lineHeight: '1.2rem',
         letterSpacing: '0.01em',
         fontWeight: '300',
       }],
+      'lgliten': ['8pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '300',
+      }],
+      'xlliten': ['8pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '300',
+      }],
+      // Knapp
+      'xsknapp': ['10.5pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'smknapp': ['10.5pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'mdknapp': ['10.5pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'lgknapp': ['10.5pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'xlknapp': ['15.5pt', {
+        lineHeight: '1rem',
+        letterSpacing: '-0.01rem',
+        fontWeight: '800',
+      }],
       // Knapp Liten
       'xsknappliten': ['10.5pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'smknappliten': ['10.5pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'mdknappliten': ['10.5pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'lgknappliten': ['10.5pt', {
+        lineHeight: '1.2rem',
+        letterSpacing: '0.01em',
+        fontWeight: '400',
+      }],
+      'xlknappliten': ['10.5pt', {
         lineHeight: '1.2rem',
         letterSpacing: '0.01em',
         fontWeight: '400',
@@ -243,7 +344,6 @@ module.exports = {
       h5: ["13pt", "18pt"],
       h6: ["12pt", "20pt"],
       p: ["12pt", "20pt"],
-      small: ["10pt", "10pt"],
       small: ["10pt", "10pt"],
       btn: ["15pt", "20pt"],
       btnsmall: ["10.5pt", "25pt"],
