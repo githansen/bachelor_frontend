@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import HeaderMinimal from '@/components/shared/HeaderMinimal';
+import HeaderMinimalSmall from '@/components/shared/HeaderMinimalSmall';
 import '@/styles/audioplayer.css';
 import { useTimer } from 'use-timer';
 import CompletedControls from './controls/CompletedControls';
 import RecordingControls from './controls/RecordingControls';
 import IdleControls from './controls/IdleControls';
+import IdleControlsSmall from './controls/IdleControlsSmall';
 
 // Main text to be read by user
 function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
@@ -23,7 +25,7 @@ function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
                     color: `${txtColor}`,
                     textAlign: `${alignText}`,
                 }}
-                className={`rounded-lg leading-loose p-8 bordser-2 transition-colors text-justify duration-400`}
+                className={`rounded-lg leading-loose xs:p-0 sm:p-0 md:p-8 bordser-2 transition-colors text-justify duration-400`}
             >
                 "Vedrørende en avtagende oppgaveløsning utvides scenarioet som
                 en følge av beskaffenheten. Med tanke på en tiltagende mobilitet
@@ -68,9 +70,9 @@ export default function Reader() {
     const [stylecolorfont, setStyleColorFont] = useState('#000000');
 
     // TextEdit
-    const [fontsize, setFontSize] = useState(24);
+    const [fontsize, setFontSize] = useState(15);
     const [fontfamily, setFontFamily] = useState('Avenir');
-    const [alignText, setAlignText] = useState('justify');
+    const [alignText, setAlignText] = useState('center');
 
     // Record when state enters recording
     useEffect(() => {
@@ -94,23 +96,46 @@ export default function Reader() {
             case 'idle':
             default:
                 return (
-                    <IdleControls
-                        setReaderState={setState}
-                        setStyleBgColor={setStyleBgColor}
-                        stylecolorfont={stylecolorfont}
-                        setStyleColorFont={setStyleColorFont}
-                        setFontSize={setFontSize}
-                        setFontFamily={setFontFamily}
-                        alignText={alignText}
-                        setAlignText={setAlignText}
-                    />
+                    <div className='w-full'>
+                        <div className='xs:hidden sm:hidden md:block'>
+                        <IdleControls
+                            setReaderState={setState}
+                            setStyleBgColor={setStyleBgColor}
+                            stylecolorfont={stylecolorfont}
+                            setStyleColorFont={setStyleColorFont}
+                            setFontSize={setFontSize}
+                            setFontFamily={setFontFamily}
+                            alignText={alignText}
+                            setAlignText={setAlignText}
+                        />
+                        </div>
+                        <div className='xs:block sm:block md:hidden'>
+                        <IdleControlsSmall
+                            setReaderState={setState}
+                            setStyleBgColor={setStyleBgColor}
+                            stylecolorfont={stylecolorfont}
+                            setStyleColorFont={setStyleColorFont}
+                            setFontSize={setFontSize}
+                            setFontFamily={setFontFamily}
+                            alignText={alignText}
+                            setAlignText={setAlignText}
+                        />
+                        </div>
+                    </div>
                 );
         }
     };
 
     return (
-        <div className={`${stylebgcolor} px-10`}>
-            <HeaderMinimal />
+        <div className={`${stylebgcolor} xs:px-4 xs:py-24 sm:py-32 sm:px-4 md:py-0 md:px-10`}>
+            <div className='w-full'>
+                <div className='xs:hidden sm:hidden md:block'>
+                    <HeaderMinimal />
+                </div>
+                <div className='xs:block sm:block md:hidden'>
+                    <HeaderMinimalSmall />
+                </div>
+            </div>
             <div className="min-h-screen px-10 pt-0 pb-20 flex flex-col place-items-center">
                 <div className="mx-auto">
                     <TextPanel
@@ -130,7 +155,11 @@ export default function Reader() {
 					fixed
 					inset-x-0
 					bottom-0
-					p-5"
+					md:p-5
+                    xs:py-3
+                    xs:px-5
+                    sm:py-3
+                    sm:px-5"
             >
                 <div className="h-30 flex justify-center ">
                     {renderControls()}

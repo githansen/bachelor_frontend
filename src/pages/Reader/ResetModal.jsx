@@ -36,7 +36,7 @@ export default function ResetModal({ open, onClose, onReset }) {
                                     Ønsker du en ny tekst?
                                 </Dialog.Title>
 
-                                <div className="mt-5 grid place-content-center">
+                                <div className="mt-5 grid sm:justify-center md:place-content-center">
                                     <button
                                         type="button"
                                         onClick={onClose}
@@ -47,7 +47,7 @@ export default function ResetModal({ open, onClose, onReset }) {
 
                                     <button
                                         type="button"
-                                        className="xs:w-full w-40 xs:text-xsbtnsmall sm:text-smbtnsmall md:text-mdbtnsmall lg:text-lgbtnsmall xl:text-xlbtnsmall text-btnsmall bg-mane px-5 py-2 mt-2 text-natt rounded border-2 border-mane hover:bg-paskeegg hover:border-solskinn"
+                                        className="xs:w-full w-40 xs:text-xsbtnsmall justify-self-center sm:text-smbtnsmall md:text-mdbtnsmall lg:text-lgbtnsmall xl:text-xlbtnsmall text-btnsmall bg-mane px-5 py-2 mt-2 text-natt rounded border-2 border-mane hover:bg-paskeegg hover:border-solskinn"
                                         onClick={onReset}
                                     >
                                         Ja

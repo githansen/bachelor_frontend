@@ -92,17 +92,17 @@ export default function TextSettings({
             as={Fragment}
             enter="transition ease-out duration-200"
             enterFrom="opacity-0 translate-y-1"
-            enterTo="opacity-100 translate-y-[-115%]"
+            enterTo="opacity-100 xs:translate-y-[-119%] sm:translate-y-[-113%]"
             leave="transition ease-in duration-150"
-            leaveFrom="opacity-100 translate-y-[-115%]"
+            leaveFrom="opacity-100 xs:translate-y-[-119%] sm:translate-y-[-113%]"
             leaveTo="opacity-0 translate-y-1"
         >
-            <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-[30rem] -translate-x-[55%] transform px-4 sm:px-0 lg:max-w-3xl">
+            <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-[30rem] xs:-translate-x-[10%] sm:-translate-x-[5%] md:-translate-x-[55%] transform px-4 sm:px-0 xs:max-w-sm lg:max-w-3xl">
                 <div className="overflow-hidden rounded-lg shadow-2xl ring-opacity-5 bg-solskinn border-4 border-solskinn">
-                    <h6 className="text-skumring mt-8 text-left pl-4 uppercase font-bold text-small">
+                    <h6 className="text-skumring mt-8 text-left pl-4 uppercase font-bold text-small xs:text-center">
                         Velg skrifttype
                     </h6>
-                    <div className="relative grid gap-8  p-7 grid-cols-2">
+                    <div className="relative grid gap-8 p-7 xs:justify-items-center xs:grid-cols-4 sm:grid-cols-2">
                         {fontTypes.map((item) => (
                             <a
                                 key={item.name}
@@ -118,18 +118,18 @@ export default function TextSettings({
                                 <div className="flex h-10 w-10 shrink-0 items-center justify-center text-fred sm:h-12 sm:w-12">
                                     <item.icon aria-hidden="true" />
                                 </div>
-                                <div className="ml-4">
-                                    <p className="text-sm font-medium text-kveld">
+                                <div className="xs:hidden md:block ml-4">
+                                    <p className="text-sm font-medium text-skumring">
                                         {item.name}
                                     </p>
                                 </div>
                             </a>
                         ))}
                     </div>
-                    <h6 className="text-skumring mt-4 text-left pl-4 uppercase font-bold text-small">
+                    <h6 className="text-skumring mt-4 text-left pl-4 uppercase font-bold text-small xs:text-center">
                         Juster tekst
                     </h6>
-                    <div className="relative grid gap-8   p-7 grid-cols-2">
+                    <div className="relative grid gap-8 p-7 xs:justify-items-center xs:grid-cols-4 sm:grid-cols-2">
                         {textAlign.map((item) => (
                             <a
                                 key={item.name}
@@ -145,8 +145,8 @@ export default function TextSettings({
                                 <div className="flex h-10 w-10 shrink-0 items-center justify-center text-fred sm:h-12 sm:w-12">
                                     <item.icon aria-hidden="true" />
                                 </div>
-                                <div className="ml-4">
-                                    <p className="text-sm font-medium text-kveld">
+                                <div className="xs:hidden md:block ml-4">
+                                    <p className="text-sm font-medium text-skumring">
                                         {item.name}
                                     </p>
                                 </div>
@@ -154,10 +154,10 @@ export default function TextSettings({
                         ))}
                     </div>
 
-                    <h6 className="text-skumring mt-4 text-left pl-4 uppercase font-bold text-small">
+                    <h6 className="text-skumring mt-4 text-left pl-4 uppercase font-bold text-small xs:text-center">
                         Endre størrelse
                     </h6>
-                    <div className="relative grid gap-8 p-7 grid-cols-3">
+                    <div className="relative grid gap-8 p-7 xs:justify-items-center grid-cols-3">
                         {textEdit.map((item) => (
                             <a
                                 key={item.name}
@@ -167,8 +167,8 @@ export default function TextSettings({
                                 <div className="flex h-10 w-10 shrink-0 items-center justify-center text-fred sm:h-12 sm:w-12">
                                     <item.icon aria-hidden="true" />
                                 </div>
-                                <div className="ml-2">
-                                    <p className="text-small font-medium text-kveld">
+                                <div className="xs:hidden ml-2">
+                                    <p className="text-small font-medium text-skumring">
                                         {item.name}
                                     </p>
                                 </div>

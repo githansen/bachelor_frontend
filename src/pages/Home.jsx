@@ -22,16 +22,16 @@ export default function Home() {
                         className="mb-5 xs:hidden sm:hidden md:inline-flex h-[4rem] lg:h-[6rem]"
                         alt="GiDinStemme - Logo"
                     />
-                    <h1 className="text-xsh1 md:text-mdh1 xl:text-xlh1 font-bold tracking-tight text-natt mb-1 ">
+                    <h1 className="text-xsh1 md:text-mdh1 xl:text-xlh1 font-bold tracking-tight text-sumring mb-1 ">
                         Bidra med din stemme!
                     </h1>
-                    <h4 className="xs:text-xsh4 md:text-mdh4 xl:text-xlp text-skumring leading-relaxed mb-7">
+                    <h6 className="xs:text-xsh6 md:text-mdh6 xl:text-xlh6 text-skumring mb-7">
                         Vi leter mennesker i alle aldre, med ulike morsmål,
                         forskjellige dialekter og alle kjønn!
                         <span className="text-p bg-paskeegg rounded w-fit p-1 ml-2">
                             Utviklet i 🇳🇴 for Norge.
                         </span>
-                    </h4>
+                    </h6>
                     <button
                         onClick={() => navigate('/intro')}
                         className="w-full sm:w-48 transScale bg-solskinn px-4 py-4 font-bold text-btn mt-2 text-natt  rounded inline-flex justify-center items-center gap-2"

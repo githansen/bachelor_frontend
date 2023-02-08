@@ -70,19 +70,19 @@ module.exports = {
     },
     fontSize: {
       // Overskrift 1
-      'xsh1': ['20pt', {
-        lineHeight: '3rem',
-        letterSpacing: '-0.01em',
+      'xsh1': ['26pt', {
+        lineHeight: '2rem',
+        letterSpacing: '0em',
         fontWeight: '900',
       }],
-      'mdh1': ['26pt', {
-        lineHeight: '3rem',
+      'mdh1': ['20pt', {
+        lineHeight: '2rem',
         letterSpacing: '-0.01em',
         fontWeight: '900',
       }],
       'xlh1': ['30pt', {
-        lineHeight: '3rem',
-        letterSpacing: '-0.01em',
+        lineHeight: '2.5rem',
+        letterSpacing: '0em',
         fontWeight: '900',
       }],
 
@@ -170,6 +170,31 @@ module.exports = {
       }],
 
       // Overskrift 6
+      'xsh6': ['12pt', {
+        lineHeight: '1.7rem',
+        letterSpacing: '0em',
+        fontWeight: '400',
+      }],
+      'smh6': ['13pt', {
+        lineHeight: '1.8rem',
+        letterSpacing: '0em',
+        fontWeight: '400',
+      }],
+      'mdh6': ['14pt', {
+        lineHeight: '1.9rem',
+        letterSpacing: '0em',
+        fontWeight: '400',
+      }],
+      'lgh6': ['15pt', {
+        lineHeight: '2rem',
+        letterSpacing: '0em',
+        fontWeight: '400',
+      }],
+      'xlh6': ['16pt', {
+        lineHeight: '2.2rem',
+        letterSpacing: '0em',
+        fontWeight: '400',
+      }],
 
       // Paragrafer
       'xsp': ['10pt', {
