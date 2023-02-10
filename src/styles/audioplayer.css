@@ -237,6 +237,10 @@
     border-radius: 2px;
 }
 
+.rhap_time{
+    width: 3rem;
+}
+
 /* Utils */
 .rhap_button-clear {
     background-color: transparent;

@@ -33,15 +33,15 @@ export default function IdleControls({
     };
 
     return (
-        <div className="flex flex-row justify-between w-full trasition">
-            <div className="text-left self-center flex flex-col">
+        <div className="grid grid-cols-3 w-full trasition md:min-h-[5.5rem]">
+            <div className="text-left place-self-start self-center flex flex-col">
                 <h3 className="text-h3 font-semibold text-fred">
                     Klar til opptak?
                 </h3>
                 <p className="text-p text-solskinn">Estimert lesetid: 2 min</p>
             </div>
 
-            <div className="flex flex-row place-items-center self-center">
+            <div className="flex flex-row place-self-center place-items-center self-center">
                 <button
                     className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-solskinn text-natt border-solskinn hover:bg-paskeegg  transition duration-150 ease-in-out"
                     onClick={() => setReaderState('recording')}
@@ -51,7 +51,7 @@ export default function IdleControls({
                 </button>
             </div>
 
-            <div className="flex flex-row place-items-center self-center gap-4">
+            <div className="flex flex-row place-items-center place-self-end self-center gap-4">
                 <div className="mr-2">
                     <label
                         htmlFor="toogle"
@@ -73,10 +73,10 @@ export default function IdleControls({
                     <Popover className="relative">
                         <Popover.Button
                             type="button"
-                            className={`px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out`}
+                            className={`lg:px-4 md:px-3 lg:py-2 md:py-3 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out`}
                         >
                             <IconTextOptions className="w-6 h-6" />
-                            Endre tekst
+                            <span className='md:hidden lg:block'>Endre tekst</span>
                         </Popover.Button>
                         <TextSettings
                             fontFamily={fontFamily}
@@ -91,10 +91,10 @@ export default function IdleControls({
                 <div>
                     <button
                         onClick={() => setResetModalOpen(true)}
-                        className="px-4 py-2 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out"
+                        className="lg:px-4 md:px-3 lg:py-2 md:py-3 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out"
                     >
                         <IconRefresh className="w-6 h-6" />
-                        Ny tekst
+                        <span className='md:hidden lg:block'>Ny tekst</span>
                     </button>
                 </div>
             </div>

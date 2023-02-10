@@ -22,24 +22,65 @@ export default function Home() {
                         className="mb-5 xs:hidden sm:hidden md:inline-flex h-[4rem] lg:h-[6rem]"
                         alt="GiDinStemme - Logo"
                     />
-                    <h1 className="text-xsh1 md:text-mdh1 xl:text-xlh1 font-bold tracking-tight text-sumring mb-1 ">
+                    <h1 
+                        className="
+                        text-fet 
+                        xs:text-xsh1 
+                        sm:text-smh1 
+                        xl:text-xlh1 
+                        text-h1
+                        text-skumring
+                        mb-3"
+                    >
                         Bidra med din stemme!
                     </h1>
-                    <h6 className="xs:text-xsh6 md:text-mdh6 xl:text-xlh6 text-skumring mb-7">
+
+                    <h6 
+                        className="
+                        font-normal 
+                        xs:text-xsh6 
+                        sm:text-smh6 
+                        md:text-xlh6 
+                        xl:text-xlh6 
+                        text-h6
+                        text-skumring
+                        mb-2"
+                    >
+
+                        <span className="text-h6 bg-paskeegg rounded w-fit p-2 mr-2">
+                            Utviklet i 🇳🇴 for Norge
+                        </span>
                         Vi leter mennesker i alle aldre, med ulike morsmål,
                         forskjellige dialekter og alle kjønn!
-                        <span className="text-p bg-paskeegg rounded w-fit p-1 ml-2">
-                            Utviklet i 🇳🇴 for Norge.
-                        </span>
                     </h6>
+
                     <button
                         onClick={() => navigate('/intro')}
-                        className="xs:w-full w-48 transScale bg-solskinn px-4 py-4 mb-2 text-natt mt-2 rounded inline-flex justify-center items-center gap-2 xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp"
+                        className="
+                        font-fet 
+                        xs:text-xsknapp 
+                        sm:text-smknapp 
+                        xl:text-xlknapp 
+                        text-knapp 
+                        text-natt 
+                        bg-solskinn 
+                        xs:w-full 
+                        w-fit 
+                        transScale 
+                        px-8 
+                        py-5 
+                        mb-2 
+                        mt-2 
+                        rounded 
+                        inline-flex 
+                        justify-center 
+                        items-center 
+                        gap-2"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
+                            width="30"
+                            height="30"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"

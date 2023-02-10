@@ -20,18 +20,6 @@ export default function IdleControlsSmall({
     // Ny tekst modal
     let [resetModalOpen, setResetModalOpen] = useState(false);
 
-    //Switch between Dark/Light theme
-    const changeStyleColor = () => {
-        if (stylecolorfont == '#ffffff') {
-            setStyleColorFont('#000000');
-            setStyleBgColor('bg-special-light');
-        }
-        if (stylecolorfont == '#000000') {
-            setStyleColorFont('#ffffff');
-            setStyleBgColor('bg-special-dark');
-        }
-    };
-
     return (
         <div className="grid grid-cols-3 items-center w-full trasition">
             <div className="flex flex-col justify-self-start">

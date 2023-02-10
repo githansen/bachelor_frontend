@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import HeaderMinimal from '@/components/shared/HeaderMinimal';
 import HeaderMinimalSmall from '@/components/shared/HeaderMinimalSmall';
 import '@/styles/audioplayer.css';
@@ -70,9 +70,9 @@ export default function Reader() {
     const [stylecolorfont, setStyleColorFont] = useState('#000000');
 
     // TextEdit
-    const [fontsize, setFontSize] = useState(15);
+    const [fontsize, setFontSize] = useState(24);
     const [fontfamily, setFontFamily] = useState('Avenir');
-    const [alignText, setAlignText] = useState('center');
+    const [alignText, setAlignText] = useState('left');
 
     // Record when state enters recording
     useEffect(() => {
@@ -96,48 +96,78 @@ export default function Reader() {
             case 'idle':
             default:
                 return (
-                    <div className='w-full'>
-                        <div className='xs:hidden sm:hidden md:block'>
-                        <IdleControls
-                            setReaderState={setState}
-                            setStyleBgColor={setStyleBgColor}
-                            stylecolorfont={stylecolorfont}
-                            setStyleColorFont={setStyleColorFont}
-                            setFontSize={setFontSize}
-                            setFontFamily={setFontFamily}
-                            alignText={alignText}
-                            setAlignText={setAlignText}
-                        />
+                    <div className="w-full">
+                        <div className="xs:hidden sm:hidden md:block">
+                            <IdleControls
+                                setReaderState={setState}
+                                setStyleBgColor={setStyleBgColor}
+                                stylecolorfont={stylecolorfont}
+                                setStyleColorFont={setStyleColorFont}
+                                setFontSize={setFontSize}
+                                setFontFamily={setFontFamily}
+                                alignText={alignText}
+                                setAlignText={setAlignText}
+                            />
                         </div>
-                        <div className='xs:block sm:block md:hidden'>
-                        <IdleControlsSmall
-                            setReaderState={setState}
-                            setStyleBgColor={setStyleBgColor}
-                            stylecolorfont={stylecolorfont}
-                            setStyleColorFont={setStyleColorFont}
-                            setFontSize={setFontSize}
-                            setFontFamily={setFontFamily}
-                            alignText={alignText}
-                            setAlignText={setAlignText}
-                        />
+                        <div className="xs:block sm:block md:hidden">
+                            <IdleControlsSmall
+                                setReaderState={setState}
+                                setStyleBgColor={setStyleBgColor}
+                                stylecolorfont={stylecolorfont}
+                                setStyleColorFont={setStyleColorFont}
+                                setFontSize={setFontSize}
+                                setFontFamily={setFontFamily}
+                                alignText={alignText}
+                                setAlignText={setAlignText}
+                            />
                         </div>
                     </div>
                 );
         }
     };
 
+
+    //Checks the width of window and sets the size of the window
+    var [windowSize, setWindowSize] = useState([window.innerWidth]);
+    if(windowSize <= 600) {
+        windowSize = "XS";
+    } else if (windowSize > 600 && windowSize <= 992) {
+        windowSize = "SM";
+    } else if (windowSize > 992 && windowSize <= 1280) {
+        windowSize = "MD";
+    } else if (windowSize > 1280 && windowSize <= 2000) {
+        windowSize = "LG";
+    } else if (windowSize > 2000) {
+        windowSize = "XL";
+    }
+    useEffect(() => {
+        const handleWindowResize = () => {
+            setWindowSize([window.innerWidth]);
+        };
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    });
+
     return (
-        <div className={`${stylebgcolor} xs:px-4 xs:py-24 sm:py-32 sm:px-4 md:py-0 md:px-10`}>
-            <div className='w-full'>
-                <div className='xs:hidden sm:hidden md:block'>
+        <div
+            className={`${stylebgcolor} xs:px-4 xs:py-24 sm:py-32 sm:px-4 md:py-0 md:px-10`}
+        >
+            <div className="w-full">
+                <div className="xs:hidden sm:hidden md:block">
                     <HeaderMinimal />
                 </div>
-                <div className='xs:block sm:block md:hidden'>
+                <div className="xs:block sm:block md:hidden">
                     <HeaderMinimalSmall />
                 </div>
             </div>
             <div className="min-h-screen px-10 pt-0 pb-20 flex flex-col place-items-center">
                 <div className="mx-auto">
+                    <h2>Width: {windowSize}</h2>
+
                     <TextPanel
                         state={state}
                         fontColor={stylecolorfont}
@@ -155,11 +185,16 @@ export default function Reader() {
 					fixed
 					inset-x-0
 					bottom-0
-					md:p-5
                     xs:py-3
                     xs:px-5
+                    xs:m-3
                     sm:py-3
-                    sm:px-5"
+                    sm:px-5
+                    sm:m-5
+					md:p-10
+                    md:m-10
+                    rounded-lg
+                    "
             >
                 <div className="h-30 flex justify-center ">
                     {renderControls()}

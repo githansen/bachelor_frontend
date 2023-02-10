@@ -11,6 +11,8 @@ import { ReactComponent as IconStandardFont } from '@/assets/icons/IconStandardF
 import { ReactComponent as IconBigText } from '@/assets/icons/IconBigText.svg';
 import { ReactComponent as IconSmallText } from '@/assets/icons/IconSmallText.svg';
 import { ReactComponent as IconTextSizeRefresh } from '@/assets/icons/IconTextSizeRefresh.svg';
+import { ReactComponent as ReaderColorChange } from '@/assets/icons/ReaderColorChange.svg';
+
 
 export default function TextSettings({
     fontFamily,
@@ -18,6 +20,9 @@ export default function TextSettings({
     setFontSize,
     alignText,
     setAlignText,
+    setStyleBgColor,
+    stylecolorfont,
+    setStyleColorFont,
 }) {
     const textAlign = [
         {
@@ -86,6 +91,19 @@ export default function TextSettings({
             icon: IconTextSizeRefresh,
         },
     ];
+
+
+    //Switch between Dark/Light theme
+    const changeStyleColor = () => {
+        if (stylecolorfont == '#ffffff') {
+            setStyleColorFont('#000000');
+            setStyleBgColor('bg-special-light');
+        }
+        if (stylecolorfont == '#000000') {
+            setStyleColorFont('#ffffff');
+            setStyleBgColor('bg-special-dark');
+        }
+    };
 
     return (
         <Transition
@@ -157,7 +175,21 @@ export default function TextSettings({
                     <h6 className="text-skumring mt-4 text-left pl-4 uppercase font-bold text-small xs:text-center">
                         Endre størrelse
                     </h6>
-                    <div className="relative grid gap-8 p-7 xs:justify-items-center grid-cols-3">
+                    <div className="relative grid gap-8 p-7 xs:justify-items-center xs:grid-cols-4 sm:grid-cols-2">
+                            <button
+                                type="button"
+                                onClick={changeStyleColor}
+                                className={`m-3 hover:bg-paskeegg flex text-natt items-center rounded-lg p-2 transition duration-150 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50`}
+                            >
+                                <div className="flex h-10 w-10 shrink-0 items-center justify-center text-fred sm:h-12 sm:w-12">
+                                    <ReaderColorChange />
+                                </div>
+                                <div className="xs:hidden ml-2">
+                                    <p className="text-small font-medium text-skumring">
+                                        Fargeendring
+                                    </p>
+                                </div>
+                            </button>
                         {textEdit.map((item) => (
                             <a
                                 key={item.name}

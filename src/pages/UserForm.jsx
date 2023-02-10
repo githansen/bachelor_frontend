@@ -25,6 +25,33 @@ function SelectInput({ options, name, selected, onChange }) {
                 },
             };
         },
+        menuList: (provided) => ({
+            ...provided,
+            paddingTop: 0,
+            paddingBottom: 0,
+            boxShadow: 'none',
+            border: '1.5px solid #FFD039',
+            borderRadius: '5px',
+        }),
+        control: (styles, state) => ({
+            ...styles,
+            background: state.hasValue ? "#FFEFB6" : "#FFFFFF",
+            border: '2px solid #FFD039',
+            color: state.hasValue ? "#FFFFFF" : "#000000",
+            '&:hover': {
+                cursor: "pointer",
+            },
+        }),
+        dropdownIndicator: base => ({
+            ...base,
+            color: "#FFD039",
+        }),
+        indicatorSeparator: base => {
+          return {
+            ...base,
+            display: 'none',
+          };
+        },
     };
 
     const Option = (props) => {
@@ -67,16 +94,24 @@ function SelectInput({ options, name, selected, onChange }) {
     return (
         <div className="w-10/12 mx-auto">
             <div className="flex flex-col m-3">
-                <h4 htmlFor={name} className="text-skumring text-left xs:text-xsh4 sm:text-smh4 md:text-mdh4 lg:text-lgh4 xl:text-xlh4 text-h4">
+                <h5
+                    htmlFor={name}
+                    className="
+                        font-normal 
+                        xs:text-xsh5 
+                        sm:text-smh5 
+                        xl:text-xlh5 
+                        text-h5
+                        text-skumring"
+                >
                     {name}
-                </h4>
+                </h5>
                 <Select
-                    color="warning"
                     placeholder={<div>Ikke valgt...</div>}
                     name={name}
                     options={options}
                     value={selected}
-                    isClearable={true}
+                    isClearable={false}
                     components={{ NoOptionsMessage, Option }}
                     className="py-1 text-left"
                     styles={selectStyle}
@@ -177,22 +212,58 @@ export default function PageUserForm() {
     } else {
         return (
             <div>
-                <div className="mt-10 mx-5 gap-4 sm:mt-22 sm:mx-14 sm:gap-6 md:mt-26 md:mx-20 md:gap-10 lg:h-[50rem] lg:max-w-6xl lg:mx-auto">
+                <div className="pt-10 mx-5 gap-4 sm:pt-22 sm:mx-14 sm:gap-6 md:pt-26 md:mx-20 md:gap-10 lg:h-[50rem] lg:max-w-6xl lg:mx-auto">
                     <div className="xs:text-center xl:min-h-[calc(100vh-400px)] flex flex-col place-items-center xs:my-[5rem] sm:my-[6rem] md:my-[7rem] xl:my-[10rem]">
                         <img
                             src={UserFormIcon}
                             className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] h-[15rem] mb-10"
                         ></img>
                         <Stepper step={step} totalSteps={steps.length} />
-                        <h2 className="xs:text-xsh2 sm:text-smh2 md:text-mdh2 lg:text-lgh2 xl:text-xlh2 text-h2 mb-5">Først, et par spørsmål</h2>
-                        <div className="xs:min-w-[23rem] sm:min-w-[25rem] md:min-w-[26rem] my-2">{steps[step]}</div>
+
+                        <h2
+                            className="
+                            font-fet 
+                            xs:text-xsh2 
+                            sm:text-smh2 
+                            xl:text-xlh2 
+                            text-h2
+                            text-skumring"
+                        >
+                            Først, et par spørsmål
+                        </h2>
+
+                        <div className="xs:min-w-[23rem] sm:min-w-[25rem] md:min-w-[26rem] mt-4 mb-0">
+                            {steps[step]}
+                        </div>
+
                         <button
                             onClick={() => setStep((prev) => prev + 1)}
-                            className="xs:w-full w-48 transScale bg-solskinn px-4 py-4 mb-2 text-natt mt-2 rounded inline-flex justify-center items-center gap-2 xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp"
+                            className="
+                            font-fet 
+                            xs:text-xsknapp 
+                            sm:text-smknapp 
+                            xl:text-xlknapp 
+                            text-knapp 
+                            text-natt 
+                            bg-solskinn 
+                            xs:w-full 
+                            w-fit 
+                            transScale 
+                            px-8 
+                            py-5 
+                            mb-2 
+                            mt-2 
+                            rounded 
+                            inline-flex 
+                            justify-center 
+                            items-center 
+                            gap-1"
                         >
                             Gå videre
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
+                                width="30"
+                                height="30"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 strokeWidth="1.5"
@@ -211,13 +282,46 @@ export default function PageUserForm() {
                                 onClick={() =>
                                     setStep((prev) => Math.max(prev - 1, 0))
                                 }
-                                className="xs:w-full w-40 xs:text-xsknappliten sm:text-smknappliten md:text-mdknappliten lg:text-lgknappliten xl:text-xlknappliten text-knappliten bg-mane px-5 py-2 mt-2 text-natt rounded border-2 border-mane hover:bg-paskeegg hover:border-solskinn transition duration-300 ease-in-out"
+                                className="
+                                font-fet
+                                xs:text-xsknappliten 
+                                sm:text-smknappliten 
+                                xl:text-xlknappliten 
+                                text-knappliten 
+                                text-metall 
+                                hover:text-skumring 
+                                bg-mane 
+                                hover:bg-paskeegg
+                                border-2
+                                border-mane 
+                                hover:border-solskinn
+                                xs:w-full 
+                                w-fit 
+                                px-11 
+                                py-3 
+                                mt-2
+                                mb-2
+                                rounded 
+                                transition 
+                                ease-in-out 
+                                duration-200"
                             >
                                 Tilbake
                             </button>
                         )}
                         <div className="max-w-md mt-5 text-center">
-                            <small className="xs:text-xssmall sm:text-smsmall md:text-mdsmall lg:text-lgsmall xl:text-xlsmall text-small text-stein italic">
+                            <small
+                                className="
+                                font-harstra 
+                                xs:text-xsliten 
+                                sm:text-smliten
+                                md:text-xlliten 
+                                lg:text-xlliten  
+                                xl:text-xlliten 
+                                text-liten
+                                text-stein 
+                                italic"
+                            >
                                 Vi samler ikke inn noen personlige data fra deg,
                                 denne infoen blir kun brukt til å systematisere
                                 data.

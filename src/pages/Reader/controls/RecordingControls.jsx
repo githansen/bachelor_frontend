@@ -19,7 +19,7 @@ export default function RecordingControls({ setReaderState, time = null }) {
     };
 
     return (
-        <div className="flex flex-row self-center">
+        <div className="grid grid-cols-1 place-items-center w-full trasition md:min-h-[5.5rem]">
             <div className="flex flex-row ">
                 <div className="flex flex-row align-center mr-3">
                     {time !== null && (

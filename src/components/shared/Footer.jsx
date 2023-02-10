@@ -40,6 +40,14 @@ export default function Footer() {
                             <ul className="text-metall mt-3">
                                 <li>
                                     <NavLink
+                                        to="/intro"
+                                        className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p hover:text-fred transition duration-150 ease-in-out"
+                                    >
+                                        Spill inn lyd
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
                                         to="/om-oss"
                                         className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p hover:text-fred transition duration-150 ease-in-out"
                                     >
@@ -69,7 +77,7 @@ export default function Footer() {
                                 <p className="md:text-mdp lg:text-lgp self-center min-w-[7rem]">
                                     I samarbeid med
                                 </p>
-                                <a href="https://www.politiet.no/" target="_blank">
+                                <a href="https://www.politiet.no/om-politiet/organisasjonen/sarorganene/pit/" target="_blank">
                                     <img
                                         src={PolitietLogo}
                                         alt="Politiet - Logo"
@@ -83,7 +91,7 @@ export default function Footer() {
                                 <p className="text-xsliten text-skumring self-center">
                                     Utviklet av Sefa, Tony, Henrik og Johan. <br></br>I samarbeid med
                                 </p>
-                                <a href="https://www.politiet.no/" target="_blank" className='place-self-center'>
+                                <a href="https://www.politiet.no/om-politiet/organisasjonen/sarorganene/pit/" target="_blank" className='place-self-center'>
                                     <img
                                         src={PolitietLogo}
                                         alt="Politiet - Logo"

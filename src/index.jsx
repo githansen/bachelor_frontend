@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         path: '/',
         element: (
             <Page title="Hjem">
-                <Overskrifter />
+                <PageHome />
             </Page>
         ),
     },
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
         path: '*',
         element: (
             <Page title="404">
-                <Page500 />
+                <Page404 />
             </Page>
         ),
     },
