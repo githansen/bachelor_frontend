@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import DemoSoundtrack from '@/assets/soundtracks/demoSoundTrack.mp3';
 import AudioPlayer from 'react-h5-audio-player';
 import { ReactComponent as IconRetry } from '@/assets/icons/IconRetry.svg';
 import { ReactComponent as IconPaperPlane } from '@/assets/icons/IconPaperPlane.svg';
 import RetryModal from '../RetryModal';
 
-export default function CompletedControls({ setReaderState }) {
+export default function CompletedControls({ setReaderState, audio }) {
     let [retryModalOpen, setRetryModalOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -21,16 +20,18 @@ export default function CompletedControls({ setReaderState }) {
 
             <div className="text-left self-center flex flex-col">
                 <div className="min-w-[40rem]">
-                    <AudioPlayer
-                        className="w-full"
-                        src={DemoSoundtrack}
-                        showFilledVolume={true}
-                        showJumpControls={false}
-                        customControlsSection={[
-                            'MAIN_CONTROLS',
-                            'VOLUME_CONTROLS',
-                        ]}
-                    />
+                    {audio && (
+                        <AudioPlayer
+                            className="w-full"
+                            src={audio.url}
+                            showFilledVolume={true}
+                            showJumpControls={false}
+                            customControlsSection={[
+                                'MAIN_CONTROLS',
+                                'VOLUME_CONTROLS',
+                            ]}
+                        />
+                    )}
                 </div>
             </div>
 
