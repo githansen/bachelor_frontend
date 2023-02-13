@@ -6,7 +6,7 @@
     flex-direction: column;
     line-height: 1;
     font-family: inherit;
-    padding: 10px 45px;
+    padding: 10px 0px;
 
     --rhap-color-main: #ffd039;
     --rhap-color-text: #ddd;
@@ -63,6 +63,7 @@
     display: flex;
     flex: 3 1 auto;
     align-items: center;
+    margin-left:20px;
 }
 
 .rhap_progress-container {
@@ -71,7 +72,7 @@
     height: 20px;
     flex: 1 0 auto;
     align-self: center;
-    margin: 0 calc(10px + 1%);
+    margin: 0 15px 0 5px;
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
@@ -103,6 +104,7 @@
     z-index: 2;
     background-color: var(--rhap-color-main);
     border-radius: 2px;
+    transition: all .2s linear;
 }
 
 .rhap_progress-bar-show-download {
@@ -121,18 +123,18 @@
     box-sizing: border-box;
     position: absolute;
     z-index: 3;
-    width: 20px;
+    width: 5px;
     height: 20px;
-    margin-left: -10px;
+    margin-left: 0px;
     top: -8px;
     background: var(--rhap-color-main);
     border-radius: 50px;
-    box-shadow: rgba(85, 85, 0, 0.5) 0 0 15px;
+    box-shadow: rgb(85 85 0 / 50%) 0 0 15px;
+    transition:all .2s linear;
 }
 
 .rhap_controls-section {
     display: flex;
-    flex: 1 1 auto;
     justify-content: center;
     align-items: center;
     gap: 22px;
@@ -144,13 +146,6 @@
     align-items: center;
 }
 
-.rhap_repeat-button {
-    font-size: 26px;
-    width: 26px;
-    height: 26px;
-    color: var(--rhap-color-main);
-    margin-right: 6px;
-}
 
 .rhap_main-controls {
     flex: 0 1 auto;
@@ -162,38 +157,11 @@
 .rhap_main-controls-button {
     margin: 0 3px;
     color: var(--rhap-color-main);
-    font-size: 35px;
-    width: 35px;
-    height: 35px;
-}
-
-.rhap_play-pause-button {
-    font-size: 40px;
-    width: 40px;
-    height: 40px;
 }
 
 .rhap_volume-controls {
     display: flex;
     align-items: center;
-}
-
-.rhap_volume-button {
-    flex: 0 0 26px;
-    font-size: 26px;
-    width: 26px;
-    height: 26px;
-    color: var(--rhap-color-main);
-    margin-right: 6px;
-}
-
-.rhap_volume-container {
-    display: flex;
-    align-items: center;
-    flex: 0 1 100px;
-    user-select: none;
-    -webkit-user-select: none;
-    min-width: 100px;
 }
 
 .rhap_volume-bar-area {
@@ -235,6 +203,10 @@
     z-index: 2;
     background-color: var(--rhap-color-main);
     border-radius: 2px;
+}
+
+.rhap_time{
+    width: 3rem;
 }
 
 /* Utils */

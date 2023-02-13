@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ReactComponent as IconMic } from '@/assets/icons/IconMic.svg';
+import { ReactComponent as AudioStopIcon } from '@/assets/icons/AudioStopIcon.svg';
+import { motion as m } from 'framer-motion';
 
 function formatTime(time) {
     const minutes = Math.floor(time / 60);
@@ -19,11 +21,22 @@ export default function RecordingControls({
     const [recordingText, setRecordingText] = useState(textRecording);
 
     useEffect(() => {
-        startRecording()
+        startRecording();
     }, []);
 
     return (
-        <div className="flex flex-row self-center">
+        <m.div
+            initial={{ y: '15%' }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="
+            grid 
+            grid-cols-1 
+            place-items-center 
+            w-full 
+            trasition 
+            md:min-h-[5.5rem]"
+        >
             <div className="flex flex-row ">
                 <div className="flex flex-row align-center mr-3">
                     {time !== null && (
@@ -34,12 +47,38 @@ export default function RecordingControls({
                         </div>
                     )}
                     <div className="flex self-center">
-                        <div className="h-5 w-5 rounded-full bg-red animate-pulse"></div>
+                        <div className="h-4 w-4 rounded-full bg-rose animate-pulse"></div>
                     </div>
                 </div>
-                <div className="w-[14rem]">
+                <div className="xs:w-fit sm:w-fit mx-5 md:w-[14rem]">
                     <button
-                        className={`px-5 py-4 font-bold inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full text-dark bg-secondary-soft border-secondary hover:bg-red hover:border-red hover:text-white`}
+                        className="
+                        font-fet
+                        xs:text-xsknappliten 
+                        sm:text-smknappliten 
+                        xl:text-xlknappliten 
+                        text-knappliten 
+                        inline-flex
+                        justify-center
+                        items-center
+                        gap-2 
+                        border-solid 
+                        border-2 
+                        rounded-full 
+                        transScale
+                        bg-skumring 
+                        border-rose 
+                        text-fred 
+                        hover:bg-rose
+                        xs:px-4
+                        xs:py-4
+                        sm:px-4
+                        sm:py-4
+                        md:px-5 
+                        md:py-4
+                        transition 
+                        ease-in-out 
+                        duration-150"
                         onMouseEnter={() => setRecordingText(textStopRecording)}
                         onMouseLeave={() => setRecordingText(textRecording)}
                         onClick={() => {
@@ -48,11 +87,13 @@ export default function RecordingControls({
                             setRecordingText(textRecording);
                         }}
                     >
-                        <IconMic className="w-6 h-6" />
-                        {recordingText}
+                        <AudioStopIcon className={`w-6 h-6"`} />
+                        <span className="xs:hidden sm:hidden md:block">
+                            Stopp opptak?
+                        </span>
                     </button>
                 </div>
             </div>
-        </div>
+        </m.div>
     );
 }
