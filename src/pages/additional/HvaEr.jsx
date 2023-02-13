@@ -2,28 +2,37 @@ import Layout from '../../components/shared/Layout';
 import PolitietLogo from '../../assets/img/politiet-logo.jpeg';
 import NorgeFellesskapImg from '../../assets/img/NorgeFellesskapImg.jpeg';
 import RobotFremtidImg from '../../assets/img/RobotFremtidImg.jpeg';
+import { motion as m } from 'framer-motion';
 
 export default function HvaEr() {
     return (
         <Layout>
             <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">
                 <div className="min-h-[20rem] md:min-h-[40rem] lg:min-h-[50rem] xs:my-8 sm:my-10 md:my-12 lg:my-14px xl:my-14 flex flex-col gap-5">
-                    
-                    <div className='grid grid-cols-2 xs:grid-cols-1 xs:gap-5 sm:gap-8 md:gap-10 xs:mb-5 sm:mb-10 md:mb-12'>
-                        <img 
-                            src={NorgeFellesskapImg} 
-                            alt="Fellesskap - Norge" 
+                    <div className="grid grid-cols-2 xs:grid-cols-1 xs:gap-5 sm:gap-8 md:gap-10 xs:mb-5 sm:mb-10 md:mb-12">
+                        <m.img
+                            initial={{ y: '-15%', opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.7, ease: 'anticipate' }}
+                            src={NorgeFellesskapImg}
+                            alt="Fellesskap - Norge"
                             className="object-cover object-center w-full xs:h-[15rem] sm:h-[15rem] md:h-[25rem] rounded-lg"
                         />
-                        <img 
-                            src={RobotFremtidImg} 
-                            alt="Robot håndhilser på menneske" 
+                        <m.img
+                            initial={{ y: '15%', opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.7, ease: 'anticipate' }}
+                            src={RobotFremtidImg}
+                            alt="Robot håndhilser på menneske"
                             className="object-cover object-center w-full xs:h-[15rem] sm:h-[15rem] md:h-[25rem] rounded-lg"
                         />
                     </div>
-                    
-                    <div className='mb-6 gap-5'>
-                        <h1
+
+                    <div className="mb-6 gap-5">
+                        <m.h1
+                            initial={{ y: '25%', opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
                             className="
                             font-fet 
                             xs:text-xsh1 
@@ -34,9 +43,16 @@ export default function HvaEr() {
                             mb-5"
                         >
                             En webapp med hensikt...
-                        </h1>
+                        </m.h1>
 
-                        <h4
+                        <m.h4
+                            initial={{ y: '25%', opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{
+                                duration: 0.5,
+                                ease: 'easeOut',
+                                delay: 0.3,
+                            }}
                             className="
                             font-normal 
                             xs:text-xsh4 
@@ -45,15 +61,22 @@ export default function HvaEr() {
                             text-h4
                             text-metall"
                         >
-                            Sed finibus quam quam, eu aliquet risus faucibus sed.
-                            Nam risus dolor, aliquet eu urna ut, laoreet laoreet
-                            ligula. Integer gravida iaculis odio, ac placerat erat
-                            vehicula eget. Mauris eget tincidunt ligula.
-                        </h4>
+                            Sed finibus quam quam, eu aliquet risus faucibus
+                            sed. Nam risus dolor, aliquet eu urna ut, laoreet
+                            laoreet ligula. Integer gravida iaculis odio, ac
+                            placerat erat vehicula eget. Mauris eget tincidunt
+                            ligula.
+                        </m.h4>
                     </div>
 
-
-                    <p
+                    <m.p
+                        initial={{ y: '25%', opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{
+                            duration: 0.5,
+                            ease: 'easeOut',
+                            delay: 0.4,
+                        }}
                         className="
                         font-normal 
                         xs:text-xsp 
@@ -84,8 +107,15 @@ export default function HvaEr() {
                         justo. Interdum et malesuada fames ac ante ipsum primis
                         in faucibus. Etiam non risus venenatis nunc ullamcorper
                         tincidunt.
-                    </p>
-                    <p
+                    </m.p>
+                    <m.p
+                        initial={{ y: '25%', opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{
+                            duration: 0.5,
+                            ease: 'easeOut',
+                            delay: 0.5,
+                        }}
                         className="
                         font-normal 
                         xs:text-xsp 
@@ -110,10 +140,10 @@ export default function HvaEr() {
                         non eros vestibulum scelerisque sit amet nec nibh.
                         Vivamus luctus libero metus. Aliquam sit amet ornare
                         metus.
-                    </p>
+                    </m.p>
 
-                    <div className='grid grid-col-1 place-self-end place-items-center'>
-                        <h6 
+                    <div className="grid grid-col-1 place-self-end place-items-center">
+                        <h6
                             className="
                             font-feteste 
                             xs:text-xsh6 
@@ -125,7 +155,10 @@ export default function HvaEr() {
                             Utviklet i samarbeid med
                         </h6>
 
-                        <a target="_blank" href="https://www.politiet.no/om-politiet/organisasjonen/sarorganene/pit/">
+                        <a
+                            target="_blank"
+                            href="https://www.politiet.no/om-politiet/organisasjonen/sarorganene/pit/"
+                        >
                             <img
                                 src={PolitietLogo}
                                 alt="Politiet - Logo"
@@ -133,7 +166,6 @@ export default function HvaEr() {
                             />
                         </a>
                     </div>
-
                 </div>
             </div>
         </Layout>

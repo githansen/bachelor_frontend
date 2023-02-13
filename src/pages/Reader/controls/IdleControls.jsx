@@ -5,6 +5,7 @@ import { ReactComponent as IconTextOptions } from '@/assets/icons/IconTextOption
 import { ReactComponent as IconRefresh } from '@/assets/icons/IconRefresh.svg';
 import TextSettings from '../TextSettings';
 import ResetModal from '../ResetModal';
+import { motion as m } from 'framer-motion';
 
 export default function IdleControls({
     setReaderState,
@@ -33,7 +34,17 @@ export default function IdleControls({
     };
 
     return (
-        <div className="grid grid-cols-3 w-full trasition md:min-h-[5.5rem]">
+        <m.div
+            initial={{ y: '25%' }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="
+            grid 
+            grid-cols-3 
+            w-full 
+            trasition 
+            md:min-h-[5.5rem]"
+        >
             <div className="text-left place-self-start self-center flex flex-col">
                 <h3 className="text-h3 font-semibold text-fred">
                     Klar til opptak?
@@ -43,7 +54,7 @@ export default function IdleControls({
 
             <div className="flex flex-row place-self-center place-items-center self-center">
                 <button
-                    className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-solskinn text-natt border-solskinn hover:bg-paskeegg  transition duration-150 ease-in-out"
+                    className="px-5 py-4 transScale inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-paskeegg text-natt border-solskinn hover:bg-solskinn  transition duration-150 ease-in-out"
                     onClick={() => setReaderState('recording')}
                 >
                     <IconMic className="w-6 h-6" />
@@ -76,7 +87,9 @@ export default function IdleControls({
                             className={`lg:px-4 md:px-3 lg:py-2 md:py-3 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out`}
                         >
                             <IconTextOptions className="w-6 h-6" />
-                            <span className='md:hidden lg:block'>Endre tekst</span>
+                            <span className="md:hidden lg:block">
+                                Endre tekst
+                            </span>
                         </Popover.Button>
                         <TextSettings
                             fontFamily={fontFamily}
@@ -94,7 +107,7 @@ export default function IdleControls({
                         className="lg:px-4 md:px-3 lg:py-2 md:py-3 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out"
                     >
                         <IconRefresh className="w-6 h-6" />
-                        <span className='md:hidden lg:block'>Ny tekst</span>
+                        <span className="md:hidden lg:block">Ny tekst</span>
                     </button>
                 </div>
             </div>
@@ -105,6 +118,6 @@ export default function IdleControls({
                     /* TODO: Not implemented yet */
                 }}
             />
-        </div>
+        </m.div>
     );
 }

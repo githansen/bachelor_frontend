@@ -4,14 +4,12 @@ import { NavLink } from 'react-router-dom';
 
 export default function Footer() {
     return (
-        <footer className='w-full 2xl:fixed bottom-0'>
+        <footer className="w-full mt-auto">
             <div className="xs:px-14 sm:px-14 md:px-20 bg-skumring text-fred mt-20 pt-5">
                 <div className="flex-col text-center md:flex-row md:text-left flex justify-between m-16 lg:mt-10 mb-0 mx-auto lg:max-w-6xl">
                     <div className="grid content-between">
                         <div className="mb-10">
-                            <NavLink
-                                to="/"
-                            >
+                            <NavLink to="/">
                                 <img
                                     src={GiDinStemmeIconWBg}
                                     className="w-[4rem] mb-7 xs:mx-auto sm:mx-auto md:mx-0 "
@@ -21,14 +19,14 @@ export default function Footer() {
                                 <b>Gi Din Stemme</b>
                             </h1>
                             <h5 className="xs:text-xsh5 sm:text-smh5 md:text-mdh5 xl:text-xlh5 text-h5 md:w-3/4">
-                                Bidra med å holde Norge trygt, doner et lydklipp med
-                                din stemme.
+                                Bidra med å holde Norge trygt, doner et lydklipp
+                                med din stemme.
                             </h5>
                         </div>
                         <div className="mb-4 xs:hidden sm:hidden md:inline-flex">
                             <small className="xs:text-xsliten sm:text-smliten md:text-mdliten xl:text-xlliten text-liten  text-kveld">
-                                © 2023 GiDinStemme | Utviklet av Sefa, Tony, Henrik
-                                og Johan
+                                © 2023 GiDinStemme | Utviklet av Sefa, Tony,
+                                Henrik og Johan
                             </small>
                         </div>
                     </div>
@@ -77,7 +75,10 @@ export default function Footer() {
                                 <p className="md:text-mdp lg:text-lgp self-center min-w-[7rem]">
                                     I samarbeid med
                                 </p>
-                                <a href="https://www.politiet.no/om-politiet/organisasjonen/sarorganene/pit/" target="_blank">
+                                <a
+                                    href="https://www.politiet.no/om-politiet/organisasjonen/sarorganene/pit/"
+                                    target="_blank"
+                                >
                                     <img
                                         src={PolitietLogo}
                                         alt="Politiet - Logo"
@@ -89,9 +90,14 @@ export default function Footer() {
                         <div className="md:hidden mx-auto mt-10 pt-5 w-full  flex-col bg-fred txt-black rounded-tl-lg rounded-tr-lg px-5 py-3 content-end">
                             <div className="mb-2 flex flex-col gap-3 justify-center content-center">
                                 <p className="text-xsliten text-skumring self-center">
-                                    Utviklet av Sefa, Tony, Henrik og Johan. <br></br>I samarbeid med
+                                    Utviklet av Sefa, Tony, Henrik og Johan.{' '}
+                                    <br></br>I samarbeid med
                                 </p>
-                                <a href="https://www.politiet.no/om-politiet/organisasjonen/sarorganene/pit/" target="_blank" className='place-self-center'>
+                                <a
+                                    href="https://www.politiet.no/om-politiet/organisasjonen/sarorganene/pit/"
+                                    target="_blank"
+                                    className="place-self-center"
+                                >
                                     <img
                                         src={PolitietLogo}
                                         alt="Politiet - Logo"

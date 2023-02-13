@@ -3,7 +3,7 @@ import SlettIkon from '../../assets/img/Slett.png';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import Input from 'react-input-auto-format';
-
+import { motion as m } from 'framer-motion';
 
 export default function Slett() {
     let [isOpen, setIsOpen] = useState(false);
@@ -20,13 +20,17 @@ export default function Slett() {
             <Layout>
                 <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">
                     <div className="min-h-[20rem] md:min-h-[40rem] lg:min-h-[40rem] xl:min-h-[50rem] xs:my-8 sm:my-10 md:my-12 lg:my-14px xl:my-14 flex flex-col place-items-center justify-center">
-                        
-                        <img 
-                            src={SlettIkon} 
+                        <m.img
+                            initial={{ y: '-15%', opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.7, ease: 'easeOut' }}
+                            src={SlettIkon}
                             className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] h-[15rem] mb-10"
                         />
-
-                        <h1 
+                        <m.h1
+                            initial={{ y: '25%', opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
                             className="
                             text-fet 
                             xs:text-xsh1 
@@ -37,8 +41,15 @@ export default function Slett() {
                             mb-2"
                         >
                             Slett ditt bidrag
-                        </h1>  
-                        <p 
+                        </m.h1>
+                        <m.p
+                            initial={{ y: '25%', opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{
+                                duration: 0.5,
+                                ease: 'easeOut',
+                                delay: 0.2,
+                            }}
                             className="
                             font-normal 
                             xs:text-xsp 
@@ -54,10 +65,15 @@ export default function Slett() {
                             feltet under. Vi har ikke samlet inn noe av din
                             info, og det er derfor kun mulig å slette ditt
                             bidrag om du har din bidragskode.
-                        </p>
+                        </m.p>
 
                         <form className="flex flex-col place-items-center justify-center">
-                            <div className="mb-4">
+                            <m.div
+                                initial={{ y: '25%', opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 0.5, ease: 'easeOut' }}
+                                className="mb-4"
+                            >
                                 <Input
                                     format="#######-#####-#####-#######"
                                     className="xs:min-w-[18rem] sm:min-w-[19rem] min-w-[20rem] xs:p-2 p-3 my-2 text-center font-fet border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg focus:outline-none focus:shadow-outline"
@@ -65,10 +81,14 @@ export default function Slett() {
                                     type="text"
                                     placeholder="123E4567-E89B-12D30-EG94348"
                                 />
-                            </div>
+                            </m.div>
 
-                            <button
-                                onClick={() => navigate('/intro')}
+                            <m.button
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5, ease: 'easeOut' }}
+                                type="button"
+                                onClick={openModal}
                                 className="
                                 font-semifet 
                                 xs:text-xsknapp 
@@ -106,7 +126,7 @@ export default function Slett() {
                                     />
                                 </svg>
                                 Slett
-                            </button>
+                            </m.button>
                         </form>
                     </div>
                 </div>
@@ -139,8 +159,14 @@ export default function Slett() {
                             >
                                 <Dialog.Panel className="xs:py-15 xs:px-5 p-14 w-full max-w-md text-center transform overflow-hidden rounded-lg bg-fred align-middle shadow-xl transition-all">
                                     <Dialog.Title
-                                        as="h5"
-                                        className="xs:text-xsh5 sm:text-smh5 md:text-mdh5 lg:text-lgh5 xl:text-xlh5 text-h5 font-medium leading-6"
+                                        as="h3"
+                                        className="
+                                        font-fet 
+                                        xs:text-xsh5 
+                                        sm:text-smh5 
+                                        xl:text-xlh5 
+                                        text-h5
+                                        text-skumring"
                                     >
                                         Sikker på at du slette ditt bidrag?
                                     </Dialog.Title>
@@ -151,30 +177,82 @@ export default function Slett() {
                                         </p>
                                     </div>
 
-                                    <div className="mt-5">
+                                    <div className="mt-5 grid md:place-content-center">
                                         <button
                                             type="button"
-                                            className="xs:w-full w-48 xs:text-xsknapp sm:text-smknapp md:text-mdknapp lg:text-lgknapp xl:text-xlknapp text-knapp transScale bg-rose px-4 py-4 text-fred mt-2 rounded inline-flex justify-center items-center gap-2"
+                                            className="
+                                        font-fet
+                                        hover:font-feteste
+                                        xs:text-xsknapp 
+                                        sm:text-smknapp 
+                                        xl:text-xlknapp 
+                                        text-knapp 
+                                        text-rose 
+                                        bg-fred
+                                        hover:bg-rose
+                                        hover:text-fred
+                                        border-4
+                                        hover:border-rose
+                                        xs:w-full 
+                                        w-48
+                                        transScale 
+                                        px-8 
+                                        py-5 
+                                        mb-2 
+                                        mt-2 
+                                        justify-self-center
+                                        rounded 
+                                        inline-flex 
+                                        justify-center 
+                                        items-center 
+                                        gap-1"
                                         >
                                             <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
+                                                className="w-6 h-6 mb-1"
                                                 viewBox="0 0 24 24"
-                                                strokeWidth={1.5}
-                                                stroke="currentColor"
-                                                className="w-6 h-6"
+                                                stroke-width="1.5"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                color="currentColor"
                                             >
                                                 <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                                />
+                                                    d="M20 9l-1.995 11.346A2 2 0 0116.035 22h-8.07a2 2 0 01-1.97-1.654L4 9M21 6h-5.625M3 6h5.625m0 0V4a2 2 0 012-2h2.75a2 2 0 012 2v2m-6.75 0h6.75"
+                                                    stroke="currentColor"
+                                                    stroke-width="2.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                ></path>
                                             </svg>
-                                            Slett!
+                                            Slett
                                         </button>
+
                                         <button
+                                            type="button"
                                             onClick={closeModal}
-                                            className="xs:w-full w-40 xs:text-xsknappliten sm:text-smknappliten md:text-mdknappliten lg:text-lgknappliten xl:text-xlknappliten text-knappliten bg-mane px-5 py-2 mt-2 text-natt rounded border-2 border-mane hover:bg-paskeegg hover:border-solskinn"
+                                            className="
+                                        font-fet
+                                        xs:text-xsknappliten 
+                                        sm:text-smknappliten 
+                                        xl:text-xlknappliten 
+                                        text-knappliten 
+                                        text-metall 
+                                        hover:text-skumring 
+                                        bg-mane 
+                                        hover:bg-paskeegg
+                                        border-2
+                                        border-mane 
+                                        hover:border-solskinn
+                                        xs:w-full 
+                                        w-fit 
+                                        px-10 
+                                        py-3 
+                                        mt-2
+                                        mb-2
+                                        justify-self-center
+                                        rounded 
+                                        transition 
+                                        ease-in-out 
+                                        duration-200"
                                         >
                                             Avbryt
                                         </button>

@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { useEffect } from 'react';
+import {
+    RouterProvider,
+    createBrowserRouter,
+    useLocation,
+} from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 // Pages
 import Page404 from './pages/statusCodes/FourOFour';
@@ -15,11 +20,22 @@ import Personvern from './pages/additional/Personvern';
 import HvaEr from './pages/additional/HvaEr';
 import Slett from './pages/additional/Slett';
 
+export default function ScrollToTop() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+}
+
 function Page({ title, children }) {
     return (
         <>
+            <ScrollToTop />
             <Helmet>
-                <title>GiDinStemme - {title}</title>
+                <title>{title} - GiDinStemme</title>
             </Helmet>
             {children}
         </>

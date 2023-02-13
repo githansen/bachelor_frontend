@@ -1,23 +1,41 @@
 import Layout from '../../components/shared/Layout';
 import { Link } from 'react-router-dom';
 import HomePlaceholder2 from '../../assets/img/HomePlaceholder2.png';
+import { motion as m } from 'framer-motion';
 
 export default function Personvern() {
     return (
         <Layout>
             <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">
                 <div className="min-h-[20rem] md:min-h-[40rem] lg:min-h-[50rem] xs:my-8 sm:my-10 md:my-12 lg:my-14px xl:my-14 flex flex-col gap-5">
-                    
-                    <div className='flex xs:flex-col sm:flex-col md:flex-row gap-10 mb-10'>
-                        <div className='bg-pattern-blue basis-1/3 justify-centercontent-center flex w-full bg-gradient-to-b from-drape to-bolge rounded-xl place-content-center'>
-                            <img 
-                                src={HomePlaceholder2} 
+                    <div className="flex xs:flex-col sm:flex-col md:flex-row gap-10 mb-10">
+                        <m.div
+                            initial={{ y: '15%' }}
+                            animate={{
+                                y: '0',
+                                borderRadius: ['5%', '15%'],
+                            }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
+                            className="
+                                bg-pattern-blue 
+                                basis-1/3 
+                                flex 
+                                w-full 
+                                bg-gradient-to-b from-drape to-bolge 
+                                rounded-xl 
+                                place-content-center"
+                        >
+                            <img
+                                src={HomePlaceholder2}
                                 className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] xl:h-[20rem] m-10"
                             />
-                        </div>
+                        </m.div>
 
-                        <div className='basis-2/3 place-self-center'>
-                            <h1
+                        <div className="basis-2/3 place-self-center">
+                            <m.h1
+                                initial={{ y: '25%', opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 0.5, ease: 'easeOut' }}
                                 className="
                                 font-fet 
                                 xs:text-xsh1 
@@ -28,9 +46,16 @@ export default function Personvern() {
                                 mb-5"
                             >
                                 Personvern
-                            </h1>
+                            </m.h1>
 
-                            <h4
+                            <m.h4
+                                initial={{ y: '25%', opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 0.5,
+                                    ease: 'easeOut',
+                                    delay: 0.3,
+                                }}
                                 className="
                                 font-normal 
                                 xs:text-xsh4 
@@ -39,15 +64,23 @@ export default function Personvern() {
                                 text-h4
                                 text-metall"
                             >
-                                Når du bruker tjenester fra oss, gir du oss tilgang til
-                                informasjon om deg. Vi innser at dette er et stort
-                                ansvar, og vi jobber hardt for å beskytte informasjonen
-                                din og gi deg kontroll over den.
-                            </h4>
+                                Når du bruker tjenester fra oss, gir du oss
+                                tilgang til informasjon om deg. Vi innser at
+                                dette er et stort ansvar, og vi jobber hardt for
+                                å beskytte informasjonen din og gi deg kontroll
+                                over den.
+                            </m.h4>
                         </div>
                     </div>
 
-                    <p
+                    <m.p
+                        initial={{ y: '25%', opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{
+                            duration: 0.5,
+                            ease: 'easeOut',
+                            delay: 0.4,
+                        }}
                         className="
                         font-normal 
                         xs:text-xsp 
@@ -71,9 +104,16 @@ export default function Personvern() {
                         Suspendisse ultrices, nisi efficitur pulvinar porttitor,
                         dolor diam cursus quam, at commodo mauris tortor
                         eleifend erat. Morbi luctus commodo ante non egestas.
-                    </p>
+                    </m.p>
 
-                    <p
+                    <m.p
+                        initial={{ y: '25%', opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{
+                            duration: 0.5,
+                            ease: 'easeOut',
+                            delay: 0.5,
+                        }}
                         className="
                         font-normal 
                         xs:text-xsp 
@@ -95,9 +135,16 @@ export default function Personvern() {
                         venenatis arcu. Ut quam augue, aliquam ac tempor sit
                         amet, vestibulum id enim. Etiam venenatis orci eget
                         risus luctus, vitae congue felis finibus.
-                    </p>
+                    </m.p>
 
-                    <p
+                    <m.p
+                        initial={{ y: '25%', opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{
+                            duration: 0.5,
+                            ease: 'easeOut',
+                            delay: 0.6,
+                        }}
                         className="
                         font-normal 
                         xs:text-xsp 
@@ -121,7 +168,7 @@ export default function Personvern() {
                         consectetur dui nec tincidunt imperdiet. Proin
                         consectetur non urna vel ultrices. Vivamus rutrum dui
                         odio, ut hendrerit massa tincidunt a.
-                    </p>
+                    </m.p>
                     <Link
                         to="/"
                         className="

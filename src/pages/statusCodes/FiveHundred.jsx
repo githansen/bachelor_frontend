@@ -1,18 +1,26 @@
 import Layout from '../../components/shared/Layout';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FiveHundredIcon from '../../assets/img/FiveHundred.png';
+import { motion as m } from 'framer-motion';
 
 export default function FiveHundred() {
+    const navigate = useNavigate();
     return (
         <Layout>
             <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">
                 <div className="min-h-[20rem] md:min-h-[40rem] lg:min-h-[40rem] xl:min-h-[50rem] xs:my-8 sm:my-10 md:my-12 lg:my-14px xl:my-14 flex flex-col place-items-center justify-center gap-5">
-                    <img 
+                    <m.img
+                        initial={{ y: '-15%', opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
                         src={FiveHundredIcon}
                         className="xs:h-[14rem] sm:h-[20rem] md:h-[22rem] lg:h-[25rem] xl:h-[27rem] mb-2 object-contain"
-                    ></img>
+                    />
 
-                    <h1 
+                    <m.h1
+                        initial={{ y: '50%' }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
                         className="
                         text-fet 
                         xs:text-xsh1 
@@ -22,9 +30,12 @@ export default function FiveHundred() {
                         text-skumring"
                     >
                         500 Intern feil...
-                    </h1>
+                    </m.h1>
 
-                    <h4 
+                    <m.h4
+                        initial={{ y: '50%' }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
                         className="
                         font-normal 
                         xs:text-xsh4 
@@ -33,11 +44,15 @@ export default function FiveHundred() {
                         text-h4
                         text-metall"
                     >
-                        Prøv å laste siden på nytt eller gå tilbake til forsiden.
-                    </h4>
+                        Prøv å laste siden på nytt eller gå tilbake til
+                        forsiden.
+                    </m.h4>
 
-                    <Link
-                        to="/"
+                    <m.button
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.4, ease: 'easeOut' }}
+                        onClick={() => navigate('/')}
                         className="
                         font-fet 
                         xs:text-xsknapp 
@@ -75,7 +90,7 @@ export default function FiveHundred() {
                             />
                         </svg>
                         Tilbake hjem
-                    </Link>
+                    </m.button>
                 </div>
             </div>
         </Layout>

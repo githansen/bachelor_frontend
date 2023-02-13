@@ -11,51 +11,71 @@ import { ReactComponent as AudioPauseIcon } from '@/assets/icons/AudioPauseIcon.
 import { ReactComponent as AudioVolumeIcon } from '@/assets/icons/AudioVolumeIcon.svg';
 import { ReactComponent as AudioVolumeMuteIcon } from '@/assets/icons/AudioVolumeMuteIcon.svg';
 import RetryModal from '../RetryModal';
+import { motion as m } from 'framer-motion';
 
 export default function CompletedControls({ setReaderState }) {
     let [retryModalOpen, setRetryModalOpen] = useState(false);
     const navigate = useNavigate();
 
     return (
-        <div className="grid grid-cols-3 w-full trasition md:min-h-[5.5rem]">
-            <div className="text-left place-self-start self-center flex flex-col">
-                <h3 className="text-h3 font-semibold text-fred">
-                    Det høres bra ut!
-                </h3>
-                <p className="text-p text-solskinn">Hør på lydklippet ditt</p>
-            </div>
+        <m.div
+            initial={{ y: '15%' }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="
+            flex 
+            w-full 
+            md:min-h-[5.5rem]"
+        >
+            <div className="basis-2/3">
+                <div className="text-left place-self-start self-center flex flex-col">
+                    <h3
+                        className="
+                    font-fet 
+                    xs:text-xsh3 
+                    sm:text-smh3 
+                    xl:text-xlh3 
+                    text-h3
+                    text-fred"
+                    >
+                        Opptak er avsluttet
+                    </h3>
+                    <p className="text-p text-solskinn">
+                        Hør på lydklippet ditt eller send inn ditt bidrag
+                    </p>
+                </div>
 
-            <div className="text-left place-self-center place-items-center self-center flex flex-col">
-                <div className="min-w-[40rem]">
-                    <AudioPlayer
-                        className="w-full"
-                        src={DemoSoundtrack}
-                        showFilledVolume={true}
-                        showJumpControls={true}
-                        customControlsSection={[
-                            'MAIN_CONTROLS',
-                            'VOLUME_CONTROLS',
-                        ]}
-                        customIcons={{
-                            rewind: <AudioRewindIcon />,
-                            forward: <AudioForwardIcon />,
-                            play: <AudioPlayIcon />,
-                            pause: <AudioPauseIcon />,
-                            volume: <AudioVolumeIcon />,
-                            volumeMute: <AudioVolumeMuteIcon />,
-                        }}
-                    />
+                <div className="text-left place-items-start self-center">
+                    <div className="md:min-w-[28rem] lg:min-w-[40rem] ">
+                        <AudioPlayer
+                            className="w-full"
+                            layout="horizontal-reverse"
+                            src={DemoSoundtrack}
+                            showFilledVolume={true}
+                            showJumpControls={true}
+                            progressJumpStep={15000}
+                            customControlsSection={['MAIN_CONTROLS']}
+                            customIcons={{
+                                rewind: <AudioRewindIcon className="h-7 w-7" />,
+                                forward: (
+                                    <AudioForwardIcon className="h-7 w-7" />
+                                ),
+                                play: <AudioPlayIcon className="h-9 w-9" />,
+                                pause: <AudioPauseIcon className="h-9 w-9" />,
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
 
-            <div className="flex flex-row place-items-center place-self-end self-center  gap-5">
+            <div className="basis-1/3 place-items-end flex flex-row justify-end self-center  gap-5">
                 <button
                     type="button"
                     onClick={() => setRetryModalOpen(true)}
                     className={`lg:px-4 md:px-3 lg:py-2 md:py-3 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out`}
-                    >
-                    <IconRetry className="w-6 h-6"/>
-                    <span className='md:hidden lg:block'>Prøv igjen</span>
+                >
+                    <IconRetry className="w-6 h-6" />
+                    <span className="md:hidden lg:block">Prøv igjen</span>
                 </button>
 
                 <RetryModal
@@ -67,13 +87,13 @@ export default function CompletedControls({ setReaderState }) {
                     }}
                 />
                 <button
-                    className="px-5 py-4 inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-solskinn text-natt border-solskinn hover:bg-paskeegg  transition duration-150 ease-in-out"
+                    className="transScale lg:px-4 md:px-3 lg:py-2 md:py-3 font-fet inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-paskeegg text-natt border-solskinn hover:bg-solskinn  transition duration-150 ease-in-out"
                     onClick={() => navigate('/takk')}
                 >
-                    <IconPaperPlane className="w-6 h-6"/>
-                    <b>Send inn!</b>
+                    <IconPaperPlane className="w-6 h-6 animate-pulse" />
+                    Send inn
                 </button>
             </div>
-        </div>
+        </m.div>
     );
 }

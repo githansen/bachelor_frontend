@@ -9,6 +9,7 @@ import heroimg7 from '../assets/img/hero-img-7.webp';
 import Footer from '../components/shared/Footer';
 import GiDinStemmeIconNoBg from '../assets/img/GiDinStemmeIconNoBg.png';
 import { useNavigate } from 'react-router-dom';
+import { motion as m } from 'framer-motion';
 
 export default function Home() {
     const navigate = useNavigate();
@@ -16,13 +17,24 @@ export default function Home() {
     return (
         <div>
             <div className="flex-col-reverse xl:h-screen xl:max-w-7xl md:flex-row text-center md:text-left mt-10 mx-5 gap-4 sm:mt-22 sm:mx-14 sm:gap-6 md:mt-26 md:mx-20 md:gap-10 lg:h-[50rem] lg:max-w-6xl lg:mx-auto flex place-items-center justify-between ">
-                <div className="w-full max-w-lg">
+                <m.div
+                    initial={{ opacity: 0.3 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.7, ease: 'easeOut', delay: 0.0 }}
+                    className="
+                    w-full 
+                    max-w-lg"
+                >
                     <img
                         src={GiDinStemmeIconNoBg}
-                        className="mb-5 xs:hidden sm:hidden md:inline-flex h-[4rem] lg:h-[6rem]"
+                        className="mb-10 xs:hidden sm:hidden md:inline-flex h-[4rem] lg:h-[6rem]"
                         alt="GiDinStemme - Logo"
                     />
-                    <h1 
+
+                    <div className="text-h6 bg-paskeegg rounded-full w-fit py-1 px-4 mb-2">
+                        Utviklet i 🇳🇴 for Norge
+                    </div>
+                    <h1
                         className="
                         text-fet 
                         xs:text-xsh1 
@@ -35,7 +47,7 @@ export default function Home() {
                         Bidra med din stemme!
                     </h1>
 
-                    <h6 
+                    <h6
                         className="
                         font-normal 
                         xs:text-xsh6 
@@ -46,10 +58,6 @@ export default function Home() {
                         text-skumring
                         mb-2"
                     >
-
-                        <span className="text-h6 bg-paskeegg rounded w-fit p-2 mr-2">
-                            Utviklet i 🇳🇴 for Norge
-                        </span>
                         Vi leter mennesker i alle aldre, med ulike morsmål,
                         forskjellige dialekter og alle kjønn!
                     </h6>
@@ -93,64 +101,211 @@ export default function Home() {
                         </svg>
                         Sett i gang
                     </button>
-                </div>
+                </m.div>
 
                 <div className="xs:w-full lg:max-w-lg">
                     <div className="xs:justify-center xs:space-x-4 sm:space-x-8 flex items-center justify-center  lg:space-x-8">
-                    <div className="grid flex-shrink-0 lg:grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <div className="xs:h-24 xs:w-20 sm:h-44 sm:w-32 md:h-48 md:w-36 lg:h-56 lg:w-44 xl:h-80 xl:w-60 overflow-hidden rounded-lg">
+                        <div className="grid flex-shrink-0 lg:grid-cols-1 gap-y-6 lg:gap-y-8">
+                            <m.div
+                                initial={{ y: '10%', opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 0.7,
+                                    ease: 'easeOut',
+                                    delay: 0.0,
+                                }}
+                                className="
+                                xs:h-24 
+                                xs:w-20 
+                                sm:h-44
+                                sm:w-32 
+                                md:h-48 
+                                md:w-36 
+                                lg:h-56 
+                                lg:w-44 
+                                xl:h-80 
+                                xl:w-60 
+                                overflow-hidden 
+                                rounded-lg"
+                            >
                                 <img
                                     src={heroimg7}
                                     alt=""
                                     className="h-full w-full object-cover object-center"
                                 />
-                            </div>
-                            <div className="xs:h-24 xs:w-20 sm:h-44 sm:w-32 md:h-48 md:w-36 lg:h-56 lg:w-44 xl:h-80 xl:w-60 overflow-hidden rounded-lg">
+                            </m.div>
+                            <m.div
+                                initial={{ y: '10%', opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 0.7,
+                                    ease: 'easeOut',
+                                    delay: 0.1,
+                                }}
+                                className="
+                                xs:h-24 
+                                xs:w-20 
+                                sm:h-44
+                                sm:w-32 
+                                md:h-48 
+                                md:w-36 
+                                lg:h-56 
+                                lg:w-44 
+                                xl:h-80 
+                                xl:w-60 
+                                overflow-hidden 
+                                rounded-lg"
+                            >
                                 <img
                                     src={heroimg2}
                                     alt=""
                                     className="h-full w-full object-cover object-center"
                                 />
-                            </div>
+                            </m.div>
                         </div>
                         <div className="grid flex-shrink-0 lg:grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <div className="xs:h-24 xs:w-20 sm:h-44 sm:w-32 md:h-48 md:w-36 lg:h-56 lg:w-44 xl:h-80 xl:w-60 overflow-hidden rounded-lg">
+                            <m.div
+                                initial={{ y: '10%', opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 0.7,
+                                    ease: 'easeOut',
+                                    delay: 0.2,
+                                }}
+                                className="
+                                xs:h-24 
+                                xs:w-20 
+                                sm:h-44
+                                sm:w-32 
+                                md:h-48 
+                                md:w-36 
+                                lg:h-56 
+                                lg:w-44 
+                                xl:h-80 
+                                xl:w-60 
+                                overflow-hidden 
+                                rounded-lg"
+                            >
                                 <img
                                     src={heroimg3}
                                     alt=""
                                     className="h-full w-full object-cover object-center"
                                 />
-                            </div>
-                            <div className="xs:h-24 xs:w-20 sm:h-44 sm:w-32 md:h-48 md:w-36 lg:h-56 lg:w-44 xl:h-80 xl:w-60 overflow-hidden rounded-lg">
+                            </m.div>
+                            <m.div
+                                initial={{ y: '10%', opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 0.7,
+                                    ease: 'easeOut',
+                                    delay: 0.25,
+                                }}
+                                className="
+                                xs:h-24 
+                                xs:w-20 
+                                sm:h-44
+                                sm:w-32 
+                                md:h-48 
+                                md:w-36 
+                                lg:h-56 
+                                lg:w-44 
+                                xl:h-80 
+                                xl:w-60 
+                                overflow-hidden 
+                                rounded-lg"
+                            >
                                 <img
                                     src={heroimg1}
                                     alt=""
                                     className="h-full w-full object-cover object-center"
                                 />
-                            </div>
-                            <div className="xs:h-24 xs:w-20 sm:h-44 sm:w-32 md:h-48 md:w-36 lg:h-56 lg:w-44 xl:h-80 xl:w-60 overflow-hidden rounded-lg">
+                            </m.div>
+                            <m.div
+                                initial={{ y: '10%', opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 0.7,
+                                    ease: 'easeOut',
+                                    delay: 0.2,
+                                }}
+                                className="
+                                xs:h-24 
+                                xs:w-20 
+                                sm:h-44
+                                sm:w-32 
+                                md:h-48 
+                                md:w-36 
+                                lg:h-56 
+                                lg:w-44 
+                                xl:h-80 
+                                xl:w-60 
+                                overflow-hidden 
+                                rounded-lg"
+                            >
                                 <img
                                     src={heroimg4}
                                     alt=""
                                     className="h-full w-full object-cover object-center"
                                 />
-                            </div>
+                            </m.div>
                         </div>
                         <div className="grid flex-shrink-0 lg:grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <div className="xs:h-24 xs:w-20 sm:h-44 sm:w-32 md:h-48 md:w-36 lg:h-56 lg:w-44 xl:h-80 xl:w-60 overflow-hidden rounded-lg">
+                            <m.div
+                                initial={{ y: '10%', opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 0.7,
+                                    ease: 'easeOut',
+                                    delay: 0.0,
+                                }}
+                                className="
+                                xs:h-24 
+                                xs:w-20 
+                                sm:h-44
+                                sm:w-32 
+                                md:h-48 
+                                md:w-36 
+                                lg:h-56 
+                                lg:w-44 
+                                xl:h-80 
+                                xl:w-60 
+                                overflow-hidden 
+                                rounded-lg"
+                            >
                                 <img
                                     src={heroimg5}
                                     alt=""
                                     className="h-full w-full object-cover object-center"
                                 />
-                            </div>
-                            <div className="xs:h-24 xs:w-20 sm:h-44 sm:w-32 md:h-48 md:w-36 lg:h-56 lg:w-44 xl:h-80 xl:w-60 overflow-hidden rounded-lg">
+                            </m.div>
+                            <m.div
+                                initial={{ y: '10%', opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 0.7,
+                                    ease: 'easeOut',
+                                    delay: 0.1,
+                                }}
+                                className="
+                                xs:h-24 
+                                xs:w-20 
+                                sm:h-44
+                                sm:w-32 
+                                md:h-48 
+                                md:w-36 
+                                lg:h-56 
+                                lg:w-44 
+                                xl:h-80 
+                                xl:w-60 
+                                overflow-hidden 
+                                rounded-lg"
+                            >
                                 <img
                                     src={heroimg6}
                                     alt=""
                                     className="h-full w-full object-cover object-center"
                                 />
-                            </div>
+                            </m.div>
                         </div>
                     </div>
                 </div>

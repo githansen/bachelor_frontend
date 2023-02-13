@@ -5,8 +5,7 @@ export default function Overskrifter() {
         <Layout>
             <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">
                 <div className="min-h-[20rem] md:min-h-[40rem] lg:min-h-[50rem] xs:my-8 sm:my-10 md:my-12 lg:my-14px xl:my-14 flex flex-col gap-5">
-                    
-                    <h1 
+                    <h1
                         className="
                         text-fet 
                         xs:text-xsh1 
@@ -18,7 +17,7 @@ export default function Overskrifter() {
                         Dette er en overskrift 1 <br /> med et linjeskift
                     </h1>
 
-                    <h2 
+                    <h2
                         className="
                         font-fet 
                         xs:text-xsh2 
@@ -30,7 +29,7 @@ export default function Overskrifter() {
                         Dette er en overskrift 2 <br /> med et linjeskift
                     </h2>
 
-                    <h3 
+                    <h3
                         className="
                         font-fet 
                         xs:text-xsh3 
@@ -42,7 +41,7 @@ export default function Overskrifter() {
                         Dette er en overskrift 3 <br /> med et linjeskift
                     </h3>
 
-                    <h4 
+                    <h4
                         className="
                         font-fet 
                         xs:text-xsh4 
@@ -54,7 +53,7 @@ export default function Overskrifter() {
                         Dette er en overskrift 4 <br /> med et linjeskift
                     </h4>
 
-                    <h5 
+                    <h5
                         className="
                         font-fet 
                         xs:text-xsh5 
@@ -66,7 +65,7 @@ export default function Overskrifter() {
                         Dette er en overskrift 5 <br /> med et linjeskift
                     </h5>
 
-                    <h6 
+                    <h6
                         className="
                         font-fet 
                         xs:text-xsh6 
@@ -77,7 +76,7 @@ export default function Overskrifter() {
                     >
                         Dette er en overskrift 6 <br /> med et linjeskift
                     </h6>
-                    <p 
+                    <p
                         className="
                         font-normal 
                         xs:text-xsp 
@@ -89,34 +88,42 @@ export default function Overskrifter() {
                         Sed finibus quam quam, eu aliquet risus faucibus sed.
                         Nam risus dolor, aliquet eu urna ut, laoreet laoreet
                         ligula. Integer gravida iaculis odio, ac placerat erat
-                        vehicula eget. Mauris eget tincidunt ligula.Sed finibus quam quam, eu aliquet risus faucibus sed.
-                        Nam risus dolor, aliquet eu urna ut, laoreet laoreet
-                        ligula. Integer gravida iaculis odio, ac placerat erat
-                        vehicula eget. Mauris eget tincidunt ligula.Sed finibus quam quam, eu aliquet risus faucibus sed.
-                        Nam risus dolor, aliquet eu urna ut, laoreet laoreet
-                        ligula. Integer gravida iaculis odio, ac placerat erat
-                        vehicula eget. Mauris eget tincidunt ligula.Sed finibus quam quam, eu aliquet risus faucibus sed.
-                        Nam risus dolor, aliquet eu urna ut, laoreet laoreet
-                        ligula. Integer gravida iaculis odio, ac placerat erat
-                        vehicula eget. Mauris eget tincidunt ligula.Sed finibus quam quam, eu aliquet risus faucibus sed.
-                        Nam risus dolor, aliquet eu urna ut, laoreet laoreet
-                        ligula. Integer gravida iaculis odio, ac placerat erat
-                        vehicula eget. Mauris eget tincidunt ligula.Sed finibus quam quam, eu aliquet risus faucibus sed.
-                        Nam risus dolor, aliquet eu urna ut, laoreet laoreet
-                        ligula. Integer gravida iaculis odio, ac placerat erat
-                        vehicula eget. Mauris eget tincidunt ligula.Sed finibus quam quam, eu aliquet risus faucibus sed.
-                        Nam risus dolor, aliquet eu urna ut, laoreet laoreet
-                        ligula. Integer gravida iaculis odio, ac placerat erat
-                        vehicula eget. Mauris eget tincidunt ligula.Sed finibus quam quam, eu aliquet risus faucibus sed.
-                        Nam risus dolor, aliquet eu urna ut, laoreet laoreet
-                        ligula. Integer gravida iaculis odio, ac placerat erat
-                        vehicula eget. Mauris eget tincidunt ligula.Sed finibus quam quam, eu aliquet risus faucibus sed.
-                        Nam risus dolor, aliquet eu urna ut, laoreet laoreet
-                        ligula. Integer gravida iaculis odio, ac placerat erat
-                        vehicula eget. Mauris eget tincidunt ligula.
+                        vehicula eget. Mauris eget tincidunt ligula.Sed finibus
+                        quam quam, eu aliquet risus faucibus sed. Nam risus
+                        dolor, aliquet eu urna ut, laoreet laoreet ligula.
+                        Integer gravida iaculis odio, ac placerat erat vehicula
+                        eget. Mauris eget tincidunt ligula.Sed finibus quam
+                        quam, eu aliquet risus faucibus sed. Nam risus dolor,
+                        aliquet eu urna ut, laoreet laoreet ligula. Integer
+                        gravida iaculis odio, ac placerat erat vehicula eget.
+                        Mauris eget tincidunt ligula.Sed finibus quam quam, eu
+                        aliquet risus faucibus sed. Nam risus dolor, aliquet eu
+                        urna ut, laoreet laoreet ligula. Integer gravida iaculis
+                        odio, ac placerat erat vehicula eget. Mauris eget
+                        tincidunt ligula.Sed finibus quam quam, eu aliquet risus
+                        faucibus sed. Nam risus dolor, aliquet eu urna ut,
+                        laoreet laoreet ligula. Integer gravida iaculis odio, ac
+                        placerat erat vehicula eget. Mauris eget tincidunt
+                        ligula.Sed finibus quam quam, eu aliquet risus faucibus
+                        sed. Nam risus dolor, aliquet eu urna ut, laoreet
+                        laoreet ligula. Integer gravida iaculis odio, ac
+                        placerat erat vehicula eget. Mauris eget tincidunt
+                        ligula.Sed finibus quam quam, eu aliquet risus faucibus
+                        sed. Nam risus dolor, aliquet eu urna ut, laoreet
+                        laoreet ligula. Integer gravida iaculis odio, ac
+                        placerat erat vehicula eget. Mauris eget tincidunt
+                        ligula.Sed finibus quam quam, eu aliquet risus faucibus
+                        sed. Nam risus dolor, aliquet eu urna ut, laoreet
+                        laoreet ligula. Integer gravida iaculis odio, ac
+                        placerat erat vehicula eget. Mauris eget tincidunt
+                        ligula.Sed finibus quam quam, eu aliquet risus faucibus
+                        sed. Nam risus dolor, aliquet eu urna ut, laoreet
+                        laoreet ligula. Integer gravida iaculis odio, ac
+                        placerat erat vehicula eget. Mauris eget tincidunt
+                        ligula.
                     </p>
 
-                    <small 
+                    <small
                         className="
                         font-harstra 
                         xs:text-xsliten 

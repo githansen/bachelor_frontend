@@ -1,18 +1,25 @@
 import Layout from '../components/shared/Layout';
 import ThanksIcon from '../assets/img/thanks.png';
 import { Link } from 'react-router-dom';
+import { motion as m } from 'framer-motion';
 
 export default function Thanks() {
     return (
         <Layout>
             <div>
                 <div className="min-h-[40rem] m-10 flex flex-col place-items-center justify-center gap-5">
-                    <img
+                    <m.img
+                        initial={{ y: '-25%' }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 1, ease: 'easeOut' }}
                         src={ThanksIcon}
                         className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] h-[15rem] mb-10"
                     />
 
-                    <h1
+                    <m.h1
+                        initial={{ y: '25%' }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 0.7, ease: 'easeOut' }}
                         className="
                             uppercase
                             text-fet 
@@ -24,8 +31,11 @@ export default function Thanks() {
                             mb-2"
                     >
                         Takk for ditt bidrag!
-                    </h1>
-                    <p 
+                    </m.h1>
+                    <m.p
+                        initial={{ y: '25%' }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 0.7, ease: 'easeOut' }}
                         className="
                         font-normal 
                         xs:text-xsp 
@@ -39,7 +49,7 @@ export default function Thanks() {
                         <span className="border-2 border-solskinn bg-paskeegg text-skumring p-3 ml-1 rounded-lg">
                             <b>123E4567-E89B-12D30-EG94348</b>
                         </span>
-                    </p>
+                    </m.p>
                     <Link
                         to="/les"
                         className="

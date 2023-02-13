@@ -3,6 +3,7 @@ import Select, { components } from 'react-select';
 import Footer from '../components/shared/Footer';
 import { Navigate } from 'react-router-dom';
 import UserFormIcon from '../assets/img/UserForm.png';
+import { motion as m } from 'framer-motion';
 
 function SelectInput({ options, name, selected, onChange }) {
     const selectStyle = {
@@ -35,22 +36,23 @@ function SelectInput({ options, name, selected, onChange }) {
         }),
         control: (styles, state) => ({
             ...styles,
-            background: state.hasValue ? "#FFEFB6" : "#FFFFFF",
+            background: state.hasValue ? '#FFEFB6' : '#FFFFFF',
             border: '2px solid #FFD039',
-            color: state.hasValue ? "#FFFFFF" : "#000000",
+            color: state.hasValue ? '#FFFFFF' : '#000000',
             '&:hover': {
-                cursor: "pointer",
+                cursor: 'pointer',
             },
+            outline: state.isFocused ? '-webkit-focus-ring-color auto 1px;' : 0,
         }),
-        dropdownIndicator: base => ({
+        dropdownIndicator: (base) => ({
             ...base,
-            color: "#FFD039",
+            color: '#FFD039',
         }),
-        indicatorSeparator: base => {
-          return {
-            ...base,
-            display: 'none',
-          };
+        indicatorSeparator: (base) => {
+            return {
+                ...base,
+                display: 'none',
+            };
         },
     };
 
@@ -92,7 +94,14 @@ function SelectInput({ options, name, selected, onChange }) {
     // <label> element has to stay for accessibility purposes, however
     // it can be hidden with the className "sr-only"
     return (
-        <div className="w-10/12 mx-auto">
+        <m.div
+            initial={{ opacity: 0.2 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="
+            w-10/12 
+            mx-auto"
+        >
             <div className="flex flex-col m-3">
                 <h5
                     htmlFor={name}
@@ -113,12 +122,12 @@ function SelectInput({ options, name, selected, onChange }) {
                     value={selected}
                     isClearable={false}
                     components={{ NoOptionsMessage, Option }}
-                    className="py-1 text-left"
+                    className="z-50 py-1 text-left"
                     styles={selectStyle}
                     onChange={onChange}
                 />
             </div>
-        </div>
+        </m.div>
     );
 }
 
@@ -126,7 +135,10 @@ function Stepper({ step, totalSteps }) {
     const before =
         'before:border-secondary-soft before:border before:w-[92%] before:content-"" before:absolute before:top-1/2 before:-translate-y-1/2 before:z-[1]';
     return (
-        <div
+        <m.div
+            initial={{ y: '50%' }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
             className={`flex justify-center items-center gap-20 mb-2 relative ${before}`}
         >
             {Array(totalSteps)
@@ -139,7 +151,7 @@ function Stepper({ step, totalSteps }) {
                         } border-secondary border-2`}
                     />
                 ))}
-        </div>
+        </m.div>
     );
 }
 
@@ -212,15 +224,21 @@ export default function PageUserForm() {
     } else {
         return (
             <div>
-                <div className="pt-10 mx-5 gap-4 sm:pt-22 sm:mx-14 sm:gap-6 md:pt-26 md:mx-20 md:gap-10 lg:h-[50rem] lg:max-w-6xl lg:mx-auto">
-                    <div className="xs:text-center xl:min-h-[calc(100vh-400px)] flex flex-col place-items-center xs:my-[5rem] sm:my-[6rem] md:my-[7rem] xl:my-[10rem]">
-                        <img
+                <main className="pt-10 mx-5 gap-4 sm:pt-22 sm:mx-14 sm:gap-6 md:pt-26 md:mx-20 md:gap-10 lg:min-h-[55rem] lg:max-w-6xl lg:mx-auto">
+                    <div className="xs:text-center flex flex-col place-items-center xs:my-[5rem] sm:my-[6rem] md:my-[7rem] xl:my-[10rem]">
+                        <m.img
+                            initial={{ y: '-25%' }}
+                            animate={{ y: 0 }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
                             src={UserFormIcon}
                             className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] h-[15rem] mb-10"
-                        ></img>
+                        ></m.img>
                         <Stepper step={step} totalSteps={steps.length} />
 
-                        <h2
+                        <m.h2
+                            initial={{ y: '50%' }}
+                            animate={{ y: 0 }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
                             className="
                             font-fet 
                             xs:text-xsh2 
@@ -230,13 +248,16 @@ export default function PageUserForm() {
                             text-skumring"
                         >
                             Først, et par spørsmål
-                        </h2>
+                        </m.h2>
 
                         <div className="xs:min-w-[23rem] sm:min-w-[25rem] md:min-w-[26rem] mt-4 mb-0">
                             {steps[step]}
                         </div>
 
-                        <button
+                        <m.button
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
                             onClick={() => setStep((prev) => prev + 1)}
                             className="
                             font-fet 
@@ -276,9 +297,12 @@ export default function PageUserForm() {
                                     d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                                 />
                             </svg>
-                        </button>
+                        </m.button>
                         {step > 0 && (
-                            <button
+                            <m.button
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.4, ease: 'easeOut' }}
                                 onClick={() =>
                                     setStep((prev) => Math.max(prev - 1, 0))
                                 }
@@ -307,10 +331,13 @@ export default function PageUserForm() {
                                 duration-200"
                             >
                                 Tilbake
-                            </button>
+                            </m.button>
                         )}
                         <div className="max-w-md mt-5 text-center">
-                            <small
+                            <m.small
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5, ease: 'easeOut' }}
                                 className="
                                 font-harstra 
                                 xs:text-xsliten 
@@ -325,10 +352,11 @@ export default function PageUserForm() {
                                 Vi samler ikke inn noen personlige data fra deg,
                                 denne infoen blir kun brukt til å systematisere
                                 data.
-                            </small>
+                            </m.small>
                         </div>
                     </div>
-                </div>
+                </main>
+                <div></div>
                 <Footer />
             </div>
         );
