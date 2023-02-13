@@ -45,7 +45,7 @@ export default function Header() {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-black bg-opacity-90" />
+                        <div className="fixed inset-0 bg-natt bg-opacity-90" />
                     </Transition.Child>
 
                     <div className="fixed inset-0 overflow-y-auto">
@@ -59,48 +59,85 @@ export default function Header() {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-full max-w-md text-center transform overflow-hidden rounded-lg bg-white p-14 align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="xs:py-15 xs:px-5 p-14 w-full max-w-md text-center transform overflow-hidden rounded-lg bg-fred align-middle shadow-xl transition-all">
                                     <Dialog.Title
                                         as="h3"
-                                        className="text-h4 font-medium leading-6"
+                                        className="
+                                        font-fet 
+                                        xs:text-xsh5 
+                                        sm:text-smh5 
+                                        xl:text-xlh5 
+                                        text-h5
+                                        text-skumring"
                                     >
                                         Sikker på at du vil avslutte?
                                     </Dialog.Title>
                                     <div className="mt-2">
-                                        <p className="text-p text-gray-500">
-                                            Merk at all din data vil bli borte.
+                                        <p className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p text-metall">
+                                            Merk du kan ikke angre denne
+                                            handlingen
                                         </p>
                                     </div>
-
-                                    <div className="mt-5">
+                                    <div className="mt-5 grid md:place-content-center">
                                         <button
                                             type="button"
-                                            className="transScale bg-secondary px-4 py-4 font-bold text-p text-black mt-2  w-48 rounded inline-flex justify-center items-center gap-2"
-                                            onClick={() => navigate('/')}
+                                            onClick={closeModal}
+                                            className="
+                                        font-semifet 
+                                        xs:text-xsknapp 
+                                        sm:text-smknapp 
+                                        xl:text-xlknapp 
+                                        text-knapp 
+                                        text-natt 
+                                        bg-solskinn 
+                                        xs:w-full 
+                                        w-56
+                                        transScale 
+                                        px-8 
+                                        py-5 
+                                        mb-2 
+                                        mt-2 
+                                        justify-self-center
+                                        rounded 
+                                        inline-flex 
+                                        justify-center 
+                                        items-center"
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth={1.5}
-                                                stroke="currentColor"
-                                                className="w-6 h-6"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-                                                />
-                                            </svg>
-                                            Ta meg tilbake
+                                            Nei, fortsett!
                                         </button>
 
                                         <button
                                             type="button"
-                                            onClick={closeModal}
-                                            className="bg-light px-5 py-2 mt-2 text-black w-40 rounded border-2 border-light hover:bg-secondary-soft hover:border-secondary"
+                                            onClick={() => navigate('/')}
+                                            className="
+                                        font-fet
+                                        xs:text-xsknappliten 
+                                        sm:text-smknappliten 
+                                        xl:text-xlknappliten 
+                                        text-knappliten 
+                                        text-metall 
+                                        hover:text-skumring 
+                                        bg-mane 
+                                        hover:bg-paskeegg
+                                        border-2
+                                        border-mane 
+                                        hover:border-solskinn
+                                        xs:w-full 
+                                        w-fit 
+                                        px-10 
+                                        py-3 
+                                        mt-2
+                                        mb-2
+                                        justify-self-center
+                                        inline-flex 
+                                        justify-center 
+                                        items-center 
+                                        rounded 
+                                        transition 
+                                        ease-in-out 
+                                        duration-200"
                                         >
-                                            Avbryt
+                                            Ja, avslutt.
                                         </button>
                                     </div>
                                 </Dialog.Panel>

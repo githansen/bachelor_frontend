@@ -1,26 +1,77 @@
 import Layout from '../components/shared/Layout';
 import ThanksIcon from '../assets/img/thanks.png';
 import { Link } from 'react-router-dom';
+import { motion as m } from 'framer-motion';
 
 export default function Thanks() {
     return (
         <Layout>
             <div>
-                <div className="min-h-[40rem] m-10 flex flex-col place-items-center justify-center">
-                    <img src={ThanksIcon} className="w-[16rem] mb-5"></img>
+                <div className="min-h-[40rem] m-10 flex flex-col place-items-center justify-center gap-5">
+                    <m.img
+                        initial={{ y: '-25%' }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 1, ease: 'easeOut' }}
+                        src={ThanksIcon}
+                        className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] h-[15rem] mb-10"
+                    />
 
-                    <h2 className="text-h2 mb-5 uppercase">
+                    <m.h1
+                        initial={{ y: '25%' }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 0.7, ease: 'easeOut' }}
+                        className="
+                            uppercase
+                            text-fet 
+                            xs:text-xsh1 
+                            sm:text-smh1 
+                            xl:text-xlh1 
+                            text-h1
+                            text-skumring
+                            mb-2"
+                    >
                         Takk for ditt bidrag!
-                    </h2>
-                    <p className="text-p mb-10">
+                    </m.h1>
+                    <m.p
+                        initial={{ y: '25%' }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 0.7, ease: 'easeOut' }}
+                        className="
+                        font-normal 
+                        xs:text-xsp 
+                        sm:text-smp 
+                        xl:text-xlp 
+                        text-p
+                        text-skumring
+                        mb-5"
+                    >
                         Din bidragskode er{' '}
-                        <span className="border-2 border-secondary bg-secondary-soft p-3 ml-1 rounded-lg">
+                        <span className="border-2 border-solskinn bg-paskeegg text-skumring p-3 ml-1 rounded-lg">
                             <b>123E4567-E89B-12D30-EG94348</b>
                         </span>
-                    </p>
+                    </m.p>
                     <Link
                         to="/les"
-                        className="transScale bg-secondary px-8 py-4 font-bold mb-2 text-h4 text-black mt-2  w-fit rounded inline-flex justify-center items-center gap-2"
+                        className="
+                        font-fet 
+                        xs:text-xsknapp 
+                        sm:text-smknapp 
+                        xl:text-xlknapp 
+                        text-knapp 
+                        text-natt 
+                        bg-solskinn 
+                        xs:w-full 
+                        w-fit 
+                        transScale 
+                        px-8 
+                        py-5 
+                        mb-2 
+                        mt-2 
+                        rounded 
+                        inline-flex 
+                        justify-center 
+                        items-center 
+                        gap-2"
                     >
                         Vil du bidra igjen?
                     </Link>
