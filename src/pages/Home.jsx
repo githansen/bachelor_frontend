@@ -1,22 +1,49 @@
-import heroimg1 from '../assets/img/hero-img-1.webp';
-import heroimg2 from '../assets/img/hero-img-2.webp';
-import heroimg3 from '../assets/img/hero-img-3.webp';
-import heroimg4 from '../assets/img/hero-img-4.webp';
-import heroimg5 from '../assets/img/hero-img-5.webp';
-import heroimg6 from '../assets/img/hero-img-6.webp';
-import heroimg7 from '../assets/img/hero-img-7.webp';
-
-import Footer from '../components/shared/Footer';
-import GiDinStemmeIconNoBg from '../assets/img/GiDinStemmeIconNoBg.png';
+//React library
 import { useNavigate } from 'react-router-dom';
+//Shared components
+import Footer from '@/components/shared/Footer';
+//Animation library
 import { motion as m } from 'framer-motion';
+//Graphic assets
+import GiDinStemmeIconNoBg from '@/assets/img/Logo/GiDinStemmeIconNoBg.png';
+import heroimg1 from '@/assets/img/Hero/hero-img-1.webp';
+import heroimg2 from '@/assets/img/Hero/hero-img-2.webp';
+import heroimg3 from '@/assets/img/Hero/hero-img-3.webp';
+import heroimg4 from '@/assets/img/Hero/hero-img-4.webp';
+import heroimg5 from '@/assets/img/Hero/hero-img-5.webp';
+import heroimg6 from '@/assets/img/Hero/hero-img-6.webp';
+import heroimg7 from '@/assets/img/Hero/hero-img-7.webp';
+import heroimg8 from '@/assets/img/Hero/hero-img-8.webp';
+import heroimg9 from '@/assets/img/Hero/hero-img-9.webp';
+import heroimg10 from '@/assets/img/Hero/hero-img-10.webp';
 
 export default function Home() {
     const navigate = useNavigate();
 
     return (
         <div>
-            <div className="flex-col-reverse xl:h-screen xl:max-w-7xl md:flex-row text-center md:text-left mt-10 mx-5 gap-4 sm:mt-22 sm:mx-14 sm:gap-6 md:mt-26 md:mx-20 md:gap-10 lg:h-[50rem] lg:max-w-6xl lg:mx-auto flex place-items-center justify-between ">
+            <div
+                className="
+                flex-col-reverse 
+                xl:h-screen 
+                xl:max-w-7xl 
+                md:flex-row 
+                text-center 
+                md:text-left 
+                mt-10 
+                mx-5 gap-10 
+                sm:mt-22 
+                sm:mx-14 
+                sm:gap-6 
+                md:mt-26 
+                md:mx-20 
+                g:h-[50rem] 
+                lg:max-w-6xl 
+                lg:mx-auto 
+                flex 
+                place-items-center 
+                justify-between"
+            >
                 <m.div
                     initial={{ opacity: 0.3 }}
                     animate={{ opacity: 1 }}
@@ -31,7 +58,7 @@ export default function Home() {
                         alt="GiDinStemme - Logo"
                     />
 
-                    <div className="text-h6 bg-paskeegg rounded-full w-fit py-1 px-4 mb-2">
+                    <div className="text-h6 bg-paskeegg rounded-full w-fit py-1 px-4 mb-2 xs:mx-auto sm:mx-auto md:mx-0">
                         Utviklet i 🇳🇴 for Norge
                     </div>
                     <h1
@@ -104,7 +131,7 @@ export default function Home() {
                 </m.div>
 
                 <div className="xs:w-full lg:max-w-lg">
-                    <div className="xs:justify-center xs:space-x-4 sm:space-x-8 flex items-center justify-center  lg:space-x-8">
+                    <div className="sm:drop-shadow-md md:drop-shadow-2xl xs:justify-center xs:space-x-4 sm:space-x-8 flex items-center justify-center  lg:space-x-8">
                         <div className="grid flex-shrink-0 lg:grid-cols-1 gap-y-6 lg:gap-y-8">
                             <m.div
                                 initial={{ y: '10%', opacity: 0 }}
@@ -129,9 +156,9 @@ export default function Home() {
                                 rounded-lg"
                             >
                                 <img
-                                    src={heroimg7}
+                                    src={heroimg9}
                                     alt=""
-                                    className="h-full w-full object-cover object-center"
+                                    className="sm:drop-shadow-md md:drop-shadow-2xl h-full w-full object-cover object-center"
                                 />
                             </m.div>
                             <m.div
@@ -159,7 +186,7 @@ export default function Home() {
                                 <img
                                     src={heroimg2}
                                     alt=""
-                                    className="h-full w-full object-cover object-center"
+                                    className="sm:drop-shadow-md md:drop-shadow-2xl h-full w-full object-cover object-center"
                                 />
                             </m.div>
                         </div>
@@ -189,7 +216,7 @@ export default function Home() {
                                 <img
                                     src={heroimg3}
                                     alt=""
-                                    className="h-full w-full object-cover object-center"
+                                    className="sm:drop-shadow-md md:drop-shadow-2xl h-full w-full object-cover object-center"
                                 />
                             </m.div>
                             <m.div
@@ -217,7 +244,7 @@ export default function Home() {
                                 <img
                                     src={heroimg1}
                                     alt=""
-                                    className="h-full w-full object-cover object-center"
+                                    className="sm:drop-shadow-md md:drop-shadow-2xl h-full w-full object-cover object-center"
                                 />
                             </m.div>
                             <m.div
@@ -245,7 +272,7 @@ export default function Home() {
                                 <img
                                     src={heroimg4}
                                     alt=""
-                                    className="h-full w-full object-cover object-center"
+                                    className="sm:drop-shadow-md md:drop-shadow-2xl h-full w-full object-cover object-center"
                                 />
                             </m.div>
                         </div>
@@ -275,7 +302,7 @@ export default function Home() {
                                 <img
                                     src={heroimg5}
                                     alt=""
-                                    className="h-full w-full object-cover object-center"
+                                    className="sm:drop-shadow-md md:drop-shadow-2xl h-full w-full object-cover object-center"
                                 />
                             </m.div>
                             <m.div
@@ -301,9 +328,9 @@ export default function Home() {
                                 rounded-lg"
                             >
                                 <img
-                                    src={heroimg6}
+                                    src={heroimg8}
                                     alt=""
-                                    className="h-full w-full object-cover object-center"
+                                    className="sm:drop-shadow-md md:drop-shadow-2xl h-full w-full object-cover object-center"
                                 />
                             </m.div>
                         </div>

@@ -1,16 +1,19 @@
+//React library
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import DemoSoundtrack from '@/assets/soundtracks/demoSoundTrack.mp3';
+//Audioplayer library
 import AudioPlayer from 'react-h5-audio-player';
+//Animation library
+import { motion as m } from 'framer-motion';
+//Components
+import RetryModal from '@/pages/Reader/RetryModal';
+//Graphic assets
 import { ReactComponent as IconRetry } from '@/assets/icons/IconRetry.svg';
 import { ReactComponent as IconPaperPlane } from '@/assets/icons/IconPaperPlane.svg';
 import { ReactComponent as AudioRewindIcon } from '@/assets/icons/AudioRewindIcon.svg';
 import { ReactComponent as AudioForwardIcon } from '@/assets/icons/AudioForwardIcon.svg';
 import { ReactComponent as AudioPlayIcon } from '@/assets/icons/AudioPlayIcon.svg';
 import { ReactComponent as AudioPauseIcon } from '@/assets/icons/AudioPauseIcon.svg';
-import { ReactComponent as AudioVolumeIcon } from '@/assets/icons/AudioVolumeIcon.svg';
-import { ReactComponent as AudioVolumeMuteIcon } from '@/assets/icons/AudioVolumeMuteIcon.svg';
-import RetryModal from '../RetryModal';
 
 export default function CompletedControls({ setReaderState, audio }) {
     let [retryModalOpen, setRetryModalOpen] = useState(false);

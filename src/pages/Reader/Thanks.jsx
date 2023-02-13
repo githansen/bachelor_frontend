@@ -1,17 +1,18 @@
-import Layout from '../components/shared/Layout';
-import ThanksIcon from '../assets/img/thanks.png';
+//React library
 import { Link } from 'react-router-dom';
+//Shared components
+import Layout from '@/components/shared/Layout';
+//Animation library
 import { motion as m } from 'framer-motion';
+//Graphic assets
+import ThanksIcon from '@/assets/img/ThreeDeeGraphic/thanks.png';
 
 export default function Thanks() {
     return (
         <Layout>
             <div>
                 <div className="min-h-[40rem] m-10 flex flex-col place-items-center justify-center gap-5">
-                    <m.img
-                        initial={{ y: '-25%' }}
-                        animate={{ y: 0 }}
-                        transition={{ duration: 1, ease: 'easeOut' }}
+                    <m.img //React library
                         src={ThanksIcon}
                         className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] h-[15rem] mb-10"
                     />

@@ -1,8 +1,13 @@
-import Layout from '../../components/shared/Layout';
+//React library
 import { useNavigate } from 'react-router-dom';
-import FiveHundredIcon from '../../assets/img/FiveHundred.png';
+//Shared components
+import Layout from '@/components/shared/Layout';
+//Graphic assets
+import FiveHundredIcon from '@/assets/img/ThreeDeeGraphic/FiveHundred.png';
+//Animation library
 import { motion as m } from 'framer-motion';
 
+//500 page
 export default function FiveHundred() {
     const navigate = useNavigate();
     return (

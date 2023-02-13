@@ -1,9 +1,13 @@
-import Layout from '../../components/shared/Layout';
+//React library
 import { Link } from 'react-router-dom';
-import HomePlaceholder2 from '../../assets/img/HomePlaceholder2.png';
+//Shared components
+import Layout from '@/components/shared/Layout';
+//Animation library
 import { motion as m } from 'framer-motion';
+//Graphic assets
+import HomePlaceholder2 from '@/assets/img/ThreeDeeGraphic/HomePlaceholder2.png';
 
-export default function Personvern() {
+export default function Privacy() {
     return (
         <Layout>
             <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">

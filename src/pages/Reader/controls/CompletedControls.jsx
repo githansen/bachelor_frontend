@@ -1,17 +1,21 @@
+//React library
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+//Audioplayer library
 import AudioPlayer from 'react-h5-audio-player';
+//Animation library
+import { motion as m } from 'framer-motion';
+//Components
+import RetryModal from '@/pages/Reader/RetryModal';
+//Graphic assets
 import { ReactComponent as IconRetry } from '@/assets/icons/IconRetry.svg';
 import { ReactComponent as IconPaperPlane } from '@/assets/icons/IconPaperPlane.svg';
 import { ReactComponent as AudioRewindIcon } from '@/assets/icons/AudioRewindIcon.svg';
 import { ReactComponent as AudioForwardIcon } from '@/assets/icons/AudioForwardIcon.svg';
 import { ReactComponent as AudioPlayIcon } from '@/assets/icons/AudioPlayIcon.svg';
 import { ReactComponent as AudioPauseIcon } from '@/assets/icons/AudioPauseIcon.svg';
-import { ReactComponent as AudioVolumeIcon } from '@/assets/icons/AudioVolumeIcon.svg';
-import { ReactComponent as AudioVolumeMuteIcon } from '@/assets/icons/AudioVolumeMuteIcon.svg';
-import RetryModal from '../RetryModal';
-import { motion as m } from 'framer-motion';
 
+//Controls for completed recording
 export default function CompletedControls({ setReaderState, audio }) {
     let [retryModalOpen, setRetryModalOpen] = useState(false);
     const navigate = useNavigate();
@@ -51,20 +55,21 @@ export default function CompletedControls({ setReaderState, audio }) {
                                 className="w-full"
                                 layout="horizontal-reverse"
                                 src={audio.url}
-                                showFilledVolume={true}
                                 showJumpControls={true}
                                 progressJumpStep={15000}
                                 customControlsSection={['MAIN_CONTROLS']}
                                 customIcons={{
                                     rewind: (
-                                        <AudioRewindIcon className="h-7 w-7" />
+                                        <AudioRewindIcon className="h-7 w-7 hover:opacity-50 transition duration-200 ease-in-out" />
                                     ),
                                     forward: (
-                                        <AudioForwardIcon className="h-7 w-7" />
+                                        <AudioForwardIcon className="h-7 w-7 hover:opacity-50 transition duration-200 ease-in-out" />
                                     ),
-                                    play: <AudioPlayIcon className="h-9 w-9" />,
+                                    play: (
+                                        <AudioPlayIcon className="h-9 w-9 hover:opacity-50 transition duration-200 ease-in-out" />
+                                    ),
                                     pause: (
-                                        <AudioPauseIcon className="h-9 w-9" />
+                                        <AudioPauseIcon className="h-9 w-9 hover:opacity-50 transition duration-200 ease-in-out" />
                                     ),
                                 }}
                             />
@@ -77,7 +82,7 @@ export default function CompletedControls({ setReaderState, audio }) {
                 <button
                     type="button"
                     onClick={() => setRetryModalOpen(true)}
-                    className={`lg:px-4 md:px-3 lg:py-2 md:py-3 font-medium inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out`}
+                    className={`lg:px-4 md:px-3 lg:py-2 md:py-3 font-medium inline-flex gap-2 border-solid border-2 rounded-full bg-skumring text-fred border-solskinn hover:bg-fred hover:text-natt hover:border-fred transition duration-150 ease-in-out`}
                 >
                     <IconRetry className="w-6 h-6" />
                     <span className="md:hidden lg:block">Prøv igjen</span>
@@ -92,7 +97,7 @@ export default function CompletedControls({ setReaderState, audio }) {
                     }}
                 />
                 <button
-                    className="transScale lg:px-4 md:px-3 lg:py-2 md:py-3 font-fet inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-paskeegg text-natt border-solskinn hover:bg-solskinn  transition duration-150 ease-in-out"
+                    className="transScale lg:px-4 md:px-3 lg:py-2 md:py-3 font-fet inline-flex gap-2 border-solid border-2 rounded-full bg-paskeegg text-natt border-solskinn hover:bg-solskinn  transition duration-150 ease-in-out"
                     onClick={() => navigate('/takk')}
                 >
                     <IconPaperPlane className="w-6 h-6 animate-pulse" />

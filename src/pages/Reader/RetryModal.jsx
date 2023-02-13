@@ -1,6 +1,8 @@
+//React library
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
+// This is the modal that pops up when the user clicks the "Prøv på nytt" button
 export default function RetryModal({ open, onClose, onRetry }) {
     return (
         <Transition appear show={open} as={Fragment}>

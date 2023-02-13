@@ -1,6 +1,8 @@
-import PolitietLogo from '../../assets/img/politiet-logo.jpeg';
-import GiDinStemmeIconWBg from '../../assets/img/GiDinStemmeIconWBg.png';
+//React library
 import { NavLink } from 'react-router-dom';
+//Graphic assets
+import PolitietLogo from '@/assets/img/Other/politiet-logo.jpeg';
+import GiDinStemmeIconWBg from '@/assets/img/Logo/GiDinStemmeIconWBg.png';
 
 export default function Footer() {
     return (

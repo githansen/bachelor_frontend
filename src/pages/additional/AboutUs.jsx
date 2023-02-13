@@ -1,10 +1,13 @@
-import Layout from '../../components/shared/Layout';
-import PolitietLogo from '../../assets/img/politiet-logo.jpeg';
-import NorgeFellesskapImg from '../../assets/img/NorgeFellesskapImg.jpeg';
-import RobotFremtidImg from '../../assets/img/RobotFremtidImg.jpeg';
+//React library
+import Layout from '@/components/shared/Layout';
+//Animation library
 import { motion as m } from 'framer-motion';
+//Graphic assets
+import PolitietLogo from '@/assets/img/Other/politiet-logo.jpeg';
+import NorgeFellesskapImg from '@/assets/img/Banner/NorgeFellesskapImg.jpeg';
+import RobotFremtidImg from '@/assets/img/Banner/RobotFremtidImg.jpeg';
 
-export default function HvaEr() {
+export default function AboutUs() {
     return (
         <Layout>
             <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">

@@ -1,29 +1,36 @@
-import GiDinStemmeIconWBg from '../../assets/img/GiDinStemmeIconWBg.png';
+//React library
+import { Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+//Animation library
+import { motion as m } from 'framer-motion';
+//Graphic assets
+import GiDinStemmeIconWBg from '@/assets/img/Logo/GiDinStemmeIconWBg.png';
 
 export default function HeaderMinimalSmall({ state }) {
     const navigate = useNavigate();
     let [isOpen, setIsOpen] = useState(false);
-
-    function closeModal() {
-        setIsOpen(false);
-    }
-    function openModal() {
-        setIsOpen(true);
-    }
-
     return (
         <>
-            <header className="bg-skumring w-full fixed top-0 inset-x-0">
+            <m.header
+                initial={{ y: '-25%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+                className="
+                bg-skumring 
+                w-full 
+                fixed 
+                top-0 
+                inset-x-0
+                z-20"
+            >
                 <nav className="xs:py-3 xs:px-2 sm:py-5 sm:px-4">
                     <div className="grid grid-cols-2 items-center  mx-5">
-                        <div>
+                        <m.div>
                             <button
                                 type="button"
                                 className="flex items-center opacity-30 hover:opacity-100 transition duration-200 ease-in-out"
-                                onClick={openModal}
+                                onClick={() => setIsOpen(true)}
                             >
                                 <img
                                     src={GiDinStemmeIconWBg}
@@ -31,7 +38,7 @@ export default function HeaderMinimalSmall({ state }) {
                                     alt="GiDinStemme - Logo"
                                 />
                             </button>
-                        </div>
+                        </m.div>
                         <div className="text-right flex flex-col">
                             <small className="xs:text-xsliten sm:text-smliten text-solskinn">
                                 {`${
@@ -54,10 +61,14 @@ export default function HeaderMinimalSmall({ state }) {
                         </div>
                     </div>
                 </nav>
-            </header>
+            </m.header>
 
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                <Dialog
+                    as="div"
+                    className="relative z-10"
+                    onClose={() => setIsOpen(false)}
+                >
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -103,7 +114,7 @@ export default function HeaderMinimalSmall({ state }) {
                                     <div className="mt-5 grid md:place-content-center">
                                         <button
                                             type="button"
-                                            onClick={closeModal}
+                                            onClick={() => setIsOpen(false)}
                                             className="
                                         font-semifet 
                                         xs:text-xsknapp 

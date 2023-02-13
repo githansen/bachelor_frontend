@@ -1,7 +1,11 @@
-import GiDinStemmeIconNoBg from '../../assets/img/GiDinStemmeIconNoBg.png';
+//React library
+import { Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+//Animation library
+import { motion as m } from 'framer-motion';
+//Graphic assets
+import GiDinStemmeIconNoBg from '@/assets/img/Logo/GiDinStemmeIconNoBg.png';
 
 export default function Header() {
     const navigate = useNavigate();
@@ -18,7 +22,15 @@ export default function Header() {
         <>
             <header>
                 <nav className="px-4 lg:px-6 pt-10 pb-2">
-                    <div className="flex justify-start mx-14">
+                    <m.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                            duration: 0.3,
+                            ease: 'easeOut',
+                        }}
+                        className="flex justify-start mx-14"
+                    >
                         <button
                             type="button"
                             className="flex items-center"
@@ -30,7 +42,7 @@ export default function Header() {
                                 alt="GiDinStemme - Logo"
                             />
                         </button>
-                    </div>
+                    </m.div>
                 </nav>
             </header>
 

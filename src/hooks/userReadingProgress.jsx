@@ -1,3 +1,4 @@
+//React library
 import { useEffect, useState } from 'react';
 
 //https://github.com/candraKriswinarto/scroll-indicator-progress-bar

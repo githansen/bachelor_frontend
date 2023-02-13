@@ -1,3 +1,4 @@
+//React library
 import { useState } from 'react';
 
 export default function useRecorder() {
@@ -33,7 +34,7 @@ export default function useRecorder() {
             console.info('Stopped recording');
 
             // Create blob from chunks in order to generate URL
-            const blob = new Blob(audioChunks);
+            const blob = new Blob(audioChunks, { type: 'audio/mp4' });
             const url = URL.createObjectURL(blob);
             const audioElm = new Audio(url);
 

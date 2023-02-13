@@ -1,19 +1,16 @@
-import Layout from '../../components/shared/Layout';
-import SlettIkon from '../../assets/img/Slett.png';
+//React library
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
+//Input component library
 import Input from 'react-input-auto-format';
+//Animation library
 import { motion as m } from 'framer-motion';
+//Graphic assets
+import Layout from '@/components/shared/Layout';
+import DeleteGraphic from '@/assets/img/ThreeDeeGraphic/DeleteGraphic.png';
 
-export default function Slett() {
+export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);
-
-    function closeModal() {
-        setIsOpen(false);
-    }
-    function openModal() {
-        setIsOpen(true);
-    }
 
     return (
         <>
@@ -24,7 +21,7 @@ export default function Slett() {
                             initial={{ y: '-15%', opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ duration: 0.7, ease: 'easeOut' }}
-                            src={SlettIkon}
+                            src={DeleteGraphic}
                             className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] h-[15rem] mb-10"
                         />
                         <m.h1
@@ -88,7 +85,7 @@ export default function Slett() {
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.5, ease: 'easeOut' }}
                                 type="button"
-                                onClick={openModal}
+                                onClick={() => setIsOpen(true)}
                                 className="
                                 font-semifet 
                                 xs:text-xsknapp 
@@ -133,7 +130,11 @@ export default function Slett() {
             </Layout>
 
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                <Dialog
+                    as="div"
+                    className="relative z-10"
+                    onClose={() => setIsOpen(false)}
+                >
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -228,7 +229,7 @@ export default function Slett() {
 
                                         <button
                                             type="button"
-                                            onClick={closeModal}
+                                            onClick={() => setIsOpen(false)}
                                             className="
                                         font-fet
                                         xs:text-xsknappliten 
