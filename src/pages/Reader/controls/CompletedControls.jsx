@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import DemoSoundtrack from '@/assets/soundtracks/demoSoundTrack.mp3';
 import AudioPlayer from 'react-h5-audio-player';
 import { ReactComponent as IconRetry } from '@/assets/icons/IconRetry.svg';
 import { ReactComponent as IconPaperPlane } from '@/assets/icons/IconPaperPlane.svg';
@@ -13,7 +12,7 @@ import { ReactComponent as AudioVolumeMuteIcon } from '@/assets/icons/AudioVolum
 import RetryModal from '../RetryModal';
 import { motion as m } from 'framer-motion';
 
-export default function CompletedControls({ setReaderState }) {
+export default function CompletedControls({ setReaderState, audio }) {
     let [retryModalOpen, setRetryModalOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -47,23 +46,29 @@ export default function CompletedControls({ setReaderState }) {
 
                 <div className="text-left place-items-start self-center">
                     <div className="md:min-w-[28rem] lg:min-w-[40rem] ">
-                        <AudioPlayer
-                            className="w-full"
-                            layout="horizontal-reverse"
-                            src={DemoSoundtrack}
-                            showFilledVolume={true}
-                            showJumpControls={true}
-                            progressJumpStep={15000}
-                            customControlsSection={['MAIN_CONTROLS']}
-                            customIcons={{
-                                rewind: <AudioRewindIcon className="h-7 w-7" />,
-                                forward: (
-                                    <AudioForwardIcon className="h-7 w-7" />
-                                ),
-                                play: <AudioPlayIcon className="h-9 w-9" />,
-                                pause: <AudioPauseIcon className="h-9 w-9" />,
-                            }}
-                        />
+                        {audio && (
+                            <AudioPlayer
+                                className="w-full"
+                                layout="horizontal-reverse"
+                                src={audio.url}
+                                showFilledVolume={true}
+                                showJumpControls={true}
+                                progressJumpStep={15000}
+                                customControlsSection={['MAIN_CONTROLS']}
+                                customIcons={{
+                                    rewind: (
+                                        <AudioRewindIcon className="h-7 w-7" />
+                                    ),
+                                    forward: (
+                                        <AudioForwardIcon className="h-7 w-7" />
+                                    ),
+                                    play: <AudioPlayIcon className="h-9 w-9" />,
+                                    pause: (
+                                        <AudioPauseIcon className="h-9 w-9" />
+                                    ),
+                                }}
+                            />
+                        )}
                     </div>
                 </div>
             </div>

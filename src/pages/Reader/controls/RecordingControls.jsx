@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ReactComponent as IconMic } from '@/assets/icons/IconMic.svg';
 import { ReactComponent as AudioStopIcon } from '@/assets/icons/AudioStopIcon.svg';
 import { motion as m } from 'framer-motion';
@@ -9,7 +9,21 @@ function formatTime(time) {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-export default function RecordingControls({ setReaderState, time = null }) {
+export default function RecordingControls({
+    setReaderState,
+    time = null,
+    startRecording,
+    stopRecording,
+}) {
+    const textRecording = 'Tar opp lyd...';
+    const textStopRecording = 'Stopp opptak';
+
+    const [recordingText, setRecordingText] = useState(textRecording);
+
+    useEffect(() => {
+        startRecording();
+    }, []);
+
     return (
         <m.div
             initial={{ y: '15%' }}
@@ -65,8 +79,12 @@ export default function RecordingControls({ setReaderState, time = null }) {
                         transition 
                         ease-in-out 
                         duration-150"
+                        onMouseEnter={() => setRecordingText(textStopRecording)}
+                        onMouseLeave={() => setRecordingText(textRecording)}
                         onClick={() => {
+                            stopRecording();
                             setReaderState(() => 'completed');
+                            setRecordingText(textRecording);
                         }}
                     >
                         <AudioStopIcon className={`w-6 h-6"`} />

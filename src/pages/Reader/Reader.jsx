@@ -10,6 +10,7 @@ import IdleControls from './controls/IdleControls';
 import IdleControlsSmall from './controls/IdleControlsSmall';
 import userReadingProgress from '../../hooks/userReadingProgress';
 import { motion as m } from 'framer-motion';
+import useRecorder from '@/hooks/useRecorder';
 
 // Main text to be read by user
 function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
@@ -120,9 +121,11 @@ function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
 export default function Reader() {
     //Top - Reading Progress Bar
     const completion = userReadingProgress();
-    // Recording
     const [state, setState] = useState('idle'); // idle | recording | completed
-    const { time, start, reset } = useTimer();
+
+    // Recording
+    const { startRecording, stopRecording, audio, isRecording } = useRecorder();
+    const { time, start: timerStart, reset: timerReset } = useTimer();
 
     //Checks the width of window and sets the size of the window (For respoonive design functionality)
     var [windowSize, setWindowSize] = useState([window.innerWidth]);
@@ -176,12 +179,12 @@ export default function Reader() {
 
     // Record when state enters recording
     useEffect(() => {
-        if (state === 'recording') {
-            start();
+        if (state === 'recording' && isRecording) {
+            timerStart();
         } else {
-            reset();
+            timerReset();
         }
-    }, [state]);
+    }, [state, isRecording]);
 
     const renderControls = () => {
         switch (state) {
@@ -189,17 +192,27 @@ export default function Reader() {
                 return (
                     <div className="w-full">
                         <div className="xs:hidden sm:hidden md:block">
-                            <CompletedControls setReaderState={setState} />
+                            (
+                    <CompletedControls
+                        setReaderState={setState}
+                        audio={audio}
+                    />
                         </div>
                         <div className="xs:block sm:block md:hidden">
-                            <CompletedControlsSmall setReaderState={setState} />
+                            <CompletedControlsSmall setReaderState={setState} audio={audio} />
                         </div>
                     </div>
+                )
                 );
 
             case 'recording':
                 return (
-                    <RecordingControls setReaderState={setState} time={time} />
+                    <RecordingControls
+                        setReaderState={setState}
+                        time={time}
+                        startRecording={startRecording}
+                        stopRecording={stopRecording}
+                    />
                 );
 
             case 'idle':
