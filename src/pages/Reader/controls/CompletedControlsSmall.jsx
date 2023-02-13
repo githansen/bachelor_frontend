@@ -12,7 +12,7 @@ import { ReactComponent as AudioVolumeIcon } from '@/assets/icons/AudioVolumeIco
 import { ReactComponent as AudioVolumeMuteIcon } from '@/assets/icons/AudioVolumeMuteIcon.svg';
 import RetryModal from '../RetryModal';
 
-export default function CompletedControls({ setReaderState }) {
+export default function CompletedControls({ setReaderState, audio }) {
     let [retryModalOpen, setRetryModalOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -20,21 +20,25 @@ export default function CompletedControls({ setReaderState }) {
         <div>
             <div className="grid grid-cols-1 items-center w-full trasition mb-5">
                 <div className="w-full">
-                    <AudioPlayer
-                        className=""
-                        src={DemoSoundtrack}
-                        layout="stacked"
-                        progressJumpStep={15000}
-                        showFilledVolume={true}
-                        showJumpControls={true}
-                        customControlsSection={['MAIN_CONTROLS']}
-                        customIcons={{
-                            rewind: <AudioRewindIcon className="h-7 w-7" />,
-                            forward: <AudioForwardIcon className="h-7 w-7" />,
-                            play: <AudioPlayIcon className="h-9 w-9" />,
-                            pause: <AudioPauseIcon className="h-9 w-9" />,
-                        }}
-                    />
+                    {audio && (
+                        <AudioPlayer
+                            className=""
+                            src={audio.url}
+                            layout="stacked"
+                            progressJumpStep={15000}
+                            showFilledVolume={true}
+                            showJumpControls={true}
+                            customControlsSection={['MAIN_CONTROLS']}
+                            customIcons={{
+                                rewind: <AudioRewindIcon className="h-7 w-7" />,
+                                forward: (
+                                    <AudioForwardIcon className="h-7 w-7" />
+                                ),
+                                play: <AudioPlayIcon className="h-9 w-9" />,
+                                pause: <AudioPauseIcon className="h-9 w-9" />,
+                            }}
+                        />
+                    )}
                 </div>
             </div>
             <div className="grid grid-cols-1 items-center w-full trasition mb-5">

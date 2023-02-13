@@ -192,19 +192,19 @@ export default function Reader() {
                 return (
                     <div className="w-full">
                         <div className="xs:hidden sm:hidden md:block">
-                            (
-                    <CompletedControls
-                        setReaderState={setState}
-                        audio={audio}
-                    />
+                            <CompletedControls
+                                setReaderState={setState}
+                                audio={audio}
+                            />
                         </div>
                         <div className="xs:block sm:block md:hidden">
-                            <CompletedControlsSmall setReaderState={setState} audio={audio} />
+                            <CompletedControlsSmall
+                                setReaderState={setState}
+                                audio={audio}
+                            />
                         </div>
                     </div>
-                )
                 );
-
             case 'recording':
                 return (
                     <RecordingControls
