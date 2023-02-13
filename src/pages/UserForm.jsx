@@ -7,7 +7,7 @@ import Footer from '@/components/shared/Footer';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Graphic assets
-import UserFormIcon from '@/assets/img/ThreeDeeGraphic/UserForm.png';
+import UserFormIcon from '@/assets/img/ThreeDeeGraphic/UserFormGraphic.webp';
 
 function SelectInput({ options, name, selected, onChange }) {
     const selectStyle = {

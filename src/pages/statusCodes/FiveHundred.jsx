@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 //Shared components
 import Layout from '@/components/shared/Layout';
 //Graphic assets
-import FiveHundredIcon from '@/assets/img/ThreeDeeGraphic/FiveHundred.png';
+import FiveHundredIcon from '@/assets/img/ThreeDeeGraphic/FiveHundredGraphic.webp';
 //Animation library
 import { motion as m } from 'framer-motion';
 

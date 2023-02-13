@@ -3,9 +3,9 @@ import Layout from '@/components/shared/Layout';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Graphic assets
-import PolitietLogo from '@/assets/img/Other/politiet-logo.jpeg';
-import NorgeFellesskapImg from '@/assets/img/Banner/NorgeFellesskapImg.jpeg';
-import RobotFremtidImg from '@/assets/img/Banner/RobotFremtidImg.jpeg';
+import PolitietLogo from '@/assets/img/Other/politiet-logo.webp';
+import NorgeFellesskapImg from '@/assets/img/Banner/NorgeFellesskapImg.webp';
+import RobotFremtidImg from '@/assets/img/Banner/RobotFremtidImg.webp';
 
 export default function AboutUs() {
     return (

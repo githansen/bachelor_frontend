@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 //Shared components
 import Layout from '@/components/shared/Layout';
 //Graphic assets
-import FourOFourIcon from '@/assets/img/ThreeDeeGraphic/FourOFour.png';
+import FourOFourIcon from '@/assets/img/ThreeDeeGraphic/FourOFourGraphic.webp';
 //Animation library
 import { motion as m } from 'framer-motion';
 

@@ -5,7 +5,7 @@ import Layout from '@/components/shared/Layout';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Graphic assets
-import HomePlaceholder2 from '@/assets/img/ThreeDeeGraphic/HomePlaceholder2.png';
+import HomePlaceholder2 from '@/assets/img/ThreeDeeGraphic/PrivacyGraphic.webp';
 
 export default function Privacy() {
     return (

@@ -7,7 +7,7 @@ import Input from 'react-input-auto-format';
 import { motion as m } from 'framer-motion';
 //Graphic assets
 import Layout from '@/components/shared/Layout';
-import DeleteGraphic from '@/assets/img/ThreeDeeGraphic/DeleteGraphic.png';
+import DeleteGraphic from '@/assets/img/ThreeDeeGraphic/DeleteGraphic.webp';
 
 export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);

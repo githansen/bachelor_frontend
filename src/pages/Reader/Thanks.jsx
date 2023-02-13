@@ -5,7 +5,7 @@ import Layout from '@/components/shared/Layout';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Graphic assets
-import ThanksIcon from '@/assets/img/ThreeDeeGraphic/thanks.png';
+import ThanksIcon from '@/assets/img/ThreeDeeGraphic/ThanksGraphic.webp';
 
 export default function Thanks() {
     return (
