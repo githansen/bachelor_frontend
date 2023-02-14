@@ -7,7 +7,6 @@ import {
     createBrowserRouter,
     useLocation,
 } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 // Pages
 import Page404 from './pages/statusCodes/FourOFour';
 import Page500 from './pages/statusCodes/FiveHundred';
@@ -20,26 +19,18 @@ import Personvern from './pages/additional/Personvern';
 import HvaEr from './pages/additional/HvaEr';
 import Slett from './pages/additional/Slett';
 
-export default function ScrollToTop() {
+function Page({ title, children }) {
     const { pathname } = useLocation();
+
+    useEffect(() => {
+        document.title = `GiDinStemme - ${title}`;
+    }, [title]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
 
-    return null;
-}
-
-function Page({ title, children }) {
-    return (
-        <>
-            <ScrollToTop />
-            <Helmet>
-                <title>{title} - GiDinStemme</title>
-            </Helmet>
-            {children}
-        </>
-    );
+    return <>{children}</>;
 }
 
 const router = createBrowserRouter([
