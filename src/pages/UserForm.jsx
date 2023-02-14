@@ -4,6 +4,8 @@ import Footer from '../components/shared/Footer';
 import { Navigate } from 'react-router-dom';
 import UserFormIcon from '../assets/img/UserForm.png';
 import { motion as m } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { queryApi } from '@/utils/api';
 
 function SelectInput({ options, name, selected, onChange }) {
     const selectStyle = {
@@ -156,6 +158,8 @@ function Stepper({ step, totalSteps }) {
 }
 
 export default function PageUserForm() {
+    const navigate = useNavigate();
+
     const ageOptions = [
         { value: '1', label: '18-29' },
         { value: '2', label: '30-39' },
@@ -219,6 +223,20 @@ export default function PageUserForm() {
         </div>,
     ];
 
+    const incrementStep = async () => {
+        if (step === steps.length - 1) {
+            const res = await queryApi('User/RegisterUserInfo', {
+                nativeLanguage: language?.value,
+                dialect: dialect?.value,
+                ageGroup: ageGroup?.value,
+                gender: gender?.value,
+            });
+            navigate('/les');
+        } else {
+            setStep((prev) => prev + 1);
+        }
+    };
+
     if (step >= steps.length) {
         return <Navigate to="/les" />;
     } else {
@@ -258,7 +276,7 @@ export default function PageUserForm() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, ease: 'easeOut' }}
-                            onClick={() => setStep((prev) => prev + 1)}
+                            onClick={incrementStep}
                             className="
                             font-fet 
                             xs:text-xsknapp 

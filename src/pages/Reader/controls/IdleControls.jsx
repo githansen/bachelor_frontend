@@ -17,6 +17,7 @@ export default function IdleControls({
     setFontFamily,
     alignText,
     setAlignText,
+    reloadText,
 }) {
     // Ny tekst modal
     let [resetModalOpen, setResetModalOpen] = useState(false);
@@ -115,7 +116,8 @@ export default function IdleControls({
                 open={resetModalOpen}
                 onClose={() => setResetModalOpen(false)}
                 onReset={() => {
-                    /* TODO: Not implemented yet */
+                    reloadText();
+                    setResetModalOpen(false);
                 }}
             />
         </m.div>
