@@ -1,0 +1,162 @@
+
+@font-face {
+	font-family: 'Futura';
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 200;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-Light.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 300;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-Book.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 400;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 500;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-Heavy.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 600;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 700;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-style: oblique;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-Oblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 200;
+	font-style: oblique;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-LightOblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 300;
+	font-style: oblique;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-BookOblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 400;
+	font-style: oblique;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-Oblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 500;
+	font-style: oblique;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-HeavyOblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 600;
+	font-style: oblique;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-BoldOblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	font-weight: 700;
+	font-style: oblique;
+	src: local('Futura'), url('@/assets/fonts/Futura/FuturaLT-ExtraBoldOblique.ttf') format('truetype');
+}
+
+/* Avenir */
+
+@font-face {
+	font-family: 'Avenir';
+	font-weight: 200;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-Light.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir';
+	font-weight: 300;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-Book.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir';
+	font-weight: 400;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-Medium.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir';
+	font-weight: 500;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-Heavy.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir';
+	font-weight: 600;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-Black.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir';
+	font-style: oblique;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-Oblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir';
+	font-weight: 200;
+	font-style: oblique;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-LightOblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir';
+	font-style: oblique;
+	font-weight: 300;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-BookOblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir';
+	font-weight: 400;
+	font-style: oblique;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-MediumOblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir';
+	font-weight: 500;
+	font-style: oblique;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-HeavyOblique.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Avenir';
+	font-weight: 600;
+	font-style: oblique;
+	src: local('Avenir'), url('@/assets/fonts/Avenir/Avenir-BlackOblique.ttf') format('truetype');
+}
