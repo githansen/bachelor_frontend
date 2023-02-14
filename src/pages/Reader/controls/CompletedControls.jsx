@@ -18,6 +18,7 @@ import { ReactComponent as AudioPauseIcon } from '@/assets/icons/AudioPauseIcon.
 //Controls for completed recording
 export default function CompletedControls({ setReaderState, audio }) {
     let [retryModalOpen, setRetryModalOpen] = useState(false);
+    let [displayAudioPlayer, setDisplayAudioPlayer] = useState(false);
     const navigate = useNavigate();
 
     return (
@@ -50,30 +51,71 @@ export default function CompletedControls({ setReaderState, audio }) {
 
                 <div className="text-left place-items-start self-center">
                     <div className="md:min-w-[28rem] lg:min-w-[40rem] ">
-                        {audio && (
-                            <AudioPlayer
-                                className="w-full"
-                                layout="horizontal-reverse"
-                                src={audio.url}
-                                showJumpControls={true}
-                                progressJumpStep={15000}
-                                customControlsSection={['MAIN_CONTROLS']}
-                                customIcons={{
-                                    rewind: (
-                                        <AudioRewindIcon className="h-7 w-7 hover:opacity-50 transition duration-200 ease-in-out" />
-                                    ),
-                                    forward: (
-                                        <AudioForwardIcon className="h-7 w-7 hover:opacity-50 transition duration-200 ease-in-out" />
-                                    ),
-                                    play: (
-                                        <AudioPlayIcon className="h-9 w-9 hover:opacity-50 transition duration-200 ease-in-out" />
-                                    ),
-                                    pause: (
-                                        <AudioPauseIcon className="h-9 w-9 hover:opacity-50 transition duration-200 ease-in-out" />
-                                    ),
-                                }}
-                            />
-                        )}
+                        <div
+                            className={`${
+                                displayAudioPlayer === true ? 'block' : 'hidden'
+                            }`}
+                        >
+                            {audio && (
+                                <AudioPlayer
+                                    className="w-full"
+                                    layout="horizontal-reverse"
+                                    preload="auto"
+                                    autoPlay={false}
+                                    src={audio.url}
+                                    onLoadedData={() =>
+                                        setDisplayAudioPlayer(true)
+                                    }
+                                    showJumpControls={true}
+                                    progressJumpStep={15000}
+                                    customControlsSection={['MAIN_CONTROLS']}
+                                    customIcons={{
+                                        rewind: (
+                                            <AudioRewindIcon className="h-7 w-7 hover:opacity-50 transition duration-200 ease-in-out" />
+                                        ),
+                                        forward: (
+                                            <AudioForwardIcon className="h-7 w-7 hover:opacity-50 transition duration-200 ease-in-out" />
+                                        ),
+                                        play: (
+                                            <AudioPlayIcon className="h-9 w-9 hover:opacity-50 transition duration-200 ease-in-out" />
+                                        ),
+                                        pause: (
+                                            <AudioPauseIcon className="h-9 w-9 hover:opacity-50 transition duration-200 ease-in-out" />
+                                        ),
+                                    }}
+                                />
+                            )}
+                        </div>
+                        <div
+                            className={`
+                            flex
+                            mt-2
+                            ${
+                                displayAudioPlayer === true ? 'hidden' : 'block'
+                            }`}
+                        >
+                            <svg
+                                class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle
+                                    class="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    stroke-width="4"
+                                ></circle>
+                                <path
+                                    class="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                ></path>
+                            </svg>
+                            Laster inn lydklipp
+                        </div>
                     </div>
                 </div>
             </div>
