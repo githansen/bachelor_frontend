@@ -11,13 +11,6 @@ export default function Header() {
     const navigate = useNavigate();
     let [isOpen, setIsOpen] = useState(false);
 
-    function closeModal() {
-        setIsOpen(false);
-    }
-    function openModal() {
-        setIsOpen(true);
-    }
-
     return (
         <>
             <header>
@@ -34,7 +27,7 @@ export default function Header() {
                         <button
                             type="button"
                             className="flex items-center"
-                            onClick={openModal}
+                            onClick={() => setIsOpen(true)}
                         >
                             <img
                                 src={GiDinStemmeIconNoBg}
@@ -47,7 +40,11 @@ export default function Header() {
             </header>
 
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                <Dialog
+                    as="div"
+                    className="relative z-10"
+                    onClose={() => setIsOpen(false)}
+                >
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -93,7 +90,7 @@ export default function Header() {
                                     <div className="mt-5 grid md:place-content-center">
                                         <button
                                             type="button"
-                                            onClick={closeModal}
+                                            onClick={() => setIsOpen(false)}
                                             className="
                                         font-semifet 
                                         xs:text-xsknapp 

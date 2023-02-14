@@ -11,6 +11,7 @@ import DeleteGraphic from '@/assets/img/ThreeDeeGraphic/DeleteGraphic.webp';
 
 export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);
+    let [userInput, setUserInput] = useState('');
 
     return (
         <>
@@ -77,53 +78,82 @@ export default function DeleteRecording() {
                                     id="bidragskode"
                                     type="text"
                                     placeholder="123E4567-E89B-12D30-EG94348"
+                                    onChange={(e) =>
+                                        setUserInput(e.target.value)
+                                    }
+                                    onKeyPress={(event) => {
+                                        if (!/[0-9]/.test(event.key)) {
+                                            event.preventDefault();
+                                        }
+                                    }}
                                 />
+                                <p
+                                    className={`
+                                    text-center
+                                    text-stein
+                                    font-normal
+                                    ${
+                                        userInput.length === 27
+                                            ? 'hidden'
+                                            : 'block'
+                                    }`}
+                                >{`${userInput.length}/27`}</p>
                             </m.div>
 
-                            <m.button
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.5, ease: 'easeOut' }}
-                                type="button"
-                                onClick={() => setIsOpen(true)}
-                                className="
-                                font-semifet 
-                                xs:text-xsknapp 
-                                sm:text-smknapp 
-                                xl:text-xlknapp 
-                                text-knapp 
-                                text-fred 
-                                bg-rose 
-                                xs:w-full 
-                                w-fit 
-                                transScale 
-                                px-14 
-                                py-4 
-                                mb-2 
-                                mt-2 
-                                rounded 
-                                inline-flex 
-                                justify-center 
-                                items-center 
-                                gap-2"
+                            <div
+                                className={`
+                                ${
+                                    userInput.length === 27 ? 'block' : 'hidden'
+                                }`}
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="30"
-                                    height="30"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
+                                <m.button
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{
+                                        duration: 0.5,
+                                        ease: 'easeOut',
+                                    }}
+                                    type="button"
+                                    onClick={() => setIsOpen(true)}
+                                    className={`
+                                    font-semifet 
+                                    xs:text-xsknapp 
+                                    sm:text-smknapp 
+                                    xl:text-xlknapp 
+                                    text-knapp 
+                                    text-fred 
+                                    bg-rose 
+                                    xs:w-full 
+                                    w-fit 
+                                    transScale 
+                                    px-14 
+                                    py-4 
+                                    mb-2 
+                                    mt-2 
+                                    rounded 
+                                    inline-flex 
+                                    justify-center 
+                                    items-center 
+                                    gap-2`}
                                 >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                    />
-                                </svg>
-                                Slett
-                            </m.button>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                                        />
+                                    </svg>
+                                    Slett
+                                </m.button>
+                            </div>
                         </form>
                     </div>
                 </div>
