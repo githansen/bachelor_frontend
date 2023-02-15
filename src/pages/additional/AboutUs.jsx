@@ -64,11 +64,12 @@ export default function AboutUs() {
                             text-h4
                             text-metall"
                         >
-                            Sed finibus quam quam, eu aliquet risus faucibus
-                            sed. Nam risus dolor, aliquet eu urna ut, laoreet
-                            laoreet ligula. Integer gravida iaculis odio, ac
-                            placerat erat vehicula eget. Mauris eget tincidunt
-                            ligula.
+                            Vi ønsker morgendagen velkommen, og ser frem til en
+                            spennende fremtid i vente. For å fortsette å være et
+                            land med ledende teknologisk utvikling, er det
+                            viktig å tilpasse seg trender og marked. GiDinStemme
+                            dekker et grunnlag ved fortsettelsen av nyskapning
+                            og modernisering av samfunnet. Bli med på reisen!
                         </m.h4>
                     </div>
 
@@ -89,27 +90,29 @@ export default function AboutUs() {
                         text-skumring
                         mb-5"
                     >
-                        Nullam eget nunc mauris. Quisque non risus eu mauris
-                        auctor interdum. Cras id sollicitudin ipsum. Sed sed
-                        nunc congue, posuere sem a, dapibus ipsum. Aliquam erat
-                        volutpat. Maecenas feugiat eros id elit dapibus blandit.
-                        Pellentesque habitant morbi tristique senectus et netus
-                        et malesuada fames ac turpis egestas. Etiam et lorem
-                        quam. Ut rutrum, ante cursus luctus convallis, velit
-                        odio pharetra arcu, id pellentesque risus orci in magna.
-                        Phasellus at condimentum arcu. Curabitur eros risus,
-                        vulputate sit amet pulvinar at, fringilla molestie est.
-                        Praesent sed fermentum lacus. Suspendisse eget urna
-                        arcu. Vestibulum ut ornare arcu, tempus sagittis nunc.
-                        Etiam sit amet lobortis lectus, ut laoreet magna. In ut
-                        nisl sit amet sapien dictum imperdiet. Duis eu libero
-                        mauris. Vivamus gravida dictum mauris lobortis commodo.
-                        Nulla sed commodo neque, sed hendrerit quam. Fusce velit
-                        ante, ultricies a sagittis in, porttitor nec magna.
-                        Mauris dolor nisi, cursus non ex a, varius aliquam
-                        justo. Interdum et malesuada fames ac ante ipsum primis
-                        in faucibus. Etiam non risus venenatis nunc ullamcorper
-                        tincidunt.
+                        De fleste frykter dem, mange ser frem til dem, og noen
+                        har ingen spesifikk mening om dem. Vi kaller det kunstig
+                        intelligens. Du har kanskje prøvd ut ChatGPT, eller
+                        kanskje brukt Siri på din iphone? Dette er det vi kaller
+                        kunstig intelligens. Altså datamaskiner som er trenes
+                        opp ved å lære seg algoritmer, mønstre og gjentakelser
+                        for å gjøre min og din hverdag litt lettere. I samarbeid
+                        med Politiets IT-enhet har en studentgruppe fra Oslomet
+                        begitt seg ut på oppgaven om å samle inn data for å
+                        nettopp trene opp en slik kunstig intelligens. Nå kan
+                        det kanskje høres skummelt ut at det er i regi av
+                        politiet hvor dette prosjektet utvikles. Men se på det
+                        fra den lyse siden, politiet holder norge tross alt
+                        trygt. Så for å bistå politiet i deres arbeid mot
+                        kriminalitet, har vi laget en webapp som har til hensikt
+                        å samle inn stemmen fra den helt vanlige nordmannen på
+                        gata. Dette er et anonymisert bidrag som skal brukes til
+                        å trene opp en kunstig intelligens som skal kunne hjelpe
+                        politiet med å blant annet løse kriminalitet. Vi håper
+                        du vil være med på å bidra til å gjøre samfunnet
+                        tryggere, og at du vil ta deg tid til å bidra med din
+                        stemme. Vi estimerer at det ikke vil ta mer enn 5
+                        minutter av din tid.
                     </m.p>
                     <m.p
                         initial={{ y: '25%', opacity: 0 }}
@@ -128,21 +131,17 @@ export default function AboutUs() {
                         text-skumring
                         mb-5"
                     >
-                        Sed feugiat luctus erat sed varius. Aenean pulvinar nibh
-                        eu condimentum pellentesque. Suspendisse luctus
-                        tincidunt felis non lacinia. Ut condimentum, lacus quis
-                        lacinia maximus, odio leo tempor tortor, sed interdum
-                        lectus erat eu tellus. Ut nunc diam, faucibus sit amet
-                        accumsan a, condimentum nec libero. In volutpat maximus
-                        ligula vitae porta. Donec placerat magna eget ligula
-                        congue ultrices. Aenean nec iaculis turpis. Praesent
-                        aliquet risus id mi convallis tincidunt. Aenean eget ex
-                        feugiat, tincidunt sem sed, convallis nunc. Maecenas
-                        felis ligula, rhoncus vitae nisi tempor, molestie
-                        lacinia mi. Ut vel pharetra odio. Maecenas vitae diam
-                        non eros vestibulum scelerisque sit amet nec nibh.
-                        Vivamus luctus libero metus. Aliquam sit amet ornare
-                        metus.
+                        Denne webapplikasjone er utviklet i samarbeid mellom
+                        Politiets IT-enhet og StudentGruppe40. Vi er en gruppe
+                        på 4 studenter som studerer informasjonsteknologi, ved
+                        Oslomet Pilestredet i Oslo. Gruppen består av Junus Sefa
+                        (Frontend utvikler og grafisk designer), Tony (Frontend
+                        utvikler), Henrik Larsen (Backend utvikler) og Johan
+                        (Backend utvikler). Vi har tatt i bruk den mest moderne
+                        teknologien på markedet, og er stolte av å presentere
+                        vårt prosjekt for det norske samfunn. Om du er
+                        interessert i å lese mer om vårt bachelorprosjekt, kan
+                        du finne mer informasjon ved å klikke her.
                     </m.p>
 
                     <div className="grid grid-col-1 place-self-end place-items-center">

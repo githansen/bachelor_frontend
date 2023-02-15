@@ -68,11 +68,13 @@ export default function Privacy() {
                                 text-h4
                                 text-metall"
                             >
-                                Når du bruker tjenester fra oss, gir du oss
-                                tilgang til informasjon om deg. Vi innser at
-                                dette er et stort ansvar, og vi jobber hardt for
-                                å beskytte informasjonen din og gi deg kontroll
-                                over den.
+                                Kort fortalt tar vi kun i bruk nødvendige
+                                cookies på vår platform. Dette innebærer ingen
+                                innhenting av sensitiv informasjon av deg som
+                                bruker. Ved å ta i bruk tjenesten samtykker du
+                                til at din stemme kan/vil brukes til opplæring
+                                av kunstig intelligens. Vi kan love at din
+                                stemme ikke vil komme på avveie :)
                             </m.h4>
                         </div>
                     </div>
@@ -94,20 +96,21 @@ export default function Privacy() {
                         text-skumring
                         mb-5"
                     >
-                        Sed finibus quam quam, eu aliquet risus faucibus sed.
-                        Nam risus dolor, aliquet eu urna ut, laoreet laoreet
-                        ligula. Integer gravida iaculis odio, ac placerat erat
-                        vehicula eget. Mauris eget tincidunt ligula, sit amet
-                        mattis diam. Cras consequat tristique ante. Donec ut dui
-                        eu nulla rhoncus vulputate eu vitae nibh. Mauris ac
-                        risus magna. Integer id auctor massa. Mauris ultricies
-                        felis eu congue eleifend. Nulla et ultricies eros. Morbi
-                        urna purus, commodo sit amet nisi quis, semper accumsan
-                        quam. Nam eu massa eu lectus dapibus dignissim. Integer
-                        dignissim sagittis facilisis. Proin et congue nunc.
-                        Suspendisse ultrices, nisi efficitur pulvinar porttitor,
-                        dolor diam cursus quam, at commodo mauris tortor
-                        eleifend erat. Morbi luctus commodo ante non egestas.
+                        Behandlingsansvarlig Sed finibus quam quam, eu aliquet
+                        risus faucibus sed. Nam risus dolor, aliquet eu urna ut,
+                        laoreet laoreet ligula. Integer gravida iaculis odio, ac
+                        placerat erat vehicula eget. Mauris eget tincidunt
+                        ligula, sit amet mattis diam. Cras consequat tristique
+                        ante. Donec ut dui eu nulla rhoncus vulputate eu vitae
+                        nibh. Mauris ac risus magna. Integer id auctor massa.
+                        Mauris ultricies felis eu congue eleifend. Nulla et
+                        ultricies eros. Morbi urna purus, commodo sit amet nisi
+                        quis, semper accumsan quam. Nam eu massa eu lectus
+                        dapibus dignissim. Integer dignissim sagittis facilisis.
+                        Proin et congue nunc. Suspendisse ultrices, nisi
+                        efficitur pulvinar porttitor, dolor diam cursus quam, at
+                        commodo mauris tortor eleifend erat. Morbi luctus
+                        commodo ante non egestas.
                     </m.p>
 
                     <m.p
