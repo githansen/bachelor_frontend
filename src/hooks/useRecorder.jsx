@@ -44,7 +44,6 @@ export default function useRecorder() {
                 audioElm,
                 play: () => audioElm.play(),
             };
-
             audioChunks = [];
             setAudio(() => newAudio);
         };
