@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import '@/assets/fonts/index.css';
 import './styles/index.css';
 import { useEffect } from 'react';
 import {
