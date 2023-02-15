@@ -79,11 +79,11 @@ export default function DeleteRecording() {
                                     type="text"
                                     placeholder="123E4567-E89B-12D30-EG94348"
                                     onChange={(e) =>
-                                        setUserInput(e.target.value)
+                                        setUserInput(e.target.value.trim())
                                     }
-                                    onKeyPress={(event) => {
-                                        if (!/[0-9]/.test(event.key)) {
-                                            event.preventDefault();
+                                    onKeyPress={(e) => {
+                                        if (/^[A-Za-z0-9]{}}$/.test(e.key)) {
+                                            e.preventDefault();
                                         }
                                     }}
                                 />
@@ -241,7 +241,7 @@ export default function DeleteRecording() {
                                             <svg
                                                 className="w-6 h-6 mb-1"
                                                 viewBox="0 0 24 24"
-                                                stroke-width="1.5"
+                                                strokeWidth="1.5"
                                                 fill="none"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 color="currentColor"
@@ -249,9 +249,9 @@ export default function DeleteRecording() {
                                                 <path
                                                     d="M20 9l-1.995 11.346A2 2 0 0116.035 22h-8.07a2 2 0 01-1.97-1.654L4 9M21 6h-5.625M3 6h5.625m0 0V4a2 2 0 012-2h2.75a2 2 0 012 2v2m-6.75 0h6.75"
                                                     stroke="currentColor"
-                                                    stroke-width="2.5"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
+                                                    strokeWidth="2.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
                                                 ></path>
                                             </svg>
                                             Slett

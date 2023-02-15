@@ -10,7 +10,7 @@ import RecordingControls from '@/pages/Reader/controls/RecordingControls';
 import IdleControls from '@/pages/Reader/controls/IdleControls';
 import IdleControlsSmall from '@/pages/Reader/controls/IdleControlsSmall';
 //Hooks
-import userReadingProgress from '@/hooks/userReadingProgress';
+import useReadingProgress from '@/hooks/useReadingProgress';
 import useRecorder from '@/hooks/useRecorder';
 //Audioplayer
 import '@/styles/audioplayer.css';
@@ -30,8 +30,8 @@ function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
     return (
         <div>
             <m.div
-                initial={{ y: '5%', opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{
                     duration: 0.5,
                     ease: 'easeOut',
@@ -133,7 +133,7 @@ function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
 // Stateful wrapping component
 export default function Reader() {
     //Top - Reading Progress Bar
-    const completion = userReadingProgress();
+    const completion = useReadingProgress();
     const [state, setState] = useState('idle'); // idle | recording | completed
 
     // Recording

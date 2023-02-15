@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 //https://github.com/candraKriswinarto/scroll-indicator-progress-bar
-const userReadingProgress = () => {
+const useReadingProgress = () => {
     const [completion, setCompletion] = useState(0);
 
     useEffect(() => {
@@ -27,4 +27,4 @@ const userReadingProgress = () => {
     return completion;
 };
 
-export default userReadingProgress;
+export default useReadingProgress;

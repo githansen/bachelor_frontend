@@ -12,7 +12,7 @@ export default function Thanks() {
         <Layout>
             <div>
                 <div className="min-h-[40rem] m-10 flex flex-col place-items-center justify-center gap-5">
-                    <m.img //React library
+                    <m.img
                         src={ThanksIcon}
                         className="xs:h-[12rem] sm:h-[12rem] md:h-[13rem] lg:h-[15rem] h-[15rem] mb-10"
                     />
