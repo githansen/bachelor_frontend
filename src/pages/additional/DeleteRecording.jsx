@@ -5,6 +5,8 @@ import { Fragment, useState } from 'react';
 import Input from 'react-input-auto-format';
 //Animation library
 import { motion as m } from 'framer-motion';
+//Toast Library
+import toast, { Toaster as Notification } from 'react-hot-toast';
 //Graphic assets
 import Layout from '@/components/shared/Layout';
 import DeleteGraphic from '@/assets/img/ThreeDeeGraphic/DeleteGraphic.webp';
@@ -13,9 +15,18 @@ export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);
     let [userInput, setUserInput] = useState('');
 
+    let notifyError = () => toast.error('Noe gikk galt. Prøv på nytt!');
+    const notifySuccess = () => toast.success('Ditt bidrag ble slettet!');
+
+    function deleteContribution() {
+        setIsOpen(false);
+        notifySuccess();
+    }
+
     return (
         <>
             <Layout>
+                <Notification />
                 <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">
                     <div className="min-h-[20rem] md:min-h-[40rem] lg:min-h-[40rem] xl:min-h-[50rem] xs:my-8 sm:my-10 md:my-12 lg:my-14px xl:my-14 flex flex-col place-items-center justify-center">
                         <m.img
@@ -211,6 +222,7 @@ export default function DeleteRecording() {
                                     <div className="mt-5 grid md:place-content-center">
                                         <button
                                             type="button"
+                                            onClick={deleteContribution}
                                             className="
                                         font-fet
                                         hover:font-feteste
