@@ -1,9 +1,13 @@
+//React library
 import { useState } from 'react';
-import Select, { components } from 'react-select';
-import Footer from '../components/shared/Footer';
 import { Navigate } from 'react-router-dom';
-import UserFormIcon from '../assets/img/UserForm.png';
+import Select, { components } from 'react-select';
+//Shared components
+import Footer from '@/components/shared/Footer';
+//Animation library
 import { motion as m } from 'framer-motion';
+//Graphic assets
+import UserFormIcon from '@/assets/img/ThreeDeeGraphic/UserFormGraphic.webp';
 
 function SelectInput({ options, name, selected, onChange }) {
     const selectStyle = {
@@ -33,16 +37,19 @@ function SelectInput({ options, name, selected, onChange }) {
             boxShadow: 'none',
             border: '1.5px solid #FFD039',
             borderRadius: '5px',
+            zIndex: 999,
         }),
         control: (styles, state) => ({
             ...styles,
+            boxShadow: 'none',
             background: state.hasValue ? '#FFEFB6' : '#FFFFFF',
             border: '2px solid #FFD039',
+            outline: '0',
             color: state.hasValue ? '#FFFFFF' : '#000000',
+            zIndex: 100,
             '&:hover': {
                 cursor: 'pointer',
             },
-            outline: state.isFocused ? '-webkit-focus-ring-color auto 1px;' : 0,
         }),
         dropdownIndicator: (base) => ({
             ...base,
@@ -95,9 +102,9 @@ function SelectInput({ options, name, selected, onChange }) {
     // it can be hidden with the className "sr-only"
     return (
         <m.div
-            initial={{ opacity: 0.2 }}
+            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
             className="
             w-10/12 
             mx-auto"

@@ -1,8 +1,13 @@
-import Layout from '../../components/shared/Layout';
+//React library
 import { useNavigate } from 'react-router-dom';
-import FourOFourIcon from '../../assets/img/FourOFour.png';
+//Shared components
+import Layout from '@/components/shared/Layout';
+//Graphic assets
+import FourOFourIcon from '@/assets/img/ThreeDeeGraphic/FourOFourGraphic.webp';
+//Animation library
 import { motion as m } from 'framer-motion';
 
+//404 page
 export default function FourOFour() {
     const navigate = useNavigate();
 
