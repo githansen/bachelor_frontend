@@ -8,6 +8,7 @@ import {
     createBrowserRouter,
     useLocation,
 } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 //Stylesheet
 import '@/styles/index.css';
 // Pages
@@ -36,6 +37,7 @@ function Page({ title, children }) {
     return (
         <>
             <ScrollToTop />
+            <Toaster />
             <Helmet>
                 <title>{title} - GiDinStemme</title>
             </Helmet>

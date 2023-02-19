@@ -14,6 +14,7 @@ import useReadingProgress from '@/hooks/useReadingProgress';
 import useRecorder from '@/hooks/useRecorder';
 import { useApi } from '@/utils/api';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 //Audioplayer
 import '@/styles/audioplayer.css';
 //Timer library
@@ -119,11 +120,36 @@ export default function Reader() {
     }, [state, isRecording]);
 
     const submitRecording = async () => {
-        if (isRecording || !audio) {
-            // toast.error('Du må stoppe opptaket før du kan sende inn');
+        if (!audio || !text) {
+            toast.error('Noe gikk galt med opptaket, prøv igjen');
             return;
         }
-        navigate('/takk');
+
+        const res = await fetch('/api/User/SaveFile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: {
+                textId: text.textId,
+                recording: audio.blob,
+            }
+        });
+
+        switch (res.status) {
+            case 200:
+                toast.success('Opptak sendt');
+                navigate('/takk');
+                break;
+
+            case 401:
+                toast.success('Du må logge inn for å sende inn opptak');
+                break;
+
+            case 500:
+            default:
+                toast.success('Noe gikk galt hos oss, prøv igjen senere');
+        }
     };
 
     const renderControls = () => {
