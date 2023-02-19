@@ -1,24 +1,37 @@
+//React library
 import { useEffect, useState } from 'react';
+//Shared components
 import HeaderMinimal from '@/components/shared/HeaderMinimal';
 import HeaderMinimalSmall from '@/components/shared/HeaderMinimalSmall';
-import '@/styles/audioplayer.css';
-import { useTimer } from 'use-timer';
-import CompletedControls from './controls/CompletedControls';
-import CompletedControlsSmall from './controls/CompletedControlsSmall';
-import RecordingControls from './controls/RecordingControls';
-import IdleControls from './controls/IdleControls';
-import IdleControlsSmall from './controls/IdleControlsSmall';
-import userReadingProgress from '../../hooks/userReadingProgress';
-import { motion as m } from 'framer-motion';
+//Components
+import CompletedControls from '@/pages/Reader/controls/CompletedControls';
+import CompletedControlsSmall from '@/pages/Reader/controls/CompletedControlsSmall';
+import RecordingControls from '@/pages/Reader/controls/RecordingControls';
+import IdleControls from '@/pages/Reader/controls/IdleControls';
+import IdleControlsSmall from '@/pages/Reader/controls/IdleControlsSmall';
+//Hooks
+import useReadingProgress from '@/hooks/useReadingProgress';
 import useRecorder from '@/hooks/useRecorder';
 import { useApi } from '@/utils/api';
 import { useNavigate } from 'react-router-dom';
+//Audioplayer
+import '@/styles/audioplayer.css';
+//Timer library
+import { useTimer } from 'use-timer';
+//Animation library
+import { motion as m } from 'framer-motion';
 
 // Main text to be read by user
 function TextPanel({ text, state, fontColor, fontsize, fontfamily, alignText }) {
     return (
         <div>
-            <div
+            <m.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                    duration: 0.5,
+                    ease: 'easeOut',
+                }}
                 style={{
                     fontSize: `${fontsize}px`,
                     fontFamily: `${fontfamily}`,
@@ -28,7 +41,7 @@ function TextPanel({ text, state, fontColor, fontsize, fontfamily, alignText }) 
                 className={` rounded-lg leading-loose xs:p-0 sm:p-0 md:p-8 bordser-2 transition-colors text-justify duration-400`}
             >
                 {text}
-            </div>
+            </m.div>
         </div>
     );
 }
@@ -37,7 +50,7 @@ function TextPanel({ text, state, fontColor, fontsize, fontfamily, alignText }) 
 export default function Reader() {
     const { response: text, loading, refetch } = useApi('User/GetText');
     //Top - Reading Progress Bar
-    const completion = userReadingProgress();
+    const completion = useReadingProgress();
     const [state, setState] = useState('idle'); // idle | recording | completed
 
     const navigate = useNavigate();
@@ -182,7 +195,7 @@ export default function Reader() {
         <div>
             <span
                 style={{ transform: `translateX(${completion - 100}%)` }}
-                className="bg-solskinn h-2 w-full xs:top-[4.7rem] sm:top-[5.7rem] md:top-0 fixed transition duration-75 linear z-50"
+                className="bg-solskinn h-2 w-full top-0 fixed transition duration-75 linear z-50"
             />
             <div
                 className={`${
@@ -198,7 +211,7 @@ export default function Reader() {
                     </div>
                 </div>
 
-                <div className=" max-w-2xl px-0 mx-auto pt-0 flex flex-col place-items-center">
+                <div className="xs:max-w-[30em] xs:px-5 sm:max-w-[45em] sm:px-10 md:max-w-[75em] px-0 mx-auto pt-0 flex flex-col place-items-center">
                     <div className="mx-auto">
                         <TextPanel
                             text={text?.textText}

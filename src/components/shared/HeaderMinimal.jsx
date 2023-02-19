@@ -1,28 +1,33 @@
-import GiDinStemmeIconNoBg from '../../assets/img/GiDinStemmeIconNoBg.png';
+//React library
+import { Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+//Animation library
+import { motion as m } from 'framer-motion';
+//Graphic assets
+import GiDinStemmeIconNoBg from '@/assets/img/Logo/GiDinStemmeIconNoBg.png';
 
 export default function Header() {
     const navigate = useNavigate();
     let [isOpen, setIsOpen] = useState(false);
 
-    function closeModal() {
-        setIsOpen(false);
-    }
-    function openModal() {
-        setIsOpen(true);
-    }
-
     return (
         <>
             <header>
                 <nav className="px-4 lg:px-6 pt-10 pb-2">
-                    <div className="flex justify-start mx-14">
+                    <m.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                            duration: 0.3,
+                            ease: 'easeOut',
+                        }}
+                        className="flex justify-start mx-14"
+                    >
                         <button
                             type="button"
                             className="flex items-center"
-                            onClick={openModal}
+                            onClick={() => setIsOpen(true)}
                         >
                             <img
                                 src={GiDinStemmeIconNoBg}
@@ -30,12 +35,16 @@ export default function Header() {
                                 alt="GiDinStemme - Logo"
                             />
                         </button>
-                    </div>
+                    </m.div>
                 </nav>
             </header>
 
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                <Dialog
+                    as="div"
+                    className="relative z-10"
+                    onClose={() => setIsOpen(false)}
+                >
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -81,7 +90,7 @@ export default function Header() {
                                     <div className="mt-5 grid md:place-content-center">
                                         <button
                                             type="button"
-                                            onClick={closeModal}
+                                            onClick={() => setIsOpen(false)}
                                             className="
                                         font-semifet 
                                         xs:text-xsknapp 

@@ -1,5 +1,7 @@
-import GiDinStemmeIconNoBg from '../../assets/img/GiDinStemmeIconNoBg.png';
+//React library
 import { NavLink } from 'react-router-dom';
+//Graphic assets
+import GiDinStemmeIconNoBg from '@/assets/img/Logo/GiDinStemmeIconNoBg.png';
 import { ReactComponent as StarIcon } from '@/assets/icons/StarIcon.svg';
 
 export default function Header() {

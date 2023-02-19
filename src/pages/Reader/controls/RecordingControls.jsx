@@ -1,14 +1,19 @@
+//React library
 import { useState, useEffect } from 'react';
+//Animation library
+import { motion as m } from 'framer-motion';
+//Graphic assets
 import { ReactComponent as IconMic } from '@/assets/icons/IconMic.svg';
 import { ReactComponent as AudioStopIcon } from '@/assets/icons/AudioStopIcon.svg';
-import { motion as m } from 'framer-motion';
 
+//Returns a string with the time in minutes and seconds
 function formatTime(time) {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
+//Controls for recording audio
 export default function RecordingControls({
     setReaderState,
     time = null,

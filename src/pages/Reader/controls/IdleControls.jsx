@@ -1,11 +1,15 @@
+//React library
 import { useState } from 'react';
 import { Popover } from '@headlessui/react';
+//Components
+import TextSettings from '@/pages/Reader//TextSettings';
+import ResetModal from '@/pages/Reader/ResetModal';
+//Animation library
+import { motion as m } from 'framer-motion';
+//Graphic assets
 import { ReactComponent as IconMic } from '@/assets/icons/IconMic.svg';
 import { ReactComponent as IconTextOptions } from '@/assets/icons/IconTextOptions.svg';
 import { ReactComponent as IconRefresh } from '@/assets/icons/IconRefresh.svg';
-import TextSettings from '../TextSettings';
-import ResetModal from '../ResetModal';
-import { motion as m } from 'framer-motion';
 
 export default function IdleControls({
     setReaderState,

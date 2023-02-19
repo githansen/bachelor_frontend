@@ -1,6 +1,8 @@
+//React library
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
+// This is the modal that pops up when the user clicks the "Ny tekst" button
 export default function ResetModal({ open, onClose, onReset }) {
     return (
         <Transition appear show={open} as={Fragment}>
