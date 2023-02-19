@@ -22,13 +22,21 @@ function Developers() {
     return (
         <span>
             Utviklet av{' '}
-            <a href="https://diestus.com">Sefa</a>,{' '}
-            <a href="https://tonystr.net">Tony</a>,{' '}
-            <a href="https://github.com/henriklarsen28">
+            <a href="https://diestus.com" target="_blank">
+                Sefa
+            </a>
+            ,{' '}
+            <a href="https://tonystr.net" target="_blank">
+                Tony
+            </a>
+            ,{' '}
+            <a href="https://github.com/henriklarsen28" target="_blank">
                 Henrik
             </a>{' '}
             og{' '}
-            <a href="https://github.com/githansen">Johan</a>
+            <a href="https://github.com/githansen" target="_blank">
+                Johan
+            </a>
         </span>
     );
 }

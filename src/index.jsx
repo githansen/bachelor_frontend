@@ -23,7 +23,7 @@ function Page({ title, children }) {
     const { pathname } = useLocation();
 
     useEffect(() => {
-        document.title = `GiDinStemme - ${title}`;
+        document.title = `${title} - GiDinStemme`;
     }, [title]);
 
     useEffect(() => {
