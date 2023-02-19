@@ -1,23 +1,26 @@
+//React library
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles/index.css';
+import { Helmet } from 'react-helmet';
 import { useEffect } from 'react';
 import {
     RouterProvider,
     createBrowserRouter,
     useLocation,
 } from 'react-router-dom';
+//Stylesheet
+import '@/styles/index.css';
 // Pages
-import Page404 from './pages/statusCodes/FourOFour';
-import Page500 from './pages/statusCodes/FiveHundred';
-import PageHome from './pages/Home';
-import Overskrifter from './pages/Overskrifter';
-import PageUserForm from './pages/UserForm';
-import PageReader from './pages/Reader/Reader';
-import PageThanks from './pages/Thanks';
-import Personvern from './pages/additional/Personvern';
-import HvaEr from './pages/additional/HvaEr';
-import Slett from './pages/additional/Slett';
+import Page404 from '@/pages/statusCodes/FourOFour';
+import Page500 from '@/pages/statusCodes/FiveHundred';
+import PageHome from '@/pages/Home';
+import PageUserForm from '@/pages/UserForm';
+import PageStartOverQuestion from '@/pages/StartOverQuestion';
+import PageReader from '@/pages/Reader/Reader';
+import PageThanks from '@/pages/Reader/Thanks';
+import PagePrivacy from '@/pages/additional/Privacy';
+import PageAboutUs from '@/pages/additional/AboutUs';
+import PageDeleteRecording from '@/pages/additional/DeleteRecording';
 
 function Page({ title, children }) {
     const { pathname } = useLocation();
@@ -52,6 +55,14 @@ const router = createBrowserRouter([
         ),
     },
     {
+        path: '/velkommen-tilbake',
+        element: (
+            <Page title="Velkommen tilbake!">
+                <PageStartOverQuestion />
+            </Page>
+        ),
+    },
+    {
         path: '/les',
         element: (
             <Page title="Innspilling">
@@ -71,7 +82,7 @@ const router = createBrowserRouter([
         path: '/personvern',
         element: (
             <Page title="Personvern">
-                <Personvern />
+                <PagePrivacy />
             </Page>
         ),
     },
@@ -79,7 +90,7 @@ const router = createBrowserRouter([
         path: '/om-oss',
         element: (
             <Page title="Om Oss">
-                <HvaEr />
+                <PageAboutUs />
             </Page>
         ),
     },
@@ -87,7 +98,7 @@ const router = createBrowserRouter([
         path: '/slett',
         element: (
             <Page title="Slett bidrag">
-                <Slett />
+                <PageDeleteRecording />
             </Page>
         ),
     },

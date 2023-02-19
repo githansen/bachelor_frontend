@@ -1,5 +1,7 @@
+//React library
 import { useEffect, useState, Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
+//Graphic assets
 import { ReactComponent as IconLeftTextAlign } from '@/assets/icons/IconLeftTextAlign.svg';
 import { ReactComponent as IconJustifyTextAlign } from '@/assets/icons/IconJustifyTextAlign.svg';
 import { ReactComponent as IconRightTextAlign } from '@/assets/icons/IconRightTextAlign.svg';
@@ -13,6 +15,7 @@ import { ReactComponent as IconSmallText } from '@/assets/icons/IconSmallText.sv
 import { ReactComponent as IconTextSizeRefresh } from '@/assets/icons/IconTextSizeRefresh.svg';
 import { ReactComponent as ReaderColorChange } from '@/assets/icons/ReaderColorChange.svg';
 
+//Text settings popover
 export default function TextSettings({
     fontFamily,
     setFontFamily,

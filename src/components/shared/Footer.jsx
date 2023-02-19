@@ -1,7 +1,8 @@
-import PolitietLogo from '../../assets/img/politiet-logo.jpeg';
-import GiDinStemmeIconWBg from '../../assets/img/GiDinStemmeIconWBg.png';
-import { NavLink } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+//React library
+import { NavLink, useLocation } from 'react-router-dom';
+//Graphic assets
+import PolitietLogo from '@/assets/img/Other/politiet-logo.webp';
+import GiDinStemmeIconWBg from '@/assets/img/Logo/GiDinStemmeIconWBg.png';
 
 function RLink({ to, current, children }) {
     return (
