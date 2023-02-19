@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import AudioPlayer from 'react-h5-audio-player';
 import { ReactComponent as IconRetry } from '@/assets/icons/IconRetry.svg';
 import { ReactComponent as IconPaperPlane } from '@/assets/icons/IconPaperPlane.svg';
@@ -12,9 +11,8 @@ import { ReactComponent as AudioVolumeMuteIcon } from '@/assets/icons/AudioVolum
 import RetryModal from '../RetryModal';
 import { motion as m } from 'framer-motion';
 
-export default function CompletedControls({ setReaderState, audio }) {
+export default function CompletedControls({ setReaderState, audio, submitRecording }) {
     let [retryModalOpen, setRetryModalOpen] = useState(false);
-    const navigate = useNavigate();
 
     return (
         <m.div
@@ -93,7 +91,7 @@ export default function CompletedControls({ setReaderState, audio }) {
                 />
                 <button
                     className="transScale lg:px-4 md:px-3 lg:py-2 md:py-3 font-fet inline-flex gap-2 border-solid border-2 border-sky-500 rounded-full bg-paskeegg text-natt border-solskinn hover:bg-solskinn  transition duration-150 ease-in-out"
-                    onClick={() => navigate('/takk')}
+                    onClick={submitRecording}
                 >
                     <IconPaperPlane className="w-6 h-6 animate-pulse" />
                     Send inn

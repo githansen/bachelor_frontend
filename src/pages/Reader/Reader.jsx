@@ -12,6 +12,7 @@ import userReadingProgress from '../../hooks/userReadingProgress';
 import { motion as m } from 'framer-motion';
 import useRecorder from '@/hooks/useRecorder';
 import { useApi } from '@/utils/api';
+import { useNavigate } from 'react-router-dom';
 
 // Main text to be read by user
 function TextPanel({ text, state, fontColor, fontsize, fontfamily, alignText }) {
@@ -38,6 +39,8 @@ export default function Reader() {
     //Top - Reading Progress Bar
     const completion = userReadingProgress();
     const [state, setState] = useState('idle'); // idle | recording | completed
+
+    const navigate = useNavigate();
 
     // Recording
     const { startRecording, stopRecording, audio, isRecording } = useRecorder();
@@ -102,6 +105,14 @@ export default function Reader() {
         }
     }, [state, isRecording]);
 
+    const submitRecording = async () => {
+        if (isRecording || !audio) {
+            // toast.error('Du må stoppe opptaket før du kan sende inn');
+            return;
+        }
+        navigate('/takk');
+    };
+
     const renderControls = () => {
         switch (state) {
             case 'completed':
@@ -111,12 +122,14 @@ export default function Reader() {
                             <CompletedControls
                                 setReaderState={setState}
                                 audio={audio}
+                                submitRecording={submitRecording}
                             />
                         </div>
                         <div className="xs:block sm:block md:hidden">
                             <CompletedControlsSmall
                                 setReaderState={setState}
                                 audio={audio}
+                                submitRecording={submitRecording}
                             />
                         </div>
                     </div>
