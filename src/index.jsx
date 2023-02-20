@@ -1,7 +1,6 @@
 //React library
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Helmet } from 'react-helmet';
 import { useEffect } from 'react';
 import {
     RouterProvider,
@@ -23,24 +22,20 @@ import PagePrivacy from '@/pages/additional/Privacy';
 import PageAboutUs from '@/pages/additional/AboutUs';
 import PageDeleteRecording from '@/pages/additional/DeleteRecording';
 
-export default function ScrollToTop() {
+function Page({ title, children }) {
     const { pathname } = useLocation();
+
+    useEffect(() => {
+        document.title = `${title} - GiDinStemme`;
+    }, [title]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
 
-    return null;
-}
-
-function Page({ title, children }) {
     return (
         <>
-            <ScrollToTop />
             <Toaster />
-            <Helmet>
-                <title>{title} - GiDinStemme</title>
-            </Helmet>
             {children}
         </>
     );

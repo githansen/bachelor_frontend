@@ -1,22 +1,62 @@
 //React library
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 //Graphic assets
 import PolitietLogo from '@/assets/img/Other/politiet-logo.webp';
 import GiDinStemmeIconWBg from '@/assets/img/Logo/GiDinStemmeIconWBg.png';
 
+function RLink({ to, current, children }) {
+    return (
+        <NavLink
+            to={to}
+            className={`xs:text-xsp sm:text-smp md:text-mdp
+                lg:text-lgp xl:text-xlp text-p hover:text-fred
+                transition duration-150 ease-in-out
+                ${current ? 'text-gull' : ''}
+            `}
+        >
+            {children}
+        </NavLink>
+    );
+}
+
+function Developers() {
+    return (
+        <span>
+            Utviklet av{' '}
+            <a href="https://diestus.com" target="_blank">
+                Sefa
+            </a>
+            ,{' '}
+            <a href="https://tonystr.net" target="_blank">
+                Tony
+            </a>
+            ,{' '}
+            <a href="https://github.com/henriklarsen28" target="_blank">
+                Henrik
+            </a>{' '}
+            og{' '}
+            <a href="https://github.com/githansen" target="_blank">
+                Johan
+            </a>
+        </span>
+    );
+}
+
 export default function Footer() {
+    const { pathname } = useLocation();
+
     return (
         <footer className="w-full mt-auto">
             <div className="xs:px-14 sm:px-14 md:px-20 bg-skumring text-fred mt-20 pt-5">
                 <div className="flex-col text-center md:flex-row md:text-left flex justify-between m-16 lg:mt-10 mb-0 mx-auto lg:max-w-6xl">
                     <div className="grid content-between">
                         <div className="mb-10">
-                            <NavLink to="/">
+                            <RLink to="/">
                                 <img
                                     src={GiDinStemmeIconWBg}
                                     className="w-[4rem] mb-7 xs:mx-auto sm:mx-auto md:mx-0 "
                                 ></img>
-                            </NavLink>
+                            </RLink>
                             <h1 className="xs:text-xsh1 sm:text-smh1 md:text-mdh1 xl:text-xlh1 text-h1 mb-2">
                                 <b>Gi Din Stemme</b>
                             </h1>
@@ -27,8 +67,7 @@ export default function Footer() {
                         </div>
                         <div className="mb-4 xs:hidden sm:hidden md:inline-flex">
                             <small className="xs:text-xsliten sm:text-smliten md:text-mdliten xl:text-xlliten text-liten  text-kveld">
-                                © 2023 GiDinStemme | Utviklet av Sefa, Tony,
-                                Henrik og Johan
+                                © 2023 GiDinStemme | <Developers />
                             </small>
                         </div>
                     </div>
@@ -39,36 +78,38 @@ export default function Footer() {
                             </h5>
                             <ul className="text-metall mt-3">
                                 <li>
-                                    <NavLink
+                                    <RLink
                                         to="/intro"
-                                        className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p hover:text-fred transition duration-150 ease-in-out"
+                                        current={/^\/(?:intro|les)$/.test(
+                                            pathname
+                                        )}
                                     >
                                         Spill inn lyd
-                                    </NavLink>
+                                    </RLink>
                                 </li>
                                 <li>
-                                    <NavLink
+                                    <RLink
                                         to="/om-oss"
-                                        className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p hover:text-fred transition duration-150 ease-in-out"
+                                        current={pathname === '/om-oss'}
                                     >
                                         Hva er gi din stemme?
-                                    </NavLink>
+                                    </RLink>
                                 </li>
                                 <li>
-                                    <NavLink
+                                    <RLink
                                         to="/slett"
-                                        className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p hover:text-fred transition duration-150 ease-in-out"
+                                        current={pathname === '/slett'}
                                     >
                                         Slett ditt bidrag
-                                    </NavLink>
+                                    </RLink>
                                 </li>
                                 <li>
-                                    <NavLink
+                                    <RLink
                                         to="/personvern"
-                                        className="xs:text-xsp sm:text-smp md:text-mdp lg:text-lgp xl:text-xlp text-p hover:text-fred transition duration-150 ease-in-out"
+                                        current={pathname === '/personvern'}
                                     >
                                         Personvern
-                                    </NavLink>
+                                    </RLink>
                                 </li>
                             </ul>
                         </div>
@@ -92,7 +133,7 @@ export default function Footer() {
                         <div className="md:hidden mx-auto mt-10 pt-5 w-full  flex-col bg-fred txt-black rounded-tl-lg rounded-tr-lg px-5 py-3 content-end">
                             <div className="mb-2 flex flex-col gap-3 justify-center content-center">
                                 <p className="text-xsliten text-skumring self-center">
-                                    Utviklet av Sefa, Tony, Henrik og Johan.{' '}
+                                    <Developers />
                                     <br></br>I samarbeid med
                                 </p>
                                 <a
