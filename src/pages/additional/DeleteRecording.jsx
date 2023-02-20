@@ -23,9 +23,10 @@ export default function DeleteRecording() {
 
         const promise = fetch('/api/User/DeleteFile', {
             method: 'DELETE',
-            body: JSON.stringify({
-                uuid: userInput
-            })
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(userInput)
         })
         .then(res => {
             if (res.status !== 200) {
