@@ -21,6 +21,7 @@ import PageThanks from '@/pages/Reader/Thanks';
 import PagePrivacy from '@/pages/additional/Privacy';
 import PageAboutUs from '@/pages/additional/AboutUs';
 import PageDeleteRecording from '@/pages/additional/DeleteRecording';
+import DashFirstPage from '@/pages/dashboard/Dashboard.jsx';
 
 export default function ScrollToTop() {
     const { pathname } = useLocation();

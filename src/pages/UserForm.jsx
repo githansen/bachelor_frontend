@@ -30,15 +30,6 @@ function SelectInput({ options, name, selected, onChange }) {
                 },
             };
         },
-        menuList: (provided) => ({
-            ...provided,
-            paddingTop: 0,
-            paddingBottom: 0,
-            boxShadow: 'none',
-            border: '1.5px solid #FFD039',
-            borderRadius: '5px',
-            zIndex: 999,
-        }),
         control: (styles, state) => ({
             ...styles,
             boxShadow: 'none',
@@ -46,10 +37,17 @@ function SelectInput({ options, name, selected, onChange }) {
             border: '2px solid #FFD039',
             outline: '0',
             color: state.hasValue ? '#FFFFFF' : '#000000',
-            zIndex: 100,
             '&:hover': {
                 cursor: 'pointer',
             },
+        }),
+        menuList: (provided) => ({
+            ...provided,
+            paddingTop: 0,
+            paddingBottom: 0,
+            boxShadow: 'none',
+            border: '1.5px solid #FFD039',
+            borderRadius: '5px',
         }),
         dropdownIndicator: (base) => ({
             ...base,
