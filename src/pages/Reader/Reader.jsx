@@ -125,15 +125,12 @@ export default function Reader() {
             return;
         }
 
+        const formData = new FormData();
+        formData.append("textId", text.textId);
+        formData.append("recording", audio.blob, 'test.m4a');
         const res = await fetch('/api/User/SaveFile', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: {
-                textId: text.textId,
-                recording: audio.blob,
-            }
+            body: formData
         });
 
         switch (res.status) {
@@ -210,6 +207,7 @@ export default function Reader() {
                                 setFontFamily={setFontFamily}
                                 alignText={alignText}
                                 setAlignText={setAlignText}
+                                reloadText={refetch}
                             />
                         </div>
                     </div>
