@@ -22,26 +22,18 @@ import PagePrivacy from '@/pages/additional/Privacy';
 import PageAboutUs from '@/pages/additional/AboutUs';
 import PageDeleteRecording from '@/pages/additional/DeleteRecording';
 
-export default function ScrollToTop() {
+function Page({ title, children }) {
     const { pathname } = useLocation();
+
+    useEffect(() => {
+        document.title = `${title} - GiDinStemme`;
+    }, [title]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
 
-    return null;
-}
-
-function Page({ title, children }) {
-    return (
-        <>
-            <ScrollToTop />
-            <Helmet>
-                <title>{title} - GiDinStemme</title>
-            </Helmet>
-            {children}
-        </>
-    );
+    return <>{children}</>;
 }
 
 const router = createBrowserRouter([
