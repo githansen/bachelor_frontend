@@ -6,27 +6,51 @@ import Input from 'react-input-auto-format';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Toast Library
-import toast, { Toaster as Notification } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 //Graphic assets
 import Layout from '@/components/shared/Layout';
 import DeleteGraphic from '@/assets/img/ThreeDeeGraphic/DeleteGraphic.webp';
+import { queryApi } from '@/utils/api';
 
 export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);
     let [userInput, setUserInput] = useState('');
 
-    let notifyError = () => toast.error('Noe gikk galt. Prøv på nytt!');
-    const notifySuccess = () => toast.success('Ditt bidrag ble slettet!');
+    const UUID_LENGTH = 36;
 
-    function deleteContribution() {
+    async function deleteContribution() {
         setIsOpen(false);
-        notifySuccess();
+
+        const promise = fetch('/api/User/DeleteFile', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userInput),
+        })
+            .then((res) => {
+                if (res.status !== 200) {
+                    throw res;
+                }
+                return res;
+            })
+            .catch((err) => {
+                throw err;
+            });
+
+        toast.promise(promise, {
+            loading: 'Sletter ...',
+            success: 'Ditt bidrag ble slettet!',
+            error: (err) =>
+                err.status === 404
+                    ? 'Feil bidragskode, bidraget finnes ikke'
+                    : 'Noe gikk gale med sletting av filen din',
+        });
     }
 
     return (
         <>
             <Layout>
-                <Notification />
                 <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">
                     <div className="min-h-[20rem] md:min-h-[40rem] lg:min-h-[40rem] xl:min-h-[50rem] xs:my-8 sm:my-10 md:my-12 lg:my-14px xl:my-14 flex flex-col place-items-center justify-center">
                         <m.img
@@ -84,7 +108,7 @@ export default function DeleteRecording() {
                                 className="mb-4"
                             >
                                 <Input
-                                    format="#######-#####-#####-#######"
+                                    format="########-####-####-####-############"
                                     className="xs:min-w-[18rem] sm:min-w-[19rem] min-w-[20rem] xs:p-2 p-3 my-2 text-center font-fet border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg focus:outline-none focus:shadow-outline"
                                     id="bidragskode"
                                     type="text"
@@ -104,17 +128,19 @@ export default function DeleteRecording() {
                                     text-stein
                                     font-normal
                                     ${
-                                        userInput.length === 27
+                                        userInput.length === UUID_LENGTH
                                             ? 'hidden'
                                             : 'block'
                                     }`}
-                                >{`${userInput.length}/27`}</p>
+                                >{`${userInput.length}/${UUID_LENGTH}`}</p>
                             </m.div>
 
                             <div
                                 className={`
                                 ${
-                                    userInput.length === 27 ? 'block' : 'hidden'
+                                    userInput.length === UUID_LENGTH
+                                        ? 'block'
+                                        : 'hidden'
                                 }`}
                             >
                                 <m.button

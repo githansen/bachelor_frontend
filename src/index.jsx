@@ -1,13 +1,13 @@
 //React library
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Helmet } from 'react-helmet';
 import { useEffect } from 'react';
 import {
     RouterProvider,
     createBrowserRouter,
     useLocation,
 } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 //Stylesheet
 import '@/styles/index.css';
 // Pages
@@ -33,7 +33,12 @@ function Page({ title, children }) {
         window.scrollTo(0, 0);
     }, [pathname]);
 
-    return <>{children}</>;
+    return (
+        <>
+            <Toaster />
+            {children}
+        </>
+    );
 }
 
 const router = createBrowserRouter([

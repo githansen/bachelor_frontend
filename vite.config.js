@@ -8,5 +8,16 @@ export default defineConfig({
 		alias: [
 			{ find: '@', replacement: '/src' },
 		],
+	},
+	server: {
+		proxy: {
+			'/api': {
+				target: 'https://localhost:7195/',
+				changeOrigin: true,
+				secure: false,
+				ws: true,
+				rewrite: (path) => path.replace(/^\/api/, ''),
+			}
+		}
 	}
 });

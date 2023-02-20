@@ -12,6 +12,9 @@ import IdleControlsSmall from '@/pages/Reader/controls/IdleControlsSmall';
 //Hooks
 import useReadingProgress from '@/hooks/useReadingProgress';
 import useRecorder from '@/hooks/useRecorder';
+import { useApi } from '@/utils/api';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 //Audioplayer
 import '@/styles/audioplayer.css';
 //Timer library
@@ -20,13 +23,7 @@ import { useTimer } from 'use-timer';
 import { motion as m } from 'framer-motion';
 
 // Main text to be read by user
-function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
-    const txtColor = {
-        idle: `${fontColor}`,
-        recording: `${fontColor}`,
-        completed: `${fontColor}`,
-    }[state];
-
+function TextPanel({ text, state, fontColor, fontsize, fontfamily, alignText }) {
     return (
         <div>
             <m.div
@@ -44,87 +41,7 @@ function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
                 }}
                 className={` rounded-lg leading-loose xs:p-0 sm:p-0 md:p-8 bordser-2 transition-colors text-justify duration-400`}
             >
-                "Vedrørende en avtagende oppgaveløsning utvides scenarioet som
-                en følge av beskaffenheten. Med tanke på en tiltagende mobilitet
-                ivaretas oppfølgingen i tillegg til visjonen. Avhengig av en
-                særlig avklaring genereres kompetansehevingen i forhold til
-                evalueringen. I lys av en bærekraftig måloppnåelse
-                tilgjengeliggjøres synergieffekten avhengig av evalueringen.
-                Sammenholdt med en proaktiv ressursbruk realiseres
-                informasjonsflyten i relasjon til problemstillingen. I henhold
-                til en proaktiv styringsinnsats maksimeres spisskompetansen hva
-                angår resultatoppnåelsen. Med tanke på en særlig styringsinnsats
-                utvides kompetansehevingen hva angår en samlet vurdering. Under
-                henvisning til en helhetlig struktur styrkes tilstedeværelsen
-                hva gjelder ressursinnsatsen. Med tanke på en proaktiv
-                målsetting iverksettes strategien i motsetning til løsningen.
-                Forutsatt en integrert overveielse innhentes oppfølgingen i
-                tillegg til målområdet. I lys av en implisitt organisasjon
-                lokaliseres incitamentet hva gjelder målområdet. Under
-                hensyntagen til en langsiktig kvalitetssikring stabiliseres
-                potensialet i forlengelsen av egenarten. Under henvisning til en
-                bærekraftig avklaring revitaliseres forankringen utenom
-                resultatoppnåelsen. I betraktning av en kostnadseffektiv
-                avveining utvides potensialet med sikte på evalueringen. Gitt en
-                ikke ubetydelig kvalitetssikring stimuleres scenarioet eller
-                sagt på en annen måte: realitetsorienteringen. På grunnlag av en
-                tiltagende effektivisering maksimeres scenarioet i motsetning
-                til problemstillingen. I forhold til en bærekraftig ressursbruk
-                spores relasjonene i relasjon til ressursinnsatsen.Vedrørende en
-                avtagende oppgaveløsning utvides scenarioet som en følge av
-                beskaffenheten. Med tanke på en tiltagende mobilitet ivaretas
-                oppfølgingen i tillegg til visjonen. Avhengig av en særlig
-                avklaring genereres kompetansehevingen i forhold til
-                evalueringen. I lys av en bærekraftig måloppnåelse
-                tilgjengeliggjøres synergieffekten avhengig av evalueringen.
-                Sammenholdt med en proaktiv ressursbruk realiseres
-                informasjonsflyten i relasjon til problemstillingen. I henhold
-                til en proaktiv styringsinnsats maksimeres spisskompetansen hva
-                angår resultatoppnåelsen. Med tanke på en særlig styringsinnsats
-                utvides kompetansehevingen hva angår en samlet vurdering. Under
-                henvisning til en helhetlig struktur styrkes tilstedeværelsen
-                hva gjelder ressursinnsatsen. Med tanke på en proaktiv
-                målsetting iverksettes strategien i motsetning til løsningen.
-                Forutsatt en integrert overveielse innhentes oppfølgingen i
-                tillegg til målområdet. I lys av en implisitt organisasjon
-                lokaliseres incitamentet hva gjelder målområdet. Under
-                hensyntagen til en langsiktig kvalitetssikring stabiliseres
-                potensialet i forlengelsen av egenarten. Under henvisning til en
-                bærekraftig avklaring revitaliseres forankringen utenom
-                resultatoppnåelsen. I betraktning av en kostnadseffektiv
-                avveining utvides potensialet med sikte på evalueringen. Gitt en
-                ikke ubetydelig kvalitetssikring stimuleres scenarioet eller
-                sagt på en annen måte: realitetsorienteringen. På grunnlag av en
-                tiltagende effektivisering maksimeres scenarioet i motsetning
-                til problemstillingen. I forhold til en bærekraftig ressursbruk
-                spores relasjonene i relasjon til ressursinnsatsen.Vedrørende en
-                avtagende oppgaveløsning utvides scenarioet som en følge av
-                beskaffenheten. Med tanke på en tiltagende mobilitet ivaretas
-                oppfølgingen i tillegg til visjonen. Avhengig av en særlig
-                avklaring genereres kompetansehevingen i forhold til
-                evalueringen. I lys av en bærekraftig måloppnåelse
-                tilgjengeliggjøres synergieffekten avhengig av evalueringen.
-                Sammenholdt med en proaktiv ressursbruk realiseres
-                informasjonsflyten i relasjon til problemstillingen. I henhold
-                til en proaktiv styringsinnsats maksimeres spisskompetansen hva
-                angår resultatoppnåelsen. Med tanke på en særlig styringsinnsats
-                utvides kompetansehevingen hva angår en samlet vurdering. Under
-                henvisning til en helhetlig struktur styrkes tilstedeværelsen
-                hva gjelder ressursinnsatsen. Med tanke på en proaktiv
-                målsetting iverksettes strategien i motsetning til løsningen.
-                Forutsatt en integrert overveielse innhentes oppfølgingen i
-                tillegg til målområdet. I lys av en implisitt organisasjon
-                lokaliseres incitamentet hva gjelder målområdet. Under
-                hensyntagen til en langsiktig kvalitetssikring stabiliseres
-                potensialet i forlengelsen av egenarten. Under henvisning til en
-                bærekraftig avklaring revitaliseres forankringen utenom
-                resultatoppnåelsen. I betraktning av en kostnadseffektiv
-                avveining utvides potensialet med sikte på evalueringen. Gitt en
-                ikke ubetydelig kvalitetssikring stimuleres scenarioet eller
-                sagt på en annen måte: realitetsorienteringen. På grunnlag av en
-                tiltagende effektivisering maksimeres scenarioet i motsetning
-                til problemstillingen. I forhold til en bærekraftig ressursbruk
-                spores relasjonene i relasjon til ressursinnsatsen."
+                {text}
             </m.div>
         </div>
     );
@@ -132,9 +49,12 @@ function TextPanel({ state, fontColor, fontsize, fontfamily, alignText }) {
 
 // Stateful wrapping component
 export default function Reader() {
+    const { response: text, loading, refetch } = useApi('User/GetText');
     //Top - Reading Progress Bar
     const completion = useReadingProgress();
     const [state, setState] = useState('idle'); // idle | recording | completed
+
+    const navigate = useNavigate();
 
     // Recording
     const { startRecording, stopRecording, audio, isRecording } = useRecorder();
@@ -199,6 +119,36 @@ export default function Reader() {
         }
     }, [state, isRecording]);
 
+    const submitRecording = async () => {
+        if (!audio || !text) {
+            toast.error('Noe gikk galt med opptaket, prøv igjen');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("textId", text.textId);
+        formData.append("recording", audio.blob, 'test.m4a');
+        const res = await fetch('/api/User/SaveFile', {
+            method: 'POST',
+            body: formData
+        });
+
+        switch (res.status) {
+            case 200:
+                toast.success('Opptak sendt');
+                navigate('/takk');
+                break;
+
+            case 401:
+                toast.success('Du må logge inn for å sende inn opptak');
+                break;
+
+            case 500:
+            default:
+                toast.success('Noe gikk galt hos oss, prøv igjen senere');
+        }
+    };
+
     const renderControls = () => {
         switch (state) {
             case 'completed':
@@ -208,12 +158,14 @@ export default function Reader() {
                             <CompletedControls
                                 setReaderState={setState}
                                 audio={audio}
+                                submitRecording={submitRecording}
                             />
                         </div>
                         <div className="xs:block sm:block md:hidden">
                             <CompletedControlsSmall
                                 setReaderState={setState}
                                 audio={audio}
+                                submitRecording={submitRecording}
                             />
                         </div>
                     </div>
@@ -242,6 +194,7 @@ export default function Reader() {
                                 setFontFamily={setFontFamily}
                                 alignText={alignText}
                                 setAlignText={setAlignText}
+                                reloadText={refetch}
                             />
                         </div>
                         <div className="xs:block sm:block md:hidden">
@@ -254,6 +207,7 @@ export default function Reader() {
                                 setFontFamily={setFontFamily}
                                 alignText={alignText}
                                 setAlignText={setAlignText}
+                                reloadText={refetch}
                             />
                         </div>
                     </div>
@@ -284,6 +238,7 @@ export default function Reader() {
                 <div className="xs:max-w-[30em] xs:px-5 sm:max-w-[45em] sm:px-10 md:max-w-[75em] px-0 mx-auto pt-0 flex flex-col place-items-center">
                     <div className="mx-auto">
                         <TextPanel
+                            text={text?.textText}
                             state={state}
                             fontColor={stylecolorfont}
                             fontsize={fontsize}
