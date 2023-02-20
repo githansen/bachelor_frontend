@@ -1,7 +1,7 @@
 //React library
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useEffect } from 'react';
 import {
     RouterProvider,
@@ -21,6 +21,7 @@ import PageThanks from '@/pages/Reader/Thanks';
 import PagePrivacy from '@/pages/additional/Privacy';
 import PageAboutUs from '@/pages/additional/AboutUs';
 import PageDeleteRecording from '@/pages/additional/DeleteRecording';
+import DashFirstPage from '@/pages/Dashboard/Dashboard.jsx';
 
 export default function ScrollToTop() {
     const { pathname } = useLocation();
@@ -34,13 +35,13 @@ export default function ScrollToTop() {
 
 function Page({ title, children }) {
     return (
-        <>
+        <HelmetProvider>
             <ScrollToTop />
             <Helmet>
                 <title>{title} - GiDinStemme</title>
             </Helmet>
             {children}
-        </>
+        </HelmetProvider>
     );
 }
 
@@ -124,6 +125,14 @@ const router = createBrowserRouter([
         element: (
             <Page title="500">
                 <Page500 />
+            </Page>
+        ),
+    },
+    {
+        path: '/dashboard',
+        element: (
+            <Page title="Dashboard">
+                <DashFirstPage />
             </Page>
         ),
     },
