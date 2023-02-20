@@ -24,25 +24,27 @@ export default function DeleteRecording() {
         const promise = fetch('/api/User/DeleteFile', {
             method: 'DELETE',
             headers: {
-                "Content-Type":"application/json"
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(userInput)
+            body: JSON.stringify(userInput),
         })
-        .then(res => {
-            if (res.status !== 200) {
-                throw res.statusText;
-            }
-            return res;
-        })
-        .catch(err => { throw err })
+            .then((res) => {
+                if (res.status !== 200) {
+                    throw res;
+                }
+                return res;
+            })
+            .catch((err) => {
+                throw err;
+            });
 
         toast.promise(promise, {
-            loading: 'Sletter',
-            success: (data) => {
-                console.log(data);
-                return 'Ditt bidrag ble slettet, haha!';
-            },
-            error: 'Noe gikk gale med sletting av filen din',
+            loading: 'Sletter ...',
+            success: 'Ditt bidrag ble slettet!',
+            error: (err) =>
+                err.status === 404
+                    ? 'Feil bidragskode, bidraget finnes ikke'
+                    : 'Noe gikk gale med sletting av filen din',
         });
     }
 
@@ -136,7 +138,9 @@ export default function DeleteRecording() {
                             <div
                                 className={`
                                 ${
-                                    userInput.length === UUID_LENGTH ? 'block' : 'hidden'
+                                    userInput.length === UUID_LENGTH
+                                        ? 'block'
+                                        : 'hidden'
                                 }`}
                             >
                                 <m.button
