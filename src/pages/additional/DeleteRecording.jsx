@@ -10,17 +10,39 @@ import toast from 'react-hot-toast';
 //Graphic assets
 import Layout from '@/components/shared/Layout';
 import DeleteGraphic from '@/assets/img/ThreeDeeGraphic/DeleteGraphic.webp';
+import { queryApi } from '@/utils/api';
 
 export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);
     let [userInput, setUserInput] = useState('');
 
-    let notifyError = () => toast.error('Noe gikk galt. Prøv på nytt!');
-    const notifySuccess = () => toast.success('Ditt bidrag ble slettet!');
+    const UUID_LENGTH = 36;
 
-    function deleteContribution() {
+    async function deleteContribution() {
         setIsOpen(false);
-        notifySuccess();
+
+        const promise = fetch('/api/User/DeleteFile', {
+            method: 'DELETE',
+            body: JSON.stringify({
+                uuid: userInput
+            })
+        })
+        .then(res => {
+            if (res.status !== 200) {
+                throw res.statusText;
+            }
+            return res;
+        })
+        .catch(err => { throw err })
+
+        toast.promise(promise, {
+            loading: 'Sletter',
+            success: (data) => {
+                console.log(data);
+                return 'Ditt bidrag ble slettet, haha!';
+            },
+            error: 'Noe gikk gale med sletting av filen din',
+        });
     }
 
     return (
@@ -83,7 +105,7 @@ export default function DeleteRecording() {
                                 className="mb-4"
                             >
                                 <Input
-                                    format="#######-#####-#####-#######"
+                                    format="########-####-####-####-############"
                                     className="xs:min-w-[18rem] sm:min-w-[19rem] min-w-[20rem] xs:p-2 p-3 my-2 text-center font-fet border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg focus:outline-none focus:shadow-outline"
                                     id="bidragskode"
                                     type="text"
@@ -103,17 +125,17 @@ export default function DeleteRecording() {
                                     text-stein
                                     font-normal
                                     ${
-                                        userInput.length === 27
+                                        userInput.length === UUID_LENGTH
                                             ? 'hidden'
                                             : 'block'
                                     }`}
-                                >{`${userInput.length}/27`}</p>
+                                >{`${userInput.length}/${UUID_LENGTH}`}</p>
                             </m.div>
 
                             <div
                                 className={`
                                 ${
-                                    userInput.length === 27 ? 'block' : 'hidden'
+                                    userInput.length === UUID_LENGTH ? 'block' : 'hidden'
                                 }`}
                             >
                                 <m.button
