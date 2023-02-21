@@ -63,6 +63,7 @@ export default function CompletedControls({ setReaderState, audio }) {
                                     preload="auto"
                                     autoPlay={false}
                                     src={audio.url}
+                                    timeFormat={'mm:ss'}
                                     onLoadedData={() =>
                                         setDisplayAudioPlayer(true)
                                     }

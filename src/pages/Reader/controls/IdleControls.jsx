@@ -4,6 +4,7 @@ import { Popover } from '@headlessui/react';
 //Components
 import TextSettings from '@/pages/Reader//TextSettings';
 import ResetModal from '@/pages/Reader/ResetModal';
+import IdleModal from '@/pages/Reader/IdleModal';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Graphic assets
@@ -24,6 +25,7 @@ export default function IdleControls({
 }) {
     // Ny tekst modal
     let [resetModalOpen, setResetModalOpen] = useState(false);
+    let [idleModalOpen, setIdleModalOpen] = useState(true);
 
     //Switch between Dark/Light theme
     const changeStyleColor = () => {
@@ -121,6 +123,10 @@ export default function IdleControls({
                 onReset={() => {
                     /* TODO: Not implemented yet */
                 }}
+            />
+            <IdleModal
+                open={idleModalOpen}
+                onClose={() => setIdleModalOpen(false)}
             />
         </m.div>
     );
