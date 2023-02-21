@@ -12,7 +12,7 @@ import IdleControlsSmall from '@/pages/Reader/controls/IdleControlsSmall';
 //Hooks
 import useReadingProgress from '@/hooks/useReadingProgress';
 import useRecorder from '@/hooks/useRecorder';
-import { useApi } from '@/utils/api';
+import { useApi, validateResponse } from '@/utils/api';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 //Audioplayer
@@ -23,7 +23,14 @@ import { useTimer } from 'use-timer';
 import { motion as m } from 'framer-motion';
 
 // Main text to be read by user
-function TextPanel({ text, state, fontColor, fontsize, fontfamily, alignText }) {
+function TextPanel({
+    text,
+    state,
+    fontColor,
+    fontsize,
+    fontfamily,
+    alignText,
+}) {
     return (
         <div>
             <m.div
@@ -125,28 +132,26 @@ export default function Reader() {
             return;
         }
 
+        // Request using formdata to send blob file to avoid base64 encode with json
         const formData = new FormData();
-        formData.append("textId", text.textId);
-        formData.append("recording", audio.blob, 'test.m4a');
-        const res = await fetch('/api/User/SaveFile', {
+        formData.append('textId', text.textId);
+        formData.append('recording', audio.blob, 'test.m4a');
+
+        const promise = fetch('/api/User/SaveFile', {
             method: 'POST',
-            body: formData
+            body: formData,
+        })
+            .then(validateResponse)
+            .then(() => navigate('/takk'));
+
+        toast.promise(promise, {
+            loading: 'Sender ...',
+            success: 'Opptak sendt',
+            error: (err) =>
+                err.status === 401
+                    ? 'Du må logge inn for å sende inn opptak'
+                    : 'Noe gikk galt hos oss, prøv igjen senere',
         });
-
-        switch (res.status) {
-            case 200:
-                toast.success('Opptak sendt');
-                navigate('/takk');
-                break;
-
-            case 401:
-                toast.success('Du må logge inn for å sende inn opptak');
-                break;
-
-            case 500:
-            default:
-                toast.success('Noe gikk galt hos oss, prøv igjen senere');
-        }
     };
 
     const renderControls = () => {

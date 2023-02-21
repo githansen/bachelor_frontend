@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react';
 
-export async function queryApi(path, body = {}) {
+// Send request to backend
+export async function queryApi(
+    path,
+    body = {},
+    method = 'POST',
+    toastOptions = {}
+) {
     const res = await fetch('/api/' + path, {
-        method: 'POST',
+        method,
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
@@ -22,4 +28,13 @@ export function useApi(path, body = null) {
     const refetch = () => queryApi(path, body).then(setResponse);
 
     return { response, loading: response === null, refetch };
+}
+
+// Promise .then() function for throwing when status does not equal 200.
+// This is useful for using toast.promise
+export function validateResponse(res) {
+    if (res.status !== 200) {
+        throw res;
+    }
+    return res;
 }
