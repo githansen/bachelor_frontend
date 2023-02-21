@@ -21,6 +21,8 @@ import '@/styles/audioplayer.css';
 import { useTimer } from 'use-timer';
 //Animation library
 import { motion as m } from 'framer-motion';
+// Icons
+import LogoGidinStemmeIconNoBg from '@/assets/img/Logo/GidinStemmeIconNoBg.png';
 
 // Main text to be read by user
 function TextPanel({
@@ -30,26 +32,44 @@ function TextPanel({
     fontsize,
     fontfamily,
     alignText,
+    loading,
 }) {
     return (
         <div>
-            <m.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                    duration: 0.5,
-                    ease: 'easeOut',
-                }}
-                style={{
-                    fontSize: `${fontsize}px`,
-                    fontFamily: `${fontfamily}`,
-                    color: `${state == 'completed' ? '#C2C2C2' : fontColor} `,
-                    textAlign: `${alignText}`,
-                }}
-                className={` rounded-lg leading-loose xs:p-0 sm:p-0 md:p-8 bordser-2 transition-colors text-justify duration-400`}
-            >
-                {text}
-            </m.div>
+            {loading ? (
+                <div class="mt-20 animate-bounce">
+                    <m.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                            duration: 0.5,
+                            ease: 'easeOut',
+                        }}
+                    >
+                        <div class="animate-spin">
+                            <img width="60px" src={LogoGidinStemmeIconNoBg} />
+                        </div>
+                    </m.div>
+                </div>
+            ) : (
+                <m.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                        duration: 0.5,
+                        ease: 'easeOut',
+                    }}
+                    style={{
+                        fontSize: `${fontsize}px`,
+                        fontFamily: `${fontfamily}`,
+                        color: state == 'completed' ? '#C2C2C2' : fontColor,
+                        textAlign: `${alignText}`,
+                    }}
+                    className={` rounded-lg leading-loose xs:p-0 sm:p-0 md:p-8 bordser-2 transition-colors text-justify duration-400`}
+                >
+                    {text}
+                </m.div>
+            )}
         </div>
     );
 }
@@ -244,6 +264,7 @@ export default function Reader() {
                     <div className="mx-auto">
                         <TextPanel
                             text={text?.textText}
+                            loading={loading}
                             state={state}
                             fontColor={stylecolorfont}
                             fontsize={fontsize}
