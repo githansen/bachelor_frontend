@@ -15,6 +15,7 @@ import { queryApi } from '@/utils/api';
 export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);
     let [userInput, setUserInput] = useState('');
+    let [isDone, setIsDone] = useState(false);
 
     const UUID_LENGTH = 36;
 
@@ -29,6 +30,7 @@ export default function DeleteRecording() {
             body: JSON.stringify(userInput),
         })
             .then((res) => {
+                setIsDone(true);
                 if (res.status !== 200) {
                     throw res;
                 }
@@ -37,7 +39,6 @@ export default function DeleteRecording() {
             .catch((err) => {
                 throw err;
             });
-
         toast.promise(promise, {
             loading: 'Sletter ...',
             success: 'Ditt bidrag ble slettet!',
@@ -46,6 +47,7 @@ export default function DeleteRecording() {
                     ? 'Feil bidragskode, bidraget finnes ikke'
                     : 'Noe gikk gale med sletting av filen din',
         });
+        setIsDone(true);
     }
 
     return (
@@ -99,8 +101,57 @@ export default function DeleteRecording() {
                             info, og det er derfor kun mulig å slette ditt
                             bidrag om du har din bidragskode.
                         </m.p>
+                        <m.button
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
+                            className={`
+                            font-fet 
+                            xs:text-xsknapp 
+                            sm:text-smknapp 
+                            xl:text-xlknapp 
+                            text-knapp 
+                            text-natt 
+                            bg-solskinn 
+                            xs:w-full 
+                            w-fit 
+                            transScale 
+                            px-8 
+                            py-5 
+                            mb-2 
+                            mt-2 
+                            rounded 
+                            inline-flex 
+                            justify-center 
+                            items-center 
+                            gap-1
+                            ${!isDone ? 'hidden' : ''}
+                            `}
+                        >
+                            Gå til forsiden
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="30"
+                                height="30"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth="1.5"
+                                stroke="currentColor"
+                                className="w-6 h-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                                />
+                            </svg>
+                        </m.button>
 
-                        <form className="flex flex-col place-items-center justify-center">
+                        <form
+                            className={`flex flex-col place-items-center justify-center ${
+                                isDone ? 'hidden' : ''
+                            }`}
+                        >
                             <m.div
                                 initial={{ y: '25%', opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
@@ -109,10 +160,10 @@ export default function DeleteRecording() {
                             >
                                 <Input
                                     format="########-####-####-####-############"
-                                    className="xs:min-w-[18rem] sm:min-w-[19rem] min-w-[20rem] xs:p-2 p-3 my-2 text-center font-fet border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg focus:outline-none focus:shadow-outline"
+                                    className="xs:min-w-[25rem] sm:min-w-[25rem] md:min-w-[25rem] xs:p-2 p-3 my-2 text-center font-fet border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg focus:outline-none focus:shadow-outline"
                                     id="bidragskode"
                                     type="text"
-                                    placeholder="123E4567-E89B-12D30-EG94348"
+                                    placeholder="D9F691A0-DF97-48B5-286F-08DB1332C1A6"
                                     onChange={(e) =>
                                         setUserInput(e.target.value.trim())
                                     }
