@@ -1,13 +1,13 @@
 //React library
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Helmet } from 'react-helmet';
 import { useEffect } from 'react';
 import {
     RouterProvider,
     createBrowserRouter,
     useLocation,
 } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 //Stylesheet
 import '@/styles/index.css';
 // Pages
@@ -22,6 +22,11 @@ import PagePrivacy from '@/pages/additional/Privacy';
 import PageAboutUs from '@/pages/additional/AboutUs';
 import PageDeleteRecording from '@/pages/additional/DeleteRecording';
 import DashFirstPage from '@/pages/dashboard/Dashboard.jsx';
+import Login from '@/pages/dashboard/Login.jsx';
+import TextPage from '@/pages/dashboard/TextPage.jsx';
+import TargetGroupsPage from './pages/dashboard/TargetGroups';
+import SettingsPage from './pages/dashboard/Settings';
+import ContributionsPage from './pages/dashboard/Contributions';
 
 export default function ScrollToTop() {
     const { pathname } = useLocation();
@@ -34,12 +39,19 @@ export default function ScrollToTop() {
 }
 
 function Page({ title, children }) {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        document.title = `${title} - GiDinStemme`;
+    }, [title]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     return (
         <>
-            <ScrollToTop />
-            <Helmet>
-                <title>{title} - GiDinStemme</title>
-            </Helmet>
+            <Toaster />
             {children}
         </>
     );
@@ -125,6 +137,54 @@ const router = createBrowserRouter([
         element: (
             <Page title="500">
                 <Page500 />
+            </Page>
+        ),
+    },
+    {
+        path: '/dashboard',
+        element: (
+            <Page title="Dashboard">
+                <DashFirstPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/login',
+        element: (
+            <Page title="Logg inn">
+                <Login />
+            </Page>
+        ),
+    },
+    {
+        path: '/textpage',
+        element: (
+            <Page title="Tekster">
+                <TextPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/targets',
+        element: (
+            <Page title="Målgrupper">
+                <TargetGroupsPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/settings',
+        element: (
+            <Page title="Innstillinger">
+                <SettingsPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/contributions',
+        element: (
+            <Page title="Bidrag">
+                <ContributionsPage />
             </Page>
         ),
     },

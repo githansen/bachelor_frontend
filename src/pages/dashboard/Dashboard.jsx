@@ -1,46 +1,101 @@
-//React
-import { useEffect, useState, Fragment } from 'react';
 //React library
 import { useNavigate } from 'react-router-dom';
 //Animation library
 import { motion as m } from 'framer-motion';
-//Graphic assets
-import GiDinStemmeIconNoBg from '@/assets/img/Logo/GiDinStemmeIconNoBg.png';
-import { ReactComponent as LeftArrow } from '@/assets/icons/LeftArrow.svg';
+//Shared
+import DashMenu from './DashMenu';
+//Graphic
+import dashBg from '@/assets/img/Banner/dashBg.jpeg';
 
 export default function Dashboard() {
     const navigate = useNavigate();
-    const [open, setOpen] = useState(true);
 
     return (
         <div className="flex">
-            <div
-                className={`flex flex-col w-1/5 h-screen p-5 pt-10 ${
-                    open ? 'w-72' : 'w-20'
-                } bg-solskinn duration-300 relative`}
-            >
-                <LeftArrow
-                    className={`bg-solskinn h-10 w-10 text-natt rounded-full absolute -right-5 top-9 cursor-pointer ${
-                        !open && 'rotate-180'
-                    }`}
-                    onClick={() => setOpen(!open)}
-                />
-                <div className="inline-flex gap-2">
-                    <img src={GiDinStemmeIconNoBg} className="w-7 h-7" />
-                    <h1
-                        className={`text-natt origin-left font-medium text-2xl ${
-                            !open && 'scale-0'
-                        }`}
-                    >
-                        GiDinStemme
-                    </h1>
-                    <ul className="pt-2">
-                        <></>
-                    </ul>
+            <DashMenu />
+
+            <div className="p-12 w-full bg-mane">
+                <div className="inline-flex gap-3 mb-10">
+                    <div>
+                        <h2 className="text-xlh2 font-feteste leading-10">
+                            Hei, Ola!
+                        </h2>
+                        <p className="text-xlp mt-2">
+                            I dag er det{' '}
+                            <span className="capitalize">
+                                {new Date().toLocaleString('nb', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: '2-digit',
+                                    weekday: 'long',
+                                })}
+                                .
+                            </span>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div className="p-12">
-                <h4 className="text-xlh4 font-feteste">Dashboard</h4>
+                <div className="grid grid-cols-2 gap-5">
+                    <div
+                        style={{ backgroundImage: `url(${dashBg})` }}
+                        className="bg-cover z-0 bg-center hover:opacity-80 transition-all duration-350 ease-in-out justify-center p-10 col-span-1 flex h-[40em] rounded-lg drop-shadow-xl bg-bolge text-fred border-stein place-items-center"
+                    >
+                        <div className="bg-bolge opacity-70 cursor-pointer rounded-lg absolute inset-0" />
+                        <div className="z-10 relative text-center">
+                            <h2 className="text-[80px] font-feteste text-fred drop-shadow-md">
+                                145 132
+                            </h2>
+                            <h4 className="text-xlh4 font-semifet drop-shadow-md">
+                                Innsendte bidrag
+                            </h4>
+                        </div>
+                    </div>
+                    <div className="col-span-1">
+                        <div className="grid grid-cols-2 gap-5 mb-8 ">
+                            <div className="flex h-[19rem] rounded-lg drop-shadow-md bg-fred place-items-center border-b-8 border-bolge hover:border-b-[20px] transition-all duration-250 ease-in-out cursor-pointer">
+                                <div className="w-full text-center">
+                                    <h2 className="text-xlh1 font-feteste text-bolge">
+                                        23
+                                    </h2>
+                                    <h4 className="text-xlh6 font-semifet">
+                                        Tekster
+                                    </h4>
+                                </div>
+                            </div>
+                            <div className="flex h-[19rem] rounded-lg drop-shadow-md bg-fred place-items-center border-b-8 border-bolge hover:border-b-[20px] transition-all duration-250 ease-in-out cursor-pointer">
+                                <div className="w-full text-center">
+                                    <h2 className="text-xlh1 font-feteste text-bolge">
+                                        15
+                                    </h2>
+                                    <h4 className="text-xlh6 font-semifet">
+                                        Målgrupper
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-5">
+                            <div className="flex h-[19rem] rounded-lg drop-shadow-md bg-fred place-items-center border-b-8 border-drape hover:border-b-[20px] transition-all duration-250 ease-in-out cursor-pointer">
+                                <div className="w-full text-center">
+                                    <h2 className="text-xlh1 font-feteste text-drape">
+                                        345 792
+                                    </h2>
+                                    <h4 className="text-xlh6 font-semifet">
+                                        Brukere
+                                    </h4>
+                                </div>
+                            </div>
+                            <div className="flex h-[19rem] rounded-lg drop-shadow-md bg-fred place-items-center border-b-8 border-rose hover:border-b-[20px] transition-all duration-250 ease-in-out cursor-pointer">
+                                <div className="w-full text-center">
+                                    <h2 className="text-xlh1 font-feteste text-rose">
+                                        249
+                                    </h2>
+                                    <h4 className="text-xlh6 font-semifet ">
+                                        Slettede opptak
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
