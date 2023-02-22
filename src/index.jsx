@@ -24,10 +24,9 @@ import PageDeleteRecording from '@/pages/additional/DeleteRecording';
 import DashFirstPage from '@/dashboard/Dashboard.jsx';
 import Login from '@/dashboard/Login.jsx';
 import TextPage from '@/dashboard/TextPage.jsx';
-import TargetGroupsPage from '@/dashboard/TargetGroups';
+import TargetsPage from '@/dashboard/TargetsPage';
 import SettingsPage from '@/dashboard/Settings';
-import ContributionsPage from '@/dashboard/Contributions';
-import TablePage from '@/dashboard/TablePage';
+import ContributionPage from '@/dashboard/ContributionPage';
 
 export default function ScrollToTop() {
     const { pathname } = useLocation();
@@ -169,7 +168,7 @@ const router = createBrowserRouter([
         path: '/targets',
         element: (
             <Page title="Målgrupper">
-                <TargetGroupsPage />
+                <TargetsPage />
             </Page>
         ),
     },
@@ -185,15 +184,7 @@ const router = createBrowserRouter([
         path: '/contributions',
         element: (
             <Page title="Bidrag">
-                <ContributionsPage />
-            </Page>
-        ),
-    },
-    {
-        path: '/table',
-        element: (
-            <Page title="Table">
-                <TablePage />
+                <ContributionPage />
             </Page>
         ),
     },

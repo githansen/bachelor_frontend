@@ -22,7 +22,6 @@ export default function DashMenu() {
 
     const menuItems = [
         { title: 'Dashboard', icon: HomeIcon, path: '/dashboard' },
-        { title: 'Table', icon: PlayCircleIcon, path: '/table' },
         { title: 'Bidrag', icon: PlayCircleIcon, path: '/contributions' },
         { title: 'Tekster', icon: DocumentIcon, path: '/textpage' },
         { title: 'Målgrupper', icon: UserGroupIcon, path: '/targets' },

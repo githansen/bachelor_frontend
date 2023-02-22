@@ -9,47 +9,49 @@
   table {
     width: 100%;
     background-color: #fff;
-    border-radius: 10px;
-    padding:20px 10px 0px 10px;
   }
 
   table thead tr th{
-    background-color: #171717;
-    color:#ffffff;
+    color:#171717;
     text-align: left;
-    padding:20px;
   }
 
   table tbody tr td{
     text-align: left;
-    padding:20px;
     transition: all 0.2s ease;
   }
   table tbody tr:hover td{
-    background-color: #D3EFFF!important;
+    background-color: #F2F2F2!important;
     cursor:pointer;
   }
-  table tr:nth-child(odd) td{
-    background-color: #ffffff;
+  table tr td{
     color:#000000;
+    border-top: 2px solid #edeff0;
+  }
+    table tbody tr td.isDeleted span{
+        background-color: #F5382C;
+        border-radius: 2px;
+        padding: 4px 10px;
+        color:#fff;
     }
-    table tr:nth-child(even) td{
-        background-color: #f2f2f2;
-        color:#000000;
+    #ContributionPage tbody tr td:nth-child(2){
+      font-weight: 600;
     }
-    table tbody tr.isDeleted td{
-        background-color: #ffe3e1;
+    #ContributionPage tbody tr td:nth-child(4), tbody tr td:nth-child(1){
+      color:#707070;
     }
   table thead #searchRow th{
-    padding:10px;
-    background-color: #0089D5;
+    color:#171717;
   }
   [type='search']{
     background: none;
+    padding:0;
   }
   [type='search']::placeholder{
-    color:#fff;
+    color:#171717;
     opacity: .7;
+    font-weight: 400;
+    font-size: smaller;
   }
   [type='search']:focus{
       outline: none!important;
@@ -74,6 +76,5 @@
     margin-top: 0.25rem;
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem;
   }
   

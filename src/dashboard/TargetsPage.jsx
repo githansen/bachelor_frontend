@@ -5,10 +5,10 @@ import '../styles/table.css';
 //Icons
 import { PlusIcon } from '@heroicons/react/24/solid';
 
-export default function TextPage() {
+export default function TargetsPage() {
     const columns = [
         { accessor: 'id', label: 'ID' },
-        { accessor: 'title', label: 'Tittel' },
+        { accessor: 'name', label: 'Navn' },
         { accessor: 'last_changed_date', label: 'Sist endret dato' },
         { accessor: 'added_date', label: 'Lagt til' },
         {
@@ -21,21 +21,21 @@ export default function TextPage() {
     const rows = [
         {
             id: 1,
-            title: 'Textittel',
+            name: 'Textittel',
             last_changed_date: '14. April 2022',
             added_date: '10. Februar 2022',
             is_changeable: true,
         },
         {
             id: 2,
-            title: 'Random tittel',
+            name: 'Random tittel',
             last_changed_date: '23. Juni 2022',
             added_date: '05. Mars 2022',
             is_changeable: true,
         },
         {
             id: 3,
-            title: 'Dette er en tittel',
+            name: 'Dette er en tittel',
             last_changed_date: '06. Desember 2022',
             added_date: '21. April 2022',
             is_changeable: false,
@@ -50,17 +50,17 @@ export default function TextPage() {
                 <div className="flex justify-between mb-5 items-center">
                     <div className="mb-5 items-end">
                         <h2 className="text-xlh2 font-feteste leading-10 mb-3">
-                            Tekster
+                            Målgrupper
                         </h2>
                         <p>
-                            Her kan du se alle tekstene som er lagt inn i
-                            systemet. Du kan laste ned tekstene som er lagt inn
-                            i systemet.
+                            Her kan du se alle målgruppene som er lagt inn i
+                            systemet. Du kan laste ned målgruppene som er lagt
+                            inn i systemet.
                         </p>
                     </div>
 
                     <div className="inline-flex text-right place-content-end items-center w-full mb-5 gap-5">
-                        <p>Viser 12 av 254 tekster</p>
+                        <p>Viser 3 av 59 målgrupper</p>
                         <button className="text-xlknappliten font-fet border-2 border-solskinn bg-solskinn text-natt hover:bg-paskeegg transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 place-items-center">
                             <PlusIcon className="h-6 w-6" />
                             Legg til ny

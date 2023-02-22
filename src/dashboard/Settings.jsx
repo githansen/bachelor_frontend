@@ -10,7 +10,7 @@ export default function Settings() {
         <div className="flex">
             <DashMenu />
 
-            <div className="p-12 w-full bg-mane">
+            <div className="p-12 w-full bg-lysbakgrunn">
                 <div className="inline-flex gap-3 mb-10 items-end">
                     <CogIcon className="w-12" />
                     <h2 className="text-xlh2 font-feteste leading-11">
