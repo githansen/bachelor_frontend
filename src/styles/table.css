@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: sans-serif;
+  }
+  
+  table {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding:20px 10px 0px 10px;
+  }
+
+  table thead tr th{
+    background-color: #171717;
+    color:#ffffff;
+    text-align: left;
+    padding:20px;
+  }
+
+  table tbody tr td{
+    text-align: left;
+    padding:20px;
+    transition: all 0.2s ease;
+  }
+  table tbody tr:hover td{
+    background-color: #D3EFFF!important;
+    cursor:pointer;
+  }
+  table tr:nth-child(odd) td{
+    background-color: #ffffff;
+    color:#000000;
+    }
+    table tr:nth-child(even) td{
+        background-color: #f2f2f2;
+        color:#000000;
+    }
+    table tbody tr.isDeleted td{
+        background-color: #ffe3e1;
+    }
+  table thead #searchRow th{
+    padding:10px;
+    background-color: #0089D5;
+  }
+  [type='search']{
+    background: none;
+  }
+  [type='search']::placeholder{
+    color:#fff;
+    opacity: .7;
+  }
+  [type='search']:focus{
+      outline: none!important;
+      box-shadow: none!important;
+  }
+  
+  
+  th span {
+    margin-right: 1rem;
+  }
+
+  input {
+    -webkit-appearance: none;
+    border: none;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+    background: #f0f0f0;
+  }
+  
+  .pagination {
+    margin-top: 0.25rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+  

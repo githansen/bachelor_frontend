@@ -21,12 +21,13 @@ import PageThanks from '@/pages/Reader/Thanks';
 import PagePrivacy from '@/pages/additional/Privacy';
 import PageAboutUs from '@/pages/additional/AboutUs';
 import PageDeleteRecording from '@/pages/additional/DeleteRecording';
-import DashFirstPage from '@/pages/dashboard/Dashboard.jsx';
-import Login from '@/pages/dashboard/Login.jsx';
-import TextPage from '@/pages/dashboard/TextPage.jsx';
-import TargetGroupsPage from './pages/dashboard/TargetGroups';
-import SettingsPage from './pages/dashboard/Settings';
-import ContributionsPage from './pages/dashboard/Contributions';
+import DashFirstPage from '@/dashboard/Dashboard.jsx';
+import Login from '@/dashboard/Login.jsx';
+import TextPage from '@/dashboard/TextPage.jsx';
+import TargetGroupsPage from '@/dashboard/TargetGroups';
+import SettingsPage from '@/dashboard/Settings';
+import ContributionsPage from '@/dashboard/Contributions';
+import TablePage from '@/dashboard/TablePage';
 
 export default function ScrollToTop() {
     const { pathname } = useLocation();
@@ -185,6 +186,14 @@ const router = createBrowserRouter([
         element: (
             <Page title="Bidrag">
                 <ContributionsPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/table',
+        element: (
+            <Page title="Table">
+                <TablePage />
             </Page>
         ),
     },

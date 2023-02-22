@@ -6,7 +6,7 @@ import DashMenu from './DashMenu';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { DocumentIcon } from '@heroicons/react/24/solid';
 
-export default function Dashboard() {
+export default function TextPage() {
     return (
         <div className="flex">
             <DashMenu />
