@@ -1,9 +1,9 @@
 //Animation library
 import { motion as m } from 'framer-motion';
 //Shared
-import DashMenu from './DashMenu';
-import { TableForContribution } from './table/TableForContribution';
-import '../styles/table.css';
+import DashMenu from '../../components/shared/DashMenu';
+import { ContributionTable } from '../../components/table/ContributionTable';
+import '@/styles/tableStyle.css';
 //Icons
 import { PlayCircleIcon } from '@heroicons/react/24/outline';
 
@@ -119,7 +119,7 @@ export default function ContributionPage() {
                     </m.p>
                 </div>
                 <div>
-                    <TableForContribution
+                    <ContributionTable
                         rows={rows}
                         columns={columns}
                         tableId="ContributionPage"

@@ -5,9 +5,9 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Shared
-import DashMenu from './DashMenu';
-import { TableForTextPage } from './table/TableForTextPage';
-import '../styles/table.css';
+import DashMenu from '../../components/shared/DashMenu';
+import { StandardTable } from '../../components/table/StandardTable';
+import '@/styles/tableStyle.css';
 //Icons
 import {
     ChevronRightIcon,
@@ -182,7 +182,7 @@ export default function TagSingleCategoryPage() {
                     </div>
                 </div>
                 <div>
-                    <TableForTextPage
+                    <StandardTable
                         rows={rows}
                         columns={columns}
                         tableId="TagsPage"

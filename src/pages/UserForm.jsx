@@ -153,7 +153,7 @@ function Stepper({ step, totalSteps }) {
                         key={i}
                         className={`w-5 h-5 z-[2] rounded-full m-1 transition-all ${
                             i <= step ? 'bg-solskinn' : 'bg-fred'
-                        } border-secondary border-2`}
+                        } border-skumring border-2`}
                     />
                 ))}
         </m.div>

@@ -1,10 +1,12 @@
 //React
 import React, { useEffect, useRef, useState } from 'react';
 //React library
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Select, { components } from 'react-select';
+//Animation library
+import { motion as m } from 'framer-motion';
 //Shared
-import DashMenu from './DashMenu';
+import DashMenu from '../../components/shared/DashMenu';
 //Icons
 import { DocumentIcon } from '@heroicons/react/24/solid';
 import {
@@ -12,15 +14,41 @@ import {
     ArrowUpCircleIcon,
 } from '@heroicons/react/24/outline';
 
-export default function EditText() {
+export default function TextSinglePage() {
+    //Navigation
+    const navigate = useNavigate();
+    //Location - used to determine if the user is creating a new tag or editing an existing one
+    const location = useLocation();
+    const actionType = location.state.action;
+    const [title, setTitle] = useState('');
+    const [submitBtnText, setSubmitBtnText] = useState('');
+
+    useEffect(() => {
+        if (actionType) {
+            if (actionType === 'new') {
+                setTitle('Legg til ny tekst');
+                setSubmitBtnText('Legg til');
+            } else if (actionType === 'edit') {
+                setTitle('Rediger tekst:');
+                setSubmitBtnText('Oppdater');
+            }
+        } else {
+            navigate(`/gdsadmin/text`);
+        }
+    }, [actionType, navigate]);
+
+    //
     const textAreaRef = useRef();
     const [wordCount, setWordCount] = useState(0);
     const [textTime, setTextTime] = useState(0);
 
     const countWords = (e) => {
         const text = textAreaRef.current.value;
-        setWordCount(text.split(' ').length);
+        setWordCount(text.split(' ').length - 1);
         setTextTime((wordCount / 200).toFixed(2));
+        if (wordCount === 1) {
+            setTextTime(0);
+        }
     };
     useEffect(() => {
         countWords();
@@ -144,12 +172,14 @@ export default function EditText() {
             <div className="p-12 w-full bg-lysbakgrunn">
                 <div className="flex justify-between mb-5 items-center">
                     <div className="mb-5 items-end">
-                        <h2 className="text-xlh2 font-normal leading-10 mb-3">
-                            Rediger tekst :{' '}
-                            <span className="font-feteste">Random tittel</span>
-                        </h2>
-                        <nav
-                            className="flex mt-6 text-xlp"
+                        <m.nav
+                            initial={{ y: '-10px', opacity: 0 }}
+                            animate={{ y: '0', opacity: 1 }}
+                            transition={{
+                                duration: 0.3,
+                                ease: 'easeOut',
+                            }}
+                            className="flex mb-6 text-xlp"
                             aria-label="Breadcrumb"
                         >
                             <ol className="inline-flex items-center space-x-1 md:space-x-3">
@@ -165,45 +195,92 @@ export default function EditText() {
                                 <li aria-current="page" className="text-bolge">
                                     <div className="flex items-center">
                                         <ChevronRightIcon className="h-5 w-5 mr-1" />
+                                        {actionType === 'edit' ? '' : title}
                                         <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
-                                            Random tittel
+                                            {actionType === 'edit'
+                                                ? 'Random tittel'
+                                                : ''}
                                         </span>
                                     </div>
                                 </li>
                             </ol>
-                        </nav>
+                        </m.nav>
+                        <m.h2
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                duration: 0.3,
+                                ease: 'easeOut',
+                            }}
+                            className={`text-xlh2 ${
+                                actionType === 'edit'
+                                    ? 'font-normal'
+                                    : 'font-fet'
+                            } leading-10 mb-3`}
+                        >
+                            {title}{' '}
+                            <span className="font-feteste">
+                                {actionType === 'edit' ? 'Random tittel' : ''}
+                            </span>
+                        </m.h2>
                     </div>
                 </div>
                 <div className="grid grid-cols-3 gap-10">
                     <div className="col-span-2">
-                        <input
+                        <m.input
+                            initial={{ y: '20px', opacity: 0 }}
+                            animate={{ y: '0', opacity: 1 }}
+                            transition={{
+                                duration: 0.4,
+                                ease: 'easeOut',
+                            }}
                             className="bg-fred shadow w-full p-5 rounded-lg mb-8 text-xlh5 font-fet text-bolge"
                             placeholder="Skriv inn en overskrift..."
-                            value="Random tittel"
+                            defaultValue={`${
+                                actionType === 'edit' ? 'Random tittel' : ''
+                            }`}
                         />
 
-                        <textarea
+                        <m.textarea
+                            initial={{ y: '20px', opacity: 0 }}
+                            animate={{ y: '0', opacity: 1 }}
+                            transition={{
+                                duration: 0.4,
+                                ease: 'easeOut',
+                            }}
                             className="w-full bg-fred shadow border-0 text-bolge rounded-md p-5 text-xlp"
                             rows="10"
                             ref={textAreaRef}
                             onChange={countWords}
                             placeholder="Her skriver du inn din tekst..."
-                        >
-                            Dette er en random tekst generert for å være en
-                            verdi her.
-                        </textarea>
+                            defaultValue={`${
+                                actionType === 'edit'
+                                    ? 'Dette er en random tekst generert for å være en verdi her.'
+                                    : ''
+                            }`}
+                        />
                     </div>
                     <div className="col-span-1">
-                        <div className="bg-fred w-full p-10 rounded-lg shadow mb-5">
-                            <ul className="text-xlp">
-                                <li>
-                                    <p className="text-xlp text-stein">
-                                        ID: 5 | Publisert: 23.02.2022
-                                    </p>
-                                </li>
-                            </ul>
+                        <m.div
+                            initial={{ y: '20px', opacity: 0 }}
+                            animate={{ y: '0', opacity: 1 }}
+                            transition={{
+                                duration: 0.4,
+                                ease: 'easeOut',
+                            }}
+                            className="bg-fred w-full p-10 rounded-lg shadow mb-5"
+                        >
+                            {actionType === 'edit' && (
+                                <ul className="text-xlp">
+                                    <li>
+                                        <p className="text-xlp text-stein">
+                                            ID: 5 | Publisert: 23.02.2022
+                                        </p>
+                                    </li>
+                                </ul>
+                            )}
                             <h6 className="text-xlh6 font-fet mb-2">
-                                Oppdater tekst
+                                {submitBtnText} tekst
                             </h6>
                             <ul className="text-xlp">
                                 <li>
@@ -217,11 +294,12 @@ export default function EditText() {
                                 </li>
                             </ul>
 
-                            <select className="mt-4 rounded border-2 border-bolge text-bolge w-full">
+                            <select
+                                defaultValue="draft"
+                                className="mt-4 rounded border-2 border-bolge text-bolge w-full"
+                            >
                                 <option value="draft">Kladd</option>
-                                <option value="published" selected>
-                                    Publisert
-                                </option>
+                                <option value="published">Publisert</option>
                                 <option value="notPublished">
                                     Ikke publisert
                                 </option>
@@ -230,14 +308,25 @@ export default function EditText() {
                             <div className="grid grid-cols-3 gap-5">
                                 <button className="col-span-2 mt-4 w-full text-center text-xlknappliten font-fet border-2 border-bolge bg-bolge text-fred hover:bg-krystall hover:text-bolge transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 justify-center place-items-center">
                                     <ArrowUpCircleIcon className="h-6 w-6" />
-                                    Oppdater
+                                    {submitBtnText}
                                 </button>
-                                <button className="col-span-1 mt-4 w-full text-center text-xlknappliten font-fet border-2 border-metall bg-none text-metall hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 justify-center place-items-center">
+                                <NavLink
+                                    to="/gdsadmin/text"
+                                    className="col-span-1 mt-4 w-full text-center text-xlknappliten font-fet border-2 border-metall bg-none text-metall hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 justify-center place-items-center"
+                                >
                                     Avbryt
-                                </button>
+                                </NavLink>
                             </div>
-                        </div>
-                        <div className="bg-fred w-full p-10 rounded-lg shadow">
+                        </m.div>
+                        <m.div
+                            initial={{ y: '20px', opacity: 0 }}
+                            animate={{ y: '0', opacity: 1 }}
+                            transition={{
+                                duration: 0.4,
+                                ease: 'easeOut',
+                            }}
+                            className="bg-fred w-full p-10 rounded-lg shadow"
+                        >
                             <h6 className="text-xlh6 font-fet mb-2">
                                 Målgruppe
                             </h6>
@@ -246,21 +335,35 @@ export default function EditText() {
                                 målgrupper, eller ønsker å legge til en ny.
                                 Klikk her.
                             </small>
-                            <Select
-                                placeholder={<div>Ikke valgt...</div>}
-                                name="Velg et kjønn"
-                                options={targetOptions}
-                                isClearable={false}
-                                isMulti
-                                components={{ NoOptionsMessage, Option }}
-                                className="text-left mt-3"
-                                styles={selectStyle}
-                                defaultValue={[
-                                    targetOptions[2],
-                                    targetOptions[3],
-                                ]}
-                            />
-                        </div>
+                            {actionType === 'edit' && (
+                                <Select
+                                    placeholder={<div>Ikke valgt...</div>}
+                                    name="Velg en målgruppe"
+                                    options={targetOptions}
+                                    isClearable={false}
+                                    isMulti
+                                    components={{ NoOptionsMessage, Option }}
+                                    className="text-left mt-3"
+                                    styles={selectStyle}
+                                    defaultValue={[
+                                        targetOptions[2],
+                                        targetOptions[3],
+                                    ]}
+                                />
+                            )}
+                            {actionType === 'new' && (
+                                <Select
+                                    placeholder={<div>Ikke valgt...</div>}
+                                    name="Velg en målgruppe"
+                                    options={targetOptions}
+                                    isClearable={false}
+                                    isMulti
+                                    components={{ NoOptionsMessage, Option }}
+                                    className="text-left mt-3"
+                                    styles={selectStyle}
+                                />
+                            )}
+                        </m.div>
                     </div>
                 </div>
             </div>

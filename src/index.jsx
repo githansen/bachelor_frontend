@@ -22,19 +22,18 @@ import PagePrivacy from '@/pages/additional/Privacy';
 import PageAboutUs from '@/pages/additional/AboutUs';
 import PageDeleteRecording from '@/pages/additional/DeleteRecording';
 //Adminpanel
-import DashFirstPage from '@/dashboard/Dashboard.jsx';
-import Login from '@/dashboard/Login.jsx';
-import TextPage from '@/dashboard/TextPage.jsx';
-import TargetsPage from '@/dashboard/TargetPage';
-import SettingsPage from '@/dashboard/Settings';
-import ContributionPage from '@/dashboard/ContributionPage';
-import NewTextPage from '@/dashboard/NewText';
-import EditTextPage from '@/dashboard/EditText';
-import NewTargetPage from '@/dashboard/NewTarget';
-import EditTargetPage from '@/dashboard/EditTarget';
-import TagCategoriesPage from '@/dashboard/TagCategoriesPage';
-import TagSingleCategoryPage from '@/dashboard/TagSingleCategoryPage';
-import TagSinglePage from '@/dashboard/TagSinglePage';
+import DashFirstPage from '@/dashboard/pages/Dashboard.jsx';
+import Login from '@/dashboard/pages/Login.jsx';
+import TextPage from '@/dashboard/pages/texts/TextPage.jsx';
+import TextSinglePage from '@/dashboard/pages/texts/TextSinglePage';
+import TargetsPage from '@/dashboard/pages/targets/TargetPage';
+import NewTargetPage from '@/dashboard/pages/targets/NewTarget';
+import EditTargetPage from '@/dashboard/pages/targets/EditTarget';
+import SettingsPage from '@/dashboard/pages/settings/Settings';
+import ContributionPage from '@/dashboard/pages/contributions/ContributionPage';
+import TagCategoriesPage from '@/dashboard/pages/tags/TagCategoriesPage';
+import TagSingleCategoryPage from '@/dashboard/pages/tags/TagSingleCategoryPage';
+import TagSinglePage from '@/dashboard/pages/tags/TagSinglePage';
 
 export default function ScrollToTop() {
     const { pathname } = useLocation();
@@ -200,7 +199,7 @@ const router = createBrowserRouter([
         path: '/gdsadmin/text/new',
         element: (
             <Page title="Legg til ny tekst">
-                <NewTextPage />
+                <TextSinglePage />
             </Page>
         ),
     },
@@ -208,7 +207,7 @@ const router = createBrowserRouter([
         path: '/gdsadmin/text/edit',
         element: (
             <Page title="Rediger tekst">
-                <EditTextPage />
+                <TextSinglePage />
             </Page>
         ),
     },

@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 //React library
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState, useEffect, useMemo } from 'react';
-import { sortRows, filterRows, paginateRows } from './helpers';
-import { Pagination } from './Pagination';
+import { sortRows, filterRows, paginateRows } from './addon/TableHelpers';
+import { Pagination } from './addon/TablePagination';
 //Icons
 import {
     ArrowPathIcon,
@@ -15,7 +15,7 @@ import {
 } from '@heroicons/react/24/solid';
 import { PencilIcon } from '@heroicons/react/24/outline';
 
-export const TableForTextPage = ({ columns, rows, tableId }) => {
+export const StandardTable = ({ columns, rows, tableId }) => {
     //Open/close modal
     let [isOpen, setIsOpen] = useState(false);
     //Delete entity
@@ -200,7 +200,7 @@ export const TableForTextPage = ({ columns, rows, tableId }) => {
                                                 return (
                                                     <td
                                                         key={column.accessor}
-                                                        className="px-5 py-4"
+                                                        className="px-5 py-4 flex"
                                                     >
                                                         <NavLink
                                                             to={column.editLink}
@@ -209,10 +209,9 @@ export const TableForTextPage = ({ columns, rows, tableId }) => {
                                                                 categoryType:
                                                                     column.categoryType,
                                                             }}
-                                                            className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-1 rounded inline-flex place-items-center gap-1.5"
+                                                            className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
                                                         >
                                                             <PencilIcon className="h-5 w-5" />
-                                                            Endre
                                                         </NavLink>
                                                     </td>
                                                 );

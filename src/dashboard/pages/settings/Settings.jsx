@@ -3,7 +3,7 @@ import { useState } from 'react';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Shared
-import DashMenu from './DashMenu';
+import DashMenu from '../../components/shared/DashMenu';
 import '@/styles/dashboard.css';
 //Icons
 import {

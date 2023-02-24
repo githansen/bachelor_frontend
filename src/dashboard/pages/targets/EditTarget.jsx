@@ -2,7 +2,7 @@
 import { NavLink } from 'react-router-dom';
 import Select, { components } from 'react-select';
 //Shared
-import DashMenu from './DashMenu';
+import DashMenu from '../../components/shared/DashMenu';
 //Icons
 import { ArrowUpCircleIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 

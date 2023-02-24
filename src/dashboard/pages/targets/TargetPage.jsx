@@ -3,24 +3,24 @@ import { NavLink } from 'react-router-dom';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Shared
-import DashMenu from './DashMenu';
-import { TableForTextPage } from './table/TableForTextPage';
-import '../styles/table.css';
+import DashMenu from '../../components/shared/DashMenu';
+import { StandardTable } from '../../components/table/StandardTable';
+import '@/styles/tableStyle.css';
 //Icons
-import { PlusIcon, DocumentIcon } from '@heroicons/react/24/outline';
+import { PlusIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 
-export default function TextPage() {
+export default function TargetPage() {
     const columns = [
         { accessor: 'id', label: 'ID' },
-        { accessor: 'title', label: 'Tittel' },
+        { accessor: 'name', label: 'Navn' },
         { accessor: 'last_changed_date', label: 'Sist endret dato' },
         { accessor: 'added_date', label: 'Lagt til' },
         {
             accessor: 'is_changeable',
-            label: 'Handling',
-            format: (value) => (value ? '' : 'Ingen tilgang'),
+            label: 'Endre',
+            format: (value) => (value ? 'Endre' : 'Ingen tilgang'),
             type: 'action',
-            action: 'onlyEdit',
+            action: 'onlyEdit', //onlyEdit or editAndDelete
             editLink: 'edit',
         },
     ];
@@ -28,21 +28,21 @@ export default function TextPage() {
     const rows = [
         {
             id: 1,
-            title: 'Textittel',
+            name: 'Textittel',
             last_changed_date: '14. April 2022',
             added_date: '10. Februar 2022',
             is_changeable: true,
         },
         {
             id: 2,
-            title: 'Random tittel',
+            name: 'Random tittel',
             last_changed_date: '23. Juni 2022',
             added_date: '05. Mars 2022',
             is_changeable: true,
         },
         {
             id: 3,
-            title: 'Dette er en tittel',
+            name: 'Dette er en tittel',
             last_changed_date: '06. Desember 2022',
             added_date: '21. April 2022',
             is_changeable: false,
@@ -65,7 +65,7 @@ export default function TextPage() {
                                     ease: 'easeOut',
                                 }}
                             >
-                                <DocumentIcon className="w-12" />
+                                <UserGroupIcon className="w-12" />
                             </m.span>
                             <m.h2
                                 initial={{ opacity: 0 }}
@@ -76,7 +76,7 @@ export default function TextPage() {
                                 }}
                                 className="text-xlh2 font-feteste leading-10 mb-3"
                             >
-                                Tekster
+                                Målgrupper
                             </m.h2>
                         </div>
                         <m.p
@@ -88,14 +88,14 @@ export default function TextPage() {
                             }}
                             className="text-xlp mt-2"
                         >
-                            Her kan du se alle tekstene som er lagt inn i
+                            Her kan du se alle målgruppene som er lagt inn i
                             systemet.
                         </m.p>
                     </div>
 
                     <div className="inline-flex text-right place-content-end items-center w-full mb-5 gap-5">
-                        <p>Viser 12 av 254 tekster</p>
-                        <NavLink to="/gdsadmin/text/new">
+                        <p>Viser 3 av 59 målgrupper</p>
+                        <NavLink to="/gdsadmin/target/new">
                             <div className="text-xlknappliten font-fet border-2 border-bolge bg-bolge text-fred hover:bg-krystall hover:text-bolge transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 place-items-center">
                                 <PlusIcon className="h-6 w-6" />
                                 Legg til ny
@@ -104,7 +104,7 @@ export default function TextPage() {
                     </div>
                 </div>
                 <div>
-                    <TableForTextPage
+                    <StandardTable
                         rows={rows}
                         columns={columns}
                         tableId="TextPage"

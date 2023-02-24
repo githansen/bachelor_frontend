@@ -1,8 +1,6 @@
-//React library
-import { NavLink } from 'react-router-dom';
 import { useState, useMemo } from 'react';
-import { sortRows, filterRows, paginateRows } from './helpers';
-import { Pagination } from './Pagination';
+import { sortRows, filterRows, paginateRows } from './addon/TableHelpers';
+import { Pagination } from './addon/TablePagination';
 //Icons
 import {
     ArrowPathIcon,
@@ -10,9 +8,9 @@ import {
     ArrowSmallDownIcon,
     ArrowsUpDownIcon,
 } from '@heroicons/react/24/solid';
-import { PencilIcon } from '@heroicons/react/24/outline';
+import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 
-export const TableForTags = ({ columns, rows, tableId }) => {
+export const ContributionTable = ({ columns, rows, tableId }) => {
     const [activePage, setActivePage] = useState(1);
     const [filters, setFilters] = useState({});
     const [sort, setSort] = useState({ order: 'asc', orderBy: 'id' });
@@ -72,7 +70,7 @@ export const TableForTags = ({ columns, rows, tableId }) => {
                 <thead>
                     <tr id="searchRow">
                         {columns.map((column) => {
-                            if (column.accessor === 'is_changeable') {
+                            if (column.accessor === 'is_deleted') {
                                 return (
                                     <th
                                         key={column.label}
@@ -126,7 +124,7 @@ export const TableForTags = ({ columns, rows, tableId }) => {
                                     );
                                 }
                             };
-                            if (column.accessor === 'is_changeable') {
+                            if (column.accessor === 'is_deleted') {
                                 return (
                                     <th key={column.accessor} className="p-5">
                                         <div className="flex place-items-center gap-2">
@@ -164,14 +162,14 @@ export const TableForTags = ({ columns, rows, tableId }) => {
                             <tr
                                 key={row.id}
                                 className={`${
-                                    row.is_changeable
-                                        ? ''
-                                        : 'opacity-50 hover:opacity-100'
+                                    row.is_deleted
+                                        ? 'opacity-50 hover:opacity-100'
+                                        : ''
                                 }`}
                             >
                                 {columns.map((column) => {
                                     if (column.type === 'action') {
-                                        if (!row.is_changeable) {
+                                        if (row.is_deleted) {
                                             return (
                                                 <td
                                                     key={column.accessor}
@@ -190,15 +188,17 @@ export const TableForTags = ({ columns, rows, tableId }) => {
                                                     key={column.accessor}
                                                     className="px-5 py-4"
                                                 >
-                                                    <NavLink
-                                                        to="/gdsadmin/text/edit"
-                                                        className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-1 rounded inline-flex place-items-center gap-1.5"
-                                                    >
-                                                        <PencilIcon className="h-5 w-5" />
-                                                        {column.format(
-                                                            row[column.accessor]
-                                                        )}
-                                                    </NavLink>
+                                                    <button className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-1 rounded inline-flex place-items-center gap-1.5">
+                                                        <ArrowDownTrayIcon className="h-5 w-5" />
+                                                        <span>
+                                                            {column.format(
+                                                                row[
+                                                                    column
+                                                                        .accessor
+                                                                ]
+                                                            )}
+                                                        </span>
+                                                    </button>
                                                 </td>
                                             );
                                         }

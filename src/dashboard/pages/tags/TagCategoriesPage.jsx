@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Shared
-import DashMenu from './DashMenu';
+import DashMenu from '../../components/shared/DashMenu';
 //Icons
 import {
     TagIcon,

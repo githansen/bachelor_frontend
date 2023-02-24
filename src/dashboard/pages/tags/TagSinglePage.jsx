@@ -5,7 +5,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Shared
-import DashMenu from './DashMenu';
+import DashMenu from '../../components/shared/DashMenu';
 //Icons
 import {
     ArrowUpCircleIcon,
@@ -24,8 +24,6 @@ export default function TagSinglePage() {
     const location = useLocation();
     const actionType = location.state.action;
     const categoryType = location.state.categoryType;
-    console.log(actionType);
-    console.log(categoryType);
     //State - used to determine the data of the page
     const [title, setTitle] = useState('');
     const [icon, setIcon] = useState('');
