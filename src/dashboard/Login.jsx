@@ -70,7 +70,7 @@ export default function Login() {
                         <div className=" w-full text-right">
                             <NavLink
                                 to="/gdsadmin/dashboard"
-                                className="font-medium text-solskinn hover:text-paskeegg transition ease-in-out duration-150"
+                                className="font-medium text-bolge hover:text-krystall transition ease-in-out duration-150"
                             >
                                 Glemt passord?
                             </NavLink>
@@ -79,10 +79,10 @@ export default function Login() {
                         <div>
                             <button
                                 type="submit"
-                                className="group relative flex w-full justify-center rounded-md border border-transparent bg-solskinn transition ease-in-out duration-250 py-4 px-3 text-sm font-fet text-white hover:bg-paskeegg focus:outline-none "
+                                className="group relative flex w-full justify-center rounded-md border-2 bg-bolge text-fred hover:text-bolge border-bolge transition ease-in-out duration-250 py-4 px-3 text-sm font-fet text-white hover:bg-krystall focus:outline-none "
                             >
                                 <LockClosedIcon
-                                    className="h-5 w-5 text-natt mr-2"
+                                    className="h-5 w-5 mr-2"
                                     aria-hidden="true"
                                 />
                                 Logg inn

@@ -46,14 +46,14 @@ export default function TagCategoriesPage() {
                     <NavLink
                         to="/gdsadmin/tags/age"
                         state="age"
-                        className="flex h-96 rounded-lg border-4 border-dashed border-stein bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
+                        className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
                     >
                         <div className="w-full">
                             <UserIcon className="w-12 mx-auto mb-5" />
                             <h5 className="text-xlh5 font-fet">
                                 Aldersgrupper
                             </h5>
-                            <p>
+                            <p className="text-smp">
                                 Legg til, slett eller endre de ulike
                                 aldersgruppene.
                             </p>
@@ -63,12 +63,12 @@ export default function TagCategoriesPage() {
                     <NavLink
                         to="/gdsadmin/tags/gender"
                         state="gender"
-                        className="flex h-96 rounded-lg border-4 border-dashed border-stein bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
+                        className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
                     >
                         <div className="w-full">
                             <FaceSmileIcon className="w-12 mx-auto mb-5" />
                             <h5 className="text-xlh5 font-fet">Kjønn</h5>
-                            <p>
+                            <p className="text-smp">
                                 Legg til, slett eller endre de ulike kjønnene.
                             </p>
                         </div>
@@ -77,12 +77,12 @@ export default function TagCategoriesPage() {
                     <NavLink
                         to="/gdsadmin/tags/language"
                         state="language"
-                        className="flex h-96 rounded-lg border-4 border-dashed border-stein bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
+                        className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
                     >
                         <div className="w-full">
                             <FlagIcon className="w-12 mx-auto mb-5" />
                             <h5 className="text-xlh5 font-fet">Morsmål</h5>
-                            <p>
+                            <p className="text-smp">
                                 Legg til, slett eller endre de ulike morsmålene.
                             </p>
                         </div>
@@ -91,12 +91,12 @@ export default function TagCategoriesPage() {
                     <NavLink
                         to="/gdsadmin/tags/dialect"
                         state="dialect"
-                        className="flex h-96 rounded-lg border-4 border-dashed border-stein bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
+                        className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
                     >
                         <div className="w-full">
                             <StarIcon className="w-12 mx-auto mb-5" />
                             <h5 className="text-xlh5 font-fet">Dialekt</h5>
-                            <p>
+                            <p className="text-smp">
                                 Legg til, slett eller endre de ulike dialektene.
                             </p>
                         </div>
