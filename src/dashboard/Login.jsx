@@ -1,4 +1,5 @@
 //React
+import { NavLink } from 'react-router-dom';
 import { useEffect, useState, Fragment } from 'react';
 //Animation library
 import { motion as m } from 'framer-motion';
@@ -67,12 +68,12 @@ export default function Login() {
                         </div>
 
                         <div className=" w-full text-right">
-                            <a
-                                href="#"
+                            <NavLink
+                                to="/gdsadmin/dashboard"
                                 className="font-medium text-solskinn hover:text-paskeegg transition ease-in-out duration-150"
                             >
                                 Glemt passord?
-                            </a>
+                            </NavLink>
                         </div>
 
                         <div>

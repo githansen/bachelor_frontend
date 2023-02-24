@@ -1,7 +1,11 @@
+//Animation library
+import { motion as m } from 'framer-motion';
 //Shared
 import DashMenu from './DashMenu';
 import { TableForContribution } from './table/TableForContribution';
 import '../styles/table.css';
+//Icons
+import { PlayCircleIcon } from '@heroicons/react/24/outline';
 
 export default function ContributionPage() {
     const columns = [
@@ -13,6 +17,7 @@ export default function ContributionPage() {
             accessor: 'is_deleted',
             label: 'Last ned',
             format: (value) => (value ? 'Slettet' : 'Last ned'),
+            type: 'action',
         },
     ];
 
@@ -76,14 +81,42 @@ export default function ContributionPage() {
 
             <div className="p-12 w-full bg-lysbakgrunn">
                 <div className="mb-5 items-end">
-                    <h2 className="text-xlh2 font-feteste leading-10 mb-3">
-                        Innspillinger
-                    </h2>
-                    <p>
+                    <div className="inline-flex gap-3">
+                        <m.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                duration: 0.3,
+                                ease: 'easeOut',
+                            }}
+                        >
+                            <PlayCircleIcon className="w-12" />
+                        </m.span>
+                        <m.h2
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                duration: 0.3,
+                                ease: 'easeOut',
+                            }}
+                            className="text-xlh2 font-feteste leading-10 mb-3"
+                        >
+                            Innspillinger
+                        </m.h2>
+                    </div>
+                    <m.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                            duration: 0.3,
+                            ease: 'easeOut',
+                        }}
+                        className="text-xlp mt-2"
+                    >
                         Her kan du se alle innspillinger som er lagt til. Du kan
                         søke på innspillinger, sortere på kolonner og slette
                         innspillinger.
-                    </p>
+                    </m.p>
                 </div>
                 <div>
                     <TableForContribution

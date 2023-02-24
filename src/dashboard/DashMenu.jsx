@@ -14,24 +14,34 @@ import {
     CogIcon,
     ArrowLeftOnRectangleIcon,
     PlayCircleIcon,
-} from '@heroicons/react/24/solid';
+    TagIcon,
+} from '@heroicons/react/24/outline';
 import { ReactComponent as LeftArrow } from '@/assets/icons/LeftArrow.svg';
 
 export default function DashMenu() {
     const [open, setOpen] = useState(true);
 
     const menuItems = [
-        { title: 'Dashboard', icon: HomeIcon, path: '/dashboard' },
-        { title: 'Bidrag', icon: PlayCircleIcon, path: '/contributions' },
-        { title: 'Tekster', icon: DocumentIcon, path: '/textpage' },
-        { title: 'Målgrupper', icon: UserGroupIcon, path: '/targets' },
-        { title: 'Innstillinger', icon: CogIcon, path: '/settings' },
-        { title: 'Logg ut', icon: ArrowLeftOnRectangleIcon, path: '/login' },
+        { title: 'Dashboard', icon: HomeIcon, path: '/gdsadmin/dashboard' },
+        {
+            title: 'Bidrag',
+            icon: PlayCircleIcon,
+            path: '/gdsadmin/contributions',
+        },
+        { title: 'Tekster', icon: DocumentIcon, path: '/gdsadmin/text' },
+        { title: 'Målgrupper', icon: UserGroupIcon, path: '/gdsadmin/target' },
+        { title: 'Merkelapper', icon: TagIcon, path: '/gdsadmin/tags' },
+        { title: 'Innstillinger', icon: CogIcon, path: '/gdsadmin/settings' },
+        {
+            title: 'Logg ut',
+            icon: ArrowLeftOnRectangleIcon,
+            path: '/gdsadmin/',
+        },
     ];
 
     return (
         <div
-            className={`flex flex-col w-1/5 h-screen p-5 pt-10 ${
+            className={`flex flex-col w-1/5 h-screen p-5 pt-10 shadow-md ${
                 open ? 'w-72' : 'w-20'
             } bg-fred duration-100 relative`}
         >
@@ -47,6 +57,7 @@ export default function DashMenu() {
                 }  place-items-center`}
             >
                 <img
+                    alt="Gi Din Stemme logo"
                     src={GiDinStemmeIconNoBg}
                     className="h-12 object-contain hover:rotate-[-20deg] transition-all duration-500 cursor-pointer"
                 />

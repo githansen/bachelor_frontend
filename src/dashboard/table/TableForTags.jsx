@@ -1,3 +1,5 @@
+//React library
+import { NavLink } from 'react-router-dom';
 import { useState, useMemo } from 'react';
 import { sortRows, filterRows, paginateRows } from './helpers';
 import { Pagination } from './Pagination';
@@ -10,7 +12,7 @@ import {
 } from '@heroicons/react/24/solid';
 import { PencilIcon } from '@heroicons/react/24/outline';
 
-export const TableForTextPage = ({ columns, rows, tableId }) => {
+export const TableForTags = ({ columns, rows, tableId }) => {
     const [activePage, setActivePage] = useState(1);
     const [filters, setFilters] = useState({});
     const [sort, setSort] = useState({ order: 'asc', orderBy: 'id' });
@@ -168,7 +170,7 @@ export const TableForTextPage = ({ columns, rows, tableId }) => {
                                 }`}
                             >
                                 {columns.map((column) => {
-                                    if (column.format) {
+                                    if (column.type === 'action') {
                                         if (!row.is_changeable) {
                                             return (
                                                 <td
@@ -188,12 +190,15 @@ export const TableForTextPage = ({ columns, rows, tableId }) => {
                                                     key={column.accessor}
                                                     className="px-5 py-4"
                                                 >
-                                                    <button className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-1 rounded inline-flex place-items-center gap-1.5">
+                                                    <NavLink
+                                                        to="/gdsadmin/text/edit"
+                                                        className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-1 rounded inline-flex place-items-center gap-1.5"
+                                                    >
                                                         <PencilIcon className="h-5 w-5" />
                                                         {column.format(
                                                             row[column.accessor]
                                                         )}
-                                                    </button>
+                                                    </NavLink>
                                                 </td>
                                             );
                                         }

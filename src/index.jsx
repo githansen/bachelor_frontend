@@ -21,12 +21,20 @@ import PageThanks from '@/pages/Reader/Thanks';
 import PagePrivacy from '@/pages/additional/Privacy';
 import PageAboutUs from '@/pages/additional/AboutUs';
 import PageDeleteRecording from '@/pages/additional/DeleteRecording';
+//Adminpanel
 import DashFirstPage from '@/dashboard/Dashboard.jsx';
 import Login from '@/dashboard/Login.jsx';
 import TextPage from '@/dashboard/TextPage.jsx';
-import TargetsPage from '@/dashboard/TargetsPage';
+import TargetsPage from '@/dashboard/TargetPage';
 import SettingsPage from '@/dashboard/Settings';
 import ContributionPage from '@/dashboard/ContributionPage';
+import NewTextPage from '@/dashboard/NewText';
+import EditTextPage from '@/dashboard/EditText';
+import NewTargetPage from '@/dashboard/NewTarget';
+import EditTargetPage from '@/dashboard/EditTarget';
+import TagCategoriesPage from '@/dashboard/TagCategoriesPage';
+import TagSingleCategoryPage from '@/dashboard/TagSingleCategoryPage';
+import TagSinglePage from '@/dashboard/TagSinglePage';
 
 export default function ScrollToTop() {
     const { pathname } = useLocation();
@@ -141,7 +149,7 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: '/dashboard',
+        path: '/gdsadmin/dashboard',
         element: (
             <Page title="Dashboard">
                 <DashFirstPage />
@@ -149,7 +157,7 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: '/login',
+        path: '/gdsadmin/',
         element: (
             <Page title="Logg inn">
                 <Login />
@@ -157,7 +165,7 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: '/textpage',
+        path: '/gdsadmin/text',
         element: (
             <Page title="Tekster">
                 <TextPage />
@@ -165,7 +173,7 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: '/targets',
+        path: '/gdsadmin/target',
         element: (
             <Page title="Målgrupper">
                 <TargetsPage />
@@ -173,7 +181,7 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: '/settings',
+        path: '/gdsadmin/settings',
         element: (
             <Page title="Innstillinger">
                 <SettingsPage />
@@ -181,10 +189,114 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: '/contributions',
+        path: '/gdsadmin/contributions',
         element: (
             <Page title="Bidrag">
                 <ContributionPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/text/new',
+        element: (
+            <Page title="Legg til ny tekst">
+                <NewTextPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/text/edit',
+        element: (
+            <Page title="Rediger tekst">
+                <EditTextPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/target/new',
+        element: (
+            <Page title="Legg til ny målgruppe">
+                <NewTargetPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/target/edit',
+        element: (
+            <Page title="Rediger målgruppe">
+                <EditTargetPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/tags',
+        element: (
+            <Page title="Brukertags">
+                <TagCategoriesPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/tags/age',
+        element: (
+            <Page title="Alder - Tag">
+                <TagSingleCategoryPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/tags/gender',
+        element: (
+            <Page title="Kjønn - Tag">
+                <TagSingleCategoryPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/tags/language',
+        element: (
+            <Page title="Morsmål - Tag">
+                <TagSingleCategoryPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/tags/dialect',
+        element: (
+            <Page title="Dialekt - Tag">
+                <TagSingleCategoryPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/tags/age/tag',
+        element: (
+            <Page title="Aldersgruppe merkelapp">
+                <TagSinglePage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/tags/gender/tag',
+        element: (
+            <Page title="Kjønn merkelapp">
+                <TagSinglePage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/tags/language/tag',
+        element: (
+            <Page title="Morsmål merkelapp">
+                <TagSinglePage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/tags/dialect/tag',
+        element: (
+            <Page title="Dialekt merkelapp">
+                <TagSinglePage />
             </Page>
         ),
     },

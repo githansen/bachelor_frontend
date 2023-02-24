@@ -80,7 +80,7 @@ function SelectInput({ options, name, selected, onChange }) {
                         'option--is-focused': isFocused,
                         'option--is-selected': isSelected,
                     },
-                    `${className} defaultSelectOptionsStyle`
+                    `${className} SelectOptionsStyle defaultSelectOptionsStyle`
                 )}
                 {...innerProps}
             >
