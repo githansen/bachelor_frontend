@@ -9,6 +9,12 @@ import { PlayCircleIcon } from '@heroicons/react/24/outline';
 
 export default function ContributionPage() {
     const columns = [
+        {
+            accessor: 'audio_file',
+            label: 'Lydfil',
+            format: (value) => '',
+            type: 'audio',
+        },
         { accessor: 'id', label: 'ID' },
         { accessor: 'text', label: 'Tekst' },
         { accessor: 'target', label: 'Målgruppe' },

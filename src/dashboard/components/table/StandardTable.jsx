@@ -187,7 +187,7 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                         })}
                     </tr>
                 </thead>
-                <tbody className="text-xsp">
+                <tbody className="text-p">
                     {calculatedRows.map((row) => {
                         return (
                             <tr key={row.id}>
