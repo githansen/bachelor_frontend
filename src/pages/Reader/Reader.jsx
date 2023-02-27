@@ -112,6 +112,18 @@ export default function Reader() {
         };
     });
 
+    // Prevents user from leaving page when recording
+    useEffect(() => {
+        const unloadCallback = (event) => {
+            event.preventDefault();
+            event.returnValue = '';
+            return '';
+        };
+
+        window.addEventListener('beforeunload', unloadCallback);
+        return () => window.removeEventListener('beforeunload', unloadCallback);
+    }, []);
+
     // TextEdit - Responsive Font Size
     const [fontsize, setFontSize] = useState(24);
     useEffect(() => {
