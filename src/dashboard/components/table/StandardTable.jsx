@@ -152,13 +152,13 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                                                 as={Fragment}
                                                 enter="transition ease-out duration-200"
                                                 enterFrom="opacity-0 translate-y-[-125%]"
-                                                enterTo="opacity-100 translate-y-[-100%]"
+                                                enterTo="opacity-100 translate-y-[-90%]"
                                                 leave="transition ease-in duration-150"
-                                                leaveFrom="opacity-100 translate-y-[-100%]"
+                                                leaveFrom="opacity-100 translate-y-[-90%]"
                                                 leaveTo="opacity-0 translate-y-[-125%]"
                                             >
                                                 <Popover.Panel className="absolute z-10">
-                                                    <div className="overflow-hidden rounded-lg p-2 shadow-lg text-skumring ring-opacity-5 bg-krystall border-2 border-bolge">
+                                                    <div className="overflow-hidden rounded-lg p-2 text-skumring ring-opacity-5 bg-fred  border-skumring">
                                                         <input
                                                             key={`${column.accessor}-search`}
                                                             type="search"

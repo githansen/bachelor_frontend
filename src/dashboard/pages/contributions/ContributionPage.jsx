@@ -9,13 +9,13 @@ import { PlayCircleIcon } from '@heroicons/react/24/outline';
 
 export default function ContributionPage() {
     const columns = [
+        { accessor: 'id', label: 'ID' },
         {
             accessor: 'audio_file',
             label: 'Lydfil',
             format: (value) => '',
             type: 'audio',
         },
-        { accessor: 'id', label: 'ID' },
         { accessor: 'text', label: 'Tekst' },
         { accessor: 'target', label: 'Målgruppe' },
         { accessor: 'contribution_date', label: 'Innlest dato' },
@@ -30,7 +30,7 @@ export default function ContributionPage() {
     const rows = [
         {
             id: 1,
-            text: 'Liz Lemon',
+            text: 'Textittel',
             target: 'NordmennU40',
             is_deleted: true,
             contribution_date: '20. Februar 2022',
@@ -38,7 +38,7 @@ export default function ContributionPage() {
         },
         {
             id: 2,
-            text: 'Jack Donaghy',
+            text: 'Textittel',
             target: 'AfrikaO60',
             is_deleted: true,
             contribution_date: '22. Januar 2022',
@@ -46,35 +46,35 @@ export default function ContributionPage() {
         },
         {
             id: 3,
-            text: 'Tracy Morgan',
+            text: 'Random tittel',
             target: 'Europa18',
             is_deleted: false,
             contribution_date: '19. Februar 2022',
         },
         {
             id: 4,
-            text: 'Jenna Maroney',
+            text: 'Random tittel',
             target: 'Amerika20',
             is_deleted: false,
             contribution_date: '22. Mars 2022',
         },
         {
             id: 5,
-            text: 'Kenneth Parcell',
+            text: 'Textittel',
             target: 'Ingen',
             is_deleted: false,
             contribution_date: '15. Desember 2022',
         },
         {
             id: 6,
-            text: 'Pete Hornberger',
+            text: 'Random tittel',
             target: 'Danmark18',
             is_deleted: true,
             contribution_date: '13. Februar 2022',
         },
         {
             id: 7,
-            text: 'Frank Rossitano',
+            text: 'Random tittel',
             target: 'AfrikaO60',
             is_deleted: false,
             contribution_date: '16. Januar 2022',

@@ -46,18 +46,31 @@ tbody tr td:first-child {
     max-width: 8em;
     word-break: break-all;
 }
-#ContributionPage tbody tr td:nth-child(2) {
+#ContributionPage input::placeholder {
+    font-size: 15px;
+    font-weight: 900;
+}
+#ContributionPage tbody tr td:nth-child(1) {
+    text-align: center;
+}
+#ContributionPage tbody tr td:nth-child(3) {
     font-weight: 600;
 }
-#ContributionPage tbody tr td:nth-child(4),
-tbody tr td:nth-child(1) {
+#ContributionPage tbody tr td:nth-child(5) p {
     color: #707070;
+}
+#StandardTable input::placeholder {
+    font-size: 15px;
+    font-weight: 900;
 }
 #StandardTable tbody tr td:nth-child(2) {
     font-weight: 600;
 }
-#StandardTable tbody tr td:nth-child(4),
-tbody tr td:nth-child(1) {
+#StandardTable tbody tr td:nth-child(1) {
+    text-align: center;
+}
+#StandardTable tbody tr td:nth-child(3) p,
+#StandardTable tbody tr td:nth-child(4) p {
     color: #707070;
 }
 table thead #searchRow th {
