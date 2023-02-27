@@ -23,7 +23,14 @@ import { useTimer } from 'use-timer';
 import { motion as m } from 'framer-motion';
 
 // Main text to be read by user
-function TextPanel({ text, state, fontColor, fontsize, fontfamily, alignText }) {
+function TextPanel({
+    text,
+    state,
+    fontColor,
+    fontsize,
+    fontfamily,
+    alignText,
+}) {
     return (
         <div>
             <m.div
@@ -85,6 +92,18 @@ export default function Reader() {
         };
     });
 
+    // Prevents user from leaving page when recording
+    useEffect(() => {
+        const unloadCallback = (event) => {
+            event.preventDefault();
+            event.returnValue = '';
+            return '';
+        };
+
+        window.addEventListener('beforeunload', unloadCallback);
+        return () => window.removeEventListener('beforeunload', unloadCallback);
+    }, []);
+
     // TextEdit - Responsive Font Size
     const [fontsize, setFontSize] = useState(24);
     useEffect(() => {
@@ -126,11 +145,11 @@ export default function Reader() {
         }
 
         const formData = new FormData();
-        formData.append("textId", text.textId);
-        formData.append("recording", audio.blob, 'test.m4a');
+        formData.append('textId', text.textId);
+        formData.append('recording', audio.blob, 'test.m4a');
         const res = await fetch('/api/User/SaveFile', {
             method: 'POST',
-            body: formData
+            body: formData,
         });
 
         switch (res.status) {
