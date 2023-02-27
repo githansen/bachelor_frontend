@@ -8,6 +8,7 @@ import {
     useLocation,
 } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 //Stylesheet
 import '@/styles/index.css';
 // Pages
@@ -35,8 +36,12 @@ import TagCategoriesPage from '@/dashboard/pages/tags/TagCategoriesPage';
 import TagSingleCategoryPage from '@/dashboard/pages/tags/TagSingleCategoryPage';
 import TagSinglePage from '@/dashboard/pages/tags/TagSinglePage';
 
-export default function ScrollToTop() {
+function Page({ title, children }) {
     const { pathname } = useLocation();
+
+    useEffect(() => {
+        document.title = `${title} - GiDinStemme`;
+    }, [title]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -58,6 +63,7 @@ function Page({ title, children }) {
 
     return (
         <>
+            <Toaster />
             <Toaster />
             {children}
         </>

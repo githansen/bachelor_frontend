@@ -6,27 +6,46 @@ import Input from 'react-input-auto-format';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Toast Library
-import toast, { Toaster as Notification } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 //Graphic assets
 import Layout from '@/components/shared/Layout';
 import DeleteGraphic from '@/assets/img/ThreeDeeGraphic/DeleteGraphic.webp';
+import { validateResponse } from '@/utils/api';
 
 export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);
     let [userInput, setUserInput] = useState('');
+    let [isDone, setIsDone] = useState(false);
 
-    let notifyError = () => toast.error('Noe gikk galt. Prøv på nytt!');
-    const notifySuccess = () => toast.success('Ditt bidrag ble slettet!');
+    const UUID_LENGTH = 36;
 
-    function deleteContribution() {
+    async function deleteContribution() {
         setIsOpen(false);
-        notifySuccess();
+
+        const promise = fetch('/api/User/DeleteFile', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userInput),
+        })
+          .then(validateResponse)
+          .then(() => setIsDone(true))
+
+        toast.promise(promise, {
+            loading: 'Sletter ...',
+            success: 'Ditt bidrag ble slettet!',
+            error: (err) =>
+                err.status === 404
+                    ? 'Feil bidragskode, bidraget finnes ikke'
+                    : 'Noe gikk gale med sletting av filen din',
+        });
+        setIsDone(true);
     }
 
     return (
         <>
             <Layout>
-                <Notification />
                 <div className="xs:mx-14 sm:mx-14 lg:mx-auto lg:max-w-6xl">
                     <div className="min-h-[20rem] md:min-h-[40rem] lg:min-h-[40rem] xl:min-h-[50rem] xs:my-8 sm:my-10 md:my-12 lg:my-14px xl:my-14 flex flex-col place-items-center justify-center">
                         <m.img
@@ -75,8 +94,57 @@ export default function DeleteRecording() {
                             info, og det er derfor kun mulig å slette ditt
                             bidrag om du har din bidragskode.
                         </m.p>
+                        <m.button
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
+                            className={`
+                            font-fet 
+                            xs:text-xsknapp 
+                            sm:text-smknapp 
+                            xl:text-xlknapp 
+                            text-knapp 
+                            text-natt 
+                            bg-solskinn 
+                            xs:w-full 
+                            w-fit 
+                            transScale 
+                            px-8 
+                            py-5 
+                            mb-2 
+                            mt-2 
+                            rounded 
+                            inline-flex 
+                            justify-center 
+                            items-center 
+                            gap-1
+                            ${!isDone ? 'hidden' : ''}
+                            `}
+                        >
+                            Gå til forsiden
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="30"
+                                height="30"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth="1.5"
+                                stroke="currentColor"
+                                className="w-6 h-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                                />
+                            </svg>
+                        </m.button>
 
-                        <form className="flex flex-col place-items-center justify-center">
+                        <form
+                            className={`flex flex-col place-items-center justify-center ${
+                                isDone ? 'hidden' : ''
+                            }`}
+                        >
                             <m.div
                                 initial={{ y: '25%', opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
@@ -84,11 +152,11 @@ export default function DeleteRecording() {
                                 className="mb-4"
                             >
                                 <Input
-                                    format="#######-#####-#####-#######"
-                                    className="xs:min-w-[18rem] sm:min-w-[19rem] min-w-[20rem] xs:p-2 p-3 my-2 text-center font-fet border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg focus:outline-none focus:shadow-outline"
+                                    format="########-####-####-####-############"
+                                    className="xs:min-w-[25rem] sm:min-w-[25rem] md:min-w-[25rem] xs:p-2 p-3 my-2 text-center font-fet border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg focus:outline-none focus:shadow-outline"
                                     id="bidragskode"
                                     type="text"
-                                    placeholder="123E4567-E89B-12D30-EG94348"
+                                    placeholder="D9F691A0-DF97-48B5-286F-08DB1332C1A6"
                                     onChange={(e) =>
                                         setUserInput(e.target.value.trim())
                                     }
@@ -104,17 +172,19 @@ export default function DeleteRecording() {
                                     text-stein
                                     font-normal
                                     ${
-                                        userInput.length === 27
+                                        userInput.length === UUID_LENGTH
                                             ? 'hidden'
                                             : 'block'
                                     }`}
-                                >{`${userInput.length}/27`}</p>
+                                >{`${userInput.length}/${UUID_LENGTH}`}</p>
                             </m.div>
 
                             <div
                                 className={`
                                 ${
-                                    userInput.length === 27 ? 'block' : 'hidden'
+                                    userInput.length === UUID_LENGTH
+                                        ? 'block'
+                                        : 'hidden'
                                 }`}
                             >
                                 <m.button
