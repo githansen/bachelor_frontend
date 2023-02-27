@@ -8,7 +8,6 @@ import {
     useLocation,
 } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { Toaster } from 'react-hot-toast';
 //Stylesheet
 import '@/styles/index.css';
 // Pages
@@ -47,23 +46,8 @@ function Page({ title, children }) {
         window.scrollTo(0, 0);
     }, [pathname]);
 
-    return null;
-}
-
-function Page({ title, children }) {
-    const { pathname } = useLocation();
-
-    useEffect(() => {
-        document.title = `${title} - GiDinStemme`;
-    }, [title]);
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
-
     return (
         <>
-            <Toaster />
             <Toaster />
             {children}
         </>
