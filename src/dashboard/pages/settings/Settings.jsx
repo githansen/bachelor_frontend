@@ -11,6 +11,8 @@ import {
     CheckIcon,
     ArrowTopRightOnSquareIcon,
 } from '@heroicons/react/24/outline';
+//Toast Library
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Settings() {
     let [wordPerMinute, setWordPerMinute] = useState(200);
@@ -25,10 +27,10 @@ export default function Settings() {
         console.log(inputValue + ' ' + wordPerMinute);
     };
     return (
-        <div className="flex">
+        <div className="flex min-h-screen bg-lysbakgrunn">
             <DashMenu />
 
-            <div className="p-12 w-full bg-lysbakgrunn">
+            <div className="p-12 w-full">
                 <div className="inline-flex gap-3 mb-10 items-end">
                     <m.span
                         initial={{ opacity: 0 }}
@@ -67,13 +69,22 @@ export default function Settings() {
                             <div>
                                 <form className="flex place-items-center w-full justify-center items-stretch">
                                     <input
-                                        className="rounded-l bg-krystall max-w-[10rem] text-center text-bolge font-fet text-xlp"
+                                        className={`${
+                                            !showSubmitButton
+                                                ? 'rounded'
+                                                : 'rounded-l'
+                                        }  bg-krystall max-w-[10rem] text-center text-bolge font-fet text-xlp`}
                                         defaultValue={wordPerMinute}
                                         onChange={handleInputChange}
                                         type="number"
                                         min="1"
                                     />
                                     <button
+                                        onClick={() => {
+                                            toast.success(
+                                                'Innstillinger oppdatert'
+                                            );
+                                        }}
                                         type="button"
                                         className={`${
                                             !showSubmitButton ? 'hidden' : ''

@@ -1,5 +1,5 @@
 //React
-import { useEffect, useState, Fragment } from 'react';
+import { useState } from 'react';
 //React library
 import { NavLink } from 'react-router-dom';
 //Animation library
@@ -41,18 +41,18 @@ export default function DashMenu() {
 
     return (
         <div
-            className={`flex flex-col w-1/5 h-screen p-5 pt-10 shadow-md ${
+            className={`flex flex-col w-1/5 h-fit p-5 py-10 shadow-xl ml-10 mr-5 my-10 rounded-3xl ${
                 open ? 'w-72' : 'w-20'
-            } bg-fred duration-100 relative`}
+            } bg-fred relative`}
         >
             <LeftArrow
-                className={`bg-fred h-12 w-12 text-natt rounded-full hover:rotate-12 transition p-1 absolute -right-5 bottom-11 cursor-pointer ${
+                className={`bg-fred h-12 w-12 text-natt rounded-full hover:rotate-12 transition p-1 absolute -right-5 top-[6.5rem] cursor-pointer ${
                     !open && 'rotate-180'
                 }`}
                 onClick={() => setOpen(!open)}
             />
             <div
-                className={`inline-flex gap-3 ${
+                className={`grid place-content-start gap-3 ${
                     open ? 'pl-4' : 'pl-1'
                 }  place-items-center`}
             >
@@ -69,7 +69,7 @@ export default function DashMenu() {
                     Admin
                 </h1>
             </div>
-            <ul className="pt-10">
+            <ul className="pt-5">
                 {menuItems.map((item) => (
                     <NavLink key={item.title} to={item.path}>
                         <li

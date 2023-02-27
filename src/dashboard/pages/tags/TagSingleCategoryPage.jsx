@@ -99,10 +99,10 @@ export default function TagSingleCategoryPage() {
     ];
 
     return (
-        <div className="flex">
+        <div className="flex min-h-screen bg-lysbakgrunn">
             <DashMenu />
 
-            <div className="p-12 w-full bg-lysbakgrunn">
+            <div className="p-12 w-full">
                 <div className="flex justify-between mb-5 items-center">
                     <div className="mb-5 w-full">
                         <nav

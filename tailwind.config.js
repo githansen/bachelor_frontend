@@ -37,7 +37,10 @@ module.exports = {
       kveld: "#4D4D4D",
       natt: "#000000",
       //Dashboard Colors
-      lysbakgrunn: "#f9fbfd"
+      lysbakgrunn: "#f9fbfd",
+      'cyan-500': "#06b6d4",
+      'blue-500': "#007edd",
+      'blue-700': "#015ca1",
     },
     fontSize: {
       // Overskrift 1

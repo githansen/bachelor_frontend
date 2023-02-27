@@ -12,8 +12,11 @@ import {
     ArrowSmallDownIcon,
     ArrowsUpDownIcon,
     TrashIcon,
+    XMarkIcon,
 } from '@heroicons/react/24/solid';
 import { PencilIcon } from '@heroicons/react/24/outline';
+//Toast Library
+import toast, { Toaster } from 'react-hot-toast';
 
 export const StandardTable = ({ columns, rows, tableId }) => {
     //Open/close modal
@@ -186,13 +189,20 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                                             return (
                                                 <td
                                                     key={column.accessor}
-                                                    className="px-5 py-4"
+                                                    className="px-5 py-2"
                                                 >
-                                                    <span className="bg-rose text-fred py-2 px-4 rounded tracking-normal">
-                                                        {column.format(
-                                                            row[column.accessor]
-                                                        )}
-                                                    </span>
+                                                    <div className="flex gap-2">
+                                                        <button
+                                                            onClick={() => {
+                                                                toast.error(
+                                                                    'Kan ikke åpnes, endres, slettes!'
+                                                                );
+                                                            }}
+                                                            className="text-xlliten font-normal border-2 border-rose bg-none text-rose hover:border-rose transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
+                                                        >
+                                                            <XMarkIcon className="h-5 w-5" />
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             );
                                         } else {
@@ -200,19 +210,23 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                                                 return (
                                                     <td
                                                         key={column.accessor}
-                                                        className="px-5 py-4 flex"
+                                                        className="px-5 py-2"
                                                     >
-                                                        <NavLink
-                                                            to={column.editLink}
-                                                            state={{
-                                                                action: 'edit',
-                                                                categoryType:
-                                                                    column.categoryType,
-                                                            }}
-                                                            className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
-                                                        >
-                                                            <PencilIcon className="h-5 w-5" />
-                                                        </NavLink>
+                                                        <div className="flex">
+                                                            <NavLink
+                                                                to={
+                                                                    column.editLink
+                                                                }
+                                                                state={{
+                                                                    action: 'edit',
+                                                                    categoryType:
+                                                                        column.categoryType,
+                                                                }}
+                                                                className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
+                                                            >
+                                                                <PencilIcon className="h-5 w-5" />
+                                                            </NavLink>
+                                                        </div>
                                                     </td>
                                                 );
                                             } else if (
@@ -222,27 +236,31 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                                                 return (
                                                     <td
                                                         key={column.accessor}
-                                                        className="px-5 py-4 flex gap-2"
+                                                        className="px-5 py-2"
                                                     >
-                                                        <NavLink
-                                                            to={column.editLink}
-                                                            state={{
-                                                                action: 'edit',
-                                                                categoryType:
-                                                                    column.categoryType,
-                                                            }}
-                                                            className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
-                                                        >
-                                                            <PencilIcon className="h-5 w-5" />
-                                                        </NavLink>
-                                                        <button
-                                                            onClick={
-                                                                deleteEntity
-                                                            }
-                                                            className="text-xlliten font-normal border-2 border-rose bg-none text-rose hover:border-rose hover:bg-rose hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
-                                                        >
-                                                            <TrashIcon className="h-5 w-5" />
-                                                        </button>
+                                                        <div className="flex gap-2">
+                                                            <NavLink
+                                                                to={
+                                                                    column.editLink
+                                                                }
+                                                                state={{
+                                                                    action: 'edit',
+                                                                    categoryType:
+                                                                        column.categoryType,
+                                                                }}
+                                                                className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
+                                                            >
+                                                                <PencilIcon className="h-5 w-5" />
+                                                            </NavLink>
+                                                            <button
+                                                                onClick={
+                                                                    deleteEntity
+                                                                }
+                                                                className="text-xlliten font-normal border-2 border-rose bg-none text-rose hover:border-rose hover:bg-rose hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
+                                                            >
+                                                                <TrashIcon className="h-5 w-5" />
+                                                            </button>
+                                                        </div>
                                                     </td>
                                                 );
                                             }

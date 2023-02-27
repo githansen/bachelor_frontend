@@ -76,10 +76,10 @@ export default function ContributionPage() {
     ];
 
     return (
-        <div className="flex">
+        <div className="flex min-h-screen bg-lysbakgrunn">
             <DashMenu />
 
-            <div className="p-12 w-full bg-lysbakgrunn">
+            <div className="p-12 w-full">
                 <div className="mb-5 items-end">
                     <div className="inline-flex gap-3">
                         <m.span

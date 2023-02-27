@@ -15,10 +15,10 @@ import {
 
 export default function TagCategoriesPage() {
     return (
-        <div className="flex">
+        <div className="flex min-h-screen bg-lysbakgrunn">
             <DashMenu />
 
-            <div className="p-12 w-full bg-lysbakgrunn">
+            <div className="p-12 w-full">
                 <div className="inline-flex gap-3 mb-10 items-end">
                     <m.span
                         initial={{ opacity: 0 }}

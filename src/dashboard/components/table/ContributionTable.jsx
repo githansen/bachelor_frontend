@@ -7,8 +7,11 @@ import {
     ArrowSmallUpIcon,
     ArrowSmallDownIcon,
     ArrowsUpDownIcon,
+    XMarkIcon,
 } from '@heroicons/react/24/solid';
 import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
+//Toast Library
+import toast, { Toaster } from 'react-hot-toast';
 
 export const ContributionTable = ({ columns, rows, tableId }) => {
     const [activePage, setActivePage] = useState(1);
@@ -62,6 +65,7 @@ export const ContributionTable = ({ columns, rows, tableId }) => {
         setSort({ order: 'asc', orderBy: 'id' });
         setActivePage(1);
         setFilters({});
+        toast.success('Nullstilling vellykket!');
     };
 
     return (
@@ -159,14 +163,7 @@ export const ContributionTable = ({ columns, rows, tableId }) => {
                 <tbody className="text-xsp">
                     {calculatedRows.map((row) => {
                         return (
-                            <tr
-                                key={row.id}
-                                className={`${
-                                    row.is_deleted
-                                        ? 'opacity-50 hover:opacity-100'
-                                        : ''
-                                }`}
-                            >
+                            <tr key={row.id}>
                                 {columns.map((column) => {
                                     if (column.type === 'action') {
                                         if (row.is_deleted) {
@@ -175,11 +172,24 @@ export const ContributionTable = ({ columns, rows, tableId }) => {
                                                     key={column.accessor}
                                                     className="px-5 py-4"
                                                 >
-                                                    <span className="bg-rose text-fred py-2 px-4 rounded tracking-normal">
-                                                        {column.format(
-                                                            row[column.accessor]
-                                                        )}
-                                                    </span>
+                                                    <button
+                                                        onClick={() => {
+                                                            toast.error(
+                                                                'Bidrag er slettet'
+                                                            );
+                                                        }}
+                                                        className="text-xlliten font-normal border-2 border-rose bg-fred text-rose px-3 py-1 rounded inline-flex place-items-center gap-1.5"
+                                                    >
+                                                        <XMarkIcon className="h-5 w-5" />
+                                                        <span>
+                                                            {column.format(
+                                                                row[
+                                                                    column
+                                                                        .accessor
+                                                                ]
+                                                            )}
+                                                        </span>
+                                                    </button>
                                                 </td>
                                             );
                                         } else {
