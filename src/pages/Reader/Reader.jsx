@@ -174,7 +174,8 @@ export default function Reader() {
             body: formData,
         })
             .then(validateResponse)
-            .then(() => navigate('/takk'));
+            .then((res) => res.text())
+            .then((uuid) => navigate('/takk', { state: { uuid } }));
 
         toast.promise(promise, {
             loading: 'Sender ...',
