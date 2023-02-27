@@ -40,7 +40,7 @@ export function useApi(path, body = null, options = {}) {
 // Promise .then() function for throwing when status does not equal 200.
 // This is useful for using toast.promise
 export function validateResponse(res) {
-    if (res.status !== 200) {
+    if (res.status < 200 || res.status > 299) {
         throw res;
     }
     return res;
