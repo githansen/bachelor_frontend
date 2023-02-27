@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 //Graphic assets
 import Layout from '@/components/shared/Layout';
 import DeleteGraphic from '@/assets/img/ThreeDeeGraphic/DeleteGraphic.webp';
-import { queryApi } from '@/utils/api';
+import { validateResponse } from '@/utils/api';
 
 export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);
@@ -29,16 +29,9 @@ export default function DeleteRecording() {
             },
             body: JSON.stringify(userInput),
         })
-            .then((res) => {
-                setIsDone(true);
-                if (res.status !== 200) {
-                    throw res;
-                }
-                return res;
-            })
-            .catch((err) => {
-                throw err;
-            });
+          .then(validateResponse)
+          .then(() => setIsDone(true))
+
         toast.promise(promise, {
             loading: 'Sletter ...',
             success: 'Ditt bidrag ble slettet!',

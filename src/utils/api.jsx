@@ -1,25 +1,47 @@
 import { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
-export async function queryApi(path, body = {}) {
-    const res = await fetch('/api/' + path, {
-        method: 'POST',
+// Send request to backend
+export async function queryApi(path, body = {}, options = {}) {
+    const promise = fetch('/api/' + path, {
+        method: options?.method ?? 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
         body: body !== null ? JSON.stringify(body) : null,
-    });
-    return await res.json();
+    })
+        .then(validateResponse)
+        .then((res) => res.json());
+
+    if (options?.toast) {
+        toast.promise(promise, options.toast);
+    }
+
+    return promise;
 }
 
-export function useApi(path, body = null) {
+export function useApi(path, body = null, options = {}) {
     const [response, setResponse] = useState(null);
 
     useEffect(() => {
-        queryApi(path, body).then(setResponse);
+        setResponse(null);
+        queryApi(path, body)
+            .then((res) => {
+                setTimeout(() => setResponse(res), 2000);
+            });
     }, [path, body]);
 
-    const refetch = () => queryApi(path, body).then(setResponse);
+    const refetch = () => queryApi(path, body, options).then(setResponse);
 
     return { response, loading: response === null, refetch };
+}
+
+// Promise .then() function for throwing when status does not equal 200.
+// This is useful for using toast.promise
+export function validateResponse(res) {
+    if (res.status < 200 || res.status > 299) {
+        throw res;
+    }
+    return res;
 }

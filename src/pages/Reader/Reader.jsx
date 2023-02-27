@@ -12,7 +12,7 @@ import IdleControlsSmall from '@/pages/Reader/controls/IdleControlsSmall';
 //Hooks
 import useReadingProgress from '@/hooks/useReadingProgress';
 import useRecorder from '@/hooks/useRecorder';
-import { useApi } from '@/utils/api';
+import { useApi, validateResponse } from '@/utils/api';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 //Audioplayer
@@ -21,6 +21,8 @@ import '@/styles/audioplayer.css';
 import { useTimer } from 'use-timer';
 //Animation library
 import { motion as m } from 'framer-motion';
+// Icons
+import LogoGidinStemmeIconNoBg from '@/assets/img/Logo/GidinStemmeIconNoBg.png';
 
 // Main text to be read by user
 function TextPanel({
@@ -30,26 +32,44 @@ function TextPanel({
     fontsize,
     fontfamily,
     alignText,
+    loading,
 }) {
     return (
         <div>
-            <m.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                    duration: 0.5,
-                    ease: 'easeOut',
-                }}
-                style={{
-                    fontSize: `${fontsize}px`,
-                    fontFamily: `${fontfamily}`,
-                    color: `${state == 'completed' ? '#C2C2C2' : fontColor} `,
-                    textAlign: `${alignText}`,
-                }}
-                className={` rounded-lg leading-loose xs:p-0 sm:p-0 md:p-8 bordser-2 transition-colors text-justify duration-400`}
-            >
-                {text}
-            </m.div>
+            {loading ? (
+                <div class="mt-20 animate-bounce">
+                    <m.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                            duration: 0.5,
+                            ease: 'easeOut',
+                        }}
+                    >
+                        <div class="animate-spin">
+                            <img width="60px" src={LogoGidinStemmeIconNoBg} />
+                        </div>
+                    </m.div>
+                </div>
+            ) : (
+                <m.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                        duration: 0.5,
+                        ease: 'easeOut',
+                    }}
+                    style={{
+                        fontSize: `${fontsize}px`,
+                        fontFamily: `${fontfamily}`,
+                        color: state == 'completed' ? '#C2C2C2' : fontColor,
+                        textAlign: `${alignText}`,
+                    }}
+                    className={` rounded-lg leading-loose xs:p-0 sm:p-0 md:p-8 bordser-2 transition-colors text-justify duration-400`}
+                >
+                    {text}
+                </m.div>
+            )}
         </div>
     );
 }
@@ -144,28 +164,26 @@ export default function Reader() {
             return;
         }
 
+        // Request using formdata to send blob file to avoid base64 encode with json
         const formData = new FormData();
         formData.append('textId', text.textId);
         formData.append('recording', audio.blob, 'test.m4a');
-        const res = await fetch('/api/User/SaveFile', {
+
+        const promise = fetch('/api/User/SaveFile', {
             method: 'POST',
             body: formData,
+        })
+            .then(validateResponse)
+            .then(() => navigate('/takk'));
+
+        toast.promise(promise, {
+            loading: 'Sender ...',
+            success: 'Opptak sendt',
+            error: (err) =>
+                err.status === 401
+                    ? 'Du må logge inn for å sende inn opptak'
+                    : 'Noe gikk galt hos oss, prøv igjen senere',
         });
-
-        switch (res.status) {
-            case 200:
-                toast.success('Opptak sendt');
-                navigate('/takk');
-                break;
-
-            case 401:
-                toast.success('Du må logge inn for å sende inn opptak');
-                break;
-
-            case 500:
-            default:
-                toast.success('Noe gikk galt hos oss, prøv igjen senere');
-        }
     };
 
     const renderControls = () => {
@@ -258,6 +276,7 @@ export default function Reader() {
                     <div className="mx-auto">
                         <TextPanel
                             text={text?.textText}
+                            loading={loading}
                             state={state}
                             fontColor={stylecolorfont}
                             fontsize={fontsize}
