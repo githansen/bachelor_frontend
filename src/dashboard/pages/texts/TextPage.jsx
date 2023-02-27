@@ -13,6 +13,7 @@ export default function TextPage() {
     const columns = [
         { accessor: 'id', label: 'ID' },
         { accessor: 'title', label: 'Tittel' },
+        { accessor: 'status', label: 'Status' },
         { accessor: 'last_changed_date', label: 'Sist endret dato' },
         { accessor: 'added_date', label: 'Lagt til' },
         {
@@ -20,7 +21,7 @@ export default function TextPage() {
             label: 'Handling',
             format: (value) => (value ? '' : 'Ingen tilgang'),
             type: 'action',
-            action: 'editAndDeleteAndView', //onlyEdit or editAndDelete
+            action: 'editAndDelete', //onlyEdit or editAndDelete
             editLink: 'edit',
             viewLink: 'view',
         },
@@ -30,6 +31,7 @@ export default function TextPage() {
         {
             id: 1,
             title: 'Textittel',
+            status: 'kladd',
             last_changed_date: '14. April 2022',
             added_date: '10. Februar 2022',
             is_changeable: true,
@@ -37,6 +39,7 @@ export default function TextPage() {
         {
             id: 2,
             title: 'Random tittel',
+            status: 'kladd',
             last_changed_date: '23. Juni 2022',
             added_date: '05. Mars 2022',
             is_changeable: true,
@@ -44,6 +47,7 @@ export default function TextPage() {
         {
             id: 3,
             title: 'Dette er en tittel',
+            status: 'publisert',
             last_changed_date: '06. Desember 2022',
             added_date: '21. April 2022',
             is_changeable: false,

@@ -201,10 +201,21 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                                                     className="px-5 py-2"
                                                 >
                                                     <div className="flex gap-2">
+                                                        <NavLink
+                                                            to={column.viewLink}
+                                                            state={{
+                                                                action: 'view',
+                                                                categoryType:
+                                                                    column.categoryType,
+                                                            }}
+                                                            className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
+                                                        >
+                                                            <EyeIcon className="h-5 w-5" />
+                                                        </NavLink>
                                                         <button
                                                             onClick={() => {
                                                                 toast.error(
-                                                                    'Kan ikke åpnes, endres, slettes!'
+                                                                    'Kan ikke endres eller slettes!'
                                                                 );
                                                             }}
                                                             className="text-xlliten font-normal border-2 border-rose bg-none text-rose hover:border-rose transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
@@ -248,53 +259,6 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                                                         className="px-5 py-2"
                                                     >
                                                         <div className="flex gap-2">
-                                                            <NavLink
-                                                                to={
-                                                                    column.editLink
-                                                                }
-                                                                state={{
-                                                                    action: 'edit',
-                                                                    categoryType:
-                                                                        column.categoryType,
-                                                                }}
-                                                                className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
-                                                            >
-                                                                <PencilIcon className="h-5 w-5" />
-                                                            </NavLink>
-                                                            <button
-                                                                onClick={
-                                                                    deleteEntity
-                                                                }
-                                                                className="text-xlliten font-normal border-2 border-rose bg-none text-rose hover:border-rose hover:bg-rose hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
-                                                            >
-                                                                <TrashIcon className="h-5 w-5" />
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                );
-                                            } else if (
-                                                column.action ===
-                                                'editAndDeleteAndView'
-                                            ) {
-                                                return (
-                                                    <td
-                                                        key={column.accessor}
-                                                        className="px-5 py-2"
-                                                    >
-                                                        <div className="flex gap-2">
-                                                            <NavLink
-                                                                to={
-                                                                    column.viewLink
-                                                                }
-                                                                state={{
-                                                                    action: 'view',
-                                                                    categoryType:
-                                                                        column.categoryType,
-                                                                }}
-                                                                className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
-                                                            >
-                                                                <EyeIcon className="h-5 w-5" />
-                                                            </NavLink>
                                                             <NavLink
                                                                 to={
                                                                     column.editLink

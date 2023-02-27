@@ -20,8 +20,10 @@ export default function TargetPage() {
             label: 'Endre',
             format: (value) => (value ? 'Endre' : 'Ingen tilgang'),
             type: 'action',
-            action: 'onlyEdit', //onlyEdit or editAndDelete
+            action: 'editAndDelete', //onlyEdit or editAndDelete
             editLink: 'edit',
+            deleteLink: 'delete',
+            viewLink: 'view',
         },
     ];
 

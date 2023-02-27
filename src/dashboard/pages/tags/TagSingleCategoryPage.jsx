@@ -69,6 +69,7 @@ export default function TagSingleCategoryPage() {
             type: 'action',
             action: 'editAndDelete',
             editLink: 'tag',
+            viewLink: 'view',
             deleteLink: 'delete',
             categoryType: categoryType,
         },
