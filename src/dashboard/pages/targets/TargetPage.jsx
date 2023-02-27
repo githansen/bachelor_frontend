@@ -107,7 +107,7 @@ export default function TargetPage() {
                     <StandardTable
                         rows={rows}
                         columns={columns}
-                        tableId="TextPage"
+                        tableId="StandardTable"
                     />
                 </div>
             </div>

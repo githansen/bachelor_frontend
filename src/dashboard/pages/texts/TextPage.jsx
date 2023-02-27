@@ -112,7 +112,7 @@ export default function TextPage() {
                     <StandardTable
                         rows={rows}
                         columns={columns}
-                        tableId="TextPage"
+                        tableId="StandardTable"
                     />
                 </div>
             </div>

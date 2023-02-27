@@ -1,8 +1,9 @@
 //React library
 import { NavLink } from 'react-router-dom';
+//Headless UI
+import { Popover, Dialog, Transition } from '@headlessui/react';
 //React library
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState, useEffect, useMemo } from 'react';
+import { Fragment, useState, useMemo } from 'react';
 import { sortRows, filterRows, paginateRows } from './addon/TableHelpers';
 import { Pagination } from './addon/TablePagination';
 //Icons
@@ -13,6 +14,7 @@ import {
     ArrowsUpDownIcon,
     TrashIcon,
     XMarkIcon,
+    MagnifyingGlassIcon,
 } from '@heroicons/react/24/solid';
 import { PencilIcon } from '@heroicons/react/24/outline';
 //Toast Library
@@ -21,6 +23,7 @@ import toast, { Toaster } from 'react-hot-toast';
 export const StandardTable = ({ columns, rows, tableId }) => {
     //Open/close modal
     let [isOpen, setIsOpen] = useState(false);
+    let [isOpenSearch, setIsOpenSearch] = useState(false);
     //Delete entity
     function deleteEntity() {
         setIsOpen(true);
@@ -78,44 +81,13 @@ export const StandardTable = ({ columns, rows, tableId }) => {
         setSort({ order: 'asc', orderBy: 'id' });
         setActivePage(1);
         setFilters({});
+        toast.success('Nullstilling vellykket!');
     };
 
     return (
         <>
-            <table id={tableId} className="rounded-lg shadow-lg">
+            <table id={tableId} className="rounded-lg shadow-lg table-fixed	">
                 <thead>
-                    <tr id="searchRow">
-                        {columns.map((column) => {
-                            if (column.accessor === 'is_changeable') {
-                                return (
-                                    <th
-                                        key={column.label}
-                                        className="px-5 pt-7"
-                                    ></th>
-                                );
-                            } else {
-                                return (
-                                    <th
-                                        key={column.label}
-                                        className="px-5 pt-7"
-                                    >
-                                        <input
-                                            key={`${column.accessor}-search`}
-                                            type="search"
-                                            placeholder={`Søk etter ${column.label}`}
-                                            value={filters[column.accessor]}
-                                            onChange={(event) =>
-                                                handleSearch(
-                                                    event.target.value,
-                                                    column.accessor
-                                                )
-                                            }
-                                        />
-                                    </th>
-                                );
-                            }
-                        })}
-                    </tr>
                     <tr>
                         {columns.map((column) => {
                             const sortIcon = () => {
@@ -153,19 +125,62 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                             } else {
                                 return (
                                     <th key={column.accessor} className="p-5">
-                                        <div className="flex place-items-center gap-2">
-                                            <p className="text-smp">
-                                                {column.label}
-                                            </p>
+                                        <Popover className="relative">
+                                            <div className="flex place-items-center gap-2">
+                                                <button
+                                                    onClick={() =>
+                                                        handleSort(
+                                                            column.accessor
+                                                        )
+                                                    }
+                                                >
+                                                    {sortIcon()}
+                                                </button>
+                                                <Popover.Button
+                                                    type="button"
+                                                    className="hover:opacity-25 transition-all duration-200 ease-in-out"
+                                                >
+                                                    <MagnifyingGlassIcon className="w-5 h-5" />
+                                                </Popover.Button>
+                                                <p className="text-smp">
+                                                    {column.label}
+                                                </p>
+                                            </div>
 
-                                            <button
-                                                onClick={() =>
-                                                    handleSort(column.accessor)
-                                                }
+                                            <Transition
+                                                appear
+                                                as={Fragment}
+                                                enter="transition ease-out duration-200"
+                                                enterFrom="opacity-0 translate-y-[-125%]"
+                                                enterTo="opacity-100 translate-y-[-100%]"
+                                                leave="transition ease-in duration-150"
+                                                leaveFrom="opacity-100 translate-y-[-100%]"
+                                                leaveTo="opacity-0 translate-y-[-125%]"
                                             >
-                                                {sortIcon()}
-                                            </button>
-                                        </div>
+                                                <Popover.Panel className="absolute z-10">
+                                                    <div className="overflow-hidden rounded-lg p-2 shadow-lg text-skumring ring-opacity-5 bg-krystall border-2 border-bolge">
+                                                        <input
+                                                            key={`${column.accessor}-search`}
+                                                            type="search"
+                                                            placeholder="Søk"
+                                                            value={
+                                                                filters[
+                                                                    column
+                                                                        .accessor
+                                                                ]
+                                                            }
+                                                            onChange={(event) =>
+                                                                handleSearch(
+                                                                    event.target
+                                                                        .value,
+                                                                    column.accessor
+                                                                )
+                                                            }
+                                                        />
+                                                    </div>
+                                                </Popover.Panel>
+                                            </Transition>
+                                        </Popover>
                                     </th>
                                 );
                             }
@@ -175,14 +190,7 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                 <tbody className="text-xsp">
                     {calculatedRows.map((row) => {
                         return (
-                            <tr
-                                key={row.id}
-                                className={`${
-                                    row.is_changeable
-                                        ? ''
-                                        : 'opacity-50 hover:opacity-100'
-                                }`}
-                            >
+                            <tr key={row.id}>
                                 {columns.map((column) => {
                                     if (column.type === 'action') {
                                         if (!row.is_changeable) {
@@ -284,7 +292,9 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                                             key={column.accessor}
                                             className="px-5 py-4"
                                         >
-                                            {row[column.accessor]}
+                                            <p className="text-p text-skumring">
+                                                {row[column.accessor]}
+                                            </p>
                                         </td>
                                     );
                                 })}
@@ -294,7 +304,11 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                 </tbody>
             </table>
 
-            <div className="grid grid-cols-3 mt-10 pb-10 px-2 w-full">
+            <div
+                className={`${
+                    count > 0 ? 'grid grid-cols-3' : 'place-items-center'
+                } mt-10 pb-10 px-2 w-full`}
+            >
                 {count > 0 ? (
                     <Pagination
                         activePage={activePage}
@@ -304,10 +318,18 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                         setActivePage={setActivePage}
                     />
                 ) : (
-                    <p>Ingen resultater...</p>
+                    <div className="w-full text-center">
+                        <p className="text-xlp text-metall">
+                            Ingen resultater...
+                        </p>
+                    </div>
                 )}
 
-                <div className="w-full flex place-items-start justify-end">
+                <div
+                    className={`${
+                        count > 0 ? 'justify-end' : 'justify-center mt-5'
+                    } w-full flex place-items-start`}
+                >
                     <button
                         onClick={clearAll}
                         className="text-xlknappliten font-fet border-2 border-metall bg-none text-metall hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 place-items-center"

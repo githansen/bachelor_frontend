@@ -185,7 +185,7 @@ export default function TagSingleCategoryPage() {
                     <StandardTable
                         rows={rows}
                         columns={columns}
-                        tableId="TagsPage"
+                        tableId="StandardTable"
                     />
                 </div>
             </div>
