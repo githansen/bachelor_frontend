@@ -20,8 +20,9 @@ export default function TextPage() {
             label: 'Handling',
             format: (value) => (value ? '' : 'Ingen tilgang'),
             type: 'action',
-            action: 'editAndDelete', //onlyEdit or editAndDelete
+            action: 'editAndDeleteAndView', //onlyEdit or editAndDelete
             editLink: 'edit',
+            viewLink: 'view',
         },
     ];
 

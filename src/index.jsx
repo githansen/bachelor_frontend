@@ -26,6 +26,7 @@ import DashFirstPage from '@/dashboard/pages/Dashboard.jsx';
 import Login from '@/dashboard/pages/Login.jsx';
 import TextPage from '@/dashboard/pages/texts/TextPage.jsx';
 import TextSinglePage from '@/dashboard/pages/texts/TextSinglePage';
+import TextSingleView from '@/dashboard/pages/texts/TextSingleView';
 import TargetsPage from '@/dashboard/pages/targets/TargetPage';
 import NewTargetPage from '@/dashboard/pages/targets/NewTarget';
 import EditTargetPage from '@/dashboard/pages/targets/EditTarget';
@@ -198,6 +199,14 @@ const router = createBrowserRouter([
         element: (
             <Page title="Rediger tekst">
                 <TextSinglePage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/text/view',
+        element: (
+            <Page title="Se tekst">
+                <TextSingleView />
             </Page>
         ),
     },
