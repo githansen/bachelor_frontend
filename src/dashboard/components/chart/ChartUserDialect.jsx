@@ -2,7 +2,7 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 
 function ChartUserDialect() {
-    const series = [20, 16, 20, 16, 16, 12];
+    const series = [22, 18, 22, 12, 26];
     const options = {
         chart: {
             type: 'polarArea',

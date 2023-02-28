@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Chart from 'react-apexcharts';
 
 function ChartUserGender() {
-    const series = [20, 16, 20, 16, 16, 12];
+    const series = [45, 40, 15];
     const options = {
         chart: {
             type: 'polarArea',
