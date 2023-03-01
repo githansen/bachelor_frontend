@@ -22,7 +22,7 @@ import { useTimer } from 'use-timer';
 //Animation library
 import { motion as m } from 'framer-motion';
 // Icons
-//import LogoGidinStemmeIconNoBg from '@/assets/img/Logo/GidinStemmeIconNoBg.png';
+import LogoGidinStemmeIconNoBg from '@/assets/img/Logo/GidinStemmeIconNoBg.png';
 
 // Main text to be read by user
 function TextPanel({
