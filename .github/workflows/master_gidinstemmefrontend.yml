@@ -60,5 +60,5 @@ jobs:
         with:
           app-name: 'giDinStemmeFrontend'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5BE515F6D79442B78AEC78C474E7F8B5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2234E925662A44D682B8AFC886904402 }}
           package: dist
