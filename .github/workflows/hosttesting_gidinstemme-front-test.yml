@@ -58,4 +58,4 @@ jobs:
           app-name: 'gidinstemme-front-test'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_329BD01C3A914F4D9512A2C6F921A664 }}
-          package: .
+          package: dist
