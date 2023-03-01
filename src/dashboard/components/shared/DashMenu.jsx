@@ -46,8 +46,8 @@ export default function DashMenu() {
             } bg-fred relative`}
         >
             <LeftArrow
-                className={`bg-fred h-12 w-12 text-natt rounded-full hover:rotate-12 transition p-1 absolute -right-5 top-[6.5rem] cursor-pointer ${
-                    !open && 'rotate-180'
+                className={`bg-fred h-12 w-12 text-natt rounded-full  transition p-1 absolute -right-5 top-[6.5rem] cursor-pointer ${
+                    open ? 'hover:rotate-12' : 'rotate-180'
                 }`}
                 onClick={() => setOpen(!open)}
             />

@@ -22,9 +22,7 @@ import {
 import toast, { Toaster } from 'react-hot-toast';
 
 export const ContributionTable = ({ columns, rows, tableId }) => {
-    //
     const [playBtn, setPlayBtn] = useState(true);
-    //
     const [activePage, setActivePage] = useState(1);
     const [filters, setFilters] = useState({});
     const [sort, setSort] = useState({ order: 'asc', orderBy: 'id' });
@@ -81,7 +79,7 @@ export const ContributionTable = ({ columns, rows, tableId }) => {
 
     return (
         <>
-            <table id={tableId} className="rounded-lg shadow-lg">
+            <table id={tableId} className="rounded-lg shadow-lg table-fixed">
                 <thead>
                     <tr>
                         {columns.map((column) => {
@@ -89,21 +87,15 @@ export const ContributionTable = ({ columns, rows, tableId }) => {
                                 if (column.accessor === sort.orderBy) {
                                     if (sort.order === 'asc') {
                                         return (
-                                            <>
-                                                <ArrowSmallUpIcon className="h-5 w-5" />
-                                            </>
+                                            <ArrowSmallUpIcon className="h-5 w-5" />
                                         );
                                     }
                                     return (
-                                        <>
-                                            <ArrowSmallDownIcon className="h-5 w-5" />
-                                        </>
+                                        <ArrowSmallDownIcon className="h-5 w-5" />
                                     );
                                 } else {
                                     return (
-                                        <>
-                                            <ArrowsUpDownIcon className="h-5 w-5" />
-                                        </>
+                                        <ArrowsUpDownIcon className="h-5 w-5" />
                                     );
                                 }
                             };
@@ -174,9 +166,9 @@ export const ContributionTable = ({ columns, rows, tableId }) => {
                                                                         .accessor
                                                                 ]
                                                             }
-                                                            onChange={(event) =>
+                                                            onChange={(e) =>
                                                                 handleSearch(
-                                                                    event.target
+                                                                    e.target
                                                                         .value,
                                                                     column.accessor
                                                                 )

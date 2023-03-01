@@ -19,12 +19,11 @@ import {
     EyeIcon,
 } from '@heroicons/react/24/solid';
 //Toast Library
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 export const StandardTable = ({ columns, rows, tableId }) => {
     //Open/close modal
     let [isOpen, setIsOpen] = useState(false);
-    let [isOpenSearch, setIsOpenSearch] = useState(false);
     //Delete entity
     function deleteEntity() {
         setIsOpen(true);
@@ -87,7 +86,7 @@ export const StandardTable = ({ columns, rows, tableId }) => {
 
     return (
         <>
-            <table id={tableId} className="rounded-lg shadow-lg table-fixed	">
+            <table id={tableId} className="rounded-lg shadow-lg table-fixed">
                 <thead>
                     <tr>
                         {columns.map((column) => {
@@ -95,21 +94,15 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                                 if (column.accessor === sort.orderBy) {
                                     if (sort.order === 'asc') {
                                         return (
-                                            <>
-                                                <ArrowSmallUpIcon className="h-5 w-5" />
-                                            </>
+                                            <ArrowSmallUpIcon className="h-5 w-5" />
                                         );
                                     }
                                     return (
-                                        <>
-                                            <ArrowSmallDownIcon className="h-5 w-5" />
-                                        </>
+                                        <ArrowSmallDownIcon className="h-5 w-5" />
                                     );
                                 } else {
                                     return (
-                                        <>
-                                            <ArrowsUpDownIcon className="h-5 w-5" />
-                                        </>
+                                        <ArrowsUpDownIcon className="h-5 w-5" />
                                     );
                                 }
                             };

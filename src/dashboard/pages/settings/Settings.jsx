@@ -12,7 +12,7 @@ import {
     ArrowTopRightOnSquareIcon,
 } from '@heroicons/react/24/outline';
 //Toast Library
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 export default function Settings() {
     let [wordPerMinute, setWordPerMinute] = useState(200);

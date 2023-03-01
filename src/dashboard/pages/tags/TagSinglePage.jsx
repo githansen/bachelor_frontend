@@ -62,7 +62,9 @@ export default function TagSinglePage() {
                 setBreadcrumbText('Rediger');
             }
         } else {
-            navigate(`/gdsadmin/tags`);
+            navigate(
+                `/gdsadmin/tags/${actionType}/${location.state.categoryType}`
+            );
         }
     }, [actionType]);
     return (

@@ -1,5 +1,5 @@
 //React library
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Shared
@@ -43,7 +43,7 @@ export default function TagCategoriesPage() {
                     </m.h2>
                 </div>
                 <div className="grid grid-cols-3 gap-5">
-                    <NavLink
+                    <Link
                         to="/gdsadmin/tags/age"
                         state="age"
                         className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
@@ -58,9 +58,9 @@ export default function TagCategoriesPage() {
                                 aldersgruppene.
                             </p>
                         </div>
-                    </NavLink>
+                    </Link>
 
-                    <NavLink
+                    <Link
                         to="/gdsadmin/tags/gender"
                         state="gender"
                         className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
@@ -72,9 +72,9 @@ export default function TagCategoriesPage() {
                                 Legg til, slett eller endre de ulike kjønnene.
                             </p>
                         </div>
-                    </NavLink>
+                    </Link>
 
-                    <NavLink
+                    <Link
                         to="/gdsadmin/tags/language"
                         state="language"
                         className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
@@ -86,9 +86,9 @@ export default function TagCategoriesPage() {
                                 Legg til, slett eller endre de ulike morsmålene.
                             </p>
                         </div>
-                    </NavLink>
+                    </Link>
 
-                    <NavLink
+                    <Link
                         to="/gdsadmin/tags/dialect"
                         state="dialect"
                         className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
@@ -100,7 +100,7 @@ export default function TagCategoriesPage() {
                                 Legg til, slett eller endre de ulike dialektene.
                             </p>
                         </div>
-                    </NavLink>
+                    </Link>
                 </div>
             </div>
         </div>
