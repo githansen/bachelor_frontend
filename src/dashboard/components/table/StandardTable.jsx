@@ -5,7 +5,7 @@ import { Popover, Dialog, Transition } from '@headlessui/react';
 //React library
 import { Fragment, useState, useMemo } from 'react';
 import { sortRows, filterRows, paginateRows } from './addon/TableHelpers';
-import { Pagination } from './addon/TablePagination';
+import { TablePagination } from './addon/TablePagination';
 //Icons
 import {
     ArrowPathIcon,
@@ -315,7 +315,7 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                 } mt-10 pb-10 px-2 w-full`}
             >
                 {count > 0 ? (
-                    <Pagination
+                    <TablePagination
                         activePage={activePage}
                         count={count}
                         rowsPerPage={rowsPerPage}

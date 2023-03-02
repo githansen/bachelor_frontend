@@ -1,7 +1,8 @@
 //React
 import React, { useEffect, useRef, useState } from 'react';
 //React library
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import Creatable, { useCreatable } from 'react-select/creatable';
 import Select, { components } from 'react-select';
 //Animation library
 import { motion as m } from 'framer-motion';
@@ -42,17 +43,13 @@ export default function TextSinglePage() {
     const [wordCount, setWordCount] = useState(0);
     const [textTime, setTextTime] = useState(0);
 
-    const countWords = (e) => {
-        const text = textAreaRef.current.value;
-        setWordCount(text.split(' ').length - 1);
-        setTextTime((wordCount / 200).toFixed(2));
-        if (wordCount === 1) {
-            setTextTime(0);
-        }
+    const handleTextChange = (e) => {
+        const text = e.target.value;
+        const words = text.split(' ').length;
+        const time = Math.round(words / 200);
+        setWordCount(words - 1);
+        setTextTime(time);
     };
-    useEffect(() => {
-        countWords();
-    });
 
     const selectStyle = {
         control: (base, state) => {
@@ -165,6 +162,13 @@ export default function TextSinglePage() {
         { value: '4', label: 'Amerika20' },
         { value: '5', label: 'Danmark18' },
     ];
+    const keywordOptions = [
+        { value: '1', label: 'Baosj' },
+        { value: '2', label: 'Gætter' },
+        { value: '3', label: 'Keef' },
+        { value: '4', label: 'Hashish' },
+        { value: '5', label: 'Kæbe' },
+    ];
     return (
         <div className="flex min-h-screen bg-lysbakgrunn">
             <DashMenu />
@@ -248,10 +252,11 @@ export default function TextSinglePage() {
                                 duration: 0.4,
                                 ease: 'easeOut',
                             }}
-                            className="w-full bg-fred shadow border-0 text-bolge rounded-md p-5 text-xlp"
+                            className="w-full bg-fred mb-5 shadow border-0 text-bolge rounded-md p-5 text-xlp"
                             rows="10"
-                            ref={textAreaRef}
-                            onChange={countWords}
+                            onChange={(e) => {
+                                handleTextChange(e);
+                            }}
                             placeholder="Her skriver du inn din tekst..."
                             defaultValue={`${
                                 actionType === 'edit'
@@ -259,6 +264,54 @@ export default function TextSinglePage() {
                                     : ''
                             }`}
                         />
+
+                        <m.div
+                            initial={{ y: '20px', opacity: 0 }}
+                            animate={{ y: '0', opacity: 1 }}
+                            transition={{
+                                duration: 0.4,
+                                ease: 'easeOut',
+                            }}
+                            className="bg-fred w-full p-10 rounded-lg shadow"
+                        >
+                            <h6 className="text-xlh6 font-fet mb-2">
+                                Nøkkelord
+                            </h6>
+                            <small className="text-xsliten text-bolge">
+                                Velg en eller flere nøkkelord. Har du ingen
+                                nøkkelord, eller ønsker å legge til en ny. Klikk
+                                her.
+                            </small>
+
+                            {actionType === 'edit' && (
+                                <Select
+                                    placeholder={<div>Ikke valgt...</div>}
+                                    name="Skriv inn nøkkelord"
+                                    options={keywordOptions}
+                                    isClearable={false}
+                                    isMulti
+                                    components={{ NoOptionsMessage, Option }}
+                                    className="text-left mt-3"
+                                    styles={selectStyle}
+                                    defaultValue={[
+                                        keywordOptions[2],
+                                        keywordOptions[3],
+                                    ]}
+                                />
+                            )}
+                            {actionType === 'new' && (
+                                <Select
+                                    placeholder={<div>Ikke valgt...</div>}
+                                    name="Skriv inn nøkkelord"
+                                    options={keywordOptions}
+                                    isClearable={false}
+                                    isMulti
+                                    components={{ NoOptionsMessage, Option }}
+                                    className="text-left mt-3"
+                                    styles={selectStyle}
+                                />
+                            )}
+                        </m.div>
                     </div>
                     <div className="col-span-1">
                         <m.div
@@ -325,15 +378,15 @@ export default function TextSinglePage() {
                                 duration: 0.4,
                                 ease: 'easeOut',
                             }}
-                            className="bg-fred w-full p-10 rounded-lg shadow"
+                            className="bg-fred w-full p-10 rounded-lg shadow mb-5"
                         >
                             <h6 className="text-xlh6 font-fet mb-2">
                                 Målgruppe
                             </h6>
                             <small className="text-xsliten text-bolge">
                                 Velg en eller flere målgrupper. Har du ingen
-                                målgrupper, eller ønsker å legge til en ny.
-                                Klikk her.
+                                målgrupper, eller ønsker å legge til en ny{' '}
+                                <Link to={'/gdsadmin/tags'}>klikk her.</Link>
                             </small>
                             {actionType === 'edit' && (
                                 <Select
