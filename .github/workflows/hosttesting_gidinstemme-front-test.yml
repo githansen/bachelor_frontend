@@ -19,21 +19,19 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '17.x'
+          node-version: '16.x'
 
       - name: npm install, build, and test
         run: |
-          npm install i --legacy-peer-deps
+          npm install
           npm run build --if-present
           npm run test --if-present
-          choco install 7zip -y
-      - name: Zip artifact for deployment
-        run: 7z a release.zip ./*
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: release.zip
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,14 +46,11 @@ jobs:
         with:
           name: node-app
 
-      - name: unzip artifact for deployment
-        run: unzip release.zip
-
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'gidinstemme-front-test'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_329BD01C3A914F4D9512A2C6F921A664 }}
-          package: dist
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_47BE1E6843BB46C08EEE4A2EF45D1D6C }}
+          package: .
