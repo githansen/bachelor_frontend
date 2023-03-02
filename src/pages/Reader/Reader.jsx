@@ -171,7 +171,8 @@ export default function Reader() {
 
          const promise = fetch('https://gidinstemme-back-test.azurewebsites.net/User/SaveFile', {
             method: 'POST',
-            body: formData,
+             body: formData,
+             credentials: 'include'
         })
             .then(validateResponse)
             .then(() => navigate('/takk'));
