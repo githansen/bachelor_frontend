@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Chart from 'react-apexcharts';
 
 function ChartUsersPerDay() {
@@ -25,9 +25,6 @@ function ChartUsersPerDay() {
                     zoomin: false,
                     zoomout: false,
                     pan: false,
-                    reset:
-                        false |
-                        '<img src="/static/icons/reset.png" width="20">',
                     customIcons: [],
                 },
             },

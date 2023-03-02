@@ -1,5 +1,5 @@
 //React library
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 //Animation library
 import { motion as m } from 'framer-motion';
 //Shared
@@ -16,8 +16,6 @@ import ChartUserGender from '../components/chart/ChartUserGender';
 import ChartUserDialect from '../components/chart/ChartUserDialect';
 
 export default function Dashboard() {
-    const navigate = useNavigate();
-
     return (
         <div className="flex min-h-screen bg-lysbakgrunn">
             <DashMenu />
@@ -307,7 +305,6 @@ export default function Dashboard() {
                                     </p>
                                 </NavLink>
                                 <div
-                                    to="/gdsadmin/text/"
                                     className="bg-fred rounded-lg py-5 grid place-content-center gap-0 px-10 shadow-lg text-center hover:shadow-2xl transition-all duration-250 ease-in-out"
                                 >
                                     <h5 className="text-xlh5 font-feteste text-blue-500">

@@ -24,7 +24,7 @@ export default function TagSingleCategoryPage() {
     const navigate = useNavigate();
     //Location - used to determine if the user is creating a new tag or editing an existing one
     const location = useLocation();
-    const categoryType = location.state;
+    const categoryType = location.state.categoryType;
     //State - used to determine the data of the page
     const [urlVariable, setUrlVariable] = useState('');
     const [title, setTitle] = useState('');

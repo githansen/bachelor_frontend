@@ -1,8 +1,5 @@
 //React
 import { NavLink } from 'react-router-dom';
-import { useEffect, useState, Fragment } from 'react';
-//Animation library
-import { motion as m } from 'framer-motion';
 //Graphic assets
 import { LockClosedIcon } from '@heroicons/react/20/solid';
 //Graphic assets

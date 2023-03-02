@@ -1,9 +1,7 @@
 //React
-import { useState } from 'react';
+import React, { useState } from 'react';
 //React library
 import { NavLink } from 'react-router-dom';
-//Animation library
-import { motion as m } from 'framer-motion';
 //Graphic assets
 import GiDinStemmeIconNoBg from '@/assets/img/Logo/GiDinStemmeIconNoBg.png';
 

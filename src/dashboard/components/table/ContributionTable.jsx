@@ -19,7 +19,7 @@ import {
     XCircleIcon,
 } from '@heroicons/react/24/outline';
 //Toast Library
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 export const ContributionTable = ({ columns, rows, tableId }) => {
     const [playBtn, setPlayBtn] = useState(true);

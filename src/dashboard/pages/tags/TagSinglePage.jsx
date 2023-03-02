@@ -66,7 +66,7 @@ export default function TagSinglePage() {
                 `/gdsadmin/tags/${actionType}/${location.state.categoryType}`
             );
         }
-    }, [actionType]);
+    }, [categoryType, actionType]);
     return (
         <div className="flex min-h-screen bg-lysbakgrunn">
             <DashMenu />
@@ -91,7 +91,7 @@ export default function TagSinglePage() {
                                 <li className="inline-flex items-center text-bolge hover:opacity-60 transition duration-200">
                                     <NavLink
                                         to={`/gdsadmin/tags/${categoryType}`}
-                                        state={categoryType}
+                                        state={{categoryType : categoryType}}
                                         className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
                                     >
                                         <ChevronRightIcon className="h-5 w-5 mr-1" />

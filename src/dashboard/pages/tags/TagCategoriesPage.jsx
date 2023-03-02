@@ -45,7 +45,7 @@ export default function TagCategoriesPage() {
                 <div className="grid grid-cols-3 gap-5">
                     <Link
                         to="/gdsadmin/tags/age"
-                        state="age"
+                        state={{categoryType : "age"}}
                         className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
                     >
                         <div className="w-full">
@@ -62,7 +62,7 @@ export default function TagCategoriesPage() {
 
                     <Link
                         to="/gdsadmin/tags/gender"
-                        state="gender"
+                        state={{categoryType : "gender"}}
                         className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
                     >
                         <div className="w-full">
@@ -76,7 +76,7 @@ export default function TagCategoriesPage() {
 
                     <Link
                         to="/gdsadmin/tags/language"
-                        state="language"
+                        state={{categoryType : "language"}}
                         className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
                     >
                         <div className="w-full">
@@ -90,7 +90,7 @@ export default function TagCategoriesPage() {
 
                     <Link
                         to="/gdsadmin/tags/dialect"
-                        state="dialect"
+                        state={{categoryType : "dialect"}}
                         className="flex h-96 p-5 hover:text-bolge rounded-lg shadow-md border-b-8 border-bolge hover:border-b-[20px] bg-fred place-items-center text-center hover:shadow-xl transition-all duration-150 ease-in-out"
                     >
                         <div className="w-full">

@@ -71,7 +71,7 @@ export function filterRows(rows, filters) {
             }
 
             if (isNumber(value)) {
-                return value == searchValue;
+                return value === searchValue;
             }
 
             return false;
