@@ -3,13 +3,14 @@ import toast from 'react-hot-toast';
 
 // Send request to backend
 export async function queryApi(path, body = {}, options = {}) {
-    const promise = fetch('https://gidinstemme-back-test.azurewebsites.net/' + path, {
+    const promise = fetch('/api/' + path, {
         method: options?.method ?? 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
         credentials: 'include',
+        withCredentials: true,
         body: body !== null ? JSON.stringify(body) : null,
     })
         .then(validateResponse)

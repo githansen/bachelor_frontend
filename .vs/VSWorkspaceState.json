@@ -1,11 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.github",
     "\\.github\\workflows",
     "\\src",
     "\\src\\pages",
-    "\\src\\pages\\Reader"
+    "\\src\\pages\\Reader",
+    "\\src\\utils"
   ],
   "PreviewInSolutionExplorer": false
 }
