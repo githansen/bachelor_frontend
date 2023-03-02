@@ -5,7 +5,7 @@ import { Popover, Dialog, Transition } from '@headlessui/react';
 //React library
 import { Fragment, useState, useMemo } from 'react';
 import { sortRows, filterRows, paginateRows } from './addon/TableHelpers';
-import { TablePagination } from './addon/TablePagination';
+import TablePagination from './addon/TablePagination';
 //Icons
 import {
     ArrowPathIcon,

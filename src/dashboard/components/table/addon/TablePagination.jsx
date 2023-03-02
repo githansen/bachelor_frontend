@@ -6,13 +6,13 @@ import {
     ChevronRightIcon,
 } from '@heroicons/react/24/solid';
 
-export const TablePagination = ({
-    activePage,
+export default function TablePagination({
     count,
     rowsPerPage,
-    totalPages,
+    activePage,
     setActivePage,
-}) => {
+}) {
+    const totalPages = Math.ceil(count / rowsPerPage);
     const beginning = activePage === 1 ? 1 : rowsPerPage * (activePage - 1) + 1;
     const end = activePage === totalPages ? count : beginning + rowsPerPage - 1;
 
@@ -76,4 +76,6 @@ export const TablePagination = ({
             </div>
         </>
     );
-};
+}
+
+// Path: src/dashboard/components/table/addon/TablePagination.jsx

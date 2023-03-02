@@ -1,6 +1,6 @@
 import { Fragment, useState, useMemo } from 'react';
 import { sortRows, filterRows, paginateRows } from './addon/TableHelpers';
-import { TablePagination } from './addon/TablePagination';
+import TablePagination from './addon/TablePagination';
 //Headless UI
 import { Popover, Transition } from '@headlessui/react';
 //Icons
