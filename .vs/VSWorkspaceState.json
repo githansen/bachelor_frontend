@@ -1,7 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.github\\workflows",
     "\\src",
     "\\src\\pages",
     "\\src\\pages\\Reader",
