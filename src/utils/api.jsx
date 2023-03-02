@@ -9,7 +9,6 @@ export async function queryApi(path, body = {}, options = {}) {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
-        credentials: 'include',
         body: body !== null ? JSON.stringify(body) : null,
     })
         .then(validateResponse)
