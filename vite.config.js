@@ -4,8 +4,8 @@ import svgr from '@svgr/rollup';
 
 const usingLocalApi = process.env.API_SERVER?.trim() === 'local';
 const apiTarget = usingLocalApi  ?
-					'https://gidinstemme-back-test.azurewebsites.net/' :
-					'https://localhost:7195/';
+					'https://localhost:7195/' :
+					'https://gidinstemme-back-test.azurewebsites.net/';
 
 console.info('Using API server at: ' + apiTarget);
 
