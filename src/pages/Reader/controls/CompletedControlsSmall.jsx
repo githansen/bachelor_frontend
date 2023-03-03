@@ -26,9 +26,12 @@ export default function CompletedControls({ setReaderState, audio, submitRecordi
                             className=""
                             src={audio.url}
                             layout="stacked"
-                            progressJumpStep={15000}
-                            showFilledVolume={true}
+                            preload="auto"
+                            autoPlay={false}
+                            timeFormat={'mm:ss'}
+                            onLoadedData={() => setDisplayAudioPlayer(true)}
                             showJumpControls={true}
+                            progressJumpStep={15000}
                             customControlsSection={['MAIN_CONTROLS']}
                             customIcons={{
                                 rewind: <AudioRewindIcon className="h-7 w-7" />,
