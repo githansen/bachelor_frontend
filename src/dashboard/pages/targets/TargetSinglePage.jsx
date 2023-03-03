@@ -1,12 +1,43 @@
+//React
+import React, { useEffect, useRef, useState } from 'react';
 //React library
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Select, { components } from 'react-select';
+//Animation library
+import { motion as m } from 'framer-motion';
 //Shared
 import DashMenu from '../../components/shared/DashMenu';
 //Icons
-import { ArrowUpCircleIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { UserGroupIcon } from '@heroicons/react/24/solid';
+import {
+    ChevronRightIcon,
+    ArrowUpCircleIcon,
+} from '@heroicons/react/24/outline';
+import { act } from 'react-dom/test-utils';
 
-export default function EditTarget() {
+export default function TextSinglePage() {
+    //Navigation
+    const navigate = useNavigate();
+    //Location - used to determine if the user is creating a new tag or editing an existing one
+    const location = useLocation();
+    const actionType = location.state.action;
+    const [title, setTitle] = useState('');
+    const [submitBtnText, setSubmitBtnText] = useState('');
+
+    useEffect(() => {
+        if (actionType) {
+            if (actionType === 'new') {
+                setTitle('Legg til ny målgruppe');
+                setSubmitBtnText('Legg til');
+            } else if (actionType === 'edit') {
+                setTitle('Rediger målgruppe:');
+                setSubmitBtnText('Oppdater');
+            }
+        } else {
+            navigate(`/gdsadmin/target`);
+        }
+    }, [actionType, navigate]);
+
     const selectStyle = {
         control: (base, state) => {
             let border = '2px solid #f2f2f2';
@@ -142,12 +173,14 @@ export default function EditTarget() {
             <div className="p-12 w-full">
                 <div className="flex justify-between mb-5 items-center">
                     <div className="mb-5 items-end">
-                        <h2 className="text-xlh2 font-normal leading-10 mb-3">
-                            Rediger målgruppe :{' '}
-                            <span className="font-feteste">Europa 18</span>
-                        </h2>
-                        <nav
-                            className="flex mt-6 text-xlp"
+                        <m.nav
+                            initial={{ y: '-10px', opacity: 0 }}
+                            animate={{ y: '0', opacity: 1 }}
+                            transition={{
+                                duration: 0.3,
+                                ease: 'easeOut',
+                            }}
+                            className="flex mb-6 text-xlp"
                             aria-label="Breadcrumb"
                         >
                             <ol className="inline-flex items-center space-x-1 md:space-x-3">
@@ -157,51 +190,85 @@ export default function EditTarget() {
                                         className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
                                     >
                                         <UserGroupIcon className="h-4 w-4 mr-1" />
-                                        Målgruppe
+                                        Målgrupper
                                     </NavLink>
                                 </li>
                                 <li aria-current="page" className="text-bolge">
                                     <div className="flex items-center">
-                                        <svg
-                                            aria-hidden="true"
-                                            className="w-6 h-6 text-gray-400"
-                                            fill="currentColor"
-                                            viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                                clipRule="evenodd"
-                                            ></path>
-                                        </svg>
+                                        <ChevronRightIcon className="h-5 w-5 mr-1" />
+                                        {actionType === 'edit' ? '' : title}
                                         <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
-                                            Europa 18
+                                            {actionType === 'edit'
+                                                ? 'Random tittel'
+                                                : ''}
                                         </span>
                                     </div>
                                 </li>
                             </ol>
-                        </nav>
+                        </m.nav>
+                        <m.h2
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                duration: 0.3,
+                                ease: 'easeOut',
+                            }}
+                            className={`text-xlh2 ${
+                                actionType === 'edit'
+                                    ? 'font-normal'
+                                    : 'font-fet'
+                            } leading-10 mb-3`}
+                        >
+                            {title}{' '}
+                            <span className="font-feteste">
+                                {actionType === 'edit' ? 'Random tittel' : ''}
+                            </span>
+                        </m.h2>
                     </div>
                 </div>
                 <div className="grid grid-cols-3 gap-10">
                     <div className="col-span-2">
-                        <input
+                        <m.input
+                            initial={{ y: '20px', opacity: 0 }}
+                            animate={{ y: '0', opacity: 1 }}
+                            transition={{
+                                duration: 0.4,
+                                ease: 'easeOut',
+                            }}
                             className="bg-fred shadow w-full p-5 rounded-lg mb-8 text-xlh5 font-fet text-bolge"
                             placeholder="Gi målgruppen et navn..."
-                            value="Europa 18"
-                        ></input>
+                            defaultValue={`${
+                                actionType === 'edit' ? 'Europa 18' : ''
+                            }`}
+                        />
 
-                        <textarea
-                            className="w-full bg-fred shadow border-0 text-bolge rounded-md p-5 text-xlp mb-8"
+                        <m.textarea
+                            initial={{ y: '20px', opacity: 0 }}
+                            animate={{ y: '0', opacity: 1 }}
+                            transition={{
+                                duration: 0.4,
+                                ease: 'easeOut',
+                            }}
+                            className="w-full bg-fred mb-5 shadow border-0 text-bolge rounded-md p-5 text-xlp"
                             rows="4"
                             placeholder="Beskriv målgruppen..."
-                        >
-                            Dette er en kort tekst som beskriver målgruppen
-                            europa 18.
-                        </textarea>
+                            defaultValue={`${
+                                actionType === 'edit'
+                                    ? 'Dette er en kort tekst som beskriver målgruppen europa 18.'
+                                    : ''
+                            }`}
+                        />
                         <div className="grid grid-cols-2 gap-10 mb-8">
-                            <div className="bg-fred w-full p-10 rounded-lg shadow">
+                            <m.div
+                                initial={{ y: '20px', opacity: 0 }}
+                                animate={{ y: '0', opacity: 1 }}
+                                transition={{
+                                    duration: 0.4,
+                                    ease: 'easeOut',
+                                    delay: 0.1,
+                                }}
+                                className="bg-fred w-full p-10 rounded-lg shadow"
+                            >
                                 <h6 className="text-xlh6 font-fet mb-2">
                                     Aldersgruppe
                                 </h6>
@@ -217,13 +284,24 @@ export default function EditTarget() {
                                     components={{ NoOptionsMessage, Option }}
                                     className="text-left mt-3"
                                     styles={selectStyle}
-                                    defaultValue={[
-                                        ageOptions[2],
-                                        ageOptions[3],
-                                    ]}
+                                    defaultValue={
+                                        actionType === 'edit' && [
+                                            ageOptions[2],
+                                            ageOptions[3],
+                                        ]
+                                    }
                                 />
-                            </div>
-                            <div className="bg-fred w-full p-10 rounded-lg shadow">
+                            </m.div>
+                            <m.div
+                                initial={{ y: '20px', opacity: 0 }}
+                                animate={{ y: '0', opacity: 1 }}
+                                transition={{
+                                    duration: 0.4,
+                                    ease: 'easeOut',
+                                    delay: 0.15,
+                                }}
+                                className="bg-fred w-full p-10 rounded-lg shadow"
+                            >
                                 <h6 className="text-xlh6 font-fet mb-2">
                                     Kjønn
                                 </h6>
@@ -239,35 +317,64 @@ export default function EditTarget() {
                                     components={{ NoOptionsMessage, Option }}
                                     className="text-left mt-3"
                                     styles={selectStyle}
-                                    defaultValue={[
-                                        genderOptions[1],
-                                        genderOptions[2],
-                                    ]}
+                                    defaultValue={
+                                        actionType === 'edit' && [
+                                            genderOptions[1],
+                                            genderOptions[2],
+                                        ]
+                                    }
                                 />
-                            </div>
+                            </m.div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-10">
-                            <div className="bg-fred w-full p-10 rounded-lg shadow">
+                            <m.div
+                                initial={{ y: '20px', opacity: 0 }}
+                                animate={{ y: '0', opacity: 1 }}
+                                transition={{
+                                    duration: 0.4,
+                                    ease: 'easeOut',
+                                    delay: 0.2,
+                                }}
+                                className="bg-fred w-full p-10 rounded-lg shadow"
+                            >
                                 <h6 className="text-xlh6 font-fet mb-2">
                                     Morsmål
                                 </h6>
                                 <small className="text-xsliten text-bolge">
                                     Velg en eller flere morsmål.
                                 </small>
+
                                 <Select
                                     placeholder={<div>Ikke valgt...</div>}
                                     name="Velg et kjønn"
                                     options={languageOptions}
                                     isClearable={false}
                                     isMulti
-                                    components={{ NoOptionsMessage, Option }}
+                                    components={{
+                                        NoOptionsMessage,
+                                        Option,
+                                    }}
                                     className="text-left mt-3"
                                     styles={selectStyle}
-                                    defaultValue={[languageOptions[0]]}
+                                    defaultValue={
+                                        actionType === 'edit' && [
+                                            languageOptions[0],
+                                            languageOptions[1],
+                                        ]
+                                    }
                                 />
-                            </div>
-                            <div className="bg-fred w-full p-10 rounded-lg shadow">
+                            </m.div>
+                            <m.div
+                                initial={{ y: '20px', opacity: 0 }}
+                                animate={{ y: '0', opacity: 1 }}
+                                transition={{
+                                    duration: 0.4,
+                                    ease: 'easeOut',
+                                    delay: 0.25,
+                                }}
+                                className="bg-fred w-full p-10 rounded-lg shadow"
+                            >
                                 <h6 className="text-xlh6 font-fet mb-2">
                                     Dialekt
                                 </h6>
@@ -280,23 +387,45 @@ export default function EditTarget() {
                                     options={dialectOptions}
                                     isClearable={false}
                                     isMulti
-                                    components={{ NoOptionsMessage, Option }}
+                                    components={{
+                                        NoOptionsMessage,
+                                        Option,
+                                    }}
                                     className="text-left mt-3"
                                     styles={selectStyle}
-                                    defaultValue={[
-                                        dialectOptions[0],
-                                        dialectOptions[1],
-                                        dialectOptions[2],
-                                        dialectOptions[3],
-                                    ]}
+                                    defaultValue={
+                                        actionType === 'edit' && [
+                                            dialectOptions[0],
+                                            dialectOptions[1],
+                                            dialectOptions[2],
+                                            dialectOptions[3],
+                                        ]
+                                    }
                                 />
-                            </div>
+                            </m.div>
                         </div>
                     </div>
                     <div className="col-span-1">
-                        <div className="bg-fred w-full p-10 rounded-lg shadow mb-5">
+                        <m.div
+                            initial={{ y: '20px', opacity: 0 }}
+                            animate={{ y: '0', opacity: 1 }}
+                            transition={{
+                                duration: 0.4,
+                                ease: 'easeOut',
+                            }}
+                            className="bg-fred w-full p-10 rounded-lg shadow mb-5"
+                        >
+                            {actionType === 'edit' && (
+                                <ul className="text-xlp">
+                                    <li>
+                                        <p className="text-xlp text-stein">
+                                            ID: 5 | Publisert: 23.02.2022
+                                        </p>
+                                    </li>
+                                </ul>
+                            )}
                             <h6 className="text-xlh6 font-fet mb-2">
-                                Oppdater målgruppe
+                                {submitBtnText} målgruppe
                             </h6>
 
                             <select className="mt-4 rounded border-2 border-bolge text-bolge w-full">
@@ -310,13 +439,16 @@ export default function EditTarget() {
                             <div className="grid grid-cols-3 gap-5">
                                 <button className="col-span-2 mt-4 w-full text-center text-xlknappliten font-fet border-2 border-bolge bg-bolge text-fred hover:bg-krystall hover:text-bolge transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 justify-center place-items-center">
                                     <ArrowUpCircleIcon className="h-6 w-6" />
-                                    Oppdater
+                                    {submitBtnText}
                                 </button>
-                                <button className="col-span-1 mt-4 w-full text-center text-xlknappliten font-fet border-2 border-metall bg-none text-metall hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 justify-center place-items-center">
+                                <NavLink
+                                    to="/gdsadmin/target"
+                                    className="col-span-1 mt-4 w-full text-center text-xlknappliten font-fet border-2 border-metall bg-none text-metall hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 justify-center place-items-center"
+                                >
                                     Avbryt
-                                </button>
+                                </NavLink>
                             </div>
-                        </div>
+                        </m.div>
                     </div>
                 </div>
             </div>

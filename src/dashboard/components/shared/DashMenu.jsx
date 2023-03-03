@@ -13,6 +13,7 @@ import {
     ArrowLeftOnRectangleIcon,
     PlayCircleIcon,
     TagIcon,
+    HashtagIcon,
 } from '@heroicons/react/24/outline';
 import { ReactComponent as LeftArrow } from '@/assets/icons/LeftArrow.svg';
 
@@ -28,6 +29,7 @@ export default function DashMenu() {
         },
         { title: 'Tekster', icon: DocumentIcon, path: '/gdsadmin/text' },
         { title: 'Målgrupper', icon: UserGroupIcon, path: '/gdsadmin/target' },
+        { title: 'Nøkkelord', icon: HashtagIcon, path: '/gdsadmin/keyword' },
         { title: 'Merkelapper', icon: TagIcon, path: '/gdsadmin/tags' },
         { title: 'Innstillinger', icon: CogIcon, path: '/gdsadmin/settings' },
         {

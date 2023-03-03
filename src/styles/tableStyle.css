@@ -56,7 +56,9 @@ tbody tr td:first-child {
 #ContributionPage tbody tr td:nth-child(3) {
     font-weight: 600;
 }
-#ContributionPage tbody tr td:nth-child(5) p {
+#ContributionPage tbody tr td:nth-child(4) p,
+#ContributionPage tbody tr td:nth-child(5) p,
+#ContributionPage tbody tr td:nth-child(6) p {
     color: #707070;
 }
 #StandardTable input::placeholder {
@@ -70,7 +72,8 @@ tbody tr td:first-child {
     text-align: center;
 }
 #StandardTable tbody tr td:nth-child(3) p,
-#StandardTable tbody tr td:nth-child(4) p {
+#StandardTable tbody tr td:nth-child(4) p,
+#StandardTable tbody tr td:nth-child(5) p {
     color: #707070;
 }
 table thead #searchRow th {

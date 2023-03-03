@@ -188,36 +188,67 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                                 {columns.map((column) => {
                                     if (column.type === 'action') {
                                         if (!row.is_changeable) {
-                                            return (
-                                                <td
-                                                    key={column.accessor}
-                                                    className="px-5 py-2"
-                                                >
-                                                    <div className="flex gap-2">
-                                                        <NavLink
-                                                            to={column.viewLink}
-                                                            state={{
-                                                                action: 'view',
-                                                                categoryType:
-                                                                    column.categoryType,
-                                                            }}
-                                                            className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
-                                                        >
-                                                            <EyeIcon className="h-5 w-5" />
-                                                        </NavLink>
-                                                        <button
-                                                            onClick={() => {
-                                                                toast.error(
-                                                                    'Kan ikke endres eller slettes!'
-                                                                );
-                                                            }}
-                                                            className="text-xlliten font-normal border-2 border-rose bg-none text-rose hover:border-rose transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
-                                                        >
-                                                            <XMarkIcon className="h-5 w-5" />
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            );
+                                            if (
+                                                column.action === 'onlyEdit' ||
+                                                column.action ===
+                                                    'editAndDelete'
+                                            ) {
+                                                return (
+                                                    <td
+                                                        key={column.accessor}
+                                                        className="px-5 py-2"
+                                                    >
+                                                        <div className="flex gap-2">
+                                                            <NavLink
+                                                                to={
+                                                                    column.viewLink
+                                                                }
+                                                                state={{
+                                                                    action: 'view',
+                                                                    categoryType:
+                                                                        column.categoryType,
+                                                                }}
+                                                                className="text-xlliten font-normal border-2 border-kveld bg-none text-kveld hover:border-skumring hover:bg-skumring hover:text-fred transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
+                                                            >
+                                                                <EyeIcon className="h-5 w-5" />
+                                                            </NavLink>
+                                                            <button
+                                                                onClick={() => {
+                                                                    toast.error(
+                                                                        'Kan ikke endres eller slettes!'
+                                                                    );
+                                                                }}
+                                                                className="text-xlliten font-normal border-2 border-rose bg-none text-rose hover:border-rose transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
+                                                            >
+                                                                <XMarkIcon className="h-5 w-5" />
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                );
+                                            } else if (
+                                                column.action ===
+                                                'editAndDeleteNoView'
+                                            ) {
+                                                return (
+                                                    <td
+                                                        key={column.accessor}
+                                                        className="px-5 py-2"
+                                                    >
+                                                        <div className="flex gap-2">
+                                                            <button
+                                                                onClick={() => {
+                                                                    toast.error(
+                                                                        'Kan ikke endres eller slettes!'
+                                                                    );
+                                                                }}
+                                                                className="text-xlliten font-normal border-2 border-rose bg-none text-rose hover:border-rose transition-all duration-200 px-3 py-2 rounded inline-flex place-items-center gap-1.5"
+                                                            >
+                                                                <XMarkIcon className="h-5 w-5" />
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                );
+                                            }
                                         } else {
                                             if (column.action === 'onlyEdit') {
                                                 return (
@@ -244,7 +275,9 @@ export const StandardTable = ({ columns, rows, tableId }) => {
                                                 );
                                             } else if (
                                                 column.action ===
-                                                'editAndDelete'
+                                                    'editAndDeleteNoView' ||
+                                                column.action ===
+                                                    'editAndDelete'
                                             ) {
                                                 return (
                                                     <td

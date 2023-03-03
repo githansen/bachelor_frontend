@@ -10,7 +10,8 @@ import {
 import { Toaster } from 'react-hot-toast';
 //Stylesheet
 import '@/styles/index.css';
-// Pages
+
+/////////////PAGES////////////
 import Page404 from '@/pages/statusCodes/FourOFour';
 import Page500 from '@/pages/statusCodes/FiveHundred';
 import PageHome from '@/pages/Home';
@@ -21,32 +22,47 @@ import PageThanks from '@/pages/Reader/Thanks';
 import PagePrivacy from '@/pages/additional/Privacy';
 import PageAboutUs from '@/pages/additional/AboutUs';
 import PageDeleteRecording from '@/pages/additional/DeleteRecording';
+
+////////////ADMINPANEL////////////
 //Adminpanel
 import DashFirstPage from '@/dashboard/pages/Dashboard.jsx';
 import Login from '@/dashboard/pages/Login.jsx';
+//Texts
 import TextPage from '@/dashboard/pages/texts/TextPage.jsx';
 import TextSinglePage from '@/dashboard/pages/texts/TextSinglePage';
 import TextSingleView from '@/dashboard/pages/texts/TextSingleView';
+//Targets
 import TargetsPage from '@/dashboard/pages/targets/TargetPage';
-import NewTargetPage from '@/dashboard/pages/targets/NewTarget';
-import EditTargetPage from '@/dashboard/pages/targets/EditTarget';
+import TargetSinglePage from '@/dashboard/pages/targets/TargetSinglePage';
+import TargetSingleView from '@/dashboard/pages/targets/TargetSingleView';
+//Settings
 import SettingsPage from '@/dashboard/pages/settings/Settings';
+//Contributions
 import ContributionPage from '@/dashboard/pages/contributions/ContributionPage';
+//Tags
 import TagCategoriesPage from '@/dashboard/pages/tags/TagCategoriesPage';
 import TagSingleCategoryPage from '@/dashboard/pages/tags/TagSingleCategoryPage';
 import TagSinglePage from '@/dashboard/pages/tags/TagSinglePage';
+//Keywords
+import KeywordPage from '@/dashboard/pages/keywords/KeywordPage';
+import KeywordSinglePage from '@/dashboard/pages/keywords/KeywordSinglePage';
+import KeywordSingleView from '@/dashboard/pages/keywords/KeywordSingleView';
 
+//Path: src/index.jsx
 function Page({ title, children }) {
     const { pathname } = useLocation();
 
+    // Set document title
     useEffect(() => {
         document.title = `${title} - GiDinStemme`;
     }, [title]);
 
+    // Scroll to top on route change
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
 
+    // Render
     return (
         <>
             <Toaster />
@@ -55,6 +71,7 @@ function Page({ title, children }) {
     );
 }
 
+// Main router
 const router = createBrowserRouter([
     // Main pages
     {
@@ -138,6 +155,7 @@ const router = createBrowserRouter([
             </Page>
         ),
     },
+    // Adminpanel
     {
         path: '/gdsadmin/dashboard',
         element: (
@@ -154,35 +172,12 @@ const router = createBrowserRouter([
             </Page>
         ),
     },
+    // Adminpanel - Texts
     {
         path: '/gdsadmin/text',
         element: (
             <Page title="Tekster">
                 <TextPage />
-            </Page>
-        ),
-    },
-    {
-        path: '/gdsadmin/target',
-        element: (
-            <Page title="Målgrupper">
-                <TargetsPage />
-            </Page>
-        ),
-    },
-    {
-        path: '/gdsadmin/settings',
-        element: (
-            <Page title="Innstillinger">
-                <SettingsPage />
-            </Page>
-        ),
-    },
-    {
-        path: '/gdsadmin/contributions',
-        element: (
-            <Page title="Bidrag">
-                <ContributionPage />
             </Page>
         ),
     },
@@ -210,11 +205,20 @@ const router = createBrowserRouter([
             </Page>
         ),
     },
+    // Adminpanel - Targets
+    {
+        path: '/gdsadmin/target',
+        element: (
+            <Page title="Målgrupper">
+                <TargetsPage />
+            </Page>
+        ),
+    },
     {
         path: '/gdsadmin/target/new',
         element: (
             <Page title="Legg til ny målgruppe">
-                <NewTargetPage />
+                <TargetSinglePage />
             </Page>
         ),
     },
@@ -222,10 +226,37 @@ const router = createBrowserRouter([
         path: '/gdsadmin/target/edit',
         element: (
             <Page title="Rediger målgruppe">
-                <EditTargetPage />
+                <TargetSinglePage />
             </Page>
         ),
     },
+    {
+        path: '/gdsadmin/target/view',
+        element: (
+            <Page title="Se målgruppe">
+                <TargetSingleView />
+            </Page>
+        ),
+    },
+    // Adminpanel - Settings
+    {
+        path: '/gdsadmin/settings',
+        element: (
+            <Page title="Innstillinger">
+                <SettingsPage />
+            </Page>
+        ),
+    },
+    // Adminpanel - Contributions
+    {
+        path: '/gdsadmin/contributions',
+        element: (
+            <Page title="Bidrag">
+                <ContributionPage />
+            </Page>
+        ),
+    },
+    // Adminpanel - Tags
     {
         path: '/gdsadmin/tags',
         element: (
@@ -298,8 +329,42 @@ const router = createBrowserRouter([
             </Page>
         ),
     },
+    // Adminpanel - Keywords
+    {
+        path: '/gdsadmin/keyword',
+        element: (
+            <Page title="Alle nøkkelord">
+                <KeywordPage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/keyword/new',
+        element: (
+            <Page title="Nytt nøkkelord">
+                <KeywordSinglePage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/keyword/edit',
+        element: (
+            <Page title="Rediger nøkkelord">
+                <KeywordSinglePage />
+            </Page>
+        ),
+    },
+    {
+        path: '/gdsadmin/keyword/view',
+        element: (
+            <Page title="Se nøkkelord">
+                <KeywordSingleView />
+            </Page>
+        ),
+    },
 ]);
 
+// Render the app
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>

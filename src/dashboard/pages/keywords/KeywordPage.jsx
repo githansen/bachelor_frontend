@@ -7,22 +7,22 @@ import DashMenu from '../../components/shared/DashMenu';
 import { StandardTable } from '../../components/table/StandardTable';
 import '@/styles/tableStyle.css';
 //Icons
-import { PlusIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { PlusIcon, HashtagIcon } from '@heroicons/react/24/outline';
 
-export default function TargetPage() {
+export default function KeywordPage() {
     const columns = [
         { accessor: 'id', label: 'ID' },
-        { accessor: 'name', label: 'Navn' },
+        { accessor: 'keyword', label: 'Nøkkelord' },
+        { accessor: 'status', label: 'Status' },
         { accessor: 'last_changed_date', label: 'Sist endret dato' },
         { accessor: 'added_date', label: 'Lagt til' },
         {
             accessor: 'is_changeable',
-            label: 'Endre',
-            format: (value) => (value ? 'Endre' : 'Ingen tilgang'),
+            label: 'Handling',
+            format: (value) => (value ? '' : 'Ingen tilgang'),
             type: 'action',
-            action: 'editAndDelete', //onlyEdit or editAndDelete
+            action: 'editAndDelete', //onlyEdit or editAndDelete // editAndDeleteNoView
             editLink: 'edit',
-            deleteLink: 'delete',
             viewLink: 'view',
         },
     ];
@@ -30,23 +30,42 @@ export default function TargetPage() {
     const rows = [
         {
             id: 1,
-            name: 'NordmennU40',
+            keyword: 'Keef',
+            status: 'kladd',
             last_changed_date: '14. April 2022',
             added_date: '10. Februar 2022',
             is_changeable: true,
         },
         {
             id: 2,
-            name: 'AfrikaO60',
+            keyword: 'Hashish',
+            status: 'kladd',
             last_changed_date: '23. Juni 2022',
             added_date: '05. Mars 2022',
             is_changeable: true,
         },
         {
             id: 3,
-            name: 'Europa18',
+            keyword: 'Baosj',
+            status: 'publisert',
             last_changed_date: '06. Desember 2022',
             added_date: '21. April 2022',
+            is_changeable: false,
+        },
+        {
+            id: 4,
+            keyword: 'Gætter',
+            status: 'publisert',
+            last_changed_date: '18. Desember 2022',
+            added_date: '16. April 2022',
+            is_changeable: false,
+        },
+        {
+            id: 5,
+            keyword: 'Kæbe',
+            status: 'publisert',
+            last_changed_date: '09. Desember 2022',
+            added_date: '12. April 2022',
             is_changeable: false,
         },
     ];
@@ -67,7 +86,7 @@ export default function TargetPage() {
                                     ease: 'easeOut',
                                 }}
                             >
-                                <UserGroupIcon className="w-12" />
+                                <HashtagIcon className="w-12" />
                             </m.span>
                             <m.h2
                                 initial={{ opacity: 0 }}
@@ -78,7 +97,7 @@ export default function TargetPage() {
                                 }}
                                 className="text-xlh2 font-feteste leading-10 mb-3"
                             >
-                                Målgrupper
+                                Nøkkelord
                             </m.h2>
                         </div>
                         <m.p
@@ -90,15 +109,15 @@ export default function TargetPage() {
                             }}
                             className="text-xlp mt-2"
                         >
-                            Her kan du se alle målgruppene som er lagt inn i
+                            Her kan du se alle nøkkelordene som er lagt inn i
                             systemet.
                         </m.p>
                     </div>
 
                     <div className="inline-flex text-right place-content-end items-center w-full mb-5 gap-5">
-                        <p>Viser 3 av 59 målgrupper</p>
+                        <p>Viser 12 av 254 nøkkelord</p>
                         <NavLink
-                            to="/gdsadmin/target/new"
+                            to="/gdsadmin/keyword/new"
                             state={{
                                 action: 'new',
                             }}

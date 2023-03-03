@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 //React library
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import Creatable, { useCreatable } from 'react-select/creatable';
 import Select, { components } from 'react-select';
 //Animation library
 import { motion as m } from 'framer-motion';
@@ -39,7 +38,6 @@ export default function TextSinglePage() {
     }, [actionType, navigate]);
 
     //
-    const textAreaRef = useRef();
     const [wordCount, setWordCount] = useState(0);
     const [textTime, setTextTime] = useState(0);
 
@@ -283,34 +281,22 @@ export default function TextSinglePage() {
                                 her.
                             </small>
 
-                            {actionType === 'edit' && (
-                                <Select
-                                    placeholder={<div>Ikke valgt...</div>}
-                                    name="Skriv inn nøkkelord"
-                                    options={keywordOptions}
-                                    isClearable={false}
-                                    isMulti
-                                    components={{ NoOptionsMessage, Option }}
-                                    className="text-left mt-3"
-                                    styles={selectStyle}
-                                    defaultValue={[
+                            <Select
+                                placeholder={<div>Ikke valgt...</div>}
+                                name="Skriv inn nøkkelord"
+                                options={keywordOptions}
+                                isClearable={false}
+                                isMulti
+                                components={{ NoOptionsMessage, Option }}
+                                className="text-left mt-3"
+                                styles={selectStyle}
+                                defaultValue={
+                                    actionType === 'edit' && [
                                         keywordOptions[2],
                                         keywordOptions[3],
-                                    ]}
-                                />
-                            )}
-                            {actionType === 'new' && (
-                                <Select
-                                    placeholder={<div>Ikke valgt...</div>}
-                                    name="Skriv inn nøkkelord"
-                                    options={keywordOptions}
-                                    isClearable={false}
-                                    isMulti
-                                    components={{ NoOptionsMessage, Option }}
-                                    className="text-left mt-3"
-                                    styles={selectStyle}
-                                />
-                            )}
+                                    ]
+                                }
+                            />
                         </m.div>
                     </div>
                     <div className="col-span-1">
@@ -388,34 +374,22 @@ export default function TextSinglePage() {
                                 målgrupper, eller ønsker å legge til en ny{' '}
                                 <Link to={'/gdsadmin/tags'}>klikk her.</Link>
                             </small>
-                            {actionType === 'edit' && (
-                                <Select
-                                    placeholder={<div>Ikke valgt...</div>}
-                                    name="Velg en målgruppe"
-                                    options={targetOptions}
-                                    isClearable={false}
-                                    isMulti
-                                    components={{ NoOptionsMessage, Option }}
-                                    className="text-left mt-3"
-                                    styles={selectStyle}
-                                    defaultValue={[
+                            <Select
+                                placeholder={<div>Ikke valgt...</div>}
+                                name="Velg en målgruppe"
+                                options={targetOptions}
+                                isClearable={false}
+                                isMulti
+                                components={{ NoOptionsMessage, Option }}
+                                className="text-left mt-3"
+                                styles={selectStyle}
+                                defaultValue={
+                                    actionType === 'edit' && [
                                         targetOptions[2],
                                         targetOptions[3],
-                                    ]}
-                                />
-                            )}
-                            {actionType === 'new' && (
-                                <Select
-                                    placeholder={<div>Ikke valgt...</div>}
-                                    name="Velg en målgruppe"
-                                    options={targetOptions}
-                                    isClearable={false}
-                                    isMulti
-                                    components={{ NoOptionsMessage, Option }}
-                                    className="text-left mt-3"
-                                    styles={selectStyle}
-                                />
-                            )}
+                                    ]
+                                }
+                            />
                         </m.div>
                     </div>
                 </div>
