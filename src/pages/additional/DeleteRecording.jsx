@@ -22,7 +22,7 @@ export default function DeleteRecording() {
     async function deleteContribution() {
         setIsOpen(false);
 
-        const promise = fetch('https://gidinstemme-back-test.azurewebsites.net/User/DeleteFile', {
+        const promise = fetch('/api/User/DeleteFile', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

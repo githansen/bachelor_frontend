@@ -169,10 +169,10 @@ export default function Reader() {
         formData.append('textId', text.textId);
         formData.append('recording', audio.blob, 'test.m4a');
 
-         const promise = fetch('https://gidinstemme-back-test.azurewebsites.net/User/SaveFile', {
+         const promise = fetch('/api/User/SaveFile', {
             method: 'POST',
-             body: formData,
-             credentials: 'include'
+            body: formData,
+            credentials: 'include'
         })
             .then(validateResponse)
             .then(() => navigate('/takk'));

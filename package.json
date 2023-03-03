@@ -26,6 +26,7 @@
     },
     "scripts": {
         "start": "vite",
+        "local": "set API_SERVER=local && vite",
         "build": "vite build"
     },
     "eslintConfig": {
