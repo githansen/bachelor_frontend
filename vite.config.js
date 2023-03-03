@@ -17,7 +17,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			'/api': {
-				target: apiTarget,
+				target: 'https://gidinstemme-back-test.azurewebsites.net/',
 				changeOrigin: true,
 				secure: usingLocalApi ? false : true,
 				ws: true,
