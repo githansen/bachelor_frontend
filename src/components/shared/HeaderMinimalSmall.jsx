@@ -24,7 +24,7 @@ export default function HeaderMinimalSmall({ state }) {
                 inset-x-0
                 z-20"
             >
-                <nav className="xs:py-3 xs:px-2 sm:py-5 sm:px-4">
+                <nav className="xs:py-2 xs:px-2 sm:py-5 sm:px-4">
                     <div className="grid grid-cols-2 items-center  mx-5">
                         <m.div>
                             <button
@@ -34,13 +34,13 @@ export default function HeaderMinimalSmall({ state }) {
                             >
                                 <img
                                     src={GiDinStemmeIconWBg}
-                                    className="h-[2rem]"
+                                    className="h-[1.5rem]"
                                     alt="GiDinStemme - Logo"
                                 />
                             </button>
                         </m.div>
                         <div className="text-right flex flex-col">
-                            <small className="xs:text-xsliten sm:text-smliten text-solskinn">
+                            <p className="xs:text-xsliten sm:text-smliten leading-none text-solskinn">
                                 {`${
                                     state == 'idle'
                                         ? 'Estimert lesetid 2 min'
@@ -48,8 +48,12 @@ export default function HeaderMinimalSmall({ state }) {
                                         ? 'Estimert lesetid 2 min'
                                         : 'Hør på lydklippet ditt'
                                 }`}
-                            </small>
-                            <h6 className="text-h6 font-semibold text-fred">
+                            </p>
+                            <p
+                                className={`${
+                                    state == 'recording' ? 'animate-pulse' : ''
+                                }  xs:text-xsliten sm:text-smliten leading-none font-semibold text-fred`}
+                            >
                                 {`${
                                     state == 'idle'
                                         ? 'Klar til opptak?'
@@ -57,7 +61,7 @@ export default function HeaderMinimalSmall({ state }) {
                                         ? 'Spiller inn...'
                                         : 'Opptak er avsluttet'
                                 }`}
-                            </h6>
+                            </p>
                         </div>
                     </div>
                 </nav>
