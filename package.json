@@ -28,6 +28,7 @@
     },
     "scripts": {
         "start": "vite",
+        "local": "set VITE_API_SERVER=local && vite",
         "build": "vite build"
     },
     "eslintConfig": {
@@ -57,6 +58,7 @@
         "autoprefixer": "^10.4.13",
         "prettier": "^2.8.3",
         "tailwindcss": "^3.2.4",
-        "vite": "^4.0.4"
+        "vite": "^4.0.4",
+        "vite-plugin-mkcert": "^1.13.3"
     }
 }

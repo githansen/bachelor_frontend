@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 //Graphic assets
 import Layout from '@/components/shared/Layout';
 import DeleteGraphic from '@/assets/img/ThreeDeeGraphic/DeleteGraphic.webp';
-import { validateResponse } from '@/utils/api';
+import { validateResponse, API_PATH } from '@/utils/api';
 
 export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);
@@ -22,7 +22,7 @@ export default function DeleteRecording() {
     async function deleteContribution() {
         setIsOpen(false);
 
-        const promise = fetch('/api/User/DeleteFile', {
+        const promise = fetch(API_PATH + '/User/DeleteFile', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

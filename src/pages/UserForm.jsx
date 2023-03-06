@@ -166,11 +166,11 @@ export default function PageUserForm() {
     const navigate = useNavigate();
 
     const ageOptions = [
-        { value: '1', label: '18-29' },
-        { value: '2', label: '30-39' },
-        { value: '3', label: '40-49' },
-        { value: '4', label: '50-59' },
-        { value: '5', label: '60+' },
+        { value: '18-29', label: '18-29' },
+        { value: '30-39', label: '30-39' },
+        { value: '40-49', label: '40-49' },
+        { value: '50-59', label: '50-59' },
+        { value: '60+', label: '60+' },
     ];
     const genderOptions = [
         { value: 'mann', label: 'Mann' },
