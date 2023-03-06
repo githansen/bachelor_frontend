@@ -1,0 +1,114 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+}
+
+table button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+table {
+    width: 100%;
+    background-color: #fff;
+}
+
+table thead tr th {
+    color: #171717;
+    text-align: left;
+}
+
+table tbody tr td {
+    text-align: left;
+    transition: all 0.2s ease;
+}
+table tbody tr:hover td {
+    background-color: #f2f2f2 !important;
+    cursor: pointer;
+}
+table tr td {
+    color: #000000;
+    border-top: 2px solid #edeff0;
+}
+table tbody tr td.isDeleted span {
+    background-color: #f5382c;
+    border-radius: 2px;
+    padding: 4px 10px;
+    color: #fff;
+}
+thead tr th:first-child,
+tbody tr td:first-child {
+    width: 8em;
+    min-width: 8em;
+    max-width: 8em;
+    word-break: break-all;
+}
+#ContributionPage input::placeholder {
+    font-size: 15px;
+    font-weight: 900;
+}
+#ContributionPage tbody tr td:nth-child(1) {
+    text-align: center;
+}
+#ContributionPage tbody tr td:nth-child(3) {
+    font-weight: 600;
+}
+#ContributionPage tbody tr td:nth-child(4) p,
+#ContributionPage tbody tr td:nth-child(5) p,
+#ContributionPage tbody tr td:nth-child(6) p {
+    color: #707070;
+}
+#StandardTable input::placeholder {
+    font-size: 15px;
+    font-weight: 900;
+}
+#StandardTable tbody tr td:nth-child(2) {
+    font-weight: 600;
+}
+#StandardTable tbody tr td:nth-child(1) {
+    text-align: center;
+}
+#StandardTable tbody tr td:nth-child(3) p,
+#StandardTable tbody tr td:nth-child(4) p,
+#StandardTable tbody tr td:nth-child(5) p {
+    color: #707070;
+}
+table thead #searchRow th {
+    color: #171717;
+}
+[type='search'] {
+    background: none;
+    padding: 0;
+}
+[type='search']::placeholder {
+    color: #171717;
+    opacity: 0.7;
+    font-weight: 400;
+    font-size: smaller;
+}
+[type='search']:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+th span {
+    margin-right: 1rem;
+}
+
+input {
+    -webkit-appearance: none;
+    border: none;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+    background: #f0f0f0;
+}
+
+.pagination {
+    margin-top: 0.25rem;
+    display: flex;
+    justify-content: space-between;
+}

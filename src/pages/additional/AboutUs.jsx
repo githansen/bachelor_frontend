@@ -144,7 +144,7 @@ export default function AboutUs() {
                         du finne mer informasjon ved å klikke her.
                     </m.p>
 
-                    <div className="grid grid-col-1 place-self-end place-items-center">
+                    <div className="grid grid-col-1 xs:place-self-middle sm:place-self-middle md:place-self-end place-items-center">
                         <h6
                             className="
                             font-feteste 

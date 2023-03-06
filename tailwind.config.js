@@ -36,6 +36,11 @@ module.exports = {
       metall: "#707070",
       kveld: "#4D4D4D",
       natt: "#000000",
+      //Dashboard Colors
+      lysbakgrunn: "#f9fbfd",
+      'cyan-500': "#06b6d4",
+      'blue-500': "#007edd",
+      'blue-700': "#015ca1",
     },
     fontSize: {
       // Overskrift 1
@@ -205,5 +210,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require("@tailwindcss/typography"),
+  ],
+
 };
