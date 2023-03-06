@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
-export const API_PATH = import.meta.env.VITE_API_SERVER === 'local' ?
-    'https://localhost:7195/' : 
+export const API_PATH = import.meta.env.VITE_API_SERVER?.trim() === 'local' ?
+    '/api' : 
     'https://gidinstemme-back-test.azurewebsites.net/';
 
 // Send request to backend
