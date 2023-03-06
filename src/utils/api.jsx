@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
+export const API_PATH = import.meta.env.VITE_API_SERVER?.trim() === 'local' ?
+    '/api' : 
+    'https://gidinstemme-back-test.azurewebsites.net/';
+
 // Send request to backend
 export async function queryApi(path, body = {}, options = {}) {
-    const promise = fetch('/api/' + path, {
+    const promise = fetch(API_PATH + path, {
         method: options?.method ?? 'POST',
         headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: body !== null ? JSON.stringify(body) : null,
     })
         .then(validateResponse)
