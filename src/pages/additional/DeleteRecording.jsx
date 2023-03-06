@@ -37,7 +37,7 @@ export default function DeleteRecording() {
             success: 'Ditt bidrag ble slettet!',
             error: (err) =>
                 err.status === 404
-                    ? 'Feil bidragskode, bidraget finnes ikke'
+                    ? 'Ukjent bidragskode, bidraget finnes ikke'
                     : 'Noe gikk gale med sletting av filen din',
         });
         setIsDone(true);

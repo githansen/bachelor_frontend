@@ -240,7 +240,7 @@ export default function PageUserForm() {
                 toast: {
                     loading: 'Registrerer ...',
                     success: 'Brukerdata registrert',
-                    error: 'Noe gikk gale, prøv igjen senere',
+                    error: 'Noe gikk galt, prøv igjen senere',
                 }
             });
             navigate('/les');
