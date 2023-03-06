@@ -32,15 +32,6 @@ function SelectInput({ options, name, selected, onChange }) {
                 },
             };
         },
-        menuList: (provided) => ({
-            ...provided,
-            paddingTop: 0,
-            paddingBottom: 0,
-            boxShadow: 'none',
-            border: '1.5px solid #FFD039',
-            borderRadius: '5px',
-            zIndex: 999,
-        }),
         control: (styles, state) => ({
             ...styles,
             boxShadow: 'none',
@@ -48,10 +39,17 @@ function SelectInput({ options, name, selected, onChange }) {
             border: '2px solid #FFD039',
             outline: '0',
             color: state.hasValue ? '#FFFFFF' : '#000000',
-            zIndex: 100,
             '&:hover': {
                 cursor: 'pointer',
             },
+        }),
+        menuList: (provided) => ({
+            ...provided,
+            paddingTop: 0,
+            paddingBottom: 0,
+            boxShadow: 'none',
+            border: '1.5px solid #FFD039',
+            borderRadius: '5px',
         }),
         dropdownIndicator: (base) => ({
             ...base,
@@ -84,7 +82,7 @@ function SelectInput({ options, name, selected, onChange }) {
                         'option--is-focused': isFocused,
                         'option--is-selected': isSelected,
                     },
-                    `${className} defaultSelectOptionsStyle`
+                    `${className} SelectOptionsStyle defaultSelectOptionsStyle`
                 )}
                 {...innerProps}
             >
@@ -157,7 +155,7 @@ function Stepper({ step, totalSteps }) {
                         key={i}
                         className={`w-5 h-5 z-[2] rounded-full m-1 transition-all ${
                             i <= step ? 'bg-solskinn' : 'bg-fred'
-                        } border-secondary border-2`}
+                        } border-skumring border-2`}
                     />
                 ))}
         </m.div>

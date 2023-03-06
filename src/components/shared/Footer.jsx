@@ -132,9 +132,12 @@ export default function Footer() {
                         </div>
                         <div className="md:hidden mx-auto mt-10 pt-5 w-full  flex-col bg-fred txt-black rounded-tl-lg rounded-tr-lg px-5 py-3 content-end">
                             <div className="mb-2 flex flex-col gap-3 justify-center content-center">
-                                <p className="text-xsliten text-skumring self-center">
+                                <p className="text-[9px] text-skumring self-center leading-4">
                                     <Developers />
-                                    <br></br>I samarbeid med
+                                    <br></br>
+                                </p>
+                                <p className="text-[11px] text-skumring self-center leading-4">
+                                    <b>I samarbeid med</b>
                                 </p>
                                 <a
                                     href="https://www.politiet.no/om-politiet/organisasjonen/sarorganene/pit/"
@@ -149,7 +152,7 @@ export default function Footer() {
                                 </a>
                             </div>
                             <div>
-                                <small className="text-xsliten text-stein">
+                                <small className="text-[8px] text-stein leading-4">
                                     © 2023 GiDinStemme
                                 </small>
                             </div>
