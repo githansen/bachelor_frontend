@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 
 export const API_PATH = import.meta.env.VITE_API_SERVER?.trim() === 'local' ?
     '/api' : 
-    'https://gidinstemme-back-test.azurewebsites.net/';
+    'https://gidinstemme-front-test.azurewebsites.net/api/';
 
 // Send request to backend
 export async function queryApi(path, body = {}, options = {}) {
