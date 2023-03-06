@@ -12,7 +12,7 @@ import IdleControlsSmall from '@/pages/Reader/controls/IdleControlsSmall';
 //Hooks
 import useReadingProgress from '@/hooks/useReadingProgress';
 import useRecorder from '@/hooks/useRecorder';
-import { useApi, validateResponse } from '@/utils/api';
+import { useApi, validateResponse, API_PATH } from '@/utils/api';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 //Audioplayer
@@ -169,7 +169,7 @@ export default function Reader() {
         formData.append('textId', text.textId);
         formData.append('recording', audio.blob, 'test.m4a');
 
-         const promise = fetch('/api/User/SaveFile', {
+        const promise = fetch(API_PATH + '/User/SaveFile', {
             method: 'POST',
             body: formData,
             credentials: 'include'
