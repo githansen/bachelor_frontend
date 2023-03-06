@@ -29,8 +29,8 @@ export default function DeleteRecording() {
             },
             body: JSON.stringify(userInput),
         })
-          .then(validateResponse)
-          .then(() => setIsDone(true))
+            .then(validateResponse)
+            .then(() => setIsDone(true));
 
         toast.promise(promise, {
             loading: 'Sletter ...',
@@ -153,7 +153,7 @@ export default function DeleteRecording() {
                             >
                                 <Input
                                     format="########-####-####-####-############"
-                                    className="xs:min-w-[25rem] sm:min-w-[25rem] md:min-w-[25rem] xs:p-2 p-3 my-2 text-center font-fet border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg focus:outline-none focus:shadow-outline"
+                                    className="xs:min-w-[20rem] sm:min-w-[25rem] md:min-w-[25rem] xs:p-2 p-3 my-2 text-center font-fet border-2 placeholder-solnedgang border-solskinn bg-paskeegg text-bark rounded-lg focus:outline-none focus:shadow-outline"
                                     id="bidragskode"
                                     type="text"
                                     placeholder="D9F691A0-DF97-48B5-286F-08DB1332C1A6"
