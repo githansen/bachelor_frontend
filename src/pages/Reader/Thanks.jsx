@@ -1,5 +1,5 @@
 //React library
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 //Shared components
 import Layout from '@/components/shared/Layout';
 //Animation library
@@ -8,6 +8,8 @@ import { motion as m } from 'framer-motion';
 import ThanksIcon from '@/assets/img/ThreeDeeGraphic/ThanksGraphic.webp';
 
 export default function Thanks() {
+    const { uuid } = useLocation().state;
+
     return (
         <Layout>
             <div>
@@ -48,7 +50,7 @@ export default function Thanks() {
                     >
                         Din bidragskode er{' '}
                         <span className="border-2 border-solskinn bg-paskeegg text-skumring p-3 ml-1 rounded-lg">
-                            <b>123E4567-E89B-12D30-EG94348</b>
+                            <b>{uuid}</b>
                         </span>
                     </m.p>
                     <Link

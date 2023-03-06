@@ -175,7 +175,8 @@ export default function Reader() {
             credentials: 'include'
         })
             .then(validateResponse)
-            .then(() => navigate('/takk'));
+            .then((res) => res.text())
+            .then((uuid) => navigate('/takk', { state: { uuid } }));
 
         toast.promise(promise, {
             loading: 'Sender ...',
