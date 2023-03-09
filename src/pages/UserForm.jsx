@@ -230,19 +230,21 @@ export default function PageUserForm() {
 
     const incrementStep = async () => {
         if (step === steps.length - 1) {
-            await queryApi('User/RegisterUserInfo', {
-                nativeLanguage: language?.value,
-                dialect: dialect?.value,
-                ageGroup: ageGroup?.value,
-                gender: gender?.value,
-            },
-            { 
-                toast: {
-                    loading: 'Registrerer ...',
-                    success: 'Brukerdata registrert',
-                    error: 'Noe gikk galt, prøv igjen senere',
+            await queryApi(
+                'User/RegisterUserInfo',
+                {
+                    nativeLanguage: language?.value,
+                    dialect: dialect?.value,
+                    ageGroup: ageGroup?.value,
+                    gender: gender?.value,
+                },
+                {
+                    toast: {
+                        loading: 'Registrerer ...',
+                        error: 'Noe gikk galt, prøv igjen senere',
+                    },
                 }
-            });
+            );
             navigate('/les');
         } else {
             setStep((prev) => prev + 1);
