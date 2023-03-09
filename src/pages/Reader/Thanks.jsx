@@ -47,7 +47,7 @@ export default function Thanks() {
                     >
                         Din bidragskode er{' '}
                         <span className="border-2 border-solskinn bg-paskeegg text-skumring p-3 ml-1 rounded-lg">
-                            <b>{'uuid'}</b>
+                            <b>{uuid}</b>
                         </span>
                     </m.p>
                     <Link
