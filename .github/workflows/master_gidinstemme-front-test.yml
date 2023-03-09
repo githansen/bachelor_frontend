@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - gidinstemme-front-test
 on:
   push:
     branches:
-      - HostTesting
+      - master
   workflow_dispatch:
 
 jobs:
@@ -19,11 +19,11 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '17.x'
+          node-version: '17.x' 
 
       - name: npm install, build, and test
         run: |
-          npm install i --legacy-peer-deps
+          npm install i --legacy-peer-deps 
           npm run build --if-present
           npm run test --if-present
             # Install 7-Zip
@@ -50,12 +50,11 @@ jobs:
           name: node-app
       - name: unzip artifact for deployment
         run: unzip release.zip
-        
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'gidinstemme-front-test'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_47BE1E6843BB46C08EEE4A2EF45D1D6C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1D2FEC0836DC49418C5BC7EE3182E37A }}
           package: dist
