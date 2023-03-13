@@ -1,7 +1,7 @@
 //React
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 //React library
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Select, { components } from 'react-select';
 //Animation library
 import { motion as m } from 'framer-motion';
@@ -13,7 +13,6 @@ import {
     ChevronRightIcon,
     ArrowUpCircleIcon,
 } from '@heroicons/react/24/outline';
-import { act } from 'react-dom/test-utils';
 
 export default function TextSinglePage() {
     //Navigation
@@ -39,25 +38,6 @@ export default function TextSinglePage() {
     }, [actionType, navigate]);
 
     const selectStyle = {
-        control: (base, state) => {
-            let border = '2px solid #f2f2f2';
-
-            if (state.isSelected) {
-                border = '2px solid #0089D5';
-            }
-            if (state.isFocused) {
-                border = '2px solid #0089D5';
-            }
-
-            return {
-                ...base,
-                border,
-                boxShadow: 'none',
-                '&:hover': {
-                    border: '2px solid #0089D5',
-                },
-            };
-        },
         control: (styles, state) => ({
             ...styles,
             boxShadow: 'none',
@@ -69,13 +49,13 @@ export default function TextSinglePage() {
                 cursor: 'pointer',
             },
         }),
-        multiValue: (styles, { data }) => {
+        multiValue: (styles, { }) => {
             return {
                 ...styles,
                 backgroundColor: '#0089D5',
             };
         },
-        multiValueLabel: (styles, { data }) => ({
+        multiValueLabel: (styles, { }) => ({
             ...styles,
             color: '#ffffff',
         }),
@@ -87,7 +67,7 @@ export default function TextSinglePage() {
             border: '1.5px solid #0089D5',
             borderRadius: '5px',
         }),
-        multiValueRemove: (styles, { data }) => ({
+        multiValueRemove: (styles, { }) => ({
             ...styles,
             color: '#00C9FF',
             ':hover': {
@@ -181,7 +161,7 @@ export default function TextSinglePage() {
                                 ease: 'easeOut',
                             }}
                             className="flex mb-6 text-xlp"
-                            aria-label="Breadcrumb"
+                            ariaLabel="Breadcrumb"
                         >
                             <ol className="inline-flex items-center space-x-1 md:space-x-3">
                                 <li className="inline-flex items-center text-bolge hover:opacity-60 transition duration-200">
@@ -193,7 +173,7 @@ export default function TextSinglePage() {
                                         Målgrupper
                                     </NavLink>
                                 </li>
-                                <li aria-current="page" className="text-bolge">
+                                <li ariaCurrent="page" className="text-bolge">
                                     <div className="flex items-center">
                                         <ChevronRightIcon className="h-5 w-5 mr-1" />
                                         {actionType === 'edit' ? '' : title}

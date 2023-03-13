@@ -192,7 +192,7 @@ export default function TextSettings({
                                 } -m-3 hover:bg-paskeegg flex text-natt items-center rounded-lg p-2 transition duration-150 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50`}
                             >
                                 <div className="flex h-10 w-10 shrink-0 items-center justify-center text-fred sm:h-12 sm:w-12">
-                                    <item.icon aria-hidden="true" />
+                                    <item.icon ariaHidden="true" />
                                 </div>
                                 <div className="xs:hidden md:block ml-4">
                                     <p className="text-sm font-medium text-skumring">
@@ -219,7 +219,7 @@ export default function TextSettings({
                                 } -m-3 hover:bg-paskeegg flex text-natt items-center rounded-lg p-2 transition duration-150 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50`}
                             >
                                 <div className="flex h-10 w-10 shrink-0 items-center justify-center text-fred sm:h-12 sm:w-12">
-                                    <item.icon aria-hidden="true" />
+                                    <item.icon ariaHidden="true" />
                                 </div>
                                 <div className="xs:hidden md:block ml-4">
                                     <p className="text-sm font-medium text-skumring">
@@ -255,7 +255,7 @@ export default function TextSettings({
                                 className={`-m-3 hover:bg-gull flex text-natt w-fit items-center rounded-lg pr-3 transition duration-150 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50`}
                             >
                                 <div className="flex h-10 w-10 shrink-0 items-center justify-center text-fred sm:h-12 sm:w-12">
-                                    <item.icon aria-hidden="true" />
+                                    <item.icon ariaHidden="true" />
                                 </div>
                                 <div className="xs:hidden ml-2">
                                     <p className="text-small font-medium text-skumring">

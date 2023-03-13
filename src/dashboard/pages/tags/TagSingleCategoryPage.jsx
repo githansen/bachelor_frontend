@@ -107,7 +107,7 @@ export default function TagSingleCategoryPage() {
                     <div className="mb-5 w-full">
                         <nav
                             className="flex mb-6 text-xlp"
-                            aria-label="Breadcrumb"
+                            ariaLabel="Breadcrumb"
                         >
                             <ol className="inline-flex items-center space-x-1 md:space-x-3">
                                 <li className="inline-flex items-center text-bolge hover:opacity-60 transition duration-200">
@@ -119,7 +119,7 @@ export default function TagSingleCategoryPage() {
                                         Merkelapp kategorier
                                     </NavLink>
                                 </li>
-                                <li aria-current="page" className="text-bolge">
+                                <li ariaCurrent="page" className="text-bolge">
                                     <div className="flex items-center">
                                         <ChevronRightIcon className="h-5 w-5 mr-1" />
                                         <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">

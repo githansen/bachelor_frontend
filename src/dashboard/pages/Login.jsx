@@ -80,7 +80,7 @@ export default function Login() {
                             >
                                 <LockClosedIcon
                                     className="h-5 w-5 mr-2"
-                                    aria-hidden="true"
+                                    ariaHidden="true"
                                 />
                                 Logg inn
                             </button>
