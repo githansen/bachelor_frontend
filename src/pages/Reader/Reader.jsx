@@ -30,7 +30,7 @@ function TextPanel({
     state,
     fontColor,
     fontsize,
-    fontfamily,
+    fontFamily,
     alignText,
     loading,
 }) {
@@ -86,7 +86,7 @@ function TextPanel({
                     }}
                     style={{
                         fontSize: `${fontsize}px`,
-                        fontFamily: `${fontfamily}`,
+                        fontFamily: `${fontFamily}`,
                         color: state == 'completed' ? '#C2C2C2' : fontColor,
                         textAlign: `${alignText}`,
                     }}
@@ -168,7 +168,7 @@ export default function Reader() {
     }, [windowSize]);
 
     // TextEdit
-    const [fontfamily, setFontFamily] = useState('Avenir');
+    const [fontFamily, setFontFamily] = useState('Avenir');
     const [alignText, setAlignText] = useState('left');
     // Switch light/dark theme
     const [stylebgcolor, setStyleBgColor] = useState('bg-special-light');
@@ -255,6 +255,7 @@ export default function Reader() {
                                 stylecolorfont={stylecolorfont}
                                 setStyleColorFont={setStyleColorFont}
                                 setFontSize={setFontSize}
+                                fontFamily={fontFamily}
                                 setFontFamily={setFontFamily}
                                 alignText={alignText}
                                 setAlignText={setAlignText}
@@ -268,6 +269,7 @@ export default function Reader() {
                                 stylecolorfont={stylecolorfont}
                                 setStyleColorFont={setStyleColorFont}
                                 setFontSize={setFontSize}
+                                fontFamily={fontFamily}
                                 setFontFamily={setFontFamily}
                                 alignText={alignText}
                                 setAlignText={setAlignText}
@@ -307,7 +309,7 @@ export default function Reader() {
                             state={state}
                             fontColor={stylecolorfont}
                             fontsize={fontsize}
-                            fontfamily={fontfamily}
+                            fontFamily={fontFamily}
                             alignText={alignText}
                         />
                     </div>

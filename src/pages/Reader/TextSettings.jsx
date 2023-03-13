@@ -28,16 +28,6 @@ export default function TextSettings({
 }) {
     const textAlign = [
         {
-            name: 'Fyll',
-            alignTextChosen: 'justify',
-            icon: IconJustifyTextAlign,
-        },
-        {
-            name: 'Midstill',
-            alignTextChosen: 'center',
-            icon: IconCenterTextAlign,
-        },
-        {
             name: 'Venstrejuster',
             alignTextChosen: 'left',
             icon: IconLeftTextAlign,
@@ -46,6 +36,16 @@ export default function TextSettings({
             name: 'Høyrejuster',
             alignTextChosen: 'right',
             icon: IconRightTextAlign,
+        },
+        {
+            name: 'Fyll',
+            alignTextChosen: 'justify',
+            icon: IconJustifyTextAlign,
+        },
+        {
+            name: 'Midstill',
+            alignTextChosen: 'center',
+            icon: IconCenterTextAlign,
         },
     ];
 
@@ -173,9 +173,9 @@ export default function TextSettings({
             leaveFrom="opacity-100 xs:translate-y-[-119%] sm:translate-y-[-113%]"
             leaveTo="opacity-0 translate-y-1"
         >
-            <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-[30rem] xs:-translate-x-[10%] sm:-translate-x-[5%] md:-translate-x-[95%] lg:-translate-x-[85%] transform px-4 sm:px-0 xs:max-w-sm lg:max-w-3xl">
+            <Popover.Panel className="absolute left-1/2 z-10 mt-3 xs:w-[20rem] w-[30rem] xs:-translate-x-[17%] sm:-translate-x-[5%] md:-translate-x-[95%] lg:-translate-x-[85%] transform px-4 sm:px-0 xs:max-w-sm lg:max-w-3xl">
                 <div className="overflow-hidden rounded-lg shadow-2xl ring-opacity-5 bg-solskinn border-4 border-solskinn">
-                    <h6 className="text-skumring mt-8 text-left pl-4 uppercase font-bold text-small xs:text-center">
+                    <h6 className="text-skumring xs:mt-4 mt-8 text-left pl-4 uppercase font-fet text-small xs:text-center">
                         Velg skrifttype
                     </h6>
                     <div className="relative grid gap-8 p-7 xs:justify-items-center xs:grid-cols-4 sm:grid-cols-2">
@@ -202,7 +202,7 @@ export default function TextSettings({
                             </a>
                         ))}
                     </div>
-                    <h6 className="text-skumring mt-4 text-left pl-4 uppercase font-bold text-small xs:text-center">
+                    <h6 className="text-skumring xs:mt-2 mt-4 text-left pl-4 uppercase font-fet text-small xs:text-center">
                         Juster tekst
                     </h6>
                     <div className="relative grid gap-8 p-7 xs:justify-items-center xs:grid-cols-4 sm:grid-cols-2">
@@ -230,7 +230,7 @@ export default function TextSettings({
                         ))}
                     </div>
 
-                    <h6 className="text-skumring mt-4 text-left pl-4 uppercase font-bold text-small xs:text-center">
+                    <h6 className="text-skumring xs:mt-2 mt-4 text-left pl-4 uppercase font-fet text-small xs:text-center">
                         Endre størrelse
                     </h6>
                     <div className="relative grid gap-8 p-7 xs:justify-items-center xs:grid-cols-4 sm:grid-cols-2 md:grid-cols-3">
