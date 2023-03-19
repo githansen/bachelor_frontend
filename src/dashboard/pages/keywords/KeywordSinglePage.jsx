@@ -51,7 +51,7 @@ export default function KeywordSinglePage() {
                                 ease: 'easeOut',
                             }}
                             className="flex mb-6 text-xlp"
-                            aria-label="Breadcrumb"
+                            ariaLabel="Breadcrumb"
                         >
                             <ol className="inline-flex items-center space-x-1 md:space-x-3">
                                 <li className="inline-flex items-center text-bolge hover:opacity-60 transition duration-200">
@@ -63,7 +63,7 @@ export default function KeywordSinglePage() {
                                         Nøkkelord
                                     </NavLink>
                                 </li>
-                                <li aria-current="page" className="text-bolge">
+                                <li ariaCurrent="page" className="text-bolge">
                                     <div className="flex items-center">
                                         <ChevronRightIcon className="h-5 w-5 mr-1" />
                                         {actionType === 'edit' ? '' : title}

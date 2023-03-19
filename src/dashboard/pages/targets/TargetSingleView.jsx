@@ -71,7 +71,7 @@ export default function TargetSingleView() {
             <div className="p-12 w-full">
                 <div className="flex justify-between items-center mb-10">
                     <div className="items-end">
-                        <nav className="flex text-xlp" aria-label="Breadcrumb">
+                        <nav className="flex text-xlp" ariaLabel="Breadcrumb">
                             <ol className="inline-flex items-center space-x-1 md:space-x-3">
                                 <li className="inline-flex items-center text-bolge hover:opacity-60 transition duration-200">
                                     <NavLink

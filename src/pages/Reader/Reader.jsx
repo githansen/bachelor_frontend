@@ -62,7 +62,7 @@ function TextPanel({
                                     cy="12"
                                     r="10"
                                     stroke="currentColor"
-                                    stroke-width="4"
+                                    strokeWidth="4"
                                 ></circle>
                                 <path
                                     class="opacity-75"
@@ -192,7 +192,7 @@ export default function Reader() {
         // Request using formdata to send blob file to avoid base64 encode with json
         const formData = new FormData();
         formData.append('textId', text.textId);
-        formData.append('recording', audio.blob, 'test.m4a');
+        formData.append('recording', audio.blob, 'voice_recording.wav');
 
         const promise = fetch(API_PATH + '/User/SaveFile', {
             method: 'POST',

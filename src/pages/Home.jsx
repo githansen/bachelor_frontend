@@ -1,4 +1,5 @@
 //React library
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 //Shared components
 import Footer from '@/components/shared/Footer';
@@ -16,9 +17,20 @@ import heroimg7 from '@/assets/img/Hero/hero-img-7.webp';
 import heroimg8 from '@/assets/img/Hero/hero-img-8.webp';
 import heroimg9 from '@/assets/img/Hero/hero-img-9.webp';
 import heroimg10 from '@/assets/img/Hero/hero-img-10.webp';
+// Api
+import { queryApi } from '@/utils/api.jsx';
 
 export default function Home() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        queryApi('User/IsLoggedIn')
+            .then((res) => {
+                if (res === true) {
+                    navigate('/velkommen-tilbake');
+                }
+            });
+    }, []);
 
     return (
         <div>

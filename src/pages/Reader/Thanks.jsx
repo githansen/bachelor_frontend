@@ -8,7 +8,7 @@ import { motion as m } from 'framer-motion';
 import ThanksIcon from '@/assets/img/ThreeDeeGraphic/ThanksGraphic.webp';
 
 export default function Thanks() {
-    //const { uuid } = useLocation().state;
+    const { uuid } = useLocation().state;
 
     return (
         <Layout>
