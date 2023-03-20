@@ -1,6 +1,6 @@
 //React
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 //Graphic assets
 import { LockClosedIcon } from '@heroicons/react/20/solid';
 //Graphic assets
@@ -9,23 +9,28 @@ import GiDinStemmeIconWBg from '@/assets/img/Logo/GiDinStemmeIconWBg.png';
 import { queryApi } from '@/utils/api.jsx';
 
 export default function Login() {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = () => {
-        console.log('login');
-        queryApi('/Admin/LogIn', { username: email, password }, {
-            method: 'POST',
-            toast: {
-                loading: 'Logger inn...',
-                success: 'Du er nå logget inn som administrator',
-                error: 'Noe gikk galt, prøv igjen senere',
+        queryApi(
+            '/Admin/LogIn',
+            {
+                username,
+                password
+            },
+            {
+                method: 'POST',
+                toast: {
+                    loading: 'Logger inn...',
+                    success: 'Du er nå logget inn som administrator',
+                    error: (res) => res.status === 401 ?
+                        'Feil brukernavn eller passord' :
+                        'Noe gikk galt, prøv igjen senere'
+                },
             }
-        })
-            .then((res) => {
-                console.log(res);
-                navigate('/gdsadmin/dashboard');
-            });
+        ).then(() => navigate('/gdsadmin/dashboard'));
     };
 
     return (
@@ -43,10 +48,10 @@ export default function Login() {
                             Logg inn
                         </h2>
                         <p className="mt-5 text-center text-sm text-mane font-medium">
-                            Skriv inn din e-post og passord
+                            Skriv inn ditt brukernavn og passord
                         </p>
                     </div>
-                    <form className="mt-8 space-y-6">
+                    <form className="mt-8 space-y-6" onSubmit={e => e.preventDefault()}>
                         <input
                             type="hidden"
                             name="remember"
@@ -55,21 +60,20 @@ export default function Login() {
                         <div className="-space-y-px rounded-md shadow-sm">
                             <div className="mb-5">
                                 <label
-                                    htmlFor="email-address"
+                                    htmlFor="username"
                                     className="sr-only"
                                 >
-                                    E-post
+                                    Brukernavn
                                 </label>
                                 <input
-                                    id="email-address"
-                                    name="email"
-                                    type="email"
-                                    autoComplete="email"
+                                    id="username"
+                                    name="username"
+                                    type="string"
                                     required
                                     className="relative block w-full appearance-none rounded-md border-none px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                    placeholder="E-post"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Brukernavn"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
                                 />
                             </div>
                             <div>
@@ -85,7 +89,9 @@ export default function Login() {
                                     className="relative block w-full appearance-none rounded-md border-none px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Passord"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
                                 />
                             </div>
                         </div>
@@ -107,7 +113,6 @@ export default function Login() {
                             >
                                 <LockClosedIcon
                                     className="h-5 w-5 mr-2"
-                                    ariaHidden="true"
                                 />
                                 Logg inn
                             </button>

@@ -24,6 +24,16 @@ export default function TextSinglePage() {
     const actionType = location.state.action;
     const [title, setTitle] = useState('');
     const [submitBtnText, setSubmitBtnText] = useState('');
+    const [targetGroups, setTargetGroups] = useState([]);
+    const [textTags, setTextTags] = useState([]);
+
+    const handleTargetGroupChange = (e) => {
+        if (e.action === 'select-option') {
+            setTargetGroups(prev => [...prev, e.option]);
+        } else if (e.action === 'remove-value') {
+            setTargetGroups(prev => prev.filter(item => item.value !== e.removedValue.value));
+        }
+    };
 
     useEffect(() => {
         if (actionType) {
@@ -41,18 +51,25 @@ export default function TextSinglePage() {
 
     const [wordCount, setWordCount] = useState(0);
     const [textTime, setTextTime] = useState(0);
+    const [text, setText] = useState('');
+    const [textStatus, setTextStatus] = useState('draft');
 
     const handleTextChange = (e) => {
-        const text = e.target.value;
-        const words = text.split(' ').length;
+        const newText = e.target.value;
+        const words = newText.split(' ').length;
         const time = Math.round(words / 200);
+
+        setText(() => newText);
         setWordCount(words - 1);
         setTextTime(time);
     };
 
-    const submitText = (e) => {
+    const submitText = () => {
         queryApi('Admin/CreateText', {
-            text: e.target.value,
+            textText: text,
+            active: textStatus === 'published',
+            tags: [], // TODO: Use tags here
+            targetGroup: {} // TODO: Use targetGroups here
         }, {
             method: 'POST',
             toast: {
@@ -189,7 +206,7 @@ export default function TextSinglePage() {
                                         Tekster
                                     </NavLink>
                                 </li>
-                                <li ariaCurrent="page" className="text-bolge">
+                                <li className="text-bolge">
                                     <div className="flex items-center">
                                         <ChevronRightIcon className="h-5 w-5 mr-1" />
                                         {actionType === 'edit' ? '' : title}
@@ -247,15 +264,9 @@ export default function TextSinglePage() {
                             }}
                             className="w-full bg-fred mb-5 shadow border-0 text-bolge rounded-md p-5 text-xlp"
                             rows="10"
-                            onChange={(e) => {
-                                handleTextChange(e);
-                            }}
+                            onChange={handleTextChange}
+                            value={text}
                             placeholder="Her skriver du inn din tekst..."
-                            defaultValue={`${
-                                actionType === 'edit'
-                                    ? 'Dette er en random tekst generert for å være en verdi her.'
-                                    : ''
-                            }`}
                         />
 
                         <m.div
@@ -286,11 +297,13 @@ export default function TextSinglePage() {
                                 className="text-left mt-3"
                                 styles={selectStyle}
                                 defaultValue={
+                                    // Plaherholder data for edit
                                     actionType === 'edit' && [
                                         keywordOptions[2],
                                         keywordOptions[3],
                                     ]
                                 }
+                                onChange={value => setTextTags(value)}
                             />
                         </m.div>
                     </div>
@@ -329,8 +342,9 @@ export default function TextSinglePage() {
                             </ul>
 
                             <select
-                                defaultValue="draft"
                                 className="mt-4 rounded border-2 border-bolge text-bolge w-full"
+                                value={textStatus}
+                                onChange={(e) => setTextStatus(e.target.value)}
                             >
                                 <option value="draft">Kladd</option>
                                 <option value="published">Publisert</option>
@@ -382,11 +396,13 @@ export default function TextSinglePage() {
                                 className="text-left mt-3"
                                 styles={selectStyle}
                                 defaultValue={
-                                    actionType === 'edit' && [
+                                    // Plaheolder data for edit
+                                    actionType === 'edit' ? [
                                         targetOptions[2],
                                         targetOptions[3],
-                                    ]
+                                    ] : null
                                 }
+                                onChange={handleTargetGroupChange}
                             />
                         </m.div>
                     </div>
