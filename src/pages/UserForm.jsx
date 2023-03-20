@@ -13,25 +13,6 @@ import UserFormIcon from '@/assets/img/ThreeDeeGraphic/UserFormGraphic.webp';
 
 function SelectInput({ options, name, selected, onChange }) {
     const selectStyle = {
-        control: (base, state) => {
-            let border = '2px solid #f2f2f2';
-
-            if (state.isSelected) {
-                border = '2px solid #FFD039';
-            }
-            if (state.isFocused) {
-                border = '2px solid #FFD039';
-            }
-
-            return {
-                ...base,
-                border,
-                boxShadow: 'none',
-                '&:hover': {
-                    border: '2px solid #FFD039',
-                },
-            };
-        },
         control: (styles, state) => ({
             ...styles,
             boxShadow: 'none',

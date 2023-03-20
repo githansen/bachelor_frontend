@@ -1,11 +1,33 @@
 //React
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 //Graphic assets
 import { LockClosedIcon } from '@heroicons/react/20/solid';
 //Graphic assets
 import GiDinStemmeIconWBg from '@/assets/img/Logo/GiDinStemmeIconWBg.png';
+// Api
+import { queryApi } from '@/utils/api.jsx';
 
 export default function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLogin = () => {
+        console.log('login');
+        queryApi('/Admin/LogIn', { username: email, password }, {
+            method: 'POST',
+            toast: {
+                loading: 'Logger inn...',
+                success: 'Du er nå logget inn som administrator',
+                error: 'Noe gikk galt, prøv igjen senere',
+            }
+        })
+            .then((res) => {
+                console.log(res);
+                navigate('/gdsadmin/dashboard');
+            });
+    };
+
     return (
         <>
             <div className="flex min-h-full items-center justify-center py-12 lg:px-8 bg-special-darkblue-admin h-screen">
@@ -46,6 +68,8 @@ export default function Login() {
                                     required
                                     className="relative block w-full appearance-none rounded-md border-none px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="E-post"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                             <div>
@@ -60,13 +84,15 @@ export default function Login() {
                                     required
                                     className="relative block w-full appearance-none rounded-md border-none px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Passord"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
                         </div>
 
                         <div className=" w-full text-right">
                             <NavLink
-                                to="/gdsadmin/dashboard"
+                                to="/gdsadmin/"
                                 className="font-medium text-bolge hover:text-krystall transition ease-in-out duration-150"
                             >
                                 Glemt passord?
@@ -77,6 +103,7 @@ export default function Login() {
                             <button
                                 type="submit"
                                 className="group relative flex w-full justify-center rounded-md border-2 bg-bolge text-fred hover:text-bolge border-bolge transition ease-in-out duration-250 py-4 px-3 text-sm font-fet text-white hover:bg-krystall focus:outline-none "
+                                onClick={handleLogin}
                             >
                                 <LockClosedIcon
                                     className="h-5 w-5 mr-2"

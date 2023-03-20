@@ -1,5 +1,5 @@
 //React
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 //React library
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Select, { components } from 'react-select';
@@ -13,6 +13,8 @@ import {
     ChevronRightIcon,
     ArrowUpCircleIcon,
 } from '@heroicons/react/24/outline';
+// Api
+import { queryApi } from '@/utils/api.jsx';
 
 export default function TextSinglePage() {
     //Navigation
@@ -37,7 +39,6 @@ export default function TextSinglePage() {
         }
     }, [actionType, navigate]);
 
-    //
     const [wordCount, setWordCount] = useState(0);
     const [textTime, setTextTime] = useState(0);
 
@@ -49,26 +50,20 @@ export default function TextSinglePage() {
         setTextTime(time);
     };
 
+    const submitText = (e) => {
+        queryApi('Admin/CreateText', {
+            text: e.target.value,
+        }, {
+            method: 'POST',
+            toast: {
+                loading: 'Lagrer tekst...',
+                success: 'Teksten er lagret!',
+                error: 'Teksten kunne ikke lagres. Prøv igjen senere.',
+            }
+        });
+    };
+
     const selectStyle = {
-        control: (base, state) => {
-            let border = '2px solid #f2f2f2';
-
-            if (state.isSelected) {
-                border = '2px solid #0089D5';
-            }
-            if (state.isFocused) {
-                border = '2px solid #0089D5';
-            }
-
-            return {
-                ...base,
-                border,
-                boxShadow: 'none',
-                '&:hover': {
-                    border: '2px solid #0089D5',
-                },
-            };
-        },
         control: (styles, state) => ({
             ...styles,
             boxShadow: 'none',
@@ -80,13 +75,13 @@ export default function TextSinglePage() {
                 cursor: 'pointer',
             },
         }),
-        multiValue: (styles, { data }) => {
+        multiValue: (styles, { }) => {
             return {
                 ...styles,
                 backgroundColor: '#0089D5',
             };
         },
-        multiValueLabel: (styles, { data }) => ({
+        multiValueLabel: (styles, { }) => ({
             ...styles,
             color: '#ffffff',
         }),
@@ -98,7 +93,7 @@ export default function TextSinglePage() {
             border: '1.5px solid #0089D5',
             borderRadius: '5px',
         }),
-        multiValueRemove: (styles, { data }) => ({
+        multiValueRemove: (styles, { }) => ({
             ...styles,
             color: '#00C9FF',
             ':hover': {
@@ -345,7 +340,10 @@ export default function TextSinglePage() {
                             </select>
 
                             <div className="grid grid-cols-3 gap-5">
-                                <button className="col-span-2 mt-4 w-full text-center text-xlknappliten font-fet border-2 border-bolge bg-bolge text-fred hover:bg-krystall hover:text-bolge transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 justify-center place-items-center">
+                                <button
+                                    onClick={submitText}
+                                    className="col-span-2 mt-4 w-full text-center text-xlknappliten font-fet border-2 border-bolge bg-bolge text-fred hover:bg-krystall hover:text-bolge transition-all duration-200 px-4 py-2 rounded inline-flex gap-2 justify-center place-items-center"
+                                >
                                     <ArrowUpCircleIcon className="h-6 w-6" />
                                     {submitBtnText}
                                 </button>
