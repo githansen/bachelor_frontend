@@ -29,7 +29,6 @@ export default function CompletedControls({ setReaderState, audio, submitRecordi
                             preload="auto"
                             autoPlay={false}
                             timeFormat={'mm:ss'}
-                            onLoadedData={() => setDisplayAudioPlayer(true)}
                             showJumpControls={true}
                             progressJumpStep={15000}
                             customControlsSection={['MAIN_CONTROLS']}
