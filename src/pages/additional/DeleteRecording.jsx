@@ -1,6 +1,7 @@
 //React library
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 //Input component library
 import Input from 'react-input-auto-format';
 //Animation library
@@ -16,6 +17,8 @@ export default function DeleteRecording() {
     let [isOpen, setIsOpen] = useState(false);
     let [userInput, setUserInput] = useState('');
     let [isDone, setIsDone] = useState(false);
+
+    const navigate = useNavigate();
 
     const UUID_LENGTH = 36;
 
@@ -95,6 +98,7 @@ export default function DeleteRecording() {
                             bidrag om du har din bidragskode.
                         </m.p>
                         <m.button
+                            onClick={() => navigate('/')}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, ease: 'easeOut' }}
