@@ -159,9 +159,43 @@ export default function PageUserForm() {
         { value: 'annet', label: 'Annet' },
     ];
     const languageOptions = [
-        { value: 'norsk', label: 'Norsk' },
-        { value: 'arabisk', label: 'Arabisk' },
         { value: 'alabansk', label: 'Albansk' },
+        { value: 'annet', label: 'Annet' },
+        { value: 'arabisk', label: 'Arabisk' },
+        { value: 'arabisk', label: 'Arabisk' },
+        { value: 'bengali', label: 'Bengali' },
+        { value: 'bosnisk', label: 'Bosnisk' },
+        { value: 'dansk', label: 'Dansk' },
+        { value: 'engelsk', label: 'Engelsk' },
+        { value: 'eritreisk', label: 'Eritreisk' },
+        { value: 'fransk', label: 'Fransk' },
+        { value: 'hindi', label: 'Hindi' },
+        { value: 'italiensk', label: 'Italiensk' },
+        { value: 'japansk', label: 'Japansk' },
+        { value: 'javanesisk', label: 'Javanesisk' },
+        { value: 'kinesisk', label: 'Kinesisk' },
+        { value: 'koreansk', label: 'Koreansk' },
+        { value: 'lahnda', label: 'Lahnda' },
+        { value: 'litausk', label: 'Litausk' },
+        { value: 'malayisk', label: 'Malayisk' },
+        { value: 'marathi', label: 'Marathi' },
+        { value: 'nederlansk', label: 'Nederlansk' },
+        { value: 'norsk', label: 'Norsk' },
+        { value: 'oriya', label: 'Oriya' },
+        { value: 'persisk', label: 'Persisk' },
+        { value: 'polsk', label: 'Polsk' },
+        { value: 'portugisisk', label: 'Portugisisk' },
+        { value: 'romansk', label: 'Romansk' },
+        { value: 'russisk', label: 'Russisk' },
+        { value: 'samisk', label: 'Samisk' },
+        { value: 'spansk', label: 'Spansk' },
+        { value: 'svensk', label: 'Svensk' },
+        { value: 'tamil', label: 'Tamil' },
+        { value: 'telugu', label: 'Telugu' },
+        { value: 'tyrkisk', label: 'Tyrkisk' },
+        { value: 'tysk', label: 'Tysk' },
+        { value: 'urdu', label: 'Urdu' },
+        { value: 'vietnamesisk', label: 'Vietnamesisk' },
     ];
     const dialectOptions = [
         { value: 'ostlandsk', label: 'Østlandsk' },
@@ -211,6 +245,14 @@ export default function PageUserForm() {
 
     const incrementStep = async () => {
         if (step === steps.length - 1) {
+            console.log(
+                {
+                    nativeLanguage: language?.value,
+                    dialect: dialect?.value,
+                    ageGroup: ageGroup?.value,
+                    gender: gender?.value,
+                }
+            );
             await queryApi(
                 'User/RegisterUserInfo',
                 {
